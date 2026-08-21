@@ -508,8 +508,8 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-06-29"
 		bbox: "X:911-1393, Y:911-1393, Z:429-623"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (78.6x78.6x77.6 um)"
-		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/liconn_data/FlyLICONN/FlyID49/DUP_20260625_FlyID49_2ndgel_BIS_40XW005.zarr"]
-		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/liconn_data/FlyLICONN/FlyID49/DUP_20260625_FlyID49_2ndgel_BIS_40XW005.zarr"
+		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"]
+		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"
 		wk_link: "https://webknossos.int.janelia.org/dashboard/datasets/FlyID49-6a3d5476010000ad00d69bb0"
 		wk_ann_link: "https://webknossos.int.janelia.org/annotations/6a427ec0010000cc00d69ca5#1152,1152,526,0,1.3"
 	},
@@ -529,8 +529,8 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-06-29"
 		bbox: "X:900-1382, Y:900-1382, Z:462-656"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (78.6x78.6x77.6 um)"
-		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/liconn_data/FlyLICONN/FlyID49/DUP_20260625_FlyID49_2ndgel_BIS_40XW006.zarr"]
-		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/liconn_data/FlyLICONN/FlyID49/DUP_20260625_FlyID49_2ndgel_BIS_40XW006.zarr"
+		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"]
+		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"
 		wk_link: "https://webknossos.int.janelia.org/dashboard/datasets/FlyID49-6a3d5476010000ad00d69bb0"
 		wk_ann_link: "https://webknossos.int.janelia.org/annotations/6a428144010000c900d69cb1#1141,1141,559,0,1.43"
 	},
