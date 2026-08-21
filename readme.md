@@ -23,10 +23,13 @@ List of things we want:
 
 0. No change for zarr writers.
 1. Consumers don't have data move out from under them.
-2. We can add new zarrs, new metadata, new keys/labels.
-3. We can fix and update metadata.
-4. We can fix and update labels.
-5. We can specify subvolumes of zarrs specifically used for train/test.
+2. Compatible with Fileglancer / Neuroglancer
+3. We can add new zarrs, new keys/labels and new metadata.
+4. We can specify subvolumes of zarrs specifically used for train/test.
+5. We can fix and update metadata.
+6. Auto verification that new versions don't break consumers except on major version bumps.
+7. Auto verification that paths are valid and complete records of underlying data.
+
 
 Systems:
 
