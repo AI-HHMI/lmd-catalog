@@ -58,6 +58,21 @@ python3 scripts/check_complete.py volumes.json annotations.json   # needs /group
   step needs `cue`, so it runs wherever that's available and hands off JSON.
 - These are not wired into CI yet — run manually after editing either `.cue` file, and before cutting a
   new version tag.
+- `check_semver.py` — before actually creating a new tag, verify it honors semver against the catalog's
+  own history: for every `#Volume` `name` present at both the latest existing `vN.N.N` tag and `HEAD`,
+  `path`/`image_key`/`zarr_version` must be unchanged and the name must not be removed, unless the
+  proposed version's major component increased. Needs only `cue` + git history (no `/groups` mount) —
+  diffs `git show <tag>:*.cue` against `HEAD` via `cue export` in a temp dir. Deliberately does not check
+  `annotations` fields: `gt_ingested_path` and friends are meant to mutate in place as labeling rounds
+  land (see "Editing the data" above), so that isn't a compatibility break. This check is scoped to this
+  repo's own tag history; it does *not* verify that any specific consumer's usage stays safe when they
+  bump their pin from one commit to another — that check belongs in the consumer, since only the consumer
+  knows which `name`s/fields it actually depends on.
+
+  ```sh
+  python3 scripts/check_semver.py v0.2.0                    # compares HEAD against the latest vN.N.N tag
+  python3 scripts/check_semver.py v0.2.0 --from v0.1.0 --to HEAD
+  ```
 
 ## Architecture: the volumes ↔ annotations join
 
