@@ -34,6 +34,31 @@ Use `cue export`/`cue eval` with a `-e <expr>` filter (CUE comprehensions, e.g.
 raw `.cue` source — the join logic (`tracked_by`) and defaults (`path`, `zarr_version`) only resolve
 through CUE evaluation.
 
+## Policy checks (scripts/)
+
+The catalog promises consumers a stable set of names — once published, a `#Volume`'s `path`/`image_key`
+never moves; only additions (new volumes/keys) or an explicit version bump are allowed. `scripts/`
+enforces that promise is actually true, in both directions:
+
+```sh
+scripts/export_catalog.sh                                       # needs `cue`; writes volumes.json/annotations.json (gitignored)
+python3 scripts/check_integrity.py volumes.json annotations.json  # needs /groups mounted
+python3 scripts/check_complete.py volumes.json annotations.json   # needs /groups mounted + `gh auth refresh -s read:project`
+```
+
+- `check_integrity.py` — is everything the catalog claims *true*: no duplicate `name`s or tracked issue
+  numbers, every `source_paths` entry under `#DataRoot` resolves to a real `#Volume.path`, every volume's
+  path/zarr-version-marker/`image_key` exists on disk, every annotation's `source_paths` exists on disk
+  (unconditionally — annotated source data must already exist), and `gt_ingested_path`/
+  `proofread_ingested_path` exist once an item reaches `"GT_Ingested"`/`"Proofread_ingested"` status.
+- `check_complete.py` — the reverse direction: is everything *real* reflected in the catalog. Walks
+  `#DataRoot` for `.zarr` stores missing from `volumes` (or catalog entries no longer on disk), and diffs
+  the live `mia_annotation` GitHub Project against `annotations` for un-synced or removed items.
+- Both checkers are pure-stdlib Python (run on the cluster where `cue` isn't installed); only the export
+  step needs `cue`, so it runs wherever that's available and hands off JSON.
+- These are not wired into CI yet — run manually after editing either `.cue` file, and before cutting a
+  new version tag.
+
 ## Architecture: the volumes ↔ annotations join
 
 - `#Volume.path` is derived (`#DataRoot + "/" + name + ".zarr"`), not stored — every volume in the corpus
