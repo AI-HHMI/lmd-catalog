@@ -84,3 +84,21 @@ python3 scripts/check_complete.py volumes.json annotations.json   # needs /group
   `#DataModality`, `#AnnotationTask`, `#Structure`, `#Priority`) are closed disjunctions — adding a new
   value in an entry requires adding it to the corresponding `#Foo:` definition first, or `cue vet` fails.
 - After editing either file, run `cue vet ./...` before considering the change done.
+
+## Example consumer (examples/)
+
+`examples/resolve_training_config.py` shows the intended integration pattern: a consumer resolves a
+volume's `train_data_path`/`image_key`/`segmentation_key` by its stable `name`, instead of hardcoding
+them. This is the fix for the churn seen in `lsd_neuron_segmentation`'s history — three separate commits
+(`d55dd60639d3`, `948cdcbfe966`, `800b186d1851`) hand-repointed the same hardcoded paths/keys across
+multiple YAML configs as this corpus reorganized, and one of those hand-edits caused a real Cortex/
+Hippocampus data swap bug. A `name`-keyed lookup can't reproduce that swap, since there's no copy-pasted
+path to mix up.
+
+```sh
+scripts/export_catalog.sh
+python3 examples/resolve_training_config.py "exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001"
+```
+
+Verified to reproduce the exact `train_data_path`/`image_key`/`segmentation_key` currently hand-written in
+`lsd_neuron_segmentation/cfg/LICONN_AI_training/mouse_DG_anisotropic.yaml`.
