@@ -21,6 +21,7 @@ on models.
 
 List of things we want:
 
+0. No change for zarr writers.
 1. Consumers don't have data move out from under them.
 2. We can add new zarrs, new metadata, new keys/labels.
 3. We can fix and update metadata.
