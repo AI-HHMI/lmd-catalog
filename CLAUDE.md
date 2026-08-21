@@ -99,8 +99,14 @@ python3 scripts/check_complete.py volumes.json annotations.json   # needs /group
   `#DataModality`, `#AnnotationTask`, `#Structure`, `#Priority`) are closed disjunctions — adding a new
   value in an entry requires adding it to the corresponding `#Foo:` definition first, or `cue vet` fails.
 - After editing either file, run `cue vet ./...` before considering the change done.
+- `#AnnotationItem.roi` is a parsed, axis-labeled, order-free version of the free-text `bbox`/
+  `bbox_size` fields (`{x: [min,max], y: [min,max], z: [min,max]}`, max exclusive, level-0 voxel units).
+  When adding/editing `bbox`/`bbox_size`, add/update `roi` to match — `check_integrity.py`'s
+  `check_roi_matches_bbox_text` will fail otherwise. `bbox`/`bbox_size` show up in two different formats
+  in practice (`"X:908-1390, ..."` range-labeled, or a bare `"13720, 16025, 3570"` offset triple paired
+  with a `bbox_size` triple) — the check handles both, but don't invent a third without updating it.
 
-## Example consumer (examples/)
+## Example consumers (examples/)
 
 `examples/resolve_training_config.py` shows the intended integration pattern: a consumer resolves a
 volume's `train_data_path`/`image_key`/`segmentation_key` by its stable `name`, instead of hardcoding
@@ -109,6 +115,12 @@ them. This is the fix for the churn seen in `lsd_neuron_segmentation`'s history 
 multiple YAML configs as this corpus reorganized, and one of those hand-edits caused a real Cortex/
 Hippocampus data swap bug. A `name`-keyed lookup can't reproduce that swap, since there's no copy-pasted
 path to mix up.
+
+`examples/resolve_roi.py` shows the same pattern for subvolumes: resolves `#AnnotationItem.roi` into a
+specific consumer's expected axis order (e.g. miao's ZYX `bounding_box: [[z_min,z_max],[y_min,y_max],
+[x_min,x_max]]`) instead of parsing the free-text `bbox` field. `roi` only covers "which region is
+annotated" today — there's no train/test split concept yet, since no consumer currently needs one (see
+design.md #4).
 
 ```sh
 scripts/export_catalog.sh

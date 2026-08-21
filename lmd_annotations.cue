@@ -33,6 +33,18 @@ package lmd
 
 #Priority: "P1" | "P2" | "P3"
 
+// A region within a volume's finest-level (level-0) raster, in that array's
+// own index units -- max exclusive, matching Python slice semantics. Kept
+// axis-labeled and order-free rather than a positional list, since bbox (see
+// below) has already shown up in more than one axis order by hand -- resolve
+// into a specific consumer's expected order (e.g. miao's ZYX bounding_box) at
+// read time, don't bake an order in here.
+#ROI: {
+	x: [int, int]
+	y: [int, int]
+	z: [int, int]
+}
+
 #AnnotationItem: {
 	title: string
 	issue: {
@@ -60,6 +72,9 @@ package lmd
 
 	bbox?:      string
 	bbox_size?: string
+	// Parsed, order-free version of bbox/bbox_size above -- resolve subvolumes
+	// through this, not by parsing the free-text fields.
+	roi?: #ROI
 
 	// Absolute paths this issue tracks. Usually one; a few items cover more than
 	// one crop (e.g. a paired fullvol+sub crop) or a path outside lmd_volumes.cue's
@@ -92,6 +107,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-08-17"
 		bbox: "X:908-1390, Y:910-1392, Z:218-412"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (52x52x58 um)"
+		roi: {x: [908, 1390], y: [910, 1392], z: [218, 412]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-260601-60X-B4-1-042/crop-001.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-260601-60X-B4-1-042"
 		wk_link: "https://webknossos.int.janelia.org/datasets/260601_60X_B4_1_042-6a4d1256010000c900d6a042/view#1152,1152,315,0,1.3"
@@ -243,6 +259,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-07-21"
 		bbox: "Y:151-351, X:870-1070, Z:0-152"
 		bbox_size: "sizeY=200, sizeX=200, sizeZ=152"
+		roi: {x: [870, 1070], y: [151, 351], z: [0, 152]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-001_dsr_timeseries_48t_1c.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/annotations/betzig-fish-mosaic/example_annotations_Thayer/paintera_proofread"
 		gt_export_path: "/groups/miaai/miaai/betzig-fish-mosaic/example_annotations/dsr_annotated.ome.zarr/labels/postprocessed_labels"
@@ -405,6 +422,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-08-17"
 		bbox: "X:0-128, Y:0-384, Z:1400-2000"
 		bbox_size: "sizeX=128, sizeY=384, sizeZ=600 (12.5x37.6x210 um)"
+		roi: {x: [0, 128], y: [0, 384], z: [1400, 2000]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-011_000x_003y_001z_32t_2c.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain"
 		wk_link: "https://webknossos.int.janelia.org/datasets/betzig_fish1_24hpf_roi1_brain_000x_003y_001z.zarr-6a3449f3010000cb00fee380/view#64,192,1664,0,1.3,pos-t=0"
@@ -427,6 +445,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-08-17"
 		bbox: "X:0-128, Y:0-384, Z:700-1300"
 		bbox_size: "sizeX=128, sizeY=384, sizeZ=600 (12.5x37.6x210 um)"
+		roi: {x: [0, 128], y: [0, 384], z: [700, 1300]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-011_000x_003y_001z_32t_2c.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain"
 		wk_link: "https://webknossos.int.janelia.org/datasets/betzig_fish1_24hpf_roi1_brain_000x_003y_001z.zarr-6a3449f3010000cb00fee380/view#64,192,1664,0,1.3,pos-t=0"
@@ -449,6 +468,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-08-17"
 		bbox: "X:931-1413, Y:900-1382, Z:171-365"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (52x52x58 um)"
+		roi: {x: [931, 1413], y: [900, 1382], z: [171, 365]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-260601-60X-B4-1-040/crop-001.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-260601-60X-B4-1-040"
 		wk_link: "https://webknossos.int.janelia.org/datasets/260601_60X_B4_1_040.zarr-6a2c5cdb010000cd00fee192/view"
@@ -469,6 +489,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-08-17"
 		bbox: "X:1323-1805, Y:796-1278, Z:137-331"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (52x52x58 um)"
+		roi: {x: [1323, 1805], y: [796, 1278], z: [137, 331]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-260601-60X-B2-1-028/crop-001.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-260601-60X-B2-1-028"
 		wk_link: "https://webknossos.int.janelia.org/datasets/260601_60X_B2_1_028.zarr-6a2c5c86010000df00fee18d/view"
@@ -508,6 +529,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-06-29"
 		bbox: "X:911-1393, Y:911-1393, Z:429-623"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (78.6x78.6x77.6 um)"
+		roi: {x: [911, 1393], y: [911, 1393], z: [429, 623]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"
 		wk_link: "https://webknossos.int.janelia.org/dashboard/datasets/FlyID49-6a3d5476010000ad00d69bb0"
@@ -529,6 +551,7 @@ annotations: [...#AnnotationItem] & [
 		last_updated: "2026-06-29"
 		bbox: "X:900-1382, Y:900-1382, Z:462-656"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (78.6x78.6x77.6 um)"
+		roi: {x: [900, 1382], y: [900, 1382], z: [462, 656]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"
 		wk_link: "https://webknossos.int.janelia.org/dashboard/datasets/FlyID49-6a3d5476010000ad00d69bb0"
@@ -549,6 +572,7 @@ annotations: [...#AnnotationItem] & [
 		labels: ["LICONN"]
 		bbox: "13720, 16025, 3570"
 		bbox_size: "482, 482, 194"
+		roi: {x: [13720, 14202], y: [16025, 16507], z: [3570, 3764]}
 		source_paths: ["/nrs/liconn/data_internal/20260702_flyID49_Moe/central_crop/fused.ome.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-mirrorscope-central-20260702/crop-001_central.zarr"
 		wk_link: "https://webknossos.int.janelia.org/datasets/exm-drosophila-flyliconn-FlyID49-mirrorscope-central-20260702-6a83647e010000aa00dfc147/view"
@@ -585,6 +609,7 @@ annotations: [...#AnnotationItem] & [
 		labels: ["LICONN"]
 		bbox: "X:911-1393, Y:911-1393, Z:118-312"
 		bbox_size: "sizeX=482, sizeY=482, sizeZ=194 (78.3x78.3x77.6 um)"
+		roi: {x: [911, 1393], y: [911, 1393], z: [118, 312]}
 		source_paths: ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-BIS-40XW002-20260625/crop-001_fullvol.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-BIS-40XW002-20260625/crop-001_fullvol.zarr"
 		wk_link: "https://webknossos.int.janelia.org/datasets/exm-drosophila-flyliconn-FlyID49-2ndgel-BIS-40XW002-20260625-6a7f69630100006204dfc009/view"
@@ -603,6 +628,7 @@ annotations: [...#AnnotationItem] & [
 		labels: ["LICONN"]
 		bbox: "41567, 36040, 3865"
 		bbox_size: "482, 482, 194"
+		roi: {x: [41567, 42049], y: [36040, 36522], z: [3865, 4059]}
 		source_paths: ["/nrs/liconn/data_internal/20260702_flyID49_Moe/lobe/fused.ome.zarr"]
 		fileglancer_path: "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-mirrorscope-lobe-20260702/crop-001_lobe.zarr"
 		wk_link: "https://webknossos.int.janelia.org/datasets/exm-drosophila-flyliconn-FlyID49-mirrorscope-lobe-20260702-6a8364210100005c04dfc144/view"

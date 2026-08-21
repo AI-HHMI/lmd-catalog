@@ -10,9 +10,13 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 
 DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
+
+BBOX_RANGE_RE = re.compile(r"([XYZ]):(\d+)-(\d+)")
+PLAIN_TRIPLE_RE = re.compile(r"^\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)")
 
 # Annotation status -> the path field that must exist once that status is reached.
 TERMINAL_PATH_FIELDS = {
@@ -98,6 +102,30 @@ def check_annotation_source_paths_exist(annotations):
     return violations
 
 
+def check_roi_matches_bbox_text(annotations):
+    """roi is derived from the free-text bbox/bbox_size fields by hand -- make
+    sure a future edit to one can't silently drift from the other."""
+    violations = []
+    for a in annotations:
+        roi = a.get("roi")
+        if roi is None:
+            continue
+        bbox, bbox_size = a.get("bbox"), a.get("bbox_size")
+        range_matches = BBOX_RANGE_RE.findall(bbox) if bbox else []
+        if range_matches:
+            expected = {axis.lower(): [int(lo), int(hi)] for axis, lo, hi in range_matches}
+        else:
+            offset_m = PLAIN_TRIPLE_RE.match(bbox or "")
+            size_m = PLAIN_TRIPLE_RE.match(bbox_size or "")
+            assert offset_m and size_m, f"{a['title']}: roi is set but bbox/bbox_size aren't in a recognized format"
+            ox, oy, oz = (int(x) for x in offset_m.groups())
+            sx, sy, sz = (int(x) for x in size_m.groups())
+            expected = {"x": [ox, ox + sx], "y": [oy, oy + sy], "z": [oz, oz + sz]}
+        if expected != roi:
+            violations.append(f"{a['title']}: roi {roi} doesn't match bbox/bbox_size text (expected {expected})")
+    return violations
+
+
 def check_terminal_paths_exist(annotations):
     violations = []
     for a in annotations:
@@ -125,6 +153,7 @@ def main():
         *check_source_paths_resolve(annotations, volumes),
         *check_volume_filesystem(volumes),
         *check_annotation_source_paths_exist(annotations),
+        *check_roi_matches_bbox_text(annotations),
         *check_terminal_paths_exist(annotations),
     ]
 
