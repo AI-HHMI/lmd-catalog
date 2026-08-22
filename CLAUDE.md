@@ -129,3 +129,24 @@ python3 examples/resolve_training_config.py "exm-mouse-liconn-DG-20250809_ExPID1
 
 Verified to reproduce the exact `train_data_path`/`image_key`/`segmentation_key` currently hand-written in
 `lsd_neuron_segmentation/cfg/LICONN_AI_training/mouse_DG_anisotropic.yaml`.
+
+`examples/resolve_volume_config.py` is the recommended pattern for a *new* consumer: it resolves a `name`
+directly into miao's real `VolumeConfig` field names (`miao.config.VolumeConfig`, miao>=0.4) —
+`label_key` not `segmentation_key`, `bounding_box` in the caller's own `output_axes` spatial order (a
+`spatial_axes` parameter, not a hardcoded ZYX) — rather than a bespoke per-consumer dialect. `VolumeConfig`/
+`MiaoConfig` are plain pydantic models constructible directly in Python, so a consumer can do
+`VolumeConfig(**resolve_volume_config(name, volumes, annotations))` with no YAML involved. Two contracts
+worth knowing: it never emits `exp_factor` (every volume in this catalog already bakes any expansion
+correction into its own OME multiscale transform; miao applies that automatically, and setting
+`exp_factor` on top double-applies it), and it raises rather than guessing when a `name` is tracked by more
+than one annotation item (e.g. the `lm-zebrafish-Betzig-mosaic` corpus, annotated per-timepoint — pick one
+by issue number yourself in that case). Verified against real drift: it resolves
+`labels/manual_gt-cell-final` for the mouse DG crop, matching `mouse_DG_anisotropic.yaml`/
+`mouse_DG_smoke.yaml` but *not* matching `cfg/data/mouse_liconn_deep.yaml` or its `benchmark_models_data/`
+copy, which have hand-copied two different, older GT-key snapshots (`manual_gt-cell-snap_04142026/s0`,
+`manual_gt-cell-snap_07072026/s0`) — exactly the kind of drift a name-keyed resolver surfaces instead of
+letting three answers coexist silently.
+
+```sh
+python3 examples/resolve_volume_config.py "exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001"
+```
