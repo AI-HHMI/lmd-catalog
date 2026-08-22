@@ -5,6 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-cue export . -e volumes > volumes.json
-cue export . -e annotations > annotations.json
+CATALOG_FILES="lmd_volumes.cue lmd_annotations.cue lmd_volumes.json lmd_annotations.json"
+cue export $CATALOG_FILES -e volumes > volumes.json
+cue export $CATALOG_FILES -e annotations > annotations.json
 echo "wrote volumes.json annotations.json"

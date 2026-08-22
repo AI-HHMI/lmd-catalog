@@ -33,4 +33,22 @@ List of things we want:
 
 Systems:
 
-a. 
+- versioned json metadata
+- miao configs next to data
+
+
+# key classes
+
+some keys live next to
+
+---
+
+Don't rely on claude to update data. Use python to update data/make lists.
+Use claude to write scripts that generate data!
+
+Claude writes .py and .cue
+.py generates .json
+.cue verifies it
+but why .cue? why not specify schema in .py and verify with .py?
+
+

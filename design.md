@@ -44,3 +44,30 @@ decided **not yet**:
   about which `image_key`/scale each window applies to, adding `normalize_min?`/`normalize_max?` to
   `#Volume` (populated by a one-off/periodic import script parallel to `scripts/export_catalog.sh`) is a
   good, low-risk follow-up of the same shape as the existing policy-check scripts.
+
+## Decision: separate CUE schema from data; add Python scripts to rebuild the data
+
+The `.cue` files used to hold both schema (`#Volume`, `#AnnotationItem`, `#ROI`, enums) and hand-typed
+literal data (`volumes: [...]`, `annotations: [...]`) together. That hand-editing is exactly where the one
+real bug found this session originated (`FlyLICONN_FlyID49_40XW005/006` pointing at a pre-reorg path that
+no longer existed) — nothing mechanically kept the literal data in sync with its actual sources of truth.
+Split into `lmd_volumes.cue`/`lmd_annotations.cue` (schema only) + `lmd_volumes.json`/`lmd_annotations.json`
+(data only), plus `scripts/rebuild_volumes.py` and `scripts/rebuild_annotations.py` to regenerate the data
+mechanically instead of by hand. See `CLAUDE.md`'s "What this is"/"Commands"/"Rebuilding the data" sections
+for the details.
+
+Two things worth recording here since they weren't obvious going in:
+- CUE's package loader does **not** auto-include sibling `.json` files — every `cue vet`/`export`/`eval`
+  invocation must now name all four catalog files explicitly. `@embed` would avoid this, but requires a
+  real CUE module (`cue.mod/`); tested this and confirmed `cannot embed files when not in a module` is a
+  hard error, not a config toggle. Kept the repo module-less (matching its existing "no cue.mod, simple by
+  design" character) and updated the small number of call sites (`export_catalog.sh`, `check_semver.py`,
+  the commands documented in `CLAUDE.md`) instead — `check_integrity.py`/`check_complete.py`/`examples/*.py`
+  needed no changes at all, since they only ever consume the already-exported JSON.
+- `lmd_volumes.json` is fully mechanically rebuildable (verified: reducing the pre-split data down to
+  `name` + explicit `zarr_version`/`image_key` overrides and diffing against a fresh `cue export` was
+  byte-identical). `lmd_annotations.json` is only *mostly* rebuildable — `roi` isn't a GitHub Project
+  field, it's derived from `bbox`/`bbox_size` by `scripts/roi_parse.py` (shared with
+  `check_integrity.py`'s consistency check) — and `rebuild_annotations.py`'s exact GitHub Project
+  custom-field names are unverified pending `gh auth refresh -s read:project` on the cluster (see
+  `CLAUDE.md`).

@@ -24,6 +24,9 @@ import tempfile
 
 STABLE_FIELDS = ("path", "image_key", "zarr_version")
 SEMVER_RE = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
+# Schema files always exist; the JSON data files only exist from the
+# schema/data split onward -- older refs keep data inline in the .cue files.
+CATALOG_FILES = ("lmd_volumes.cue", "lmd_annotations.cue", "lmd_volumes.json", "lmd_annotations.json")
 
 
 def run(cmd, cwd=None):
@@ -47,11 +50,15 @@ def latest_tag(to_ref):
 def volumes_at_ref(ref, tmp_root):
     ref_dir = os.path.join(tmp_root, ref.replace("/", "_"))
     os.makedirs(ref_dir)
-    for fname in ("lmd_volumes.cue", "lmd_annotations.cue"):
-        content = run(["git", "show", f"{ref}:{fname}"])
+    fetched = []
+    for fname in CATALOG_FILES:
+        result = subprocess.run(["git", "show", f"{ref}:{fname}"], capture_output=True, text=True)
+        if result.returncode != 0:
+            continue  # didn't exist at this ref, e.g. pre-schema/data-split history
         with open(os.path.join(ref_dir, fname), "w") as f:
-            f.write(content)
-    volumes = json.loads(run(["cue", "export", ".", "-e", "volumes"], cwd=ref_dir))
+            f.write(result.stdout)
+        fetched.append(fname)
+    volumes = json.loads(run(["cue", "export", *fetched, "-e", "volumes"], cwd=ref_dir))
     return {v["name"]: v for v in volumes}
 
 
