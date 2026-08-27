@@ -3,17 +3,17 @@ the source of truth for every #AnnotationItem field except `roi`, which this
 script derives from bbox/bbox_size (itself a GitHub Project field), not a
 GitHub field of its own.
 
-UNVERIFIED: the gh CLI on the cluster is currently missing the read:project
-scope (run `gh auth refresh -s read:project` once, interactively, to fix
-this), so the exact JSON shape of `gh project item-list`'s custom-field keys
-in FIELD_MAP below has never been checked against a live response -- only
-guessed from the field names already visible in lmd_annotations.json. Before
-trusting a full run, do a `--limit 1` dry run and diff its output against one
-known-good entry in lmd_annotations.json; fix FIELD_MAP if names don't match.
-Required schema fields (title/issue/source_paths) missing after mapping will
-still fail loudly at `cue vet` time either way.
+FIELD_MAP keys are gh's own JSON-ified project column names, confirmed
+against a live `gh project item-list --limit 1` response: gh takes the
+column's display name, joins its words with "_" preserving each word's own
+capitalization, then lowercases just the first character of the whole
+string ("Data Modality" -> "data_Modality", "WK Ann Link" -> "wK_Ann_Link",
+single-word names just get their first letter lowercased). The one
+oddity is `structure_of_Interest_1` (a trailing "_1", presumably from a
+renamed/duplicated project column) -- if a future rebuild fails on a
+missing `structure_of_interest`, check whether gh renumbered this.
 
-    gh auth refresh -s read:project   # one-time, interactive
+    gh auth status   # needs the read:project scope
     python3 scripts/rebuild_annotations.py > lmd_annotations.json
 """
 
@@ -27,31 +27,49 @@ from roi_parse import parse_roi
 PROJECT_OWNER = "AI-HHMI"
 PROJECT_NUMBER = "1"
 
-# GitHub Project custom field name -> #AnnotationItem field name.
+# TEMPORARY, pending a human fixing these upstream in the GitHub Project UI:
+# issues #18/#19's Source Image Path/Fileglancer Path fields still have the
+# stale pre-reorg liconn_data/ path (the same one fixed locally in
+# lmd_annotations.cue on 2026-08-20). Per the human-in-the-loop principle --
+# hand-correcting a shared system of record is a Human.Edit action, not
+# something a rebuild script does on a human's behalf -- this pins the
+# known-good values locally rather than silently regressing them on every
+# rebuild. Remove this once GH issue #18/#19's fields are corrected upstream.
+PENDING_UPSTREAM_FIXES = {
+    18: {
+        "source_paths": ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"],
+        "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr",
+    },
+    19: {
+        "source_paths": ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"],
+        "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr",
+    },
+}
+
 FIELD_MAP = {
-    "Status": "status",
-    "Dataset": "dataset",
-    "Tool": "tool",
-    "Task": "task",
-    "Model Organism": "model_organism",
-    "Data Modality": "data_modality",
-    "Structure of Interest": "structure_of_interest",
-    "Priority": "priority",
-    "Annotator": "annotator",
-    "Completion %": "completion_pct",
-    "Label Count": "label_count",
-    "Timepoint": "timepoint",
-    "Last Updated": "last_updated",
-    "Bbox": "bbox",
-    "Bbox Size": "bbox_size",
-    "Fileglancer Path": "fileglancer_path",
-    "GT Export Path": "gt_export_path",
-    "GT Ingested Path": "gt_ingested_path",
-    "Proofread Needed Path": "proofread_needed_path",
-    "Proofread Export Path": "proofread_export_path",
-    "Proofread Ingested Path": "proofread_ingested_path",
-    "WK Link": "wk_link",
-    "WK Annotation Link": "wk_ann_link",
+    "status": "status",
+    "dataset": "dataset",
+    "tool": "tool",
+    "task": "task",
+    "model_Organism": "model_organism",
+    "data_Modality": "data_modality",
+    "structure_of_Interest_1": "structure_of_interest",
+    "priority": "priority",
+    "annotator": "annotator",
+    "completion_Pct": "completion_pct",
+    "label_Count": "label_count",
+    "timepoint": "timepoint",
+    "last_Updated": "last_updated",
+    "bbox": "bbox",
+    "bbox_size": "bbox_size",
+    "fileglancer_Path": "fileglancer_path",
+    "gT_Export_Path": "gt_export_path",
+    "gT_Ingested_Path": "gt_ingested_path",
+    "proofread_Needed_Path": "proofread_needed_path",
+    "proofread_Export_Path": "proofread_export_path",
+    "proofread_Ingested_Path": "proofread_ingested_path",
+    "wK_Link": "wk_link",
+    "wK_Ann_Link": "wk_ann_link",
 }
 
 
@@ -65,17 +83,13 @@ def fetch_items():
     return json.loads(result.stdout)["items"]
 
 
-def split_multi(value):
-    """A "list of paths"-shaped field may come back as a real list, or as a
-    newline-separated string, depending on the GitHub Project field type."""
-    if isinstance(value, list):
-        return value
-    return [line.strip() for line in value.splitlines() if line.strip()]
-
-
 def build_annotation(item):
     content = item["content"]
     assert content["type"] == "Issue", f"non-issue project item: {item}"
+
+    # source_Image_Path is a single string; multiple paths are "; "-joined
+    # (confirmed against issue #12, a paired fullvol+sub crop).
+    source_paths = [p.strip() for p in item["source_Image_Path"].split(";") if p.strip()]
 
     annotation = {
         "title": content["title"],
@@ -84,18 +98,20 @@ def build_annotation(item):
             "url": content["url"],
             "repository": content["repository"],
         },
-        "source_paths": split_multi(item["Source Paths"]) if "Source Paths" in item else [],
+        "source_paths": source_paths,
     }
     for project_field, our_field in FIELD_MAP.items():
         if item.get(project_field) not in (None, ""):
             annotation[our_field] = item[project_field]
-    if item.get("Assignees"):
-        annotation["assignees"] = split_multi(item["Assignees"])
-    if item.get("Labels"):
-        annotation["labels"] = split_multi(item["Labels"])
+    if item.get("assignees"):
+        annotation["assignees"] = item["assignees"]
+    if item.get("labels"):
+        annotation["labels"] = item["labels"]
 
     if annotation.get("bbox") and annotation.get("bbox_size"):
         annotation["roi"] = parse_roi(annotation["bbox"], annotation["bbox_size"])
+
+    annotation.update(PENDING_UPSTREAM_FIXES.get(content["number"], {}))
 
     return annotation
 

@@ -57,11 +57,12 @@ wrapper group) — this is fully mechanical, verified to reproduce the current d
 `scripts/rebuild_annotations.py` (needs `gh` authenticated with `read:project`, no `/groups`) calls
 `gh project item-list 1 --owner AI-HHMI --format json --limit 200` and maps its fields into `#AnnotationItem`
 shape, computing `roi` from `bbox`/`bbox_size` via `scripts/roi_parse.py` (shared with
-`check_integrity.py`'s consistency check — import it, don't duplicate the parsing). **Unverified**: the
-`gh` CLI on the cluster is currently missing the `read:project` scope, so the exact GitHub Project
-custom-field names in `FIELD_MAP` have never been checked against a live response, only guessed from
-field names already visible in `lmd_annotations.json`. Run `gh auth refresh -s read:project` once, then a
-`--limit 1` dry run, before trusting a full run.
+`check_integrity.py`'s consistency check — import it, don't duplicate the parsing). `FIELD_MAP`'s keys are
+gh's own JSON-ified project column names (verified against a live response — see the module docstring for
+the exact naming rule gh applies). `PENDING_UPSTREAM_FIXES` pins the two annotation items whose GitHub
+Project fields still have a stale path a human hasn't corrected upstream yet (see "Editing the data"
+above); this is a human-in-the-loop seam, not something to silently override — remove an entry once
+someone fixes it in the GitHub UI, don't fix it by editing the GH Project via `gh` from here.
 
 ```sh
 python3 scripts/rebuild_volumes.py > lmd_volumes.json
