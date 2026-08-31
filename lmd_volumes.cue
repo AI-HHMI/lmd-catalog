@@ -5,7 +5,7 @@
 // configs select and transform a subset of these (LM datasets, 2-channel
 // funceworm, and a few others are excluded there but present here).
 //
-// Data lives in the sibling lmd_volumes.json (417 volumes across 69 datasets
+// Data lives in the sibling lmd_volumes.json (838 volumes across 102 datasets
 // as of the last rebuild), not here -- this file is schema only. Regenerate
 // the data with scripts/rebuild_volumes.py, never hand-edit lmd_volumes.json.
 package lmd

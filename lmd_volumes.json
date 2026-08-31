@@ -1,6 +1,12 @@
 {
   "volumes": [
     {
+      "name": "em-UNKNOWN-lucchi-hippocampus/crop-001_train"
+    },
+    {
+      "name": "em-UNKNOWN-lucchi-hippocampus/crop-002_test"
+    },
+    {
       "name": "em-celegans-funceworm-jrc-20250414/crop-001"
     },
     {
@@ -19,6 +25,12 @@
       "name": "em-celegans-funceworm-jrc_HPF-TAOTO-ME-S2_6x6nm_RegAffine-flattened/crop-001"
     },
     {
+      "name": "em-drosophila-CellMap-jrc-fly-mb-1a/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-drosophila-CellMap-jrc-fly-vnc-1/crop-001_fullvol_tissuecrop"
+    },
+    {
       "name": "em-drosophila-FANC-vnc/crop-001"
     },
     {
@@ -35,6 +47,24 @@
     },
     {
       "name": "em-drosophila-banc/crop-004_vnc"
+    },
+    {
+      "name": "em-drosophila-cremi/crop-001_sampleA_train_padded"
+    },
+    {
+      "name": "em-drosophila-cremi/crop-002_sampleB_train_padded"
+    },
+    {
+      "name": "em-drosophila-cremi/crop-003_sampleC_train_padded"
+    },
+    {
+      "name": "em-drosophila-cremi/crop-004_sampleAplus_test_padded"
+    },
+    {
+      "name": "em-drosophila-cremi/crop-005_sampleBplus_test_padded"
+    },
+    {
+      "name": "em-drosophila-cremi/crop-006_sampleCplus_test_padded"
     },
     {
       "name": "em-drosophila-flyem-cns-mito-gt-v6/crop-001_box000"
@@ -640,7 +670,31 @@
       "name": "em-drosophila-flyem-hemibrain/crop-003_10k_x8000_y17000_z11000"
     },
     {
+      "name": "em-human-CellMap-jrc-hela-2/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-human-CellMap-jrc-hela-3/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-human-CellMap-jrc-jurkat-1/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-human-CellMap-jrc-macrophage-2/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-human-CellMap-jrc-sum159-1/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-human-CellMap-jrc-sum159-4/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-human-CellMap-jrc-ut21-1413-003/crop-001_fullvol_tissuecrop"
+    },
+    {
       "name": "em-human-H01-cortex/crop-001"
+    },
+    {
+      "name": "em-human-MitoEM-temporal-lobe/crop-001_mitoEM-H"
     },
     {
       "name": "em-hydra-zhang2025/crop-001_x106212_y65861_z226"
@@ -656,6 +710,36 @@
     },
     {
       "name": "em-mosquito-bao2025-antennallobe/crop-002_x38748_y49136_z3426"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-ctl-id8-1/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-heart-1/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-kidney-3/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-kidney-glomerulus-2/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-kidney/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-liver-3/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-liver-zon-1/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-liver-zon-2/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-liver/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-mouse-CellMap-jrc-mus-nacc-1/crop-001_fullvol"
     },
     {
       "name": "em-mouse-Jiefu-cerebellum/crop-001"
@@ -676,6 +760,33 @@
       "name": "em-mouse-MICrONS-minnie65/crop-001"
     },
     {
+      "name": "em-mouse-urocell-bladder/crop-001_fib1-0-0-0"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-002_fib1-1-0-3"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-003_fib1-2-2-3"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-004_fib1-2-3-0"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-005_fib1-2-3-2"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-006_fib1-3-2-1"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-007_fib1-3-3-0"
+    },
+    {
+      "name": "em-mouse-urocell-bladder/crop-008_fib1-4-3-0"
+    },
+    {
+      "name": "em-rat-MitoEM-visual-cortex/crop-001_mitoEM-R"
+    },
+    {
       "name": "em-salamander-jrc-amphiuma-liver/crop-001"
     },
     {
@@ -683,6 +794,114 @@
     },
     {
       "name": "em-salamander-jrc-axolotl-liver/crop-001"
+    },
+    {
+      "name": "em-various-CellMap-jrc-cos7-1a/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-various-CellMap-jrc-cos7-1b/crop-001_fullvol_tissuecrop"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-001_z255-383_y1407-1663_x1535-1791"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-002_z2559-2687_y4991-5247_x4863-5119"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-003_z2815-2943_y5631-5887_x4607-4863"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-004_z2834-2984_y5311-5461_x5077-5227"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-005_z2868-3018_y5744-5894_x5157-5307"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-006_z2874-3024_y5707-5857_x5304-5454"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-007_z2934-3084_y5115-5265_x5140-5290"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-008_z3096-3246_y5954-6104_x5813-5963"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-009_z3118-3268_y6538-6688_x6100-6250"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-010_z3126-3276_y6857-7007_x5694-5844"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-011_z3436-3586_y599-749_x2779-2929"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-012_z3438-3588_y2775-2925_x3476-3626"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-013_z3456-3606_y3188-3338_x4043-4193"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-014_z3492-3642_y7888-8038_x8374-8524"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-015_z3492-3642_y841-991_x381-531"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-016_z3596-3746_y3888-4038_x3661-3811"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-017_z3604-3754_y4101-4251_x3493-3643"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-018_z3608-3758_y3829-3979_x3423-3573"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-019_z3702-3852_y9605-9755_x2244-2394"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-020_z3710-3860_y8691-8841_x2889-3039"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-021_z3722-3872_y4548-4698_x2879-3029"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-022_z3734-3884_y4315-4465_x2209-2359"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-023_z3914-4064_y9035-9185_x2573-2723"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-024_z4102-4252_y6330-6480_x1899-2049"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-025_z4312-4462_y9341-9491_x2419-2569"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-026_z4440-4590_y7294-7444_x2350-2500"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-027_z4801-4951_y10154-10304_x1972-2122"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-028_z4905-5055_y928-1078_x1729-1879"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-029_z4951-5101_y9415-9565_x2272-2422"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-030_z5001-5151_y9426-9576_x2197-2347"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-031_z5119-5247_y1023-1279_x1663-1919"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-032_z5405-5555_y10490-10640_x3406-3556"
+    },
+    {
+      "name": "em-zebrafinch-FFN-j0126-areaX/crop-033_z734-884_y9561-9711_x563-713"
+    },
+    {
+      "name": "em-zebrafish-CellMap-jrc-zf-cardiac-1/crop-001_fullvol_tissuecrop"
     },
     {
       "name": "em-zebrafish-fish1/crop-001_x27648_y32963_z3143"
@@ -768,6 +987,243 @@
       "name": "exm-drosophila-flyliconn-FlyID22-20260203_2ndGel_0.0655BIS_40XW004/crop-001_fullvol"
     },
     {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-001_setup34"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-002_setup48"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-003_setup62"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-004_setup76"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-005_setup90"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-006_setup104"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-007_setup113"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-008_setup114"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-009_setup115"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-010_setup116"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-011_setup117"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-012_setup118"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-013_setup119"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-014_setup120"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-015_setup121"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-016_setup132"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-017_setup135"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-018_setup146"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-019_setup149"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-020_setup160"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-021_setup163"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-022_setup174"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-023_setup177"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-024_setup188"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-025_setup191"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-026_setup202"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-027_setup205"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-028_setup216"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-029_setup219"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-030_setup230"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-031_setup233"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-032_setup244"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-033_setup247"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-034_setup258"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-035_setup261"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-036_setup269"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-037_setup270"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-038_setup271"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-039_setup272"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-040_setup273"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-041_setup274"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-042_setup275"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-043_setup276"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-044_setup277"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-045_setup286"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-046_setup289"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-047_setup300"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-048_setup303"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-049_setup314"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-050_setup317"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-051_setup328"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-052_setup331"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-053_setup342"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-054_setup345"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-055_setup355"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-056_setup356"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-057_setup357"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-058_setup358"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-059_setup359"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-060_setup360"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-061_setup370"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-062_setup373"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-063_setup384"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-064_setup387"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-065_setup396"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-066_setup397"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-067_setup398"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-068_setup399"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-069_setup400"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-070_setup401"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-071_setup402"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-072_setup403"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-073_setup412"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-074_setup415"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-075_setup426"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-076_setup429"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-077_setup440"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-078_setup443"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-079_setup454"
+    },
+    {
       "name": "exm-drosophila-flyliconn-FlyID25-20260216_MESFix_2ndGel_B1_40XW/crop-001_fullvol"
     },
     {
@@ -787,6 +1243,567 @@
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID26-20260221_2ndgel_S4_B1_40XW004/crop-001_fullvol"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-001_setup29"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-002_setup37"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-003_setup40"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-004_setup48"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-005_setup51"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-006_setup59"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-007_setup62"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-008_setup70"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-009_setup73"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-010_setup81"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-011_setup84"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-012_setup90"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-013_setup91"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-014_setup92"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-015_setup93"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-016_setup94"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-017_setup95"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-018_setup96"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-019_setup103"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-020_setup106"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-021_setup114"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-022_setup117"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-023_setup125"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-024_setup128"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-025_setup136"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-026_setup139"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-027_setup147"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-028_setup150"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-029_setup158"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-030_setup161"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-031_setup169"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-032_setup172"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-033_setup180"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-034_setup183"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-035_setup188"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-036_setup189"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-037_setup190"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-038_setup191"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-039_setup192"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-040_setup193"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-041_setup194"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-042_setup195"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-043_setup202"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-044_setup205"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-045_setup213"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-046_setup216"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-047_setup221"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-048_setup222"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-049_setup223"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-050_setup224"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-051_setup225"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-052_setup226"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-053_setup227"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-054_setup228"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-055_setup235"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-056_setup238"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-057_setup246"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-058_setup249"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-059_setup257"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-060_setup260"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-061_setup267"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-062_setup268"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-063_setup269"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-064_setup270"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-065_setup271"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-066_setup272"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-067_setup273"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-068_setup279"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-069_setup282"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-070_setup290"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-071_setup293"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-072_setup301"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-073_setup302"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-074_setup303"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-075_setup304"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-076_setup305"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-077_setup306"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-078_setup312"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-079_setup315"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-080_setup326"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-081_setup337"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-082_setup348"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-001_setup4"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-002_setup17"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-003_setup20"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-004_setup30"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-005_setup33"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-006_setup43"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-007_setup46"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-008_setup56"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-009_setup59"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-010_setup69"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-011_setup72"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-012_setup82"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-013_setup85"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-014_setup95"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-015_setup98"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-016_setup108"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-017_setup111"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-018_setup121"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-019_setup124"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-020_setup134"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-021_setup137"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-022_setup147"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-023_setup150"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-024_setup160"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-025_setup163"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-026_setup173"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-027_setup176"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-028_setup186"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-029_setup189"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-030_setup199"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-031_setup202"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-032_setup212"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-033_setup215"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-034_setup225"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-035_setup228"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-036_setup238"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-037_setup241"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-038_setup251"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-039_setup254"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-040_setup264"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-041_setup267"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-042_setup275"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-043_setup276"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-044_setup277"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-045_setup278"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-046_setup279"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-047_setup280"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-048_setup281"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-049_setup282"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-050_setup283"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-051_setup290"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-052_setup293"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-053_setup303"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-054_setup306"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-055_setup316"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-056_setup319"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-057_setup329"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-058_setup332"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-059_setup342"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-060_setup345"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-061_setup355"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-062_setup358"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-063_setup368"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-064_setup371"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-065_setup379"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-066_setup380"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-067_setup381"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-068_setup382"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-069_setup383"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-070_setup384"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-071_setup385"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-072_setup386"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-073_setup387"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-074_setup394"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-075_setup397"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-076_setup407"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-077_setup410"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-078_setup420"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-079_setup423"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-080_setup429"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-081_setup430"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-082_setup431"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-083_setup432"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-084_setup433"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-085_setup434"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-086_setup435"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-087_setup436"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-088_setup437"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-089_setup446"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-090_setup449"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-091_setup459"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-092_setup462"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-093_setup469"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-094_setup470"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-095_setup471"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-096_setup472"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-097_setup473"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-098_setup474"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-099_setup475"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-100_setup485"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-101_setup488"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-102_setup498"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-103_setup501"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-104_setup511"
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-105_setup524"
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-DUP-S7-40XW003-20260619/crop-001_clahe"
@@ -864,6 +1881,9 @@
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-2-045/crop-001"
     },
     {
+      "name": "exm-drosophila-nernlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol"
+    },
+    {
       "name": "exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001"
     },
     {
@@ -901,6 +1921,249 @@
     },
     {
       "name": "exm-mouse-liconn-hippocampus-202507013_ExPID10-02_2percentAA_S2_Atto488_40XW_004/crop-001"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-001_setup196"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-002_setup197"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-003_setup198"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-004_setup199"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-005_setup200"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-006_setup201"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-007_setup202"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-008_setup203"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-009_setup204"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-010_setup205"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-011_setup206"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-012_setup207"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-013_setup208"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-014_setup209"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-015_setup210"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-016_setup211"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-017_setup212"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-018_setup213"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-019_setup214"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-020_setup215"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-021_setup216"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-022_setup217"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-023_setup218"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-024_setup219"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-025_setup220"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-026_setup221"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-027_setup222"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-028_setup223"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-029_setup224"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-030_setup225"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-031_setup226"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-032_setup227"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-033_setup228"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-034_setup229"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-035_setup230"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-036_setup231"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-037_setup232"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-038_setup233"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-039_setup234"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-040_setup235"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-041_setup236"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-042_setup294"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-043_setup295"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-044_setup296"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-045_setup297"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-046_setup298"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-047_setup299"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-048_setup300"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-049_setup301"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-050_setup302"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-051_setup303"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-052_setup304"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-053_setup305"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-054_setup306"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-055_setup307"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-056_setup308"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-057_setup309"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-058_setup310"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-059_setup311"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-060_setup312"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-061_setup313"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-062_setup314"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-063_setup315"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-064_setup316"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-065_setup317"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-066_setup318"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-067_setup319"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-068_setup320"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-069_setup321"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-070_setup322"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-071_setup323"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-072_setup324"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-073_setup325"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-074_setup326"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-075_setup327"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-076_setup328"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-077_setup329"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-078_setup330"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-079_setup331"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-080_setup332"
+    },
+    {
+      "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-081_setup333"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c",
