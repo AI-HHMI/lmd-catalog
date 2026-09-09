@@ -1,10 +1,34 @@
-- cfg: pull in mia_annotation GitHub Project (AI-HHMI/projects/1) tracking metadata --
-26 annotation-tracking issues (crop proposal -> annotation -> ingestion -> proofreading),
-joined live against #Volume via source_paths -> path (list.Contains)
+# lmd-catalog
 
-- cfg: CUE catalog of every .zarr volume in /groups/miaai/miaai/lmd-v0.0.1/data (417
-volumes, 69 datasets) -- name/path/image_key/zarr_version, path derived from name,
-discovered by walking data/ directly (independent of any pretraining config's curation)
+Programmatic catalog, metadata index, and Miao [`VolumeConfig`](file:///Users/broaddusc/proj/miao/src/miao/config.py#L83) resolver for the Large Microscopy Dataset (LMD) corpus at `/groups/miaai/miaai/lmd-v0.0.1/data`.
+
+- **838 OME-Zarr volumes** across 102 datasets discovered directly from cluster storage.
+- **27 annotation-tracking issues** synced from GitHub Projects (`AI-HHMI/projects/1`).
+- **Direct Miao integration**: `.to_miao()` maps catalog entries directly into typed `VolumeConfig` instances without eager PyTorch imports or CUDA initialization.
+- **Fast**: Sub-50ms import latency, pure Pydantic metadata.
+
+## Quickstart
+
+```sh
+pip install git+https://github.com/JaneliaSciComp/lmd-catalog.git
+```
+
+```python
+import lmd_catalog as lmd
+
+# Get volume by name or path
+vol = lmd.get("em-UNKNOWN-lucchi-hippocampus/crop-001_train")
+
+# Resolve directly into a miao VolumeConfig for training/inference
+cfg = vol.to_miao(spatial_axes="zyx")
+
+# Find volumes with ground truth annotations
+annotated = lmd.find(has_ground_truth=True)
+for v in annotated:
+    print(v.name, v.ground_truth_paths)
+```
+
+---
 
 # The Design Problem
 

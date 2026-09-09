@@ -6,8 +6,7 @@ greater than the last tag's. Annotation fields are exempt: `gt_ingested_path`
 and friends are meant to be mutated in place as labeling rounds land (see
 CLAUDE.md), so their history is not a compatibility break.
 
-Run before creating a new tag, no /groups mount needed (diffs catalog
-metadata only, via `git show` + `cue export` -- needs `cue` on PATH):
+Run before creating a new tag, no /groups mount needed:
 
     python3 scripts/check_semver.py v0.2.0
     python3 scripts/check_semver.py v0.2.0 --from v0.1.0 --to HEAD
@@ -22,11 +21,9 @@ import subprocess
 import sys
 import tempfile
 
+DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
 STABLE_FIELDS = ("path", "image_key", "zarr_version")
 SEMVER_RE = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
-# Schema files always exist; the JSON data files only exist from the
-# schema/data split onward -- older refs keep data inline in the .cue files.
-CATALOG_FILES = ("lmd_volumes.cue", "lmd_annotations.cue", "lmd_volumes.json", "lmd_annotations.json")
 
 
 def run(cmd, cwd=None):
@@ -48,18 +45,36 @@ def latest_tag(to_ref):
 
 
 def volumes_at_ref(ref, tmp_root):
+    # Try getting lmd_volumes.json directly via git show
+    result = subprocess.run(["git", "show", f"{ref}:lmd_volumes.json"], capture_output=True, text=True)
+    if result.returncode == 0:
+        data = json.loads(result.stdout)
+        out = {}
+        for v in data.get("volumes", []):
+            name = v["name"]
+            out[name] = {
+                "name": name,
+                "path": DATA_ROOT + "/" + name + ".zarr",
+                "image_key": v.get("image_key", "raw"),
+                "zarr_version": v.get("zarr_version", "zarr3"),
+            }
+        return out
+
+    # Legacy fallback for historical commits before the schema/data split
     ref_dir = os.path.join(tmp_root, ref.replace("/", "_"))
-    os.makedirs(ref_dir)
+    os.makedirs(ref_dir, exist_ok=True)
     fetched = []
-    for fname in CATALOG_FILES:
-        result = subprocess.run(["git", "show", f"{ref}:{fname}"], capture_output=True, text=True)
-        if result.returncode != 0:
-            continue  # didn't exist at this ref, e.g. pre-schema/data-split history
-        with open(os.path.join(ref_dir, fname), "w") as f:
-            f.write(result.stdout)
-        fetched.append(fname)
-    volumes = json.loads(run(["cue", "export", *fetched, "-e", "volumes"], cwd=ref_dir))
-    return {v["name"]: v for v in volumes}
+    for fname in ("lmd_volumes.cue", "lmd_annotations.cue"):
+        res = subprocess.run(["git", "show", f"{ref}:{fname}"], capture_output=True, text=True)
+        if res.returncode == 0:
+            with open(os.path.join(ref_dir, fname), "w") as f:
+                f.write(res.stdout)
+            fetched.append(fname)
+    if fetched:
+        volumes = json.loads(run(["cue", "export", *fetched, "-e", "volumes"], cwd=ref_dir))
+        return {v["name"]: v for v in volumes}
+    raise RuntimeError(f"Could not find volume data at git ref {ref}")
+
 
 
 def breaking_changes(old, new):

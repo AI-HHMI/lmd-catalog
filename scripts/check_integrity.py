@@ -1,8 +1,8 @@
-"""Validate the lmd catalog against reality: the JSON exported by
-export_catalog.sh must be internally consistent AND every path it claims
-must exist. Run on a machine with /groups mounted:
+"""Validate the lmd catalog against reality: internal consistency AND every
+path it claims must exist. Run on a machine with /groups mounted:
 
-    scripts/export_catalog.sh   # on a machine with `cue`, produces volumes.json/annotations.json
+    python3 scripts/check_integrity.py
+    # or with exported JSON:
     python3 scripts/check_integrity.py volumes.json annotations.json
 """
 
@@ -131,9 +131,18 @@ def check_terminal_paths_exist(annotations):
 
 
 def main():
-    volumes_path, annotations_path = sys.argv[1], sys.argv[2]
-    volumes = load_json(volumes_path)
-    annotations = load_json(annotations_path)
+    if len(sys.argv) >= 3:
+        volumes = load_json(sys.argv[1])
+        annotations = load_json(sys.argv[2])
+    else:
+        try:
+            import lmd_catalog as lmd
+        except ImportError:
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+            import lmd_catalog as lmd
+        volumes = [v.model_dump() for v in lmd.all()]
+        annotations = [a.model_dump() for a in lmd.annotations()]
+
 
     violations = [
         *check_duplicate_names(volumes),

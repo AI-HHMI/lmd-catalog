@@ -1,3 +1,7 @@
 /volumes.json
 /annotations.json
 __pycache__/
+dist/
+.venv/
+.pytest_cache/
+*.egg-info/

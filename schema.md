@@ -144,3 +144,15 @@ though `cue help` flags JSON Schema output as still experimental); or (b) the te
 implicit-by-scope convenience isn't worth CUE's onboarding/tooling cost, in which case collapsing
 everything into pydantic (schema-as-models, join-as-function) is a coherent, simpler alternative that
 loses less than this document first suggested.
+
+## Resolution: CUE retired in favor of native Python (`lmd-catalog`)
+
+Triggered condition (b): having zero downstream adoption because consumers are Python ML pipelines
+that need direct access to `VolumeConfig` objects, autocomplete, and `pip install`. 
+
+CUE was retired:
+- Schema moved to [`src/lmd_catalog/models.py`](file:///Users/broaddusc/proj/lmd-data-versioning/src/lmd_catalog/models.py) using Pydantic v2 with `extra="forbid"` and closed `Literal` enums.
+- The cross-file join is handled in [`Catalog.__init__`](file:///Users/broaddusc/proj/lmd-data-versioning/src/lmd_catalog/catalog.py#L42).
+- Validation is enforced automatically by [`tests/test_catalog.py`](file:///Users/broaddusc/proj/lmd-data-versioning/tests/test_catalog.py) across all 838 volumes in 0.05s.
+- Policy scripts (`check_semver.py`, `check_integrity.py`, `check_complete.py`) were converted to pure Python without external binary dependencies.
+

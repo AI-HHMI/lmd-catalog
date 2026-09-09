@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lmd-catalog"
+version = "0.1.0"
+description = "Programmatic catalog and Miao VolumeConfig resolver for the Large Microscopy Dataset (LMD)"
+readme = "readme.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "miao-io>=0.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lmd_catalog"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

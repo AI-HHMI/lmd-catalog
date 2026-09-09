@@ -1,11 +1,26 @@
 #!/usr/bin/env bash
-# Export volumes/annotations from the CUE catalog to JSON, for the pure-Python
-# checkers in this directory to consume on a machine that has /groups mounted
-# but not necessarily `cue` (e.g. a Janelia cluster node).
+# Export volumes/annotations from lmd-catalog to JSON (volumes.json/annotations.json).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-CATALOG_FILES="lmd_volumes.cue lmd_annotations.cue lmd_volumes.json lmd_annotations.json"
-cue export $CATALOG_FILES -e volumes > volumes.json
-cue export $CATALOG_FILES -e annotations > annotations.json
-echo "wrote volumes.json annotations.json"
+PYTHON_BIN="python3"
+if [ -f ".venv/bin/python3" ]; then
+    PYTHON_BIN=".venv/bin/python3"
+fi
+
+export PYTHONPATH="src:${PYTHONPATH:-}"
+"$PYTHON_BIN" -c '
+import json
+import lmd_catalog as lmd
+
+vols = [v.model_dump() for v in lmd.all()]
+anns = [a.model_dump() for a in lmd.annotations()]
+
+with open("volumes.json", "w") as f:
+    json.dump(vols, f, indent=2)
+with open("annotations.json", "w") as f:
+    json.dump(anns, f, indent=2)
+print(f"wrote volumes.json ({len(vols)} volumes) and annotations.json ({len(anns)} annotations)")
+'
+
+
