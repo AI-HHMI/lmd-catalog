@@ -1,5 +1,3 @@
-/volumes.json
-/annotations.json
 __pycache__/
 dist/
 .venv/

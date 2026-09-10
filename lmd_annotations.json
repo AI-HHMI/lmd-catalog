@@ -217,7 +217,21 @@
       "labels": [
         "LICONN",
         "WebKnossos"
-      ]
+      ],
+      "roi": {
+        "x": [
+          1413,
+          1895
+        ],
+        "y": [
+          514,
+          996
+        ],
+        "z": [
+          83,
+          277
+        ]
+      }
     },
     {
       "title": "LICONN_Cortex",
@@ -252,7 +266,21 @@
       "labels": [
         "LICONN",
         "WebKnossos"
-      ]
+      ],
+      "roi": {
+        "x": [
+          627,
+          1109
+        ],
+        "y": [
+          610,
+          1092
+        ],
+        "z": [
+          17,
+          211
+        ]
+      }
     },
     {
       "title": "LICONN_Hippocampus",
@@ -287,7 +315,21 @@
       "labels": [
         "LICONN",
         "WebKnossos"
-      ]
+      ],
+      "roi": {
+        "x": [
+          496,
+          978
+        ],
+        "y": [
+          495,
+          977
+        ],
+        "z": [
+          44,
+          238
+        ]
+      }
     },
     {
       "title": "LICONN_Matt_260601_60X_B4_1_040",

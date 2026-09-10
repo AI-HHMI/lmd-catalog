@@ -71,7 +71,11 @@ def test_tracked_annotations_and_gt():
     assert v.has_ground_truth
     cfg = v.to_miao()
     assert cfg.label_key == "labels/manual_gt-cell-final"
-    assert cfg.bounding_box is None
+    assert cfg.bounding_box == [[83, 277], [514, 996], [1413, 1895]]
+
+    # Override bounding box
+    cfg_override = v.to_miao(bounding_box=[[0, 10], [0, 10], [0, 10]])
+    assert cfg_override.bounding_box == [[0, 10], [0, 10], [0, 10]]
 
     # Volume with ROI
     v_roi = lmd.get("em-mouse-MICrONS-minnie65/crop-001")

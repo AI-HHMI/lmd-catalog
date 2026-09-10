@@ -1,9 +1,7 @@
 """Example consumer: resolve a volume's annotated ROI by name, in a specific
 consumer's expected axis order -- instead of parsing the free-text bbox
-field. The catalog stores roi.{x,y,z} order-free (see #ROI in
-lmd_annotations.cue); this is where a consumer's own order gets applied.
+field.
 
-    scripts/export_catalog.sh
     python3 examples/resolve_roi.py "exm-drosophila-flyliconn-matt-260601-60X-B4-1-042/crop-001"
 """
 
@@ -12,33 +10,29 @@ from __future__ import annotations
 import json
 import sys
 
-
-def load(path):
-    with open(path) as f:
-        return json.load(f)
+import lmd_catalog as lmd
 
 
-def resolve_bounding_box_zyx(name, volumes, annotations):
-    """miao's `bounding_box` config field: [[z_min,z_max],[y_min,y_max],[x_min,x_max]]."""
-    matches = [v for v in volumes if v["name"] == name]
-    assert matches, f"unknown volume name: {name}"
-    volume = matches[0]
-
-    tracked = [a for a in annotations if volume["path"] in a["source_paths"]]
-    assert len(tracked) == 1, f"expected exactly one tracking annotation for {name}, got {len(tracked)}"
-    annotation = tracked[0]
-
-    roi = annotation.get("roi")
-    assert roi is not None, f"{name} has a tracking annotation but no roi set"
-    return [roi["z"], roi["y"], roi["x"]]
+def resolve_bounding_box(name: str, axes: str = "zyx") -> list[list[int]]:
+    vol = lmd.get(name)
+    assert len(vol.tracked_by) == 1, (
+        f"expected exactly one tracking annotation for {name}, got {len(vol.tracked_by)}"
+    )
+    annotation = vol.tracked_by[0]
+    assert annotation.roi is not None, f"{name} has a tracking annotation but no roi set"
+    return annotation.roi.to_order(axes)
 
 
 def main():
+    if len(sys.argv) < 2:
+        print("Usage: resolve_roi.py <volume_name> [axes]")
+        sys.exit(1)
+
     name = sys.argv[1]
-    volumes = load("volumes.json")
-    annotations = load("annotations.json")
-    print(json.dumps({"bounding_box": resolve_bounding_box_zyx(name, volumes, annotations)}))
+    axes = sys.argv[2] if len(sys.argv) > 2 else "zyx"
+    print(json.dumps({"bounding_box": resolve_bounding_box(name, axes)}))
 
 
 if __name__ == "__main__":
     main()
+
