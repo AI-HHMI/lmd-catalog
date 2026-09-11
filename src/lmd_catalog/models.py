@@ -160,6 +160,8 @@ class VolumeEntry(BaseModel):
     zarr_version: Literal["zarr2", "zarr3"] = "zarr3"
     dataset: str = ""
     tracked_by: list[AnnotationEntry] = Field(default_factory=list)
+    normalize_min: Optional[float] = None
+    normalize_max: Optional[float] = None
 
     @property
     def is_annotated(self) -> bool:
@@ -258,6 +260,12 @@ class VolumeEntry(BaseModel):
             config_args["label_key"] = label_key
         if bounding_box is not None:
             config_args["bounding_box"] = bounding_box
+        if self.normalize_min is not None:
+            config_args["normalize_min"] = self.normalize_min
+        if self.normalize_max is not None:
+            config_args["normalize_max"] = self.normalize_max
+        if self.normalize_min is not None or self.normalize_max is not None:
+            config_args.setdefault("normalize", True)
 
         config_args.update(kwargs)
         return VolumeConfig(**config_args)

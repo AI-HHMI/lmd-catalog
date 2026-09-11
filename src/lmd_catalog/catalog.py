@@ -88,6 +88,8 @@ class Catalog:
                 zarr_version=zarr_version,
                 dataset=dataset,
                 tracked_by=tracked,
+                normalize_min=v.get("normalize_min"),
+                normalize_max=v.get("normalize_max"),
             )
             self._volumes.append(entry)
             self._by_name[name] = entry
