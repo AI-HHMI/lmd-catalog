@@ -44,6 +44,7 @@ See [`examples/query_mouse_gt_datasets.py`](examples/query_mouse_gt_datasets.py)
 The `examples/` directory contains standalone runnable scripts demonstrating common consumer patterns:
 
 - [`examples/query_mouse_gt_datasets.py`](examples/query_mouse_gt_datasets.py): Query and group mouse volumes with ground truth annotations. Supports human-readable output and `--json`.
+- [`examples/mouse_miaoconfigs.py`](examples/mouse_miaoconfigs.py): Construct a `miao.config.MiaoConfig` from catalog query results and export/save as YAML.
 - [`examples/resolve_volume_config.py`](examples/resolve_volume_config.py): Resolve a catalog volume name directly into a `miao.config.VolumeConfig`.
 - [`examples/resolve_training_config.py`](examples/resolve_training_config.py): Resolve volume metadata into training configuration keys (`train_data_path`, `image_key`, `segmentation_key`).
 - [`examples/resolve_roi.py`](examples/resolve_roi.py): Extract and re-order bounding boxes into caller-specified spatial axes (e.g. `zyx`).
