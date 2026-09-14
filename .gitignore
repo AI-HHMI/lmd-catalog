@@ -3,3 +3,5 @@ dist/
 .venv/
 .pytest_cache/
 *.egg-info/
+.mypy_cache/
+uv.lock

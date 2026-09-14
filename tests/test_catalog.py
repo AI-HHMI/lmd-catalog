@@ -126,6 +126,20 @@ def test_catalog_queries_and_filters():
     zebrafish = lmd.find(organism="Zebrafish")
     assert len(zebrafish) > 0
 
+    # Filter mouse datasets with ground truth
+    mouse_gt = lmd.find(organism="Mouse", has_ground_truth=True)
+    assert len(mouse_gt) == 3
+    mouse_datasets = {v.dataset for v in mouse_gt}
+    assert len(mouse_datasets) == 3
+    for v in mouse_gt:
+        assert v.normalize_min is not None
+        assert v.normalize_max is not None
+        assert len(v.ground_truth_paths) >= 1
+        cfg = v.to_miao()
+        assert cfg.label_key == "labels/manual_gt-cell-final"
+        assert cfg.bounding_box is not None
+
+
 
 def test_fileglancer_urls():
     """Verify fileglancer URL generation."""
@@ -144,25 +158,25 @@ def test_strict_schema_rejection():
 
     # 1. Reject unknown status
     with pytest.raises(ValidationError, match="Input should be"):
-        AnnotationEntry(
-            title="test",
-            issue={"number": 1, "url": "http", "repository": "repo"},
-            status="NonExistentStatus",  # invalid enum
-        )
+        AnnotationEntry.model_validate({
+            "title": "test",
+            "issue": {"number": 1, "url": "http", "repository": "repo"},
+            "status": "NonExistentStatus",  # invalid enum
+        })
 
     # 2. Reject unknown extra fields (closedness)
     with pytest.raises(ValidationError, match="Extra inputs are not permitted"):
-        VolumeEntry(
-            name="test",
-            path="/path",
-            unknown_typo_field="bad",
-        )
+        VolumeEntry.model_validate({
+            "name": "test",
+            "path": "/path",
+            "unknown_typo_field": "bad",
+        })
 
     # 3. Reject out-of-bounds numbers
     with pytest.raises(ValidationError, match="greater than or equal to 0"):
-        AnnotationEntry(
-            title="test",
-            issue={"number": 1, "url": "http", "repository": "repo"},
-            completion_pct=-5.0,
-        )
+        AnnotationEntry.model_validate({
+            "title": "test",
+            "issue": {"number": 1, "url": "http", "repository": "repo"},
+            "completion_pct": -5.0,
+        })
 

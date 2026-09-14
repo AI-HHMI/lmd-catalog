@@ -23,3 +23,13 @@ packages = ["src/lmd_catalog"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pyright]
+include = ["src", "tests", "examples"]
+extraPaths = ["src"]
+venvPath = "."
+venv = ".venv"
+

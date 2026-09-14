@@ -1,7 +1,5 @@
 """Programmatic catalog for the Large Microscopy Dataset (LMD)."""
 
-from __future__ import annotations
-
 from typing import Optional
 
 from lmd_catalog.catalog import Catalog

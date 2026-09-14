@@ -26,7 +26,16 @@ cfg = vol.to_miao(spatial_axes="zyx")
 annotated = lmd.find(has_ground_truth=True)
 for v in annotated:
     print(v.name, v.ground_truth_paths)
+
+# Query all Mouse datasets with ground truth annotations
+mouse_gt = lmd.find(organism="Mouse", has_ground_truth=True)
+for v in mouse_gt:
+    cfg = v.to_miao()
+    print(v.dataset, cfg.label_key, cfg.bounding_box)
 ```
+
+See [`examples/query_mouse_gt_datasets.py`](examples/query_mouse_gt_datasets.py) for a complete CLI script with JSON output and metadata formatting.
+
 
 ---
 
