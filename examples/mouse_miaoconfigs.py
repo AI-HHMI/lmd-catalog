@@ -18,5 +18,5 @@ def build_mouse_config() -> MiaoConfig:
 
 if __name__ == "__main__":
     miao_cfg = build_mouse_config()
-    miao_cfg.to_yaml("mice_with_gt.yaml")
+    miao_cfg.to_yaml("mice_with_gt.yaml") ## serialize to yaml once you've found params you like!
 
