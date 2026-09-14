@@ -78,16 +78,15 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
 - `check_complete.py` — the reverse direction: is everything *real* reflected in the catalog. Walks
   `#DataRoot` for `.zarr` stores missing from `volumes` (or catalog entries no longer on disk), and diffs
   the live `mia_annotation` GitHub Project against `annotations` for un-synced or removed items.
-- Both checkers are pure-stdlib Python (run on the cluster where `cue` isn't installed); only the export
-  step needs `cue`, so it runs wherever that's available and hands off JSON.
-- These are not wired into CI yet — run manually after editing either `.cue` file, and before cutting a
+- Both checkers are pure-stdlib Python (run on the cluster where external tools may not be installed).
+- These are not wired into CI yet — run manually after rebuilding catalog data, and before cutting a
   new version tag.
 - `check_semver.py` — before actually creating a new tag, verify it honors semver against the catalog's
   own history: for every `#Volume` `name` present at both the latest existing `vN.N.N` tag and `HEAD`,
   `path`/`image_key`/`zarr_version` must be unchanged and the name must not be removed, unless the
-  proposed version's major component increased. Needs only `cue` + git history (no `/groups` mount) —
-  diffs `git show <tag>:<file>` for all four catalog files against `HEAD` via `cue export` in a temp dir
-  (tolerates older refs that predate the schema/data split, where only the `.cue` files existed).
+  proposed version's major component increased. Needs only Python + git history (no `/groups` mount) —
+  reads `lmd_volumes.json` across git revisions to compare volume definitions (with fallback to older
+  formats if diffing against historical tags that predate the JSON catalog).
   Deliberately does not check
   `annotations` fields: `gt_ingested_path` and friends are meant to mutate in place as labeling rounds
   land (see "Editing the data" above), so that isn't a compatibility break. This check is scoped to this
@@ -104,9 +103,9 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
 
 - `#Volume.path` is derived (`#DataRoot + "/" + name + ".zarr"`), not stored — every volume in the corpus
   follows this convention, so no entry overrides it.
-- `#Volume.tracked_by` is a **live** CUE comprehension that joins back into `annotations`:
-  `[for a in annotations if list.Contains(a.source_paths, path) {a}]`. It is computed at evaluation time,
-  not hand-maintained — do not add a manual `tracked_by` field to a volume entry.
+- `VolumeEntry.tracked_by` is an in-memory join back into `annotations`, computed automatically when
+  `Catalog` loads volumes (`Catalog.__init__` indexes annotations by path). It is not persisted in
+  `lmd_volumes.json` — do not add a manual `tracked_by` field to volume entries.
 - The join is one-directional in the source text: `#AnnotationItem.source_paths` usually matches a
   `#Volume.path` 1:1, but not always — some annotation items track paths outside `#DataRoot` entirely
   (e.g. `/nrs` scratch space, or the legacy `liconn_data/` layout), and a few cover more than one crop
@@ -152,10 +151,9 @@ path to mix up.
 specific consumer's expected axis order (e.g. miao's ZYX `bounding_box: [[z_min,z_max],[y_min,y_max],
 [x_min,x_max]]`) instead of parsing the free-text `bbox` field. `roi` only covers "which region is
 annotated" today — there's no train/test split concept yet, since no consumer currently needs one (see
-design.md #4).
+archive/design.md #4).
 
 ```sh
-scripts/export_catalog.sh
 python3 examples/resolve_training_config.py "exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001"
 ```
 

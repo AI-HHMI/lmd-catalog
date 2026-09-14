@@ -2,18 +2,18 @@
 
 Same shape as the earlier `Human` interface design for raw zarr snapshot management (`Edit`/`Decide` are
 things a person does themselves, not permission gates a function asks through before proceeding
-automatically) — but this repo's actual nouns are git commits/tags, CUE/JSON files, and GitHub Project
+automatically) — but this repo's actual nouns are git commits/tags, JSON files, Pydantic models, and GitHub Project
 fields, not zarr snapshots, so the interface below is adapted to those, not a literal reuse.
 
 Every workflow in this repo already follows the same rhythm: a scripted step produces a candidate change
 or surfaces a problem, a person looks at it and decides, then a scripted step commits the outcome. The
-scripted halves are `scripts/*.py`, already built and tested this session; the human halves were, until
-now, only implicit in how we actually used them.
+scripted halves are `scripts/*.py` and `pytest tests/`, already built and tested; the human halves were
+previously only implicit in how we actually used them.
 
 ## The five real workflows this repo has
 
 1. **Rebuild volumes from the filesystem** (`scripts/rebuild_volumes.py`) — mostly mechanical, but a
-   person needs to eyeball the diff before it lands. Exercised for real this session: a rebuild surfaced
+   person needs to eyeball the diff before it lands. Exercised for real: a rebuild surfaced
    421 new volumes at once (417 → 838) — legitimate, but the kind of jump that deserves a look before
    committing, not a blind `git commit -am`.
 2. **Rebuild annotations from GitHub** (`scripts/rebuild_annotations.py`) — same shape, plus a wrinkle:
@@ -22,10 +22,10 @@ now, only implicit in how we actually used them.
    `discussion.md`) — the workflow below gives that an explicit home instead of a comment in a dict.
 3. **Triage a policy-check violation** (`scripts/check_integrity.py`/`check_complete.py`) — a script finds
    something wrong or incomplete; a person has to decide whether it's a real bug (like the FlyID49 #18/#19
-   stale-path fix earlier this session), an expected gap (a new annotation with no volume yet, like
+   stale-path fix), an expected gap (a new annotation with no volume yet, like
    NernLab), or a known, accepted exception.
-4. **Evolve the schema** (`lmd_volumes.cue`/`lmd_annotations.cue`) — adding a field or enum value (like
-   `#ROI` this session) is always a hand-edit, always followed by `cue vet`, and always followed by a
+4. **Evolve the schema** (`src/lmd_catalog/models.py`) — adding a field or enum value (like
+   `ROI` or a new literal type) is a code change, followed by running `pytest tests/`, and followed by a
    human decision about whether existing data needs backfilling.
 5. **Cut a release** (`scripts/check_semver.py`) — a person decides it's time to tag a version; the script
    gates whether the proposed bump is honest; a breaking change without a major bump sends the person back
@@ -88,7 +88,7 @@ type Violation struct {
 type Resolution int
 
 const (
-	FixLocalData Resolution = iota // edit lmd_volumes.json/lmd_annotations.json (or the .cue schema)
+	FixLocalData Resolution = iota // edit lmd_volumes.json/lmd_annotations.json (or src/lmd_catalog/models.py)
 	FixUpstream                    // the GitHub Project field itself is wrong
 	AcceptAsKnownGap               // e.g. a new annotation with no volume yet -- expected, not a bug
 )
@@ -126,7 +126,7 @@ func RebuildVolumes(human Human) error {
 	}
 
 	writeFile("lmd_volumes.json", candidate)
-	if err := runCueVet(); err != nil {
+	if err := runTests(); err != nil { // pytest tests/ -v (validates Pydantic models against rebuilt JSON)
 		return err // schema violation -- something about the walk is wrong, not a human call
 	}
 	human.Commit([]string{"lmd_volumes.json"}, describeRebuild(diff))
@@ -164,7 +164,7 @@ func RebuildAnnotations(human Human, pending []PendingFix) error {
 
 	writeFile("lmd_annotations.json", candidate)
 	writePendingFixes(stillOpen) // never silent -- always re-checked next rebuild
-	if err := runCueVet(); err != nil {
+	if err := runTests(); err != nil { // pytest tests/ -v
 		return err
 	}
 	human.Commit([]string{"lmd_annotations.json", "pending_fixes.json"}, describeRebuild(diff))
@@ -180,8 +180,8 @@ func TriageViolation(v Violation, human Human) error {
 
 	switch resolution {
 	case FixLocalData:
-		human.Edit(likelyDataFile(v)) // e.g. lmd_annotations.cue, for the FlyID49 #18/#19 case
-		if err := runCueVet(); err != nil {
+		human.Edit(likelyDataFile(v)) // e.g. scripts/rebuild_annotations.py PENDING_UPSTREAM_FIXES
+		if err := runTests(); err != nil {
 			return err
 		}
 		if !human.Decide("re-run check_integrity.py -- confirm this specific violation is gone?") {
@@ -206,15 +206,15 @@ func TriageViolation(v Violation, human Human) error {
 
 ```go
 func EvolveSchema(human Human) error {
-	human.Edit(schemaPath()) // e.g. adding #ROI to lmd_annotations.cue
+	human.Edit(schemaPath()) // e.g. adding ROI or extending Literal enums in src/lmd_catalog/models.py
 
-	if err := runCueVet(); err != nil {
-		return err // schema doesn't even validate against itself yet
+	if err := runTests(); err != nil {
+		return err // models do not validate or tests fail
 	}
 
 	if human.Decide("does existing data need backfilling for this new field?") {
-		human.Edit(dataPath()) // hand-populate the field for existing entries (#ROI: 11 entries, by hand)
-		if err := runCueVet(); err != nil {
+		human.Edit(dataPath()) // hand-populate field in JSON or update rebuild script
+		if err := runTests(); err != nil {
 			return err
 		}
 	}

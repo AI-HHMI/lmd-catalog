@@ -77,7 +77,7 @@ def check_annotations_complete(annotations):
     new_in_project = sorted(in_project - in_catalog)
     stale_in_catalog = sorted(in_catalog - in_project)
 
-    violations = [f"project item not synced to annotations.cue: {repo}#{num}" for repo, num in new_in_project]
+    violations = [f"project item not synced to lmd_annotations.json: {repo}#{num}" for repo, num in new_in_project]
     violations += [f"annotation tracks an issue no longer in the project: {repo}#{num}" for repo, num in stale_in_catalog]
     return violations
 

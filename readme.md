@@ -39,49 +39,25 @@ See [`examples/query_mouse_gt_datasets.py`](examples/query_mouse_gt_datasets.py)
 
 ---
 
-# The Design Problem
+## Examples
 
-OK, let's forget about CUE for a second. What are standard practices and tools
-around data versioning for systems like ours. We have a few hundred large zarr
-volumes and continually update them with medium sized but highly compressible
-label annotations over time and frequently update the lightweight metadata like
-voxel size, etc. Occasionally we may want to migrate the data e.g. zarr2 ->
-zarr3 or create and store downsampled versions of raw images and labels. We need
-to reference this data from many different projects for training neural nets and
-making predictions, but those predictions are changing frequently as we iterate
-on models.
+The `examples/` directory contains standalone runnable scripts demonstrating common consumer patterns:
 
+- [`examples/query_mouse_gt_datasets.py`](examples/query_mouse_gt_datasets.py): Query and group mouse volumes with ground truth annotations. Supports human-readable output and `--json`.
+- [`examples/resolve_volume_config.py`](examples/resolve_volume_config.py): Resolve a catalog volume name directly into a `miao.config.VolumeConfig`.
+- [`examples/resolve_training_config.py`](examples/resolve_training_config.py): Resolve volume metadata into training configuration keys (`train_data_path`, `image_key`, `segmentation_key`).
+- [`examples/resolve_roi.py`](examples/resolve_roi.py): Extract and re-order bounding boxes into caller-specified spatial axes (e.g. `zyx`).
 
-List of things we want:
+## Development & Verification
 
-0. No change for zarr writers.
-1. Consumers don't have data move out from under them.
-2. Compatible with Fileglancer / Neuroglancer
-3. We can add new zarrs, new keys/labels and new metadata.
-4. We can specify subvolumes of zarrs specifically used for train/test.
-5. We can fix and update metadata.
-6. Auto verification that new versions don't break consumers except on major version bumps.
-7. Auto verification that paths are valid and complete records of underlying data.
+```sh
+# Run test suite (<50ms, verifies all 838 volumes resolve to valid VolumeConfigs)
+pytest tests/ -v
 
+# Type checking
+pyright
+mypy src tests examples
+```
 
-Systems:
-
-- versioned json metadata
-- miao configs next to data
-
-
-# key classes
-
-some keys live next to
-
----
-
-Don't rely on claude to update data. Use python to update data/make lists.
-Use claude to write scripts that generate data!
-
-Claude writes .py and .cue
-.py generates .json
-.cue verifies it
-but why .cue? why not specify schema in .py and verify with .py?
 
 
