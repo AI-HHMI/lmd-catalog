@@ -196,9 +196,40 @@ class VolumeEntry(BaseModel):
                 return f"https://fileglancer.int.janelia.org/browse/{prefix}/{rest}"
         return f"https://fileglancer.int.janelia.org/browse/{clean_path}"
 
-    def neuroglancer_url(self) -> str:
-        """Return a web viewer URL for this volume."""
-        return self.fileglancer_url()
+    def neuroglancer_url(
+        self,
+        seg: str | VolumeEntry | None = None,
+        *,
+        raw_key: Optional[str] = None,
+        seg_key: Optional[str] = None,
+        include_gt: bool = True,
+        raw_name: Optional[str] = None,
+        seg_name: str = "segmentation",
+        layout: str = "4panel",
+        viewer_base_url: str = "https://neuroglancer-demo.appspot.com/#!",
+    ) -> str:
+        """Return a Neuroglancer URL for this volume, optionally with segmentation overlay.
+
+        If seg is omitted and include_gt is True (default) and this volume has ground truth
+        annotations, the first ground truth dataset is automatically attached as the
+        segmentation layer.
+        """
+        from lmd_catalog.viewers import make_neuroglancer_url
+
+        if seg is None and include_gt and self.has_ground_truth and self.ground_truth_paths:
+            seg = self.ground_truth_paths[0]
+            seg_name = "ground_truth"
+
+        return make_neuroglancer_url(
+            raw=self,
+            seg=seg,
+            raw_key=raw_key,
+            seg_key=seg_key,
+            raw_name=raw_name or self.name.split("/")[-1],
+            seg_name=seg_name,
+            layout=layout,
+            viewer_base_url=viewer_base_url,
+        )
 
     def to_miao(
         self,

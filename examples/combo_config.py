@@ -27,3 +27,5 @@ cfg = MiaoConfig(
 # 3. Serialize to yaml once you've found params you like!
 cfg.to_yaml("mouse-fish-combo.yaml") 
 
+for v in fish_vols + mouse_vols:
+    print(v.fileglancer_url())

@@ -151,6 +151,84 @@ def test_fileglancer_urls():
     assert v.name in url
 
 
+def test_make_neuroglancer_url_combines_raw_and_seg():
+    """Verify combining separate raw and segmentation Zarr stores into a single Neuroglancer URL."""
+    import lmd_catalog as lmd
+
+    raw_path = "/groups/miaai/miaai/lmd-v0.0.1/data/my_dataset/crop-001.zarr"
+    seg_path = "/groups/miaai/miaai/annotations/my_dataset/seg_run1.zarr"
+
+    url = lmd.make_neuroglancer_url(
+        raw=raw_path,
+        seg=seg_path,
+        raw_key="raw",
+        seg_key="labels/pred_cells",
+        raw_name="raw_image",
+        seg_name="predictions",
+    )
+
+    assert url.startswith("https://neuroglancer-demo.appspot.com/#!%7B")
+    state = lmd.parse_neuroglancer_url(url)
+    assert len(state["layers"]) == 2
+    assert state["layers"][0]["name"] == "raw_image"
+    assert state["layers"][0]["type"] == "image"
+    assert state["layers"][0]["source"] == (
+        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/lmd-v0.0.1/data/my_dataset/crop-001.zarr/raw|zarr3:"
+    )
+    assert state["layers"][1]["name"] == "predictions"
+    assert state["layers"][1]["type"] == "segmentation"
+    assert state["layers"][1]["source"] == (
+        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/annotations/my_dataset/seg_run1.zarr/labels/pred_cells|zarr3:"
+    )
+
+    # make_fileglancer_url alias produces the identical result
+    assert (
+        lmd.make_fileglancer_url(
+            raw=raw_path,
+            seg=seg_path,
+            raw_key="raw",
+            seg_key="labels/pred_cells",
+            raw_name="raw_image",
+            seg_name="predictions",
+        )
+        == url
+    )
+
+
+def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
+    """Verify VolumeEntry.neuroglancer_url overlaying ground truth or external segmentation."""
+    import lmd_catalog as lmd
+
+    v = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
+    assert v.has_ground_truth
+
+    # Auto-overlay GT
+    gt_url = v.neuroglancer_url()
+    gt_state = lmd.parse_neuroglancer_url(gt_url)
+    assert len(gt_state["layers"]) == 2
+    assert gt_state["layers"][0]["type"] == "image"
+    assert gt_state["layers"][1]["type"] == "segmentation"
+    assert gt_state["layers"][1]["name"] == "ground_truth"
+    assert "labels/manual_gt-cell-final" in gt_state["layers"][1]["source"]
+
+    # Raw only
+    raw_only_url = v.neuroglancer_url(include_gt=False)
+    raw_state = lmd.parse_neuroglancer_url(raw_only_url)
+    assert len(raw_state["layers"]) == 1
+
+    # Custom external segmentation
+    ext_url = v.neuroglancer_url(
+        seg="/nrs/cosem/user/preds/dg_crop1.zarr",
+        seg_key="labels/aff_seg",
+        seg_name="model_output",
+    )
+    ext_state = lmd.parse_neuroglancer_url(ext_url)
+    assert len(ext_state["layers"]) == 2
+    assert ext_state["layers"][1]["name"] == "model_output"
+    assert "nrs_cosem/user/preds/dg_crop1.zarr/labels/aff_seg" in ext_state["layers"][1]["source"]
+
+
+
 def test_strict_schema_rejection():
     """Verify that pydantic enforces closed enums and extra='forbid' (replacing cue vet)."""
     from pydantic import ValidationError

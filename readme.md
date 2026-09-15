@@ -48,6 +48,7 @@ The `examples/` directory contains standalone runnable scripts demonstrating com
 - [`examples/resolve_volume_config.py`](examples/resolve_volume_config.py): Resolve a catalog volume name directly into a `miao.config.VolumeConfig`.
 - [`examples/resolve_training_config.py`](examples/resolve_training_config.py): Resolve volume metadata into training configuration keys (`train_data_path`, `image_key`, `segmentation_key`).
 - [`examples/resolve_roi.py`](examples/resolve_roi.py): Extract and re-order bounding boxes into caller-specified spatial axes (e.g. `zyx`).
+- [`examples/combined_viewer_link.py`](examples/combined_viewer_link.py): Generate multi-layer Neuroglancer/Fileglancer viewer links combining separate raw and segmentation Zarr stores.
 
 ## Development & Verification
 
