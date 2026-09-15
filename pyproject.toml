@@ -11,6 +11,7 @@ requires-python = ">=3.10"
 dependencies = [
     "pydantic>=2.0",
     "miao-io>=0.4.0",
+    "rich"
 ]
 
 [project.optional-dependencies]
