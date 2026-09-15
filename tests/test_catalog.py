@@ -202,21 +202,36 @@ def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
     v = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
     assert v.has_ground_truth
 
-    # Auto-overlay GT
+    # Auto-overlay GT with automatic 1-99% B&C normalization from catalog
     gt_url = v.neuroglancer_url()
     assert gt_url.startswith("https://fileglancer.int.janelia.org/neuroglancer/#!%7B")
     gt_state = lmd.parse_neuroglancer_url(gt_url)
     assert len(gt_state["layers"]) == 2
     assert gt_state["layers"][0]["type"] == "image"
     assert gt_state["layers"][0]["source"].endswith("/raw/|zarr3:")
+    assert gt_state["layers"][0]["tab"] == "rendering"
+    assert gt_state["layers"][0]["shaderControls"]["normalized"]["range"] == [301, 1130]
+    assert gt_state["layers"][0]["shaderControls"]["normalized"]["window"] == [0, 1695]
     assert gt_state["layers"][1]["type"] == "segmentation"
     assert gt_state["layers"][1]["name"] == "ground_truth"
     assert gt_state["layers"][1]["source"].endswith("labels/manual_gt-cell-final/|zarr3:")
+
+    # Explicit custom B&C override
+    custom_norm_url = v.neuroglancer_url(raw_range=(200, 800), raw_window=(0, 1200))
+    custom_norm_state = lmd.parse_neuroglancer_url(custom_norm_url)
+    assert custom_norm_state["layers"][0]["shaderControls"]["normalized"]["range"] == [200, 800]
+    assert custom_norm_state["layers"][0]["shaderControls"]["normalized"]["window"] == [0, 1200]
+
+    # Disable B&C normalization
+    no_norm_url = v.neuroglancer_url(raw_range=False)
+    no_norm_state = lmd.parse_neuroglancer_url(no_norm_url)
+    assert "shaderControls" not in no_norm_state["layers"][0]
 
     # Raw only
     raw_only_url = v.neuroglancer_url(include_gt=False)
     raw_state = lmd.parse_neuroglancer_url(raw_only_url)
     assert len(raw_state["layers"]) == 1
+    assert raw_state["layers"][0]["shaderControls"]["normalized"]["range"] == [301, 1130]
 
     # Custom external segmentation
     ext_url = v.neuroglancer_url(

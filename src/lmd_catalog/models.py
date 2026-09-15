@@ -205,6 +205,9 @@ class VolumeEntry(BaseModel):
         include_gt: bool = True,
         raw_name: Optional[str] = None,
         seg_name: str = "segmentation",
+        raw_range: tuple[float, float] | list[float] | bool | None = None,
+        raw_window: tuple[float, float] | list[float] | bool | None = None,
+        raw_shader_controls: Optional[dict[str, Any]] = None,
         layout: str = "4panel",
         viewer_base_url: Optional[str] = None,
     ) -> str:
@@ -213,6 +216,10 @@ class VolumeEntry(BaseModel):
         If seg is omitted and include_gt is True (default) and this volume has ground truth
         annotations, the first ground truth dataset is automatically attached as the
         segmentation layer.
+
+        If raw_range is omitted and this volume has normalize_min/normalize_max in the catalog,
+        the 1-99% percentile normalization window is automatically applied to the raw layer.
+        Pass raw_range=False to disable contrast normalization.
         """
         from lmd_catalog.viewers import DEFAULT_VIEWER_BASE_URL, make_neuroglancer_url
 
@@ -227,6 +234,9 @@ class VolumeEntry(BaseModel):
             seg_key=seg_key,
             raw_name=raw_name or self.name.split("/")[-1],
             seg_name=seg_name,
+            raw_range=raw_range,
+            raw_window=raw_window,
+            raw_shader_controls=raw_shader_controls,
             layout=layout,
             viewer_base_url=viewer_base_url or DEFAULT_VIEWER_BASE_URL,
         )

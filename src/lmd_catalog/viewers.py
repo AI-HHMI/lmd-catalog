@@ -76,6 +76,9 @@ def make_neuroglancer_url(
     seg_name: str = "segmentation",
     raw_zarr_version: Optional[str] = None,
     seg_zarr_version: Optional[str] = None,
+    raw_range: Optional[Union[tuple[float, float], list[float], bool]] = None,
+    raw_window: Optional[Union[tuple[float, float], list[float], bool]] = None,
+    raw_shader_controls: Optional[dict[str, Any]] = None,
     layout: str = "4panel",
     additional_layers: Optional[list[dict[str, Any]]] = None,
     viewer_base_url: str = DEFAULT_VIEWER_BASE_URL,
@@ -91,6 +94,10 @@ def make_neuroglancer_url(
         seg_name: Display name for the segmentation layer (default: 'segmentation').
         raw_zarr_version: 'zarr2' or 'zarr3' for raw volume (defaults to raw.zarr_version if VolumeEntry).
         seg_zarr_version: 'zarr2' or 'zarr3' for seg volume (defaults to seg.zarr_version if VolumeEntry).
+        raw_range: B&C normalization interval [min, max] (e.g. 1st-99th percentile).
+            Defaults to raw.normalize_min and raw.normalize_max if available. Set False to disable.
+        raw_window: Bounds [win_min, win_max] for the contrast slider widget.
+        raw_shader_controls: Optional full custom shaderControls dict for raw layer.
         layout: Neuroglancer layout name (default: '4panel', or 'xy', '4panel-alt', etc.).
         additional_layers: Optional list of additional custom Neuroglancer layer dicts.
         viewer_base_url: Base URL for Neuroglancer viewer instance.
@@ -99,13 +106,26 @@ def make_neuroglancer_url(
         A complete, clickable Neuroglancer URL with encoded multi-layer state.
     """
     # 1. Resolve raw volume parameters
+    raw_entry: Optional[VolumeEntry] = None
     if isinstance(raw, str):
         raw_path = raw
+        try:
+            from lmd_catalog import default_catalog
+            cat = default_catalog()
+            if raw in cat:
+                raw_entry = cat.get(raw)
+        except Exception:
+            pass
     else:
+        raw_entry = raw
         raw_path = raw.path
         raw_key = raw_key or raw.image_key
         raw_zarr_version = raw_zarr_version or raw.zarr_version
         raw_name = raw_name or raw.name
+
+    if raw_range is None and raw_entry is not None:
+        if raw_entry.normalize_min is not None and raw_entry.normalize_max is not None:
+            raw_range = [raw_entry.normalize_min, raw_entry.normalize_max]
 
     raw_source = to_fileglancer_content_url(
         raw_path,
@@ -113,13 +133,32 @@ def make_neuroglancer_url(
         zarr_version=raw_zarr_version or "zarr3",
     )
 
-    layers: list[dict[str, Any]] = [
-        {
-            "type": "image",
-            "name": raw_name,
-            "source": raw_source,
-        }
-    ]
+    raw_layer: dict[str, Any] = {
+        "type": "image",
+        "name": raw_name,
+        "source": raw_source,
+        "tab": "rendering",
+    }
+
+    if raw_shader_controls is not None:
+        raw_layer["shaderControls"] = raw_shader_controls
+    elif isinstance(raw_range, (tuple, list)):
+        r0 = int(raw_range[0]) if raw_range[0] == int(raw_range[0]) else float(raw_range[0])
+        r1 = int(raw_range[1]) if raw_range[1] == int(raw_range[1]) else float(raw_range[1])
+        norm_ctrl: dict[str, Any] = {"range": [r0, r1]}
+
+        if isinstance(raw_window, (tuple, list)):
+            w0 = int(raw_window[0]) if raw_window[0] == int(raw_window[0]) else float(raw_window[0])
+            w1 = int(raw_window[1]) if raw_window[1] == int(raw_window[1]) else float(raw_window[1])
+            norm_ctrl["window"] = [w0, w1]
+        elif raw_window is not False:
+            win_min = 0 if r0 >= 0 else int(round(r0 * 1.5))
+            win_max = int(round(r1 * 1.5)) if r1 > 0 else int(round(r1 * 0.5))
+            norm_ctrl["window"] = [win_min, win_max]
+
+        raw_layer["shaderControls"] = {"normalized": norm_ctrl}
+
+    layers: list[dict[str, Any]] = [raw_layer]
 
     # 2. Resolve segmentation volume parameters if provided
     if seg is not None:

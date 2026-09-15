@@ -1,5 +1,10 @@
 import lmd_catalog as lmd
 
+for x in lmd.all():
+    print(x.name)
+import sys
+sys.exit(0)
+
 vol = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
 
 # 1. Overlay a separate segmentation Zarr onto a raw volume:
