@@ -5,3 +5,4 @@ dist/
 *.egg-info/
 .mypy_cache/
 uv.lock
+mouse-fish-combo.yaml
