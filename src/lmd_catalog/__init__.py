@@ -10,6 +10,7 @@ from lmd_catalog.models import (
     VolumeEntry,
 )
 from lmd_catalog.viewers import (
+    DEFAULT_VIEWER_BASE_URL,
     make_fileglancer_url,
     make_neuroglancer_url,
     parse_neuroglancer_url,
@@ -23,6 +24,7 @@ __all__ = [
     "AnnotationEntry",
     "AnnotationIssue",
     "ROI",
+    "DEFAULT_VIEWER_BASE_URL",
     "get",
     "all",
     "list_names",

@@ -206,7 +206,7 @@ class VolumeEntry(BaseModel):
         raw_name: Optional[str] = None,
         seg_name: str = "segmentation",
         layout: str = "4panel",
-        viewer_base_url: str = "https://neuroglancer-demo.appspot.com/#!",
+        viewer_base_url: Optional[str] = None,
     ) -> str:
         """Return a Neuroglancer URL for this volume, optionally with segmentation overlay.
 
@@ -214,7 +214,7 @@ class VolumeEntry(BaseModel):
         annotations, the first ground truth dataset is automatically attached as the
         segmentation layer.
         """
-        from lmd_catalog.viewers import make_neuroglancer_url
+        from lmd_catalog.viewers import DEFAULT_VIEWER_BASE_URL, make_neuroglancer_url
 
         if seg is None and include_gt and self.has_ground_truth and self.ground_truth_paths:
             seg = self.ground_truth_paths[0]
@@ -228,7 +228,7 @@ class VolumeEntry(BaseModel):
             raw_name=raw_name or self.name.split("/")[-1],
             seg_name=seg_name,
             layout=layout,
-            viewer_base_url=viewer_base_url,
+            viewer_base_url=viewer_base_url or DEFAULT_VIEWER_BASE_URL,
         )
 
     def to_miao(

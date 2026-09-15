@@ -167,18 +167,18 @@ def test_make_neuroglancer_url_combines_raw_and_seg():
         seg_name="predictions",
     )
 
-    assert url.startswith("https://neuroglancer-demo.appspot.com/#!%7B")
+    assert url.startswith("https://fileglancer.int.janelia.org/neuroglancer/#!%7B")
     state = lmd.parse_neuroglancer_url(url)
     assert len(state["layers"]) == 2
     assert state["layers"][0]["name"] == "raw_image"
     assert state["layers"][0]["type"] == "image"
     assert state["layers"][0]["source"] == (
-        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/lmd-v0.0.1/data/my_dataset/crop-001.zarr/raw|zarr3:"
+        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/lmd-v0.0.1/data/my_dataset/crop-001.zarr/raw/|zarr3:"
     )
     assert state["layers"][1]["name"] == "predictions"
     assert state["layers"][1]["type"] == "segmentation"
     assert state["layers"][1]["source"] == (
-        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/annotations/my_dataset/seg_run1.zarr/labels/pred_cells|zarr3:"
+        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/annotations/my_dataset/seg_run1.zarr/labels/pred_cells/|zarr3:"
     )
 
     # make_fileglancer_url alias produces the identical result
@@ -204,12 +204,14 @@ def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
 
     # Auto-overlay GT
     gt_url = v.neuroglancer_url()
+    assert gt_url.startswith("https://fileglancer.int.janelia.org/neuroglancer/#!%7B")
     gt_state = lmd.parse_neuroglancer_url(gt_url)
     assert len(gt_state["layers"]) == 2
     assert gt_state["layers"][0]["type"] == "image"
+    assert gt_state["layers"][0]["source"].endswith("/raw/|zarr3:")
     assert gt_state["layers"][1]["type"] == "segmentation"
     assert gt_state["layers"][1]["name"] == "ground_truth"
-    assert "labels/manual_gt-cell-final" in gt_state["layers"][1]["source"]
+    assert gt_state["layers"][1]["source"].endswith("labels/manual_gt-cell-final/|zarr3:")
 
     # Raw only
     raw_only_url = v.neuroglancer_url(include_gt=False)
@@ -225,7 +227,34 @@ def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
     ext_state = lmd.parse_neuroglancer_url(ext_url)
     assert len(ext_state["layers"]) == 2
     assert ext_state["layers"][1]["name"] == "model_output"
-    assert "nrs_cosem/user/preds/dg_crop1.zarr/labels/aff_seg" in ext_state["layers"][1]["source"]
+    assert ext_state["layers"][1]["source"] == (
+        "https://fileglancer.int.janelia.org/api/content/nrs_cosem/user/preds/dg_crop1.zarr/labels/aff_seg/|zarr3:"
+    )
+
+
+def test_to_fileglancer_content_url():
+    """Verify conversion of file paths and browse URLs to Fileglancer API content URLs."""
+    from lmd_catalog.viewers import to_fileglancer_content_url
+
+    # groups/ cluster path
+    res = to_fileglancer_content_url("/groups/miaai/miaai/data/crop.zarr", key="raw")
+    assert res == "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/data/crop.zarr/raw/|zarr3:"
+
+    # embedded subpath in .zarr/
+    res = to_fileglancer_content_url("/groups/miaai/miaai/data/crop.zarr/labels/seg")
+    assert res == "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/data/crop.zarr/labels/seg/|zarr3:"
+
+    # nrs/ cluster path and zarr2
+    res = to_fileglancer_content_url("/nrs/cosem/sample.zarr", key="s0", zarr_version="zarr2")
+    assert res == "https://fileglancer.int.janelia.org/api/content/nrs_cosem/sample.zarr/s0/|zarr2:"
+
+    # browse URL conversion
+    res = to_fileglancer_content_url("https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/data/crop.zarr", key="raw")
+    assert res == "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/data/crop.zarr/raw/|zarr3:"
+
+    # Precomputed / external untouched
+    pre = "precomputed://https://neuroglancer.janelia.org/volume"
+    assert to_fileglancer_content_url(pre) == pre
 
 
 

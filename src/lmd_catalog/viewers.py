@@ -10,6 +10,9 @@ if TYPE_CHECKING:
     from lmd_catalog.models import VolumeEntry
 
 
+DEFAULT_VIEWER_BASE_URL = "https://fileglancer.int.janelia.org/neuroglancer/#!"
+
+
 def split_zarr_path_and_key(path: str, key: Optional[str] = None) -> tuple[str, Optional[str]]:
     """If path contains a .zarr extension with a trailing subpath, split them."""
     if key is not None:
@@ -29,7 +32,11 @@ def to_fileglancer_content_url(
 
     Handles cluster path prefixes like /groups/miaai/miaai -> groups_miaai_miaai,
     embedded group keys (e.g. .zarr/labels/seg), and zarr format tags (|zarr3:).
+    Ensures a trailing slash before |zarr to match Fileglancer and Neuroglancer URL resolution.
     """
+    if path.startswith(("precomputed://", "zarr://", "zarr2://", "zarr3://", "n5://")):
+        return path
+
     path, key = split_zarr_path_and_key(path, key)
 
     if path.startswith("http://") or path.startswith("https://"):
@@ -51,7 +58,10 @@ def to_fileglancer_content_url(
 
     if zarr_version and not url.endswith(":") and "|zarr" not in url:
         v_str = "zarr3" if "3" in str(zarr_version) else "zarr2"
-        url = f"{url}|{v_str}:"
+        url = f"{url.rstrip('/')}/|{v_str}:"
+    elif "|zarr" in url:
+        prefix, tag = url.split("|zarr", 1)
+        url = f"{prefix.rstrip('/')}/|zarr{tag}"
 
     return url
 
@@ -68,7 +78,7 @@ def make_neuroglancer_url(
     seg_zarr_version: Optional[str] = None,
     layout: str = "4panel",
     additional_layers: Optional[list[dict[str, Any]]] = None,
-    viewer_base_url: str = "https://neuroglancer-demo.appspot.com/#!",
+    viewer_base_url: str = DEFAULT_VIEWER_BASE_URL,
 ) -> str:
     """Generate a Neuroglancer URL combining raw and segmentation layers from separate Zarr stores.
 
@@ -117,7 +127,7 @@ def make_neuroglancer_url(
             seg_path = seg
         else:
             seg_path = seg.path
-            seg_key = seg_key or getattr(seg, "label_key", None)
+            seg_key = seg_key or getattr(seg, "label_key", None) or getattr(seg, "image_key", None)
             seg_zarr_version = seg_zarr_version or seg.zarr_version
             seg_name = seg_name or "segmentation"
 
