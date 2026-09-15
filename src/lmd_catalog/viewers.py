@@ -33,6 +33,7 @@ def to_fileglancer_content_url(
     Handles cluster path prefixes like /groups/miaai/miaai -> groups_miaai_miaai,
     embedded group keys (e.g. .zarr/labels/seg), and zarr format tags (|zarr3:).
     Ensures a trailing slash before |zarr to match Fileglancer and Neuroglancer URL resolution.
+    Pass zarr_version=None to let Neuroglancer detect Zarr2 or Zarr3.
     """
     if path.startswith(("precomputed://", "zarr://", "zarr2://", "zarr3://", "n5://")):
         return path
@@ -56,8 +57,8 @@ def to_fileglancer_content_url(
     if key:
         url = f"{url.rstrip('/')}/{key.lstrip('/')}"
 
-    if zarr_version and not url.endswith(":") and "|zarr" not in url:
-        v_str = "zarr3" if "3" in str(zarr_version) else "zarr2"
+    if not url.endswith(":") and "|zarr" not in url:
+        v_str = "zarr" if zarr_version is None else ("zarr3" if "3" in str(zarr_version) else "zarr2")
         url = f"{url.rstrip('/')}/|{v_str}:"
     elif "|zarr" in url:
         prefix, tag = url.split("|zarr", 1)
@@ -93,7 +94,8 @@ def make_neuroglancer_url(
         raw_name: Display name for the raw layer in Neuroglancer (default: 'raw').
         seg_name: Display name for the segmentation layer (default: 'segmentation').
         raw_zarr_version: 'zarr2' or 'zarr3' for raw volume (defaults to raw.zarr_version if VolumeEntry).
-        seg_zarr_version: 'zarr2' or 'zarr3' for seg volume (defaults to seg.zarr_version if VolumeEntry).
+        seg_zarr_version: 'zarr2' or 'zarr3' for seg volume. Uses seg.zarr_version
+            for a VolumeEntry; otherwise Neuroglancer auto-detects the format.
         raw_range: B&C normalization interval [min, max] (e.g. 1st-99th percentile).
             Defaults to raw.normalize_min and raw.normalize_max if available. Set False to disable.
         raw_window: Bounds [win_min, win_max] for the contrast slider widget.
@@ -173,7 +175,7 @@ def make_neuroglancer_url(
         seg_source = to_fileglancer_content_url(
             seg_path,
             key=seg_key,
-            zarr_version=seg_zarr_version or "zarr3",
+            zarr_version=seg_zarr_version,
         )
         layers.append(
             {

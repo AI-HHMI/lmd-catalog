@@ -9,12 +9,3 @@ pprint(vol)
 
 # Explicit B&C range and slider window
 print(vol.neuroglancer_url(raw_range=(200, 1000), raw_window=(0, 1200)))
-
-# Overlay a separate segmentation Zarr onto a raw volume:
-url = lmd.make_neuroglancer_url(
-    raw=vol,
-    seg="/groups/miaai/miaai/annotations/my_run/predictions.zarr",
-    seg_key="labels/pred_cells",
-    seg_name="predictions",
-)
-print("Separate Zarrs link:\n", url)

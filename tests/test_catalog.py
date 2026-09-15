@@ -178,7 +178,7 @@ def test_make_neuroglancer_url_combines_raw_and_seg():
     assert state["layers"][1]["name"] == "predictions"
     assert state["layers"][1]["type"] == "segmentation"
     assert state["layers"][1]["source"] == (
-        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/annotations/my_dataset/seg_run1.zarr/labels/pred_cells/|zarr3:"
+        "https://fileglancer.int.janelia.org/api/content/groups_miaai_miaai/annotations/my_dataset/seg_run1.zarr/labels/pred_cells/|zarr:"
     )
 
     # make_fileglancer_url alias produces the identical result
@@ -193,6 +193,34 @@ def test_make_neuroglancer_url_combines_raw_and_seg():
         )
         == url
     )
+
+
+@pytest.mark.parametrize("version,tag", [(None, "zarr"), ("zarr2", "zarr2"), ("zarr3", "zarr3")])
+def test_external_segmentation_format_is_independent_of_raw(version, tag):
+    """A Zarr3 raw volume must not force external Zarr2 predictions to use the v3 reader."""
+    import lmd_catalog as lmd
+
+    raw = lmd.VolumeEntry(name="raw", path="/groups/miaai/miaai/raw.zarr", zarr_version="zarr3")
+    state = lmd.parse_neuroglancer_url(lmd.make_neuroglancer_url(
+        raw=raw,
+        seg="/groups/miaai/miaai/predictions.zarr/labels/cells",
+        seg_zarr_version=version,
+    ))
+    assert state["layers"][0]["source"].endswith("/raw/|zarr3:")
+    assert state["layers"][1]["source"].endswith(f"/predictions.zarr/labels/cells/|{tag}:")
+
+
+def test_segmentation_entry_preserves_known_format():
+    import lmd_catalog as lmd
+
+    seg = lmd.VolumeEntry(
+        name="predictions", path="/nrs/mia/predictions.zarr",
+        image_key="labels/cells", zarr_version="zarr2",
+    )
+    state = lmd.parse_neuroglancer_url(lmd.make_neuroglancer_url(
+        raw="/groups/miaai/miaai/raw.zarr", raw_key="raw", seg=seg,
+    ))
+    assert state["layers"][1]["source"].endswith("/predictions.zarr/labels/cells/|zarr2:")
 
 
 def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
@@ -214,7 +242,7 @@ def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
     assert gt_state["layers"][0]["shaderControls"]["normalized"]["window"] == [0, 1695]
     assert gt_state["layers"][1]["type"] == "segmentation"
     assert gt_state["layers"][1]["name"] == "ground_truth"
-    assert gt_state["layers"][1]["source"].endswith("labels/manual_gt-cell-final/|zarr3:")
+    assert gt_state["layers"][1]["source"].endswith("labels/manual_gt-cell-final/|zarr:")
 
     # Explicit custom B&C override
     custom_norm_url = v.neuroglancer_url(raw_range=(200, 800), raw_window=(0, 1200))
@@ -243,7 +271,7 @@ def test_volume_entry_neuroglancer_url_auto_gt_and_custom():
     assert len(ext_state["layers"]) == 2
     assert ext_state["layers"][1]["name"] == "model_output"
     assert ext_state["layers"][1]["source"] == (
-        "https://fileglancer.int.janelia.org/api/content/nrs_cosem/user/preds/dg_crop1.zarr/labels/aff_seg/|zarr3:"
+        "https://fileglancer.int.janelia.org/api/content/nrs_cosem/user/preds/dg_crop1.zarr/labels/aff_seg/|zarr:"
     )
 
 
@@ -301,4 +329,3 @@ def test_strict_schema_rejection():
             "issue": {"number": 1, "url": "http", "repository": "repo"},
             "completion_pct": -5.0,
         })
-
