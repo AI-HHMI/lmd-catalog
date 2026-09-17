@@ -1,9 +1,11 @@
 """Programmatic catalog for the Large Microscopy Dataset (LMD)."""
 
-from typing import Optional
+from pathlib import Path
+from typing import Optional, Union
 
 from lmd_catalog.catalog import Catalog
 from lmd_catalog.models import (
+    DEFAULT_DATA_ROOT,
     AnnotationEntry,
     AnnotationIssue,
     ROI,
@@ -24,6 +26,7 @@ __all__ = [
     "AnnotationEntry",
     "AnnotationIssue",
     "ROI",
+    "DEFAULT_DATA_ROOT",
     "DEFAULT_VIEWER_BASE_URL",
     "get",
     "all",
@@ -33,6 +36,9 @@ __all__ = [
     "annotations",
     "get_annotation",
     "default_catalog",
+    "set_data_root",
+    "get_data_root",
+    "reset_data_root",
     "make_neuroglancer_url",
     "make_fileglancer_url",
     "to_fileglancer_content_url",
@@ -50,14 +56,31 @@ def default_catalog() -> Catalog:
     return _DEFAULT_CATALOG
 
 
-def get(name_or_path: str) -> VolumeEntry:
+def set_data_root(data_root: Union[str, Path]) -> None:
+    """Set the data root path for the default catalog in this session."""
+    global _DEFAULT_CATALOG
+    _DEFAULT_CATALOG = Catalog(data_root=data_root)
+
+
+def get_data_root() -> str:
+    """Return the current data root path for the default catalog."""
+    return default_catalog().data_root
+
+
+def reset_data_root() -> None:
+    """Reset the default catalog to default data root (or LMD_DATA_ROOT env var)."""
+    global _DEFAULT_CATALOG
+    _DEFAULT_CATALOG = None
+
+
+def get(name_or_path: str, root: Optional[Union[str, Path]] = None) -> VolumeEntry:
     """Lookup a volume by name or path in the default catalog."""
-    return default_catalog().get(name_or_path)
+    return default_catalog().get(name_or_path, root=root)
 
 
-def all() -> list[VolumeEntry]:
+def all(root: Optional[Union[str, Path]] = None) -> list[VolumeEntry]:
     """Return all volumes in the default catalog."""
-    return default_catalog().all()
+    return default_catalog().all(root=root)
 
 
 def list_names() -> list[str]:
@@ -77,6 +100,7 @@ def find(
     organism: Optional[str] = None,
     is_annotated: Optional[bool] = None,
     has_ground_truth: Optional[bool] = None,
+    root: Optional[Union[str, Path]] = None,
 ) -> list[VolumeEntry]:
     """Filter volumes in the default catalog."""
     return default_catalog().find(
@@ -86,6 +110,7 @@ def find(
         organism=organism,
         is_annotated=is_annotated,
         has_ground_truth=has_ground_truth,
+        root=root,
     )
 
 

@@ -34,3 +34,6 @@ extraPaths = ["src"]
 venvPath = "."
 venv = ".venv"
 
+[tool.uv.sources]
+miao-io = { git = "https://github.com/AI-HHMI/miao.git", branch = "lazy-torch-import" }
+

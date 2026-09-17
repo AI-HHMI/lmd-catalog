@@ -3,13 +3,16 @@
 from __future__ import annotations
 
 import json
+import os
 from importlib import resources
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 
-from lmd_catalog.models import AnnotationEntry, VolumeEntry
-
-DEFAULT_DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
+from lmd_catalog.models import (
+    DEFAULT_DATA_ROOT,
+    AnnotationEntry,
+    VolumeEntry,
+)
 
 
 def _load_json_data(filename: str) -> dict:
@@ -42,9 +45,11 @@ class Catalog:
         self,
         volumes_data: Optional[dict] = None,
         annotations_data: Optional[dict] = None,
-        data_root: str = DEFAULT_DATA_ROOT,
+        data_root: Optional[Union[str, Path]] = None,
     ):
-        self.data_root = data_root
+        if data_root is None:
+            data_root = os.environ.get("LMD_DATA_ROOT", DEFAULT_DATA_ROOT)
+        self.data_root = str(data_root).rstrip("/")
 
         if volumes_data is None:
             volumes_data = _load_json_data("lmd_volumes.json")
@@ -73,14 +78,17 @@ class Catalog:
         self._by_path: dict[str, VolumeEntry] = {}
         self._by_dataset: dict[str, list[VolumeEntry]] = {}
 
+        canonical_root = DEFAULT_DATA_ROOT.rstrip("/")
+
         for v in raw_volumes:
             name = v["name"]
             path = self.data_root + "/" + name + ".zarr"
+            canonical_path = canonical_root + "/" + name + ".zarr"
             image_key = v.get("image_key", "raw")
             zarr_version = v.get("zarr_version", "zarr3")
             dataset = name.split("/")[0]
 
-            tracked = path_to_annotations.get(path, [])
+            tracked = path_to_annotations.get(canonical_path) or path_to_annotations.get(path, [])
             entry = VolumeEntry(
                 name=name,
                 path=path,
@@ -90,19 +98,24 @@ class Catalog:
                 tracked_by=tracked,
                 normalize_min=v.get("normalize_min"),
                 normalize_max=v.get("normalize_max"),
+                data_root=self.data_root,
             )
             self._volumes.append(entry)
             self._by_name[name] = entry
             self._by_path[path] = entry
+            if canonical_path != path:
+                self._by_path[canonical_path] = entry
             self._by_dataset.setdefault(dataset, []).append(entry)
 
-    def get(self, name_or_path: str) -> VolumeEntry:
+    def get(self, name_or_path: str, root: Optional[Union[str, Path]] = None) -> VolumeEntry:
         """Lookup a volume by its stable catalog name or absolute store path."""
         if name_or_path in self._by_name:
-            return self._by_name[name_or_path]
-        if name_or_path in self._by_path:
-            return self._by_path[name_or_path]
-        raise KeyError(f"Volume not found in catalog: {name_or_path!r}")
+            v = self._by_name[name_or_path]
+        elif name_or_path in self._by_path:
+            v = self._by_path[name_or_path]
+        else:
+            raise KeyError(f"Volume not found in catalog: {name_or_path!r}")
+        return v.with_root(root) if root is not None else v
 
     def __getitem__(self, name_or_path: str) -> VolumeEntry:
         return self.get(name_or_path)
@@ -116,9 +129,11 @@ class Catalog:
     def __iter__(self):
         return iter(self._volumes)
 
-    def all(self) -> list[VolumeEntry]:
+    def all(self, root: Optional[Union[str, Path]] = None) -> list[VolumeEntry]:
         """Return all volumes in the catalog."""
-        return list(self._volumes)
+        if root is None:
+            return list(self._volumes)
+        return [v.with_root(root) for v in self._volumes]
 
     def list_names(self) -> list[str]:
         """Return all volume names in the catalog."""
@@ -146,6 +161,7 @@ class Catalog:
         organism: Optional[str] = None,
         is_annotated: Optional[bool] = None,
         has_ground_truth: Optional[bool] = None,
+        root: Optional[Union[str, Path]] = None,
     ) -> list[VolumeEntry]:
         """Filter volumes by dataset or associated annotation metadata."""
         results = self._volumes
@@ -173,4 +189,6 @@ class Catalog:
                 for v in results
                 if any(a.model_organism == organism for a in v.tracked_by)
             ]
+        if root is not None:
+            return [v.with_root(root) for v in results]
         return results

@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Literal, Optional
+from pathlib import Path
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 from pydantic import BaseModel, ConfigDict, Field
 
 if TYPE_CHECKING:
     from miao.config import VolumeConfig
+
+DEFAULT_DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
 
 
 class ROI(BaseModel):
@@ -162,6 +165,7 @@ class VolumeEntry(BaseModel):
     tracked_by: list[AnnotationEntry] = Field(default_factory=list)
     normalize_min: Optional[float] = None
     normalize_max: Optional[float] = None
+    data_root: Optional[str] = None
 
     @property
     def is_annotated(self) -> bool:
@@ -241,12 +245,30 @@ class VolumeEntry(BaseModel):
             viewer_base_url=viewer_base_url or DEFAULT_VIEWER_BASE_URL,
         )
 
+    def with_root(self, root: Union[str, Path]) -> VolumeEntry:
+        """Return a copy of this VolumeEntry re-rooted to an alternate data directory."""
+        root_str = str(root).rstrip("/")
+        base_root = self.data_root or DEFAULT_DATA_ROOT
+        if self.path.startswith(base_root + "/"):
+            rel_path = self.path[len(base_root) + 1 :]
+        elif self.path.startswith(base_root):
+            rel_path = self.path[len(base_root) :].lstrip("/")
+        elif self.path.startswith(DEFAULT_DATA_ROOT + "/"):
+            rel_path = self.path[len(DEFAULT_DATA_ROOT) + 1 :]
+        elif self.path.startswith(DEFAULT_DATA_ROOT):
+            rel_path = self.path[len(DEFAULT_DATA_ROOT) :].lstrip("/")
+        else:
+            rel_path = f"{self.name}.zarr"
+        new_path = f"{root_str}/{rel_path}" if root_str else rel_path
+        return self.model_copy(update={"path": new_path, "data_root": root_str})
+
     def to_miao(
         self,
         spatial_axes: str = "zyx",
         issue: Optional[int] = None,
         label_key: Optional[str] = None,
         bounding_box: Optional[list[list[int]]] = None,
+        root: Optional[Union[str, Path]] = None,
         **kwargs: Any,
     ) -> VolumeConfig:
         """Resolve this volume directly into a miao.config.VolumeConfig.
@@ -260,31 +282,34 @@ class VolumeEntry(BaseModel):
             issue: Specific GitHub issue number if volume is tracked by multiple annotations.
             label_key: Explicit override for label_key.
             bounding_box: Explicit override for bounding_box.
+            root: Alternate root directory for the volume path (e.g. an SMB mount or local mirror).
             **kwargs: Additional fields forwarded to VolumeConfig (e.g. weight, resolutions).
         """
         from miao.config import VolumeConfig
 
+        vol = self if root is None else self.with_root(root)
+
         config_args: dict[str, Any] = {
-            "name": self.name,
-            "path": self.path,
-            "image_key": self.image_key,
-            "zarr_version": self.zarr_version,
+            "name": vol.name,
+            "path": vol.path,
+            "image_key": vol.image_key,
+            "zarr_version": vol.zarr_version,
         }
 
         chosen_annotation: Optional[AnnotationEntry] = None
         if issue is not None:
-            matches = [a for a in self.tracked_by if a.issue.number == issue]
+            matches = [a for a in vol.tracked_by if a.issue.number == issue]
             if not matches:
                 raise ValueError(
-                    f"Issue #{issue} does not track volume {self.name!r}"
+                    f"Issue #{issue} does not track volume {vol.name!r}"
                 )
             chosen_annotation = matches[0]
-        elif len(self.tracked_by) == 1:
-            chosen_annotation = self.tracked_by[0]
-        elif len(self.tracked_by) > 1 and (label_key is None or bounding_box is None):
-            issues = [a.issue.number for a in self.tracked_by]
+        elif len(vol.tracked_by) == 1:
+            chosen_annotation = vol.tracked_by[0]
+        elif len(vol.tracked_by) > 1 and (label_key is None or bounding_box is None):
+            issues = [a.issue.number for a in vol.tracked_by]
             raise ValueError(
-                f"Volume {self.name!r} is tracked by {len(self.tracked_by)} annotations (issues: {issues}). "
+                f"Volume {vol.name!r} is tracked by {len(vol.tracked_by)} annotations (issues: {issues}). "
                 "Specify which annotation to use via `to_miao(issue=...)` or pass explicit label_key / bounding_box."
             )
 
@@ -292,8 +317,11 @@ class VolumeEntry(BaseModel):
             if label_key is None and chosen_annotation.gt_ingested_path:
                 gt = chosen_annotation.gt_ingested_path
                 prefix = self.path + "/"
+                token = f"/{self.name}.zarr/"
                 if gt.startswith(prefix):
                     label_key = gt[len(prefix) :]
+                elif token in gt:
+                    label_key = gt.split(token, 1)[1]
             if bounding_box is None and chosen_annotation.roi:
                 bounding_box = chosen_annotation.roi.to_order(spatial_axes)
 
@@ -301,11 +329,11 @@ class VolumeEntry(BaseModel):
             config_args["label_key"] = label_key
         if bounding_box is not None:
             config_args["bounding_box"] = bounding_box
-        if self.normalize_min is not None:
-            config_args["normalize_min"] = self.normalize_min
-        if self.normalize_max is not None:
-            config_args["normalize_max"] = self.normalize_max
-        if self.normalize_min is not None or self.normalize_max is not None:
+        if vol.normalize_min is not None:
+            config_args["normalize_min"] = vol.normalize_min
+        if vol.normalize_max is not None:
+            config_args["normalize_max"] = vol.normalize_max
+        if vol.normalize_min is not None or vol.normalize_max is not None:
             config_args.setdefault("normalize", True)
 
         config_args.update(kwargs)

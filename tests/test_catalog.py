@@ -329,3 +329,70 @@ def test_strict_schema_rejection():
             "issue": {"number": 1, "url": "http", "repository": "repo"},
             "completion_pct": -5.0,
         })
+
+
+def test_layered_data_root_and_to_miao_root(monkeypatch):
+    """Verify layered data root: to_miao(root=...), with_root, query root params, set_data_root, and LMD_DATA_ROOT env."""
+    import lmd_catalog as lmd
+    from pathlib import Path
+
+    # Ensure clean slate
+    lmd.reset_data_root()
+    assert lmd.get_data_root() == lmd.DEFAULT_DATA_ROOT
+
+    # 1. to_miao(root=...) on default VolumeEntry
+    v = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
+    cfg = v.to_miao(root="/Volumes/smb/data")
+    assert cfg.path == "/Volumes/smb/data/exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001.zarr"
+    assert cfg.label_key == "labels/manual_gt-cell-final"
+    assert cfg.normalize_min == 301.0
+
+    # Path object and trailing slash normalization
+    cfg_path = v.to_miao(root=Path("/Volumes/smb/data/"))
+    assert cfg_path.path == "/Volumes/smb/data/exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001.zarr"
+
+    # 2. VolumeEntry.with_root
+    v_reroot = v.with_root("/mnt/mirror")
+    assert v_reroot.path == "/mnt/mirror/exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001.zarr"
+    assert v_reroot.data_root == "/mnt/mirror"
+    assert len(v_reroot.tracked_by) == 1
+    assert v_reroot.has_ground_truth
+
+    # 3. all(root=...), find(root=...), get(root=...)
+    all_reroot = lmd.all(root="/Volumes/smb/data")
+    assert len(all_reroot) == 838
+    assert all_reroot[0].path.startswith("/Volumes/smb/data/")
+    # Confirm tracked annotations preserved
+    assert sum(len(x.tracked_by) for x in all_reroot) == 25
+
+    find_reroot = lmd.find(organism="Mouse", has_ground_truth=True, root="/Volumes/smb/data")
+    assert len(find_reroot) > 0
+    assert find_reroot[0].path.startswith("/Volumes/smb/data/")
+
+    get_reroot = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001", root="/Volumes/smb/data")
+    assert get_reroot.path == "/Volumes/smb/data/exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001.zarr"
+
+    # 4. Session level set_data_root and reset_data_root
+    lmd.set_data_root("/Volumes/session_root")
+    assert lmd.get_data_root() == "/Volumes/session_root"
+    v_session = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
+    assert v_session.path.startswith("/Volumes/session_root/")
+    assert len(v_session.tracked_by) == 1
+    cfg_session = v_session.to_miao()
+    assert cfg_session.path.startswith("/Volumes/session_root/")
+    assert cfg_session.label_key == "labels/manual_gt-cell-final"
+
+    lmd.reset_data_root()
+    assert lmd.get_data_root() == lmd.DEFAULT_DATA_ROOT
+
+    # 5. LMD_DATA_ROOT environment variable
+    monkeypatch.setenv("LMD_DATA_ROOT", "/Volumes/env_root")
+    lmd.reset_data_root()
+    assert lmd.get_data_root() == "/Volumes/env_root"
+    v_env = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
+    assert v_env.path.startswith("/Volumes/env_root/")
+    assert len(v_env.tracked_by) == 1
+
+    # Clean up
+    monkeypatch.delenv("LMD_DATA_ROOT", raising=False)
+    lmd.reset_data_root()
