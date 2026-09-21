@@ -150,6 +150,56 @@ class AnnotationEntry(BaseModel):
     proofread_ingested_path: Optional[str] = None
     wk_link: Optional[str] = None
     wk_ann_link: Optional[str] = None
+    shape: Optional[list[int]] = None
+    voxelsize: Optional[list[float]] = None
+    axes: Optional[list[str]] = None
+
+    @property
+    def roi_shape(self) -> Optional[list[int]]:
+        """Shape [len_z, len_y, len_x] derived from the bounding-box ROI in 'zyx' order, if present."""
+        if self.roi is not None:
+            return [
+                self.roi.z[1] - self.roi.z[0],
+                self.roi.y[1] - self.roi.y[0],
+                self.roi.x[1] - self.roi.x[0],
+            ]
+        return None
+
+    @property
+    def shape_dict(self) -> Optional[dict[str, int]]:
+        """Dictionary mapping axis name to shape dimension."""
+        if self.shape is not None and self.axes is not None and len(self.shape) == len(self.axes):
+            return dict(zip(self.axes, self.shape))
+        return None
+
+    @property
+    def voxelsize_dict(self) -> Optional[dict[str, float]]:
+        """Dictionary mapping axis name to voxel size."""
+        if self.voxelsize is not None and self.axes is not None and len(self.voxelsize) == len(self.axes):
+            return dict(zip(self.axes, self.voxelsize))
+        return None
+
+    def shape_order(self, axes: str = "zyx") -> Optional[list[int]]:
+        """Return shape dimensions in the requested axis order (e.g. 'zyx' or 'xyz')."""
+        d = self.shape_dict
+        if d is None:
+            return None
+        axes = axes.lower()
+        if not all(a in d for a in axes):
+            missing = [a for a in axes if a not in d]
+            raise ValueError(f"Axes {missing} not found in annotation axes {self.axes}")
+        return [d[a] for a in axes]
+
+    def voxelsize_order(self, axes: str = "zyx") -> Optional[list[float]]:
+        """Return voxel sizes in the requested axis order (e.g. 'zyx' or 'xyz')."""
+        d = self.voxelsize_dict
+        if d is None:
+            return None
+        axes = axes.lower()
+        if not all(a in d for a in axes):
+            missing = [a for a in axes if a not in d]
+            raise ValueError(f"Axes {missing} not found in annotation axes {self.axes}")
+        return [d[a] for a in axes]
 
 
 class VolumeEntry(BaseModel):
@@ -166,6 +216,45 @@ class VolumeEntry(BaseModel):
     normalize_min: Optional[float] = None
     normalize_max: Optional[float] = None
     data_root: Optional[str] = None
+    shape: Optional[list[int]] = None
+    voxelsize: Optional[list[float]] = None
+    axes: Optional[list[str]] = None
+
+    @property
+    def shape_dict(self) -> Optional[dict[str, int]]:
+        """Dictionary mapping axis name to shape dimension, e.g. {'z': 866, 'y': 2304, 'x': 2304}."""
+        if self.shape is not None and self.axes is not None and len(self.shape) == len(self.axes):
+            return dict(zip(self.axes, self.shape))
+        return None
+
+    @property
+    def voxelsize_dict(self) -> Optional[dict[str, float]]:
+        """Dictionary mapping axis name to voxel size (nm), e.g. {'z': 400.0, 'y': 162.5, 'x': 162.5}."""
+        if self.voxelsize is not None and self.axes is not None and len(self.voxelsize) == len(self.axes):
+            return dict(zip(self.axes, self.voxelsize))
+        return None
+
+    def shape_order(self, axes: str = "zyx") -> Optional[list[int]]:
+        """Return shape dimensions in the requested axis order (e.g. 'zyx' or 'xyz')."""
+        d = self.shape_dict
+        if d is None:
+            return None
+        axes = axes.lower()
+        if not all(a in d for a in axes):
+            missing = [a for a in axes if a not in d]
+            raise ValueError(f"Axes {missing} not found in volume axes {self.axes}")
+        return [d[a] for a in axes]
+
+    def voxelsize_order(self, axes: str = "zyx") -> Optional[list[float]]:
+        """Return voxel sizes in the requested axis order (e.g. 'zyx' or 'xyz')."""
+        d = self.voxelsize_dict
+        if d is None:
+            return None
+        axes = axes.lower()
+        if not all(a in d for a in axes):
+            missing = [a for a in axes if a not in d]
+            raise ValueError(f"Axes {missing} not found in volume axes {self.axes}")
+        return [d[a] for a in axes]
 
     @property
     def is_annotated(self) -> bool:

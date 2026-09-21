@@ -99,6 +99,9 @@ class Catalog:
                 normalize_min=v.get("normalize_min"),
                 normalize_max=v.get("normalize_max"),
                 data_root=self.data_root,
+                shape=v.get("shape"),
+                voxelsize=v.get("voxelsize"),
+                axes=v.get("axes"),
             )
             self._volumes.append(entry)
             self._by_name[name] = entry

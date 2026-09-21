@@ -29,6 +29,27 @@
       "labels": [
         "Betzig Fish",
         "Amira"
+      ],
+      "shape": [
+        32,
+        1,
+        3328,
+        384,
+        128
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -60,6 +81,27 @@
       "labels": [
         "Betzig Fish",
         "Paintera"
+      ],
+      "shape": [
+        32,
+        1,
+        3328,
+        384,
+        128
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -91,6 +133,27 @@
       "labels": [
         "Betzig Fish",
         "Paintera"
+      ],
+      "shape": [
+        32,
+        1,
+        3328,
+        384,
+        128
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -122,6 +185,27 @@
       "labels": [
         "Betzig Fish",
         "Amira"
+      ],
+      "shape": [
+        32,
+        1,
+        3328,
+        384,
+        128
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -231,7 +315,25 @@
           83,
           277
         ]
-      }
+      },
+      "shape": [
+        1,
+        2304,
+        2304,
+        393
+      ],
+      "voxelsize": [
+        1.0,
+        159.989,
+        159.989,
+        400.0
+      ],
+      "axes": [
+        "c",
+        "x",
+        "y",
+        "z"
+      ]
     },
     {
       "title": "LICONN_Cortex",
@@ -280,7 +382,25 @@
           17,
           211
         ]
-      }
+      },
+      "shape": [
+        1,
+        2304,
+        2304,
+        277
+      ],
+      "voxelsize": [
+        1.0,
+        159.989,
+        159.989,
+        400.0
+      ],
+      "axes": [
+        "c",
+        "x",
+        "y",
+        "z"
+      ]
     },
     {
       "title": "LICONN_Hippocampus",
@@ -329,7 +449,25 @@
           44,
           238
         ]
-      }
+      },
+      "shape": [
+        1,
+        2304,
+        2304,
+        1060
+      ],
+      "voxelsize": [
+        1.0,
+        159.989,
+        159.989,
+        400.0
+      ],
+      "axes": [
+        "c",
+        "x",
+        "y",
+        "z"
+      ]
     },
     {
       "title": "LICONN_Matt_260601_60X_B4_1_040",
@@ -745,7 +883,22 @@
       "last_updated": "2026-07-22",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID25-mitochondria-20260216_MOPS_2ndGel_B1_40XW003",
       "gt_export_path": "/nrs/tavakoli/A46-PTR202604lic-MT-MW-organelle-annotations/annotation/crop001/crop001_combined.zarr",
-      "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID25-mitochondria-20260216_MOPS_2ndGel_B1_40XW003/crop-001.zarr/labels/manual_gt-mitochondria-crop001"
+      "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID25-mitochondria-20260216_MOPS_2ndGel_B1_40XW003/crop-001.zarr/labels/manual_gt-mitochondria-crop001",
+      "shape": [
+        2304,
+        2304,
+        484
+      ],
+      "voxelsize": [
+        162.5,
+        162.5,
+        400.0
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ]
     },
     {
       "title": "Betzig_dsr_timeseries_proofread_t10",

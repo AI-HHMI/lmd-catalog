@@ -396,3 +396,59 @@ def test_layered_data_root_and_to_miao_root(monkeypatch):
     # Clean up
     monkeypatch.delenv("LMD_DATA_ROOT", raising=False)
     lmd.reset_data_root()
+
+
+def test_volume_and_annotation_shape_and_voxelsize():
+    """Verify shape, voxelsize, and axes on VolumeEntry and AnnotationEntry."""
+    import lmd_catalog as lmd
+
+    vols = lmd.all()
+    assert len(vols) == 838
+
+    # All volumes have extracted shape, voxelsize, and axes
+    for v in vols:
+        assert v.shape is not None and len(v.shape) >= 3
+        assert v.voxelsize is not None and len(v.voxelsize) >= 3
+        assert v.axes is not None and len(v.axes) >= 3
+        assert len(v.shape) == len(v.axes) == len(v.voxelsize)
+
+    # 1. Volume with zyx native axes
+    v_zyx = lmd.get("em-celegans-funceworm-jrc-20250414/crop-001")
+    assert v_zyx.axes == ["z", "y", "x"]
+    assert v_zyx.shape == [8699, 5253, 5654]
+    assert v_zyx.voxelsize == [6.0, 6.0, 6.0]
+    assert v_zyx.shape_dict == {"z": 8699, "y": 5253, "x": 5654}
+    assert v_zyx.shape_order("zyx") == [8699, 5253, 5654]
+    assert v_zyx.shape_order("xyz") == [5654, 5253, 8699]
+    assert v_zyx.voxelsize_order("zyx") == [6.0, 6.0, 6.0]
+
+    # 2. Volume with xyz native axes
+    v_xyz = lmd.get("exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001")
+    assert v_xyz.axes == ["x", "y", "z"]
+    assert v_xyz.shape == [2304, 2304, 393]
+    assert v_xyz.voxelsize == [159.989, 159.989, 400.0]
+    assert v_xyz.shape_dict == {"x": 2304, "y": 2304, "z": 393}
+    assert v_xyz.shape_order("zyx") == [393, 2304, 2304]
+    assert v_xyz.shape_order("xyz") == [2304, 2304, 393]
+    assert v_xyz.voxelsize_order("zyx") == [400.0, 159.989, 159.989]
+
+    # 3. Annotation with ground truth segmentation metadata
+    ann_gt = lmd.get_annotation(7)
+    assert ann_gt.shape == [1, 2304, 2304, 393]
+    assert ann_gt.axes == ["c", "x", "y", "z"]
+    assert ann_gt.voxelsize == [1.0, 159.989, 159.989, 400.0]
+    assert ann_gt.roi_shape == [194, 482, 482]
+    assert ann_gt.shape_dict == {"c": 1, "x": 2304, "y": 2304, "z": 393}
+    assert ann_gt.shape_order("zyx") == [393, 2304, 2304]
+
+    # 4. Annotation with ROI but no GT ingested raster
+    ann_roi = lmd.get_annotation(10)
+    assert ann_roi.shape is None
+    assert ann_roi.roi is not None
+    assert ann_roi.roi_shape == [194, 482, 482]
+
+    # 5. with_root preserves shape, voxelsize, and axes
+    v_reroot = v_xyz.with_root("/Volumes/smb/data")
+    assert v_reroot.shape == v_xyz.shape
+    assert v_reroot.voxelsize == v_xyz.voxelsize
+    assert v_reroot.axes == v_xyz.axes
