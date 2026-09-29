@@ -6,3 +6,4 @@ dist/
 .mypy_cache/
 uv.lock
 mouse-fish-combo.yaml
+.env

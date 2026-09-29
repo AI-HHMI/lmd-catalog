@@ -12,9 +12,8 @@ import json
 import os
 import sys
 
+from data_root import DATA_ROOT
 from roi_parse import parse_roi
-
-DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
 
 # Annotation status -> the path field that must exist once that status is reached.
 TERMINAL_PATH_FIELDS = {

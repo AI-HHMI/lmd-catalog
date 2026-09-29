@@ -3,9 +3,13 @@ directory tree -- the mechanical source of truth for #Volume identity, so a
 volume's entry is never hand-typed (and never goes stale the way
 FlyLICONN_FlyID49_40XW005/006's annotation source_paths did).
 
-Run on a machine with /groups mounted:
+Run on a machine with /groups mounted. This script reads the existing
+lmd_volumes.json (to preserve hand-set normalize_min/normalize_max), so don't
+redirect stdout directly onto it -- the shell truncates the file before
+Python opens it to read, so it always reads back empty. Write to a temp file
+and move it into place instead:
 
-    python3 scripts/rebuild_volumes.py > lmd_volumes.json
+    python3 scripts/rebuild_volumes.py > /tmp/lmd_volumes.json.new && mv /tmp/lmd_volumes.json.new lmd_volumes.json
 """
 
 from __future__ import annotations
@@ -13,7 +17,7 @@ from __future__ import annotations
 import json
 import os
 
-DATA_ROOT = os.environ.get("LMD_DATA_ROOT", "/groups/miaai/miaai/lmd-v0.0.1/data")
+from data_root import DATA_ROOT
 
 # The one volume with no "raw" wrapper group -- levels are stored directly at
 # the store root instead. Not detectable by walking the filesystem alone.

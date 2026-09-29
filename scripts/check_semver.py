@@ -21,7 +21,8 @@ import subprocess
 import sys
 import tempfile
 
-DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
+from data_root import DATA_ROOT
+
 STABLE_FIELDS = ("path", "image_key", "zarr_version")
 SEMVER_RE = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 

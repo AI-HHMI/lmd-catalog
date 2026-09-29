@@ -58,7 +58,11 @@ above); this is a human-in-the-loop seam, not something to silently override —
 someone fixes it in the GitHub UI, don't fix it by editing the GH Project via `gh` from here.
 
 ```sh
-python3 scripts/rebuild_volumes.py > lmd_volumes.json
+# rebuild_volumes.py reads the existing lmd_volumes.json to preserve hand-set
+# normalize_min/normalize_max, so redirecting stdout straight onto it truncates
+# the file before Python can read it back -- write to a temp file and move it
+# into place instead.
+python3 scripts/rebuild_volumes.py > /tmp/lmd_volumes.json.new && mv /tmp/lmd_volumes.json.new lmd_volumes.json
 python3 scripts/rebuild_annotations.py > lmd_annotations.json
 ```
 

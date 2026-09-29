@@ -17,7 +17,8 @@ import os
 import subprocess
 import sys
 
-DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
+from data_root import DATA_ROOT
+
 PROJECT_OWNER = "AI-HHMI"
 PROJECT_NUMBER = "1"
 
