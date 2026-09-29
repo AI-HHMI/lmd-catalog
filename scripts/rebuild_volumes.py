@@ -37,6 +37,19 @@ def find_zarr_dirs(root):
     return found
 
 
+def find_label_keys(path):
+    """Sub-keys under a volume's own labels/ group, if any -- marks volumes
+    that ship ingested ground truth directly (e.g. public EM benchmarks),
+    not just ones tracked by an annotation issue."""
+    labels_dir = os.path.join(path, "labels")
+    if not os.path.isdir(labels_dir):
+        return []
+    return sorted(
+        d for d in os.listdir(labels_dir)
+        if not d.startswith(".") and os.path.isdir(os.path.join(labels_dir, d))
+    )
+
+
 def zarr_version(path):
     if os.path.exists(os.path.join(path, "zarr.json")):
         return "zarr3"
@@ -122,6 +135,10 @@ def build_volume(path, existing_by_name=None):
         volume["voxelsize"] = voxelsize
     if axes is not None:
         volume["axes"] = axes
+
+    label_keys = find_label_keys(path)
+    if label_keys:
+        volume["label_keys"] = label_keys
 
     # Preserve normalization windows if already cataloged
     if existing_by_name and name in existing_by_name:

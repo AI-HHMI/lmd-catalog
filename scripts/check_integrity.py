@@ -86,6 +86,9 @@ def check_volume_filesystem(volumes):
             violations.append(f"zarr_version {v['zarr_version']} declared but {marker} not found: {path}")
         if not os.path.exists(os.path.join(path, v["image_key"])):
             violations.append(f"image_key '{v['image_key']}' not found under: {path}")
+        for key in v.get("label_keys", []):
+            if not os.path.exists(os.path.join(path, "labels", key)):
+                violations.append(f"label_keys entry 'labels/{key}' not found under: {path}")
     return violations
 
 

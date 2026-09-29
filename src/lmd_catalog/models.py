@@ -219,6 +219,7 @@ class VolumeEntry(BaseModel):
     shape: Optional[list[int]] = None
     voxelsize: Optional[list[float]] = None
     axes: Optional[list[str]] = None
+    label_keys: list[str] = Field(default_factory=list)
 
     @property
     def shape_dict(self) -> Optional[dict[str, int]]:
@@ -263,17 +264,24 @@ class VolumeEntry(BaseModel):
 
     @property
     def has_ground_truth(self) -> bool:
-        """True if any tracking issue has an ingested ground-truth path."""
-        return any(a.gt_ingested_path is not None for a in self.tracked_by)
+        """True if this volume ships its own ingested labels/ (e.g. a public
+        benchmark dataset with no tracking issue) or a tracking issue has an
+        ingested ground-truth path."""
+        return bool(self.label_keys) or any(
+            a.gt_ingested_path is not None for a in self.tracked_by
+        )
 
     @property
     def ground_truth_paths(self) -> list[str]:
-        """All ingested ground-truth paths associated with this volume."""
-        return [
+        """All ingested ground-truth paths associated with this volume: its
+        own labels/ keys, plus any from tracking annotation issues."""
+        own = [f"{self.path}/labels/{key}" for key in self.label_keys]
+        tracked = [
             a.gt_ingested_path
             for a in self.tracked_by
             if a.gt_ingested_path is not None
         ]
+        return own + tracked
 
     def fileglancer_url(self) -> str:
         """Return a Janelia Fileglancer URL for this volume."""

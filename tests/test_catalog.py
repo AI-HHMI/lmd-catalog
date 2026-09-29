@@ -452,3 +452,17 @@ def test_volume_and_annotation_shape_and_voxelsize():
     assert v_reroot.shape == v_xyz.shape
     assert v_reroot.voxelsize == v_xyz.voxelsize
     assert v_reroot.axes == v_xyz.axes
+
+
+def test_label_keys_confer_ground_truth_without_tracking():
+    """A volume with its own ingested labels/ (e.g. a public benchmark dataset)
+    counts as ground truth even with no tracking annotation issue."""
+    from lmd_catalog import VolumeEntry
+
+    v = VolumeEntry(name="em-UNKNOWN-cremi/crop-001", path="/data/em-UNKNOWN-cremi/crop-001.zarr")
+    assert not v.has_ground_truth
+    assert v.ground_truth_paths == []
+
+    v_gt = v.model_copy(update={"label_keys": ["gt"]})
+    assert v_gt.has_ground_truth
+    assert v_gt.ground_truth_paths == ["/data/em-UNKNOWN-cremi/crop-001.zarr/labels/gt"]

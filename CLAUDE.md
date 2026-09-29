@@ -41,7 +41,11 @@ url = vol.fileglancer_url()
 `scripts/rebuild_volumes.py` (needs `/groups` mounted, no `gh`) walks `#DataRoot` for `.zarr` directories,
 derives each `name`, probes for `.zgroup`/`zarr.json` to set `zarr_version` (omitted when it's the default
 `zarr3`), and applies one hardcoded `image_key` override (the one volume in the corpus with no `raw`
-wrapper group) — this is fully mechanical, verified to reproduce the current data with zero diff.
+wrapper group) — this is fully mechanical, verified to reproduce the current data with zero diff. It also
+lists a volume's own `labels/` subgroup (mechanical directory listing, omitted when empty) into
+`label_keys` — this is what lets `#VolumeEntry.has_ground_truth` cover public benchmark datasets (CellMap,
+CREMI, Lucchi, MitoEM, UroCell) that ship ingested ground truth directly in their own zarr store with no
+tracking issue, not just volumes tracked by an annotation with a `gt_ingested_path`.
 
 `scripts/rebuild_annotations.py` (needs `gh` authenticated with `read:project`, no `/groups`) calls
 `gh project item-list 1 --owner AI-HHMI --format json --limit 200` and maps its fields into `#AnnotationItem`
