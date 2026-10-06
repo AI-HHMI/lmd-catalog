@@ -19,7 +19,7 @@ from lmd_catalog.viewers import (
     to_fileglancer_content_url,
 )
 
-__version__ = "0.1.0"
+__version__ = "1.0.1"
 __all__ = [
     "Catalog",
     "VolumeEntry",

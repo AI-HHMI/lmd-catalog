@@ -79,12 +79,12 @@ def volumes_at_ref(ref, tmp_root):
 
 
 
-def breaking_changes(old, new):
+def breaking_changes(old, new, from_ref):
     violations = []
     for name, old_v in old.items():
         new_v = new.get(name)
         if new_v is None:
-            violations.append(f"{name}: removed (was present at the last tag)")
+            violations.append(f"{name}: removed (was present at {from_ref})")
             continue
         for field in STABLE_FIELDS:
             if old_v[field] != new_v[field]:
@@ -111,7 +111,7 @@ def main():
         old = volumes_at_ref(from_ref, tmp)
         new = volumes_at_ref(to_ref, tmp)
 
-    violations = breaking_changes(old, new)
+    violations = breaking_changes(old, new, from_ref)
     last_tag = latest_tag(to_ref)
     is_major_bump = proposed is not None and (last_tag is None or parse_semver(proposed)[0] > parse_semver(last_tag)[0])
 
