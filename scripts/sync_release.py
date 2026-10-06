@@ -9,10 +9,12 @@ bookmark on it and an empty working copy:
 2. over ssh in the cluster clone: rebuild volumes + annotations, run pytest, check_integrity and
    check_complete, and commit the rebuild if anything changed (any failure reverts the rebuild)
 3. fetch the cluster commit back and fast-forward local `main` to it
-4. pick the next version from the changes since the latest tag (removed/changed volume: major,
+4. regenerate the GitHub Pages report + slides in docs/ and commit them if they changed
+5. pick the next version from the changes since the latest tag (removed/changed volume: major,
    new volume: minor, any other catalog/schema change: patch), then ask before bumping + tagging
-5. push `main` (and the tag, if any) to `origin` and `janelia`
+6. push `main` (and the tag, if any) to `origin` and `janelia`
 
+Run it with the local env from `uv sync --extra analysis` (step 4 imports lmd_catalog + matplotlib).
 Needs on the cluster: proj/lmd-catalog/.venv (`uv sync --extra dev`) and `gh` authed with read:project.
 """
 
@@ -82,6 +84,15 @@ def set_version(version: str):
         open(path, "w").write(new_text)
 
 
+def refresh_docs():
+    """Regenerate docs/ (GitHub Pages) from the synced catalog; commit it only if it changed."""
+    for script in ("report.py", "slides.py"):
+        run(sys.executable, f"scripts/analysis/{script}")
+    if out("jj", "log", "-r", "@", "--no-graph", "-T", "empty") != "true":
+        run("jj", "commit", "-m", "update report and slides")
+        run("jj", "bookmark", "set", "main", "-r", "@-")
+
+
 def push_main():
     for remote in REMOTES:
         run("jj", "git", "push", "--remote", remote, "--bookmark", "main")
@@ -95,6 +106,7 @@ def main():
     run("jj", "git", "fetch", "--remote", "janelia")
     run("jj", "bookmark", "set", "main", "-r", "main@janelia")
     run("jj", "new", "main")
+    refresh_docs()
 
     run("git", "fetch", "origin", "--tags", "--quiet")
     tag = latest_tag("main")

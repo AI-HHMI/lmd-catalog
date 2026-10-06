@@ -1,6 +1,6 @@
 """Summarize the LMD catalog (sizes, modalities, organisms, regions, ground truth) into one self-contained HTML report.
 
-Usage: uv sync --extra analysis && python scripts/analysis/report.py   ->  scripts/analysis/report.html
+Usage: uv sync --extra analysis && python scripts/analysis/report.py   ->  docs/index.html
 """
 
 import math
@@ -12,7 +12,7 @@ from pathlib import Path
 import lmd_catalog as lmd
 import plots
 
-OUT = Path(__file__).with_name("report.html")
+OUT = Path(__file__).parents[2] / "docs" / "index.html"  # served by GitHub Pages (main branch, /docs)
 MODALITY = {"em": "EM", "exm": "Expansion microscopy", "lm": "Light microscopy", "uct": "microCT"}
 # First matching pattern wins; matched against the lowercased dataset name.
 REGIONS = [
@@ -190,10 +190,11 @@ def build() -> tuple:
 def main():
     tiles, sections = build()
     body = (
-        "<h1>LMD catalog report</h1><div class='tiles'>"
+        "<h1>LMD catalog report</h1><p><a href='slides.html'>View as slides &rarr;</a></p><div class='tiles'>"
         + "".join(f"<div class='tile'><b>{n}</b>{label}</div>" for n, label in tiles) + "</div>"
         + "".join(f"<h2>{title}</h2><div class='grid'>" + "".join(card(t, c) for t, c in cards) + "</div>" for title, cards in sections)
     )
+    OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(
         "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
         f"<title>LMD catalog report</title><style>{CSS}</style></head><body>{body}</body></html>"

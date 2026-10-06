@@ -121,10 +121,10 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
 `python3 scripts/sync_release.py` automates the whole loop from the local jj repo: pushes `main` to the
 `janelia` remote, then over ssh in the cluster clone rebuilds volumes + annotations, runs pytest /
 `check_integrity.py` / `check_complete.py` (a failure reverts the rebuild), and commits the result. It then
-fetches that commit back, fast-forwards local `main`, and picks the next version from the changes since the
+fetches that commit back, fast-forwards local `main`, regenerates `docs/` (the GitHub Pages report + slides, committed only if they changed), and picks the next version from the changes since the
 latest tag (removed/changed volume: major, new volume: minor, other catalog/schema change: patch). It asks
 before bumping the version files, tagging, and pushing `main` + the tag to `origin` and `janelia`.
-Requires an empty working copy with `main` on its parent, a clean cluster working tree, `proj/lmd-catalog/.venv`
+Run it from the env made by `uv sync --extra analysis` (the docs step needs `lmd_catalog` + matplotlib). Requires an empty working copy with `main` on its parent, a clean cluster working tree, `proj/lmd-catalog/.venv`
 on the cluster (`uv sync --extra dev`), and `gh` authed with `read:project` there.
 
 ## Architecture: the volumes ↔ annotations join

@@ -1,6 +1,6 @@
 """Turn the LMD catalog report into a self-contained HTML slide deck (same charts as report.py).
 
-Usage: uv sync --extra analysis && python scripts/analysis/slides.py   ->  scripts/analysis/slides.html
+Usage: uv sync --extra analysis && python scripts/analysis/slides.py   ->  docs/slides.html
 
 Keys: arrows / space / PageUp+PageDown to move, Home/End to jump, f for fullscreen; click the left third to go back, anywhere else to go forward.
 Print to PDF for handouts.
@@ -10,7 +10,7 @@ from pathlib import Path
 
 import report
 
-OUT = Path(__file__).with_name("slides.html")
+OUT = Path(__file__).parents[2] / "docs" / "slides.html"
 CHARTS_PER_SLIDE = 2
 CSS = """
 html,body{margin:0;height:100%;background:#fff;color:#222;font:20px system-ui,sans-serif;overflow:hidden}
@@ -73,13 +73,14 @@ def main():
     title = (
         "<section class='slide'><div class='kicker'>Large Microscopy Dataset</div><h1>LMD catalog overview</h1><div class='tiles'>"
         + "".join(f"<div class='tile'><b>{n}</b>{label}</div>" for n, label in tiles)
-        + "</div><p class='hint'>Press → or click anywhere to start &nbsp;·&nbsp; ← goes back &nbsp;·&nbsp; f for fullscreen</p></section>"
+        + "</div><p class='hint'><a href='index.html'>Full report</a> &nbsp;·&nbsp; Press → or click anywhere to start &nbsp;·&nbsp; ← goes back &nbsp;·&nbsp; f for fullscreen</p></section>"
     )
     body = title + "".join(
         slide("LMD catalog", name, "<div class='row'>" + "".join(report.card(t, c) for t, c in group) + "</div>")
         for name, cards in sections
         for group in chunk(cards)
     )
+    OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(
         "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
         f"<title>LMD catalog slides</title><style>{CSS}</style></head><body>{body}<div id='count'></div><script>{JS}</script></body></html>"

@@ -13,12 +13,12 @@ COLORS = ["#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#D55E00", "#F0
 GREY = "#999999"
 MAX_SLICES = 8
 
-plt.rcParams.update({"svg.fonttype": "none", "font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
+plt.rcParams.update({"svg.fonttype": "none", "font.size": 10, "axes.spines.top": False, "axes.spines.right": False, "svg.hashsalt": "lmd"})  # fixed salt: same data -> byte-identical SVG
 
 
 def to_svg(fig) -> str:
     buf = io.StringIO()
-    fig.savefig(buf, format="svg", bbox_inches="tight")
+    fig.savefig(buf, format="svg", bbox_inches="tight", metadata={"Date": None})
     plt.close(fig)
     svg = buf.getvalue()
     return svg[svg.index("<svg"):]
