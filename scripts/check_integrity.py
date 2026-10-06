@@ -12,7 +12,7 @@ import json
 import os
 import sys
 
-from data_root import DATA_ROOT
+from data_root import DATA_ROOT, DEFAULT_DATA_ROOT
 from roi_parse import parse_roi
 
 # Annotation status -> the path field that must exist once that status is reached.
@@ -20,6 +20,14 @@ TERMINAL_PATH_FIELDS = {
     "GT_Ingested": "gt_ingested_path",
     "Proofread_ingested": "proofread_ingested_path",
 }
+
+
+def rebase(p):
+    """Annotation paths are stored under the canonical DEFAULT_DATA_ROOT; map them
+    onto DATA_ROOT so the checks also work against a remapped mount."""
+    if p.startswith(DEFAULT_DATA_ROOT + "/"):
+        return DATA_ROOT + p[len(DEFAULT_DATA_ROOT):]
+    return p
 
 
 def load_json(path):
@@ -67,7 +75,7 @@ def check_source_paths_resolve(annotations, volumes):
     volume_paths = {v["path"] for v in volumes}
     violations = []
     for a in annotations:
-        for p in a["source_paths"]:
+        for p in map(rebase, a["source_paths"]):
             if p.startswith(DATA_ROOT) and p not in volume_paths:
                 violations.append(f"{a['title']}: source_path under DATA_ROOT has no matching volume: {p}")
     return violations
@@ -96,7 +104,7 @@ def check_annotation_source_paths_exist(annotations):
     paths, there's no "not yet produced" excuse for source_paths."""
     violations = []
     for a in annotations:
-        for p in a["source_paths"]:
+        for p in map(rebase, a["source_paths"]):
             if not os.path.exists(p):
                 violations.append(f"{a['title']}: source_path missing on disk: {p}")
     return violations
@@ -109,6 +117,9 @@ def check_roi_matches_bbox_text(annotations):
     for a in annotations:
         roi = a.get("roi")
         if roi is None:
+            continue
+        if not (a.get("bbox") or a.get("bbox_size")):
+            violations.append(f"{a['title']}: roi {roi} is set but bbox/bbox_size text is empty (rebuild_annotations.py would drop it)")
             continue
         expected = parse_roi(a.get("bbox"), a.get("bbox_size"))
         if expected != roi:
@@ -126,7 +137,7 @@ def check_terminal_paths_exist(annotations):
         if value is None:
             violations.append(f"{a['title']}: status is {a['status']} but {field} is unset")
             continue
-        for p in iter_paths(value):
+        for p in map(rebase, iter_paths(value)):
             if not os.path.exists(p):
                 violations.append(f"{a['title']}: {field} missing on disk: {p}")
     return violations
