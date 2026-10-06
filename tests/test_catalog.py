@@ -20,13 +20,13 @@ def test_catalog_inventory():
     import lmd_catalog as lmd
 
     vols = lmd.all()
-    assert len(vols) == 838, f"Expected 838 volumes, found {len(vols)}"
+    assert len(vols) == 1072, f"Expected 1072 volumes, found {len(vols)}"
 
     datasets = lmd.list_datasets()
-    assert len(datasets) == 102, f"Expected 102 datasets, found {len(datasets)}"
+    assert len(datasets) == 136, f"Expected 136 datasets, found {len(datasets)}"
 
     anns = lmd.annotations()
-    assert len(anns) == 27, f"Expected 27 annotations, found {len(anns)}"
+    assert len(anns) == 1124, f"Expected 1124 annotations, found {len(anns)}"
 
     # Lookup by name
     v = lmd.get("em-celegans-funceworm-jrc-20250414/crop-001")
@@ -43,7 +43,7 @@ def test_catalog_inventory():
 
 
 def test_all_volumes_produce_valid_volume_config():
-    """Verify CI guarantee: all 838 volumes resolve to valid miao VolumeConfigs without torch."""
+    """Verify CI guarantee: all 1072 volumes resolve to valid miao VolumeConfigs without torch."""
     import lmd_catalog as lmd
     from miao.config import VolumeConfig
 
@@ -57,7 +57,7 @@ def test_all_volumes_produce_valid_volume_config():
         assert cfg.path == v.path
         assert cfg.exp_factor == 1.0
 
-    # Ensure torch remains unimported after building 838 VolumeConfigs
+    # Ensure torch remains unimported after building 1072 VolumeConfigs
     assert "torch" not in sys.modules, "torch was imported during VolumeConfig resolution"
 
 
@@ -85,8 +85,8 @@ def test_tracked_annotations_and_gt():
 
     # Volume with ROI
     v_roi = lmd.get("em-mouse-MICrONS-minnie65/crop-001")
-    cfg_zyx = v_roi.to_miao(spatial_axes="zyx")
-    cfg_xyz = v_roi.to_miao(spatial_axes="xyz")
+    cfg_zyx = v_roi.to_miao(spatial_axes="zyx", issue=13)
+    cfg_xyz = v_roi.to_miao(spatial_axes="xyz", issue=13)
     assert cfg_zyx.bounding_box == [[457, 567], [3390, 3736], [2679, 3339]]
     assert cfg_xyz.bounding_box == [[2679, 3339], [3390, 3736], [457, 567]]
 
@@ -112,7 +112,7 @@ def test_catalog_queries_and_filters():
     import lmd_catalog as lmd
 
     # Filter by dataset
-    lucchi = lmd.find(dataset="em-UNKNOWN-lucchi-hippocampus")
+    lucchi = lmd.find(dataset="em-rat-lucchi-hippocampus")
     assert len(lucchi) == 2
 
     # Filter by annotation status
@@ -120,14 +120,17 @@ def test_catalog_queries_and_filters():
     assert len(annotated) > 0
 
     with_gt = lmd.find(has_ground_truth=True)
-    assert len(with_gt) == 7
+    assert len(with_gt) == 537
 
     # Filter by organism
     zebrafish = lmd.find(organism="Zebrafish")
     assert len(zebrafish) > 0
 
     # Filter mouse datasets with ground truth
-    mouse_gt = lmd.find(organism="Mouse", has_ground_truth=True)
+    mouse_gt = [
+        v for v in lmd.find(has_ground_truth=True)
+        if v.name.startswith("exm-mouse-liconn") and any((a.gt_ingested_path or "").endswith("labels/manual_gt-cell-final") for a in v.tracked_by)
+    ]
     assert len(mouse_gt) == 3
     mouse_datasets = {v.dataset for v in mouse_gt}
     assert len(mouse_datasets) == 3
@@ -360,10 +363,10 @@ def test_layered_data_root_and_to_miao_root(monkeypatch):
 
     # 3. all(root=...), find(root=...), get(root=...)
     all_reroot = lmd.all(root="/Volumes/smb/data")
-    assert len(all_reroot) == 838
+    assert len(all_reroot) == 1072
     assert all_reroot[0].path.startswith("/Volumes/smb/data/")
     # Confirm tracked annotations preserved
-    assert sum(len(x.tracked_by) for x in all_reroot) == 25
+    assert sum(len(x.tracked_by) for x in all_reroot) == 1118
 
     find_reroot = lmd.find(organism="Mouse", has_ground_truth=True, root="/Volumes/smb/data")
     assert len(find_reroot) > 0
@@ -403,7 +406,7 @@ def test_volume_and_annotation_shape_and_voxelsize():
     import lmd_catalog as lmd
 
     vols = lmd.all()
-    assert len(vols) == 838
+    assert len(vols) == 1072
 
     # All volumes have extracted shape, voxelsize, and axes
     for v in vols:

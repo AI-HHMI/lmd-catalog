@@ -62,6 +62,10 @@ AnnotationStatus = Literal[
     "post_paintera_proofreading",
     "Proofread_ingested",
     "In Training",
+    "manual_gt_ingested",
+    "proofread_ingested",
+    "auto_pred_ingested",
+    "public_gt_ingested",
 ]
 
 AnnotationDataset = Literal[
@@ -69,6 +73,25 @@ AnnotationDataset = Literal[
     "MammalianLICONN",
     "MICrONS",
     "FlyLICONN",
+    "H01",
+    "Jiefu-Cerebellum",
+    "Kasthuri15",
+    "FlyEM-Hemibrain",
+    "FlyEM-CNS-Mito-v6",
+    "FuncEWorm",
+    "FANC",
+    "BANC",
+    "Hydra-Zhang2025",
+    "Fish1-Zebrafish",
+    "Fish2-Zebrafish",
+    "CREMI",
+    "UroCell",
+    "Lucchi",
+    "j0126",
+    "CellMap",
+    "MitoVerse",
+    "PyTC",
+    "PYR",
 ]
 
 AnnotationTool = Literal[
@@ -84,6 +107,11 @@ ModelOrganism = Literal[
     "C. elegans",
     "Human",
     "Danionella",
+    "Hydra",
+    "Rat",
+    "Zebra Finch",
+    "Green Monkey",
+    "Macaque",
 ]
 
 DataModality = Literal[
@@ -103,6 +131,7 @@ AnnotationTask = Literal[
     "sparse annotation",
     "dense proofreading",
     "sparse proofreading",
+    "assessment",
 ]
 
 StructureOfInterest = Literal[

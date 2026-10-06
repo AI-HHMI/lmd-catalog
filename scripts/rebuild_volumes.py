@@ -160,7 +160,9 @@ def main():
     catalog_path = os.path.join(os.path.dirname(__file__), "..", "lmd_volumes.json")
     if os.path.exists(catalog_path):
         with open(catalog_path) as f:
-            existing_by_name = {v["name"]: v for v in json.load(f).get("volumes", [])}
+            text = f.read()
+        assert text.strip(), "lmd_volumes.json is empty -- did you redirect output onto it? `git checkout lmd_volumes.json`, then write to a temp file and mv it into place (see the module docstring)"
+        existing_by_name = {v["name"]: v for v in json.loads(text).get("volumes", [])}
 
     volumes = [build_volume(p, existing_by_name) for p in find_zarr_dirs(DATA_ROOT)]
     volumes.sort(key=lambda v: v["name"])

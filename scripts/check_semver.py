@@ -1,15 +1,16 @@
-"""Verify a proposed version tag honors semver against the catalog's own
-history: for every #Volume `name` present both at the last tagged version and
-at --to, `path`/`image_key`/`zarr_version` must be identical, and no tracked
-name may be removed -- unless the proposed version's major component is
-greater than the last tag's. Annotation fields are exempt: `gt_ingested_path`
-and friends are meant to be mutated in place as labeling rounds land (see
+"""Verify the catalog's own history honors semver: for every #Volume `name`
+present both at --from (default: the parent of --to) and at --to (default:
+HEAD), `path`/`image_key`/`zarr_version` must be identical, and no name may be
+removed -- unless a proposed version is given whose major component is greater
+than the latest tag's. Annotation fields are exempt: `gt_ingested_path` and
+friends are meant to be mutated in place as labeling rounds land (see
 CLAUDE.md), so their history is not a compatibility break.
 
-Run before creating a new tag, no /groups mount needed:
+No /groups mount needed:
 
-    python3 scripts/check_semver.py v0.2.0
-    python3 scripts/check_semver.py v0.2.0 --from v0.1.0 --to HEAD
+    python3 scripts/check_semver.py                           # HEAD vs its parent commit
+    python3 scripts/check_semver.py v1.0.0                    # same, but breaking changes OK if v1.0.0 bumps the latest tag's major
+    python3 scripts/check_semver.py --from v0.1.0 --to HEAD  # compare against a tag instead
 """
 
 from __future__ import annotations
@@ -92,10 +93,10 @@ def breaking_changes(old, new):
 
 
 def main():
-    proposed = sys.argv[1]
+    rest = sys.argv[1:]
+    proposed = rest.pop(0) if rest and not rest[0].startswith("--") else None
     to_ref = "HEAD"
     from_ref = None
-    rest = sys.argv[2:]
     while rest:
         flag, value, rest = rest[0], rest[1], rest[2:]
         if flag == "--to":
@@ -104,21 +105,19 @@ def main():
             from_ref = value
 
     if from_ref is None:
-        from_ref = latest_tag(to_ref)
-        if from_ref is None:
-            print(f"no prior vN.N.N tag reachable from {to_ref} -- {proposed} is a baseline, nothing to compare")
-            sys.exit(0)
+        from_ref = f"{to_ref}~1"
 
     with tempfile.TemporaryDirectory() as tmp:
         old = volumes_at_ref(from_ref, tmp)
         new = volumes_at_ref(to_ref, tmp)
 
     violations = breaking_changes(old, new)
-    is_major_bump = parse_semver(proposed)[0] > parse_semver(from_ref)[0]
+    last_tag = latest_tag(to_ref)
+    is_major_bump = proposed is not None and (last_tag is None or parse_semver(proposed)[0] > parse_semver(last_tag)[0])
 
     for v in violations:
         print(f"{'ALLOWED (major bump)' if is_major_bump else 'FAIL'}: {v}")
-    print(f"\n{len(violations)} breaking change(s) from {from_ref} -> {to_ref}, proposed tag {proposed}")
+    print(f"\n{len(violations)} breaking change(s) from {from_ref} -> {to_ref}" + (f", proposed tag {proposed}" if proposed else ""))
     sys.exit(0 if not violations or is_major_bump else 1)
 
 

@@ -58,12 +58,12 @@ above); this is a human-in-the-loop seam, not something to silently override —
 someone fixes it in the GitHub UI, don't fix it by editing the GH Project via `gh` from here.
 
 ```sh
-# rebuild_volumes.py reads the existing lmd_volumes.json to preserve hand-set
-# normalize_min/normalize_max, so redirecting stdout straight onto it truncates
-# the file before Python can read it back -- write to a temp file and move it
-# into place instead.
+# Both rebuild scripts read the existing JSON (volumes: hand-set normalize_min/
+# normalize_max; annotations: hand-set shape/voxelsize/axes), so redirecting stdout
+# straight onto it truncates the file before Python can read it back -- write to a
+# temp file and move it into place instead.
 python3 scripts/rebuild_volumes.py > /tmp/lmd_volumes.json.new && mv /tmp/lmd_volumes.json.new lmd_volumes.json
-python3 scripts/rebuild_annotations.py > lmd_annotations.json
+python3 scripts/rebuild_annotations.py > /tmp/lmd_annotations.json.new && mv /tmp/lmd_annotations.json.new lmd_annotations.json
 ```
 
 ## Policy checks (scripts/)
@@ -89,10 +89,11 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
 - Both checkers are pure-stdlib Python (run on the cluster where external tools may not be installed).
 - These are not wired into CI yet — run manually after rebuilding catalog data, and before cutting a
   new version tag.
-- `check_semver.py` — before actually creating a new tag, verify it honors semver against the catalog's
-  own history: for every `#Volume` `name` present at both the latest existing `vN.N.N` tag and `HEAD`,
-  `path`/`image_key`/`zarr_version` must be unchanged and the name must not be removed, unless the
-  proposed version's major component increased. Needs only Python + git history (no `/groups` mount) —
+- `check_semver.py` — verify the catalog honors semver against its own history: for every `#Volume`
+  `name` present at both `HEAD`'s parent commit (the default; `--from` accepts any ref, e.g. a tag) and
+  `HEAD`, `path`/`image_key`/`zarr_version` must be unchanged and the name must not be removed, unless a
+  proposed version is given whose major component exceeds the latest `vN.N.N` tag's. It compares committed
+  revisions, so commit a rebuild before running it. Needs only Python + git history (no `/groups` mount) —
   reads `lmd_volumes.json` across git revisions to compare volume definitions (with fallback to older
   formats if diffing against historical tags that predate the JSON catalog).
   Deliberately does not check
@@ -103,8 +104,9 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
   knows which `name`s/fields it actually depends on.
 
   ```sh
-  python3 scripts/check_semver.py v0.2.0                    # compares HEAD against the latest vN.N.N tag
-  python3 scripts/check_semver.py v0.2.0 --from v0.1.0 --to HEAD
+  python3 scripts/check_semver.py                           # compares HEAD against its parent commit
+  python3 scripts/check_semver.py v1.0.0                    # same, but breaking changes are OK if v1.0.0 bumps the latest tag's major
+  python3 scripts/check_semver.py --from v0.1.0 --to HEAD   # compare against a tag instead
   ```
 
 ## Architecture: the volumes ↔ annotations join

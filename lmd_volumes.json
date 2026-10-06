@@ -1,39 +1,24 @@
 {
   "volumes": [
     {
-      "name": "em-UNKNOWN-lucchi-hippocampus/crop-001_train",
+      "name": "em-celegans-MitoVerse-conrad23-whole-organism/crop-001_c_elegans",
       "shape": [
-        165,
-        768,
-        1024
+        256,
+        256,
+        256
       ],
       "voxelsize": [
-        5.0,
-        5.0,
-        5.0
+        24.0,
+        24.0,
+        24.0
       ],
       "axes": [
         "z",
         "y",
         "x"
-      ]
-    },
-    {
-      "name": "em-UNKNOWN-lucchi-hippocampus/crop-002_test",
-      "shape": [
-        165,
-        768,
-        1024
       ],
-      "voxelsize": [
-        5.0,
-        5.0,
-        5.0
-      ],
-      "axes": [
-        "z",
-        "y",
-        "x"
+      "label_keys": [
+        "public_gt-mitochondria-instance"
       ]
     },
     {
@@ -52,6 +37,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-organelle-cellmap_crop1086_all"
       ]
     },
     {
@@ -160,6 +148,14 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop120",
+        "manual_gt-all_organelles-crop121",
+        "manual_gt-all_organelles-crop122",
+        "manual_gt-all_organelles-crop123",
+        "manual_gt-all_organelles-crop134",
+        "manual_gt-all_organelles-crop178"
       ]
     },
     {
@@ -178,6 +174,14 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop173",
+        "manual_gt-all_organelles-crop174",
+        "manual_gt-all_organelles-crop176",
+        "manual_gt-all_organelles-crop185",
+        "manual_gt-all_organelles-crop78",
+        "manual_gt-all_organelles-crop79"
       ]
     },
     {
@@ -196,6 +200,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-seg_mar2021",
+        "auto_pred-nucleus-seg_mar2022_verified"
       ]
     },
     {
@@ -214,6 +222,94 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-seg_mar2021",
+        "auto_pred-nucleus-seg_mar2022_verified"
+      ]
+    },
+    {
+      "name": "em-drosophila-MitoVerse-conrad23-brain/crop-001_fly_brain",
+      "shape": [
+        256,
+        255,
+        255
+      ],
+      "voxelsize": [
+        12.0,
+        12.0,
+        12.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-drosophila-MitoVerse-kunduri22-spermatocyte/crop-001_test01",
+      "shape": [
+        512,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-drosophila-MitoVerse-kunduri22-spermatocyte/crop-002_train01",
+      "shape": [
+        384,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-drosophila-MitoVerse-kunduri22-spermatocyte/crop-003_train02",
+      "shape": [
+        128,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
       ]
     },
     {
@@ -232,6 +328,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-v1",
+        "auto_pred-nucleus-v1",
+        "auto_pred-synapse-v1_1"
       ]
     },
     {
@@ -250,6 +351,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-v1",
+        "auto_pred-nucleus-v1",
+        "auto_pred-synapse-v1_1"
       ]
     },
     {
@@ -268,6 +374,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-v1",
+        "auto_pred-nucleus-v1",
+        "auto_pred-synapse-v1_1"
       ]
     },
     {
@@ -286,6 +397,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-v1",
+        "auto_pred-nucleus-v1",
+        "auto_pred-synapse-v1_1"
       ]
     },
     {
@@ -304,6 +420,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "proofread-cell-neuron_ids",
+        "public_gt-synapse-cleft"
       ]
     },
     {
@@ -322,6 +442,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "proofread-cell-neuron_ids",
+        "public_gt-synapse-cleft"
       ]
     },
     {
@@ -340,6 +464,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "proofread-cell-neuron_ids",
+        "public_gt-synapse-cleft"
       ]
     },
     {
@@ -412,6 +540,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -430,6 +562,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -448,6 +584,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -466,6 +606,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -484,6 +629,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -502,6 +651,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -520,6 +673,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -538,6 +695,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -556,6 +717,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -574,6 +739,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -592,6 +762,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -610,6 +784,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -628,6 +806,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -646,6 +828,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -664,6 +850,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -682,6 +872,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -700,6 +894,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -718,6 +916,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -736,6 +938,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -754,6 +960,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -772,6 +982,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -790,6 +1004,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -808,6 +1026,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -826,6 +1048,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -844,6 +1070,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -862,6 +1092,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -880,6 +1114,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -898,6 +1136,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -916,6 +1158,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -934,6 +1180,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -952,6 +1202,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -970,6 +1224,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -988,6 +1246,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1006,6 +1268,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1024,6 +1290,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1042,6 +1312,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1060,6 +1335,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1078,6 +1357,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1096,6 +1379,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1114,6 +1401,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1132,6 +1423,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1150,6 +1445,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1168,6 +1467,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1186,6 +1489,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1204,6 +1511,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1222,6 +1533,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1240,6 +1555,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1258,6 +1577,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1276,6 +1599,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1294,6 +1621,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1312,6 +1643,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1330,6 +1665,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1348,6 +1687,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1366,6 +1709,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1384,6 +1731,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1402,6 +1753,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1420,6 +1775,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1438,6 +1797,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1456,6 +1819,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1474,6 +1841,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1492,6 +1863,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1510,6 +1885,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1528,6 +1907,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1546,6 +1929,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1564,6 +1951,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1582,6 +1973,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1600,6 +1995,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1618,6 +2017,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1636,6 +2039,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1654,6 +2061,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1672,6 +2083,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1690,6 +2105,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1708,6 +2127,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1726,6 +2149,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1744,6 +2171,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1762,6 +2194,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1780,6 +2216,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1798,6 +2238,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1816,6 +2260,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1834,6 +2282,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1852,6 +2304,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1870,6 +2326,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1888,6 +2348,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1906,6 +2370,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1924,6 +2392,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1942,6 +2414,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1960,6 +2436,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1978,6 +2458,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -1996,6 +2480,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2014,6 +2502,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2032,6 +2524,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2050,6 +2546,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2068,6 +2568,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2086,6 +2590,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2104,6 +2612,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2122,6 +2634,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2140,6 +2656,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2158,6 +2678,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2176,6 +2700,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2194,6 +2722,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2212,6 +2744,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2230,6 +2766,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2248,6 +2788,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2266,6 +2810,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2284,6 +2832,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2302,6 +2854,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2320,6 +2876,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2338,6 +2898,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2356,6 +2920,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2374,6 +2942,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2392,6 +2964,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2410,6 +2986,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2428,6 +3008,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2446,6 +3030,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2464,6 +3052,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2482,6 +3074,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2500,6 +3096,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2518,6 +3118,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2536,6 +3140,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2554,6 +3162,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2572,6 +3184,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2590,6 +3206,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2608,6 +3228,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2626,6 +3250,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2644,6 +3272,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2662,6 +3294,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2680,6 +3316,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2698,6 +3338,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2716,6 +3360,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2734,6 +3382,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2752,6 +3404,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2770,6 +3426,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2788,6 +3448,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2806,6 +3470,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2824,6 +3492,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2842,6 +3514,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2860,6 +3536,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2878,6 +3558,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2896,6 +3580,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2914,6 +3602,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2932,6 +3624,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2950,6 +3646,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2968,6 +3668,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -2986,6 +3690,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3004,6 +3712,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3022,6 +3734,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3040,6 +3756,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3058,6 +3778,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3076,6 +3800,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3094,6 +3822,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3112,6 +3844,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3130,6 +3866,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3148,6 +3888,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3166,6 +3910,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3184,6 +3932,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3202,6 +3954,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3220,6 +3976,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3238,6 +3998,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3256,6 +4020,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3274,6 +4042,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3292,6 +4064,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3310,6 +4086,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3328,6 +4108,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3346,6 +4130,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3364,6 +4152,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3382,6 +4174,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3400,6 +4197,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3418,6 +4220,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3436,6 +4242,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3454,6 +4264,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3472,6 +4286,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3490,6 +4308,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3508,6 +4330,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3526,6 +4352,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3544,6 +4374,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3562,6 +4397,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3580,6 +4420,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3598,6 +4442,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3616,6 +4464,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3634,6 +4486,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3652,6 +4508,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3670,6 +4530,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3688,6 +4553,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3706,6 +4575,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3724,6 +4598,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3742,6 +4620,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3760,6 +4642,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3778,6 +4664,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3796,6 +4686,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3814,6 +4708,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3832,6 +4730,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3850,6 +4752,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3868,6 +4774,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3886,6 +4797,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3904,6 +4819,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3922,6 +4842,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3940,6 +4865,11 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-v1.0",
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3958,6 +4888,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-v1.0",
+        "public_gt-mitochondria-v6"
       ]
     },
     {
@@ -3976,6 +4910,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
       ]
     },
     {
@@ -3994,6 +4932,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
       ]
     },
     {
@@ -4012,6 +4954,182 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
+      ]
+    },
+    {
+      "name": "em-drosophila-flyem-hemibrain/crop-004_aL_R_x16000_y28000_z6000",
+      "shape": [
+        1000,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        8.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
+      ]
+    },
+    {
+      "name": "em-drosophila-flyem-hemibrain/crop-005_NO_x26000_y22000_z24000",
+      "shape": [
+        1000,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        8.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
+      ]
+    },
+    {
+      "name": "em-drosophila-flyem-hemibrain/crop-006_CA_R_x12000_y12000_z11000",
+      "shape": [
+        1000,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        8.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
+      ]
+    },
+    {
+      "name": "em-drosophila-flyem-hemibrain/crop-007_PB_x22000_y14000_z15000",
+      "shape": [
+        1000,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        8.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
+      ]
+    },
+    {
+      "name": "em-drosophila-flyem-hemibrain/crop-008_gL_R_x21000_y32000_z19000",
+      "shape": [
+        1000,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        8.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "x",
+        "y",
+        "z"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-hemibrain-v1.2",
+        "proofread-cell-hemibrain-v1.2"
+      ]
+    },
+    {
+      "name": "em-greenmonkey-CellMap-jrc-cos7-1a/crop-001_fullvol_tissuecrop",
+      "shape": [
+        1813,
+        2931,
+        6506
+      ],
+      "voxelsize": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop234",
+        "manual_gt-all_organelles-crop236",
+        "manual_gt-all_organelles-crop237",
+        "manual_gt-all_organelles-crop239",
+        "manual_gt-all_organelles-crop243",
+        "manual_gt-all_organelles-crop248",
+        "manual_gt-all_organelles-crop252",
+        "manual_gt-all_organelles-crop254",
+        "manual_gt-all_organelles-crop256",
+        "manual_gt-all_organelles-crop257",
+        "manual_gt-all_organelles-crop292"
+      ]
+    },
+    {
+      "name": "em-greenmonkey-CellMap-jrc-cos7-1b/crop-001_fullvol_tissuecrop",
+      "shape": [
+        1117,
+        3638,
+        17728
+      ],
+      "voxelsize": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop235",
+        "manual_gt-all_organelles-crop238",
+        "manual_gt-all_organelles-crop240",
+        "manual_gt-all_organelles-crop241",
+        "manual_gt-all_organelles-crop242",
+        "manual_gt-all_organelles-crop245",
+        "manual_gt-all_organelles-crop249",
+        "manual_gt-all_organelles-crop255",
+        "manual_gt-all_organelles-crop258",
+        "manual_gt-all_organelles-crop259",
+        "manual_gt-all_organelles-crop291"
       ]
     },
     {
@@ -4030,6 +5148,34 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop1",
+        "manual_gt-all_organelles-crop113",
+        "manual_gt-all_organelles-crop13",
+        "manual_gt-all_organelles-crop14",
+        "manual_gt-all_organelles-crop15",
+        "manual_gt-all_organelles-crop155",
+        "manual_gt-all_organelles-crop16",
+        "manual_gt-all_organelles-crop18",
+        "manual_gt-all_organelles-crop19",
+        "manual_gt-all_organelles-crop23",
+        "manual_gt-all_organelles-crop28",
+        "manual_gt-all_organelles-crop3",
+        "manual_gt-all_organelles-crop4",
+        "manual_gt-all_organelles-crop54",
+        "manual_gt-all_organelles-crop55",
+        "manual_gt-all_organelles-crop56",
+        "manual_gt-all_organelles-crop57",
+        "manual_gt-all_organelles-crop58",
+        "manual_gt-all_organelles-crop59",
+        "manual_gt-all_organelles-crop6",
+        "manual_gt-all_organelles-crop7",
+        "manual_gt-all_organelles-crop8",
+        "manual_gt-all_organelles-crop9",
+        "manual_gt-all_organelles-crop94",
+        "manual_gt-all_organelles-crop95",
+        "manual_gt-all_organelles-crop96"
       ]
     },
     {
@@ -4048,6 +5194,26 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop100",
+        "manual_gt-all_organelles-crop101",
+        "manual_gt-all_organelles-crop111",
+        "manual_gt-all_organelles-crop181",
+        "manual_gt-all_organelles-crop27",
+        "manual_gt-all_organelles-crop33",
+        "manual_gt-all_organelles-crop34",
+        "manual_gt-all_organelles-crop50",
+        "manual_gt-all_organelles-crop51",
+        "manual_gt-all_organelles-crop60",
+        "manual_gt-all_organelles-crop61",
+        "manual_gt-all_organelles-crop62",
+        "manual_gt-all_organelles-crop63",
+        "manual_gt-all_organelles-crop64",
+        "manual_gt-all_organelles-crop65",
+        "manual_gt-all_organelles-crop85",
+        "manual_gt-all_organelles-crop86",
+        "manual_gt-all_organelles-crop87"
       ]
     },
     {
@@ -4066,6 +5232,28 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop107",
+        "manual_gt-all_organelles-crop112",
+        "manual_gt-all_organelles-crop126",
+        "manual_gt-all_organelles-crop180",
+        "manual_gt-all_organelles-crop182",
+        "manual_gt-all_organelles-crop35",
+        "manual_gt-all_organelles-crop36",
+        "manual_gt-all_organelles-crop37",
+        "manual_gt-all_organelles-crop38",
+        "manual_gt-all_organelles-crop43",
+        "manual_gt-all_organelles-crop47",
+        "manual_gt-all_organelles-crop66",
+        "manual_gt-all_organelles-crop67",
+        "manual_gt-all_organelles-crop68",
+        "manual_gt-all_organelles-crop69",
+        "manual_gt-all_organelles-crop70",
+        "manual_gt-all_organelles-crop71",
+        "manual_gt-all_organelles-crop91",
+        "manual_gt-all_organelles-crop92",
+        "manual_gt-all_organelles-crop93"
       ]
     },
     {
@@ -4084,6 +5272,26 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop109",
+        "manual_gt-all_organelles-crop110",
+        "manual_gt-all_organelles-crop31",
+        "manual_gt-all_organelles-crop32",
+        "manual_gt-all_organelles-crop39",
+        "manual_gt-all_organelles-crop40",
+        "manual_gt-all_organelles-crop42",
+        "manual_gt-all_organelles-crop48",
+        "manual_gt-all_organelles-crop49",
+        "manual_gt-all_organelles-crop72",
+        "manual_gt-all_organelles-crop73",
+        "manual_gt-all_organelles-crop74",
+        "manual_gt-all_organelles-crop75",
+        "manual_gt-all_organelles-crop76",
+        "manual_gt-all_organelles-crop77",
+        "manual_gt-all_organelles-crop88",
+        "manual_gt-all_organelles-crop89",
+        "manual_gt-all_organelles-crop90"
       ]
     },
     {
@@ -4102,6 +5310,20 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop20",
+        "manual_gt-all_organelles-crop22",
+        "manual_gt-all_organelles-crop25",
+        "manual_gt-all_organelles-crop26",
+        "manual_gt-all_organelles-crop80",
+        "manual_gt-all_organelles-crop81",
+        "manual_gt-all_organelles-crop82",
+        "manual_gt-all_organelles-crop83",
+        "manual_gt-all_organelles-crop84",
+        "manual_gt-all_organelles-crop97",
+        "manual_gt-all_organelles-crop98",
+        "manual_gt-all_organelles-crop99"
       ]
     },
     {
@@ -4120,6 +5342,26 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop186",
+        "manual_gt-all_organelles-crop187",
+        "manual_gt-all_organelles-crop188",
+        "manual_gt-all_organelles-crop189",
+        "manual_gt-all_organelles-crop201",
+        "manual_gt-all_organelles-crop202",
+        "manual_gt-all_organelles-crop203",
+        "manual_gt-all_organelles-crop206",
+        "manual_gt-all_organelles-crop208",
+        "manual_gt-all_organelles-crop209",
+        "manual_gt-all_organelles-crop210",
+        "manual_gt-all_organelles-crop211",
+        "manual_gt-all_organelles-crop212",
+        "manual_gt-all_organelles-crop213",
+        "manual_gt-all_organelles-crop216",
+        "manual_gt-all_organelles-crop217",
+        "manual_gt-all_organelles-crop218",
+        "manual_gt-all_organelles-crop219"
       ]
     },
     {
@@ -4138,6 +5380,26 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop190",
+        "manual_gt-all_organelles-crop191",
+        "manual_gt-all_organelles-crop192",
+        "manual_gt-all_organelles-crop193",
+        "manual_gt-all_organelles-crop195",
+        "manual_gt-all_organelles-crop196",
+        "manual_gt-all_organelles-crop197",
+        "manual_gt-all_organelles-crop198",
+        "manual_gt-all_organelles-crop199",
+        "manual_gt-all_organelles-crop200",
+        "manual_gt-all_organelles-crop214",
+        "manual_gt-all_organelles-crop220",
+        "manual_gt-all_organelles-crop222",
+        "manual_gt-all_organelles-crop224",
+        "manual_gt-all_organelles-crop225",
+        "manual_gt-all_organelles-crop226",
+        "manual_gt-all_organelles-crop227",
+        "manual_gt-all_organelles-crop228"
       ]
     },
     {
@@ -4156,10 +5418,98 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cells-c2_seg",
+        "auto_pred-cells-c3_seg"
       ]
     },
     {
-      "name": "em-human-MitoEM-temporal-lobe/crop-001_mitoEM-H",
+      "name": "em-human-MitoVerse-conrad23-hela-cell/crop-001_hela_cell",
+      "shape": [
+        256,
+        256,
+        256
+      ],
+      "voxelsize": [
+        15.0,
+        15.0,
+        15.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-human-MitoVerse-guay21-platelet/crop-001_vol0",
+      "shape": [
+        50,
+        800,
+        800
+      ],
+      "voxelsize": [
+        50.0,
+        10.0,
+        10.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-human-MitoVerse-guay21-platelet/crop-002_vol1",
+      "shape": [
+        24,
+        800,
+        800
+      ],
+      "voxelsize": [
+        50.0,
+        10.0,
+        10.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-human-MitoVerse-guay21-platelet/crop-003_vol2",
+      "shape": [
+        121,
+        609,
+        400
+      ],
+      "voxelsize": [
+        50.0,
+        10.0,
+        10.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-human-MitoVerse-wei20-temporal-lobe/crop-001_mitoEM-H",
       "shape": [
         500,
         4096,
@@ -4174,6 +5524,219 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-001_z0000_y0000_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-002_z0000_y0000_x3584",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-003_z0000_y3584_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-004_z0000_y3584_x3584",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-005_z0475_y1792_x1792",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-006_z0950_y0000_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-007_z0950_y0000_x3584",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-008_z0950_y3584_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-axonem-cortex/crop-009_z0950_y3584_x3584",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-human-PyTC-bvem-temporallobe/crop-001_temporallobe",
+      "shape": [
+        661,
+        7752,
+        13500
+      ],
+      "voxelsize": [
+        264.0,
+        256.0,
+        256.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-blood_vessel-bvem"
       ]
     },
     {
@@ -4192,6 +5755,14 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-zhang2025",
+        "public_gt-vesicle-CV",
+        "public_gt-vesicle-DCV",
+        "public_gt-vesicle-DCVH",
+        "public_gt-vesicle-SCV",
+        "public_gt-vesicle-SDCV"
       ]
     },
     {
@@ -4210,6 +5781,14 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-zhang2025",
+        "public_gt-vesicle-CV",
+        "public_gt-vesicle-DCV",
+        "public_gt-vesicle-DCVH",
+        "public_gt-vesicle-SCV",
+        "public_gt-vesicle-SDCV"
       ]
     },
     {
@@ -4228,6 +5807,35 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-zhang2025",
+        "public_gt-vesicle-CV",
+        "public_gt-vesicle-DCV",
+        "public_gt-vesicle-DCVH",
+        "public_gt-vesicle-SCV",
+        "public_gt-vesicle-SDCV"
+      ]
+    },
+    {
+      "name": "em-macaque-PyTC-bvem-stg/crop-001_stg",
+      "shape": [
+        443,
+        1230,
+        951
+      ],
+      "voxelsize": [
+        240.0,
+        176.0,
+        176.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-blood_vessel-bvem"
       ]
     },
     {
@@ -4282,6 +5890,13 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop116",
+        "manual_gt-all_organelles-crop117",
+        "manual_gt-all_organelles-crop118",
+        "manual_gt-all_organelles-crop119",
+        "manual_gt-all_organelles-crop130"
       ]
     },
     {
@@ -4300,6 +5915,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop423",
+        "manual_gt-all_organelles-crop452"
       ]
     },
     {
@@ -4318,6 +5937,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop472"
       ]
     },
     {
@@ -4336,6 +5958,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop421"
       ]
     },
     {
@@ -4354,6 +5979,31 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop129",
+        "manual_gt-all_organelles-crop140",
+        "manual_gt-all_organelles-crop141",
+        "manual_gt-all_organelles-crop146",
+        "manual_gt-all_organelles-crop147",
+        "manual_gt-all_organelles-crop148",
+        "manual_gt-all_organelles-crop149",
+        "manual_gt-all_organelles-crop156",
+        "manual_gt-all_organelles-crop158",
+        "manual_gt-all_organelles-crop159",
+        "manual_gt-all_organelles-crop160",
+        "manual_gt-all_organelles-crop161",
+        "manual_gt-all_organelles-crop162",
+        "manual_gt-all_organelles-crop163",
+        "manual_gt-all_organelles-crop164",
+        "manual_gt-all_organelles-crop165",
+        "manual_gt-all_organelles-crop166",
+        "manual_gt-all_organelles-crop179",
+        "manual_gt-all_organelles-crop184",
+        "manual_gt-all_organelles-crop221",
+        "manual_gt-all_organelles-crop229",
+        "manual_gt-all_organelles-crop230",
+        "manual_gt-all_organelles-crop231"
       ]
     },
     {
@@ -4372,6 +6022,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop473"
       ]
     },
     {
@@ -4390,6 +6043,50 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop266",
+        "manual_gt-all_organelles-crop267",
+        "manual_gt-all_organelles-crop268",
+        "manual_gt-all_organelles-crop269",
+        "manual_gt-all_organelles-crop270",
+        "manual_gt-all_organelles-crop272",
+        "manual_gt-all_organelles-crop273",
+        "manual_gt-all_organelles-crop274",
+        "manual_gt-all_organelles-crop275",
+        "manual_gt-all_organelles-crop276",
+        "manual_gt-all_organelles-crop277",
+        "manual_gt-all_organelles-crop278",
+        "manual_gt-all_organelles-crop279",
+        "manual_gt-all_organelles-crop280",
+        "manual_gt-all_organelles-crop282",
+        "manual_gt-all_organelles-crop289",
+        "manual_gt-all_organelles-crop298",
+        "manual_gt-all_organelles-crop313",
+        "manual_gt-all_organelles-crop319",
+        "manual_gt-all_organelles-crop320",
+        "manual_gt-all_organelles-crop321",
+        "manual_gt-all_organelles-crop322",
+        "manual_gt-all_organelles-crop323",
+        "manual_gt-all_organelles-crop324",
+        "manual_gt-all_organelles-crop325",
+        "manual_gt-all_organelles-crop326",
+        "manual_gt-all_organelles-crop329",
+        "manual_gt-all_organelles-crop336",
+        "manual_gt-all_organelles-crop337",
+        "manual_gt-all_organelles-crop345",
+        "manual_gt-all_organelles-crop346",
+        "manual_gt-all_organelles-crop347",
+        "manual_gt-all_organelles-crop348",
+        "manual_gt-all_organelles-crop349",
+        "manual_gt-all_organelles-crop351",
+        "manual_gt-all_organelles-crop377",
+        "manual_gt-all_organelles-crop386",
+        "manual_gt-all_organelles-crop407",
+        "manual_gt-all_organelles-crop410",
+        "manual_gt-all_organelles-crop411",
+        "manual_gt-all_organelles-crop412",
+        "manual_gt-all_organelles-crop413"
       ]
     },
     {
@@ -4408,6 +6105,27 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop333",
+        "manual_gt-all_organelles-crop340",
+        "manual_gt-all_organelles-crop341",
+        "manual_gt-all_organelles-crop342",
+        "manual_gt-all_organelles-crop353",
+        "manual_gt-all_organelles-crop354",
+        "manual_gt-all_organelles-crop355",
+        "manual_gt-all_organelles-crop356",
+        "manual_gt-all_organelles-crop357",
+        "manual_gt-all_organelles-crop358",
+        "manual_gt-all_organelles-crop362",
+        "manual_gt-all_organelles-crop366",
+        "manual_gt-all_organelles-crop367",
+        "manual_gt-all_organelles-crop368",
+        "manual_gt-all_organelles-crop369",
+        "manual_gt-all_organelles-crop370",
+        "manual_gt-all_organelles-crop376",
+        "manual_gt-all_organelles-crop387",
+        "manual_gt-all_organelles-crop408"
       ]
     },
     {
@@ -4426,6 +6144,32 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop124",
+        "manual_gt-all_organelles-crop125",
+        "manual_gt-all_organelles-crop131",
+        "manual_gt-all_organelles-crop132",
+        "manual_gt-all_organelles-crop133",
+        "manual_gt-all_organelles-crop135",
+        "manual_gt-all_organelles-crop136",
+        "manual_gt-all_organelles-crop137",
+        "manual_gt-all_organelles-crop138",
+        "manual_gt-all_organelles-crop139",
+        "manual_gt-all_organelles-crop142",
+        "manual_gt-all_organelles-crop143",
+        "manual_gt-all_organelles-crop144",
+        "manual_gt-all_organelles-crop145",
+        "manual_gt-all_organelles-crop150",
+        "manual_gt-all_organelles-crop151",
+        "manual_gt-all_organelles-crop157",
+        "manual_gt-all_organelles-crop171",
+        "manual_gt-all_organelles-crop172",
+        "manual_gt-all_organelles-crop175",
+        "manual_gt-all_organelles-crop177",
+        "manual_gt-all_organelles-crop183",
+        "manual_gt-all_organelles-crop416",
+        "manual_gt-all_organelles-crop417"
       ]
     },
     {
@@ -4444,6 +6188,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop115"
       ]
     },
     {
@@ -4462,6 +6209,11 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "auto_pred-cell-supervoxel",
+        "proofread-cell-agglom",
+        "proofread-cell-cellshape-v20260528"
       ]
     },
     {
@@ -4480,6 +6232,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-kasthuri15"
       ]
     },
     {
@@ -4498,6 +6253,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-kasthuri15"
       ]
     },
     {
@@ -4516,6 +6274,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-kasthuri15"
       ]
     },
     {
@@ -4534,6 +6295,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-kasthuri15"
       ]
     },
     {
@@ -4552,6 +6316,2007 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg_m1300"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-conrad23-glycolytic-muscle/crop-001_glycolytic_muscle",
+      "shape": [
+        302,
+        383,
+        765
+      ],
+      "voxelsize": [
+        18.0,
+        18.0,
+        18.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-conrad23-salivary-gland/crop-001_salivary_gland",
+      "shape": [
+        1260,
+        1081,
+        1200
+      ],
+      "voxelsize": [
+        15.0,
+        15.0,
+        15.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-haberl18-brain/crop-001_vol0",
+      "shape": [
+        20,
+        256,
+        256
+      ],
+      "voxelsize": [
+        24.0,
+        10.0,
+        10.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-haberl18-brain/crop-002_vol1",
+      "shape": [
+        10,
+        256,
+        256
+      ],
+      "voxelsize": [
+        24.0,
+        10.0,
+        10.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-han24-cerebellum-mossy-fiber/crop-001_neg0",
+      "shape": [
+        265,
+        1204,
+        1204
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-han24-cerebellum-mossy-fiber/crop-002_neg1",
+      "shape": [
+        374,
+        1110,
+        1056
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-han24-cerebellum-mossy-fiber/crop-003_pos0",
+      "shape": [
+        362,
+        1756,
+        1650
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-han24-cerebellum-mossy-fiber/crop-004_pos1",
+      "shape": [
+        371,
+        1640,
+        1632
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-han24-cerebellum-mossy-fiber/crop-005_pos2",
+      "shape": [
+        281,
+        1343,
+        1243
+      ],
+      "voxelsize": [
+        30.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-jiang25-brainstem/crop-001_vol0",
+      "shape": [
+        100,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        40.0,
+        15.0,
+        15.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-jiang25-brainstem/crop-002_vol1",
+      "shape": [
+        100,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        40.0,
+        15.0,
+        15.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-jiang25-brainstem/crop-003_vol2",
+      "shape": [
+        100,
+        1000,
+        1000
+      ],
+      "voxelsize": [
+        40.0,
+        15.0,
+        15.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-001_highglucose_cell1",
+      "shape": [
+        1097,
+        699,
+        760
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-002_highglucose_cell2",
+      "shape": [
+        1043,
+        606,
+        870
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-003_highglucose_cell3",
+      "shape": [
+        1023,
+        676,
+        845
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-004_highglucose_cell4",
+      "shape": [
+        1022,
+        545,
+        1082
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-005_lowglucose_cell1",
+      "shape": [
+        906,
+        694,
+        725
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-006_lowglucose_cell2",
+      "shape": [
+        853,
+        758,
+        958
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-muller21-pancreas/crop-007_lowglucose_cell3",
+      "shape": [
+        912,
+        705,
+        880
+      ],
+      "voxelsize": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-001_microns1_vol0",
+      "shape": [
+        50,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-002_microns1_vol1",
+      "shape": [
+        50,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-003_microns1_vol2",
+      "shape": [
+        50,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-004_microns1_vol3",
+      "shape": [
+        50,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-005_microns1_vol4",
+      "shape": [
+        50,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-006_pinky_stitched_vol19-vol34",
+      "shape": [
+        100,
+        2048,
+        2048
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-007_pinky_stitched_vol19-vol34_realigned",
+      "shape": [
+        132,
+        2432,
+        2432
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-008_pinky_stitched_vol40-vol41",
+      "shape": [
+        102,
+        1536,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-009_pinky_vol101",
+      "shape": [
+        48,
+        1462,
+        1170
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-010_pinky_vol102",
+      "shape": [
+        53,
+        1002,
+        868
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-011_pinky_vol103",
+      "shape": [
+        48,
+        912,
+        862
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-012_pinky_vol104",
+      "shape": [
+        58,
+        1388,
+        1112
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-013_pinky_vol401",
+      "shape": [
+        132,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-014_pinky_vol501",
+      "shape": [
+        144,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-015_pinky_vol502",
+      "shape": [
+        132,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-turner22-pinky-v1/crop-016_pinky_vol503",
+      "shape": [
+        132,
+        1024,
+        1024
+      ],
+      "voxelsize": [
+        40.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-MitoVerse-xiao18-auditory-cortex/crop-001_vol0",
+      "shape": [
+        31,
+        2104,
+        2156
+      ],
+      "voxelsize": [
+        50.0,
+        8.0,
+        8.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-mouse-PYR-ca3-hippocampus/crop-001_ca3",
+      "shape": [
+        2048,
+        10000,
+        10000
+      ],
+      "voxelsize": [
+        45.0,
+        18.0,
+        18.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-instance",
+        "proofread-cell-seg_m357"
+      ]
+    },
+    {
+      "name": "em-mouse-PYR-ca3-hippocampus/crop-002_ca3",
+      "shape": [
+        2048,
+        10000,
+        10000
+      ],
+      "voxelsize": [
+        45.0,
+        18.0,
+        18.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-instance",
+        "proofread-cell-seg_m357"
+      ]
+    },
+    {
+      "name": "em-mouse-PYR-ca3-hippocampus/crop-003_ca3",
+      "shape": [
+        2048,
+        10000,
+        10000
+      ],
+      "voxelsize": [
+        45.0,
+        18.0,
+        18.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "auto_pred-nucleus-instance",
+        "proofread-cell-seg_m357"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-axonem-cortex/crop-001_z0000_y3584_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        7.0,
+        7.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-axonem-cortex/crop-002_z0350_y1792_x1792",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        7.0,
+        7.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-axonem-cortex/crop-003_z0700_y0000_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        7.0,
+        7.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-axonem-cortex/crop-004_z0700_y0000_x3584",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        7.0,
+        7.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-axonem-cortex/crop-005_z0700_y3584_x0000",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        7.0,
+        7.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-axonem-cortex/crop-006_z0700_y3584_x3584",
+      "shape": [
+        90,
+        1536,
+        1536
+      ],
+      "voxelsize": [
+        40.0,
+        7.0,
+        7.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-neurite-axonem"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-001_az-test-chemfix-20171006_05_MS",
+      "shape": [
+        84,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-002_ves-test-chemfix-tomogram-004",
+      "shape": [
+        84,
+        446,
+        290
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-003_az-train-chemfix-20171006_03_MS",
+      "shape": [
+        93,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-004_az-train-chemfix-20171006_2_2_MS",
+      "shape": [
+        88,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-005_az-train-chemfix-20171006_2_3_MS",
+      "shape": [
+        80,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-006_az-train-chemfix-20171006_3_2_MS",
+      "shape": [
+        85,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-007_az-train-chemfix-20171013_01_MS",
+      "shape": [
+        85,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-008_az-train-chemfix-20171013_1.2_MS",
+      "shape": [
+        79,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-009_az-train-chemfix-20171113_01_MS",
+      "shape": [
+        95,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-010_az-train-chemfix-20171113_02_MS",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-011_az-train-chemfix-20171113_05_MS",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-012_az-train-chemfix-20171113_06_MS",
+      "shape": [
+        95,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-013_az-train-chemfix-20171113_07_MS",
+      "shape": [
+        95,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-014_az-train-chemfix-20171113_3.2_MS",
+      "shape": [
+        88,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-015_az-train-chemfix-20180305_02_MS",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-016_az-train-chemfix-20180305_03_MS",
+      "shape": [
+        96,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-017_az-train-chemfix-20180305_05_MS",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-018_az-train-chemfix-20180305_06_MS",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-019_az-train-chemfix-20180305_07_MS",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-020_az-train-chemfix-20180305_10_MS",
+      "shape": [
+        100,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-021_az-train-tem-20190524_09204_F4_SC_01_SP",
+      "shape": [
+        100,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-022_az-train-tem-20190524_09204_F4_SC_02_SP",
+      "shape": [
+        102,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-023_az-train-tem-20190524_09204_F4_SC_03_SP",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-024_az-train-tem-20190524_09204_F4_SC_04_SP",
+      "shape": [
+        98,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-025_az-train-tem-20190524_09204_F4_SC_05_SP",
+      "shape": [
+        101,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-026_az-train-tem-20190524_09204_F4_SC_06_SP",
+      "shape": [
+        93,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-active_zone-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-027_ves-train-chemfix-tomogram-002",
+      "shape": [
+        93,
+        446,
+        419
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-028_ves-train-chemfix-tomogram-005",
+      "shape": [
+        88,
+        370,
+        375
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-029_ves-train-chemfix-tomogram-006",
+      "shape": [
+        78,
+        446,
+        215
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-030_ves-train-chemfix-tomogram-007",
+      "shape": [
+        85,
+        359,
+        304
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-031_ves-train-chemfix-tomogram-008",
+      "shape": [
+        85,
+        407,
+        283
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-032_ves-train-chemfix-tomogram-011",
+      "shape": [
+        79,
+        446,
+        312
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-033_ves-train-chemfix-tomogram-016",
+      "shape": [
+        95,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-034_ves-train-chemfix-tomogram-019",
+      "shape": [
+        93,
+        446,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-035_ves-train-chemfix-tomogram-020",
+      "shape": [
+        98,
+        444,
+        337
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-036_ves-train-chemfix-tomogram-023",
+      "shape": [
+        88,
+        431,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-037_ves-train-chemfix-tomogram-024",
+      "shape": [
+        103,
+        446,
+        425
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-038_ves-train-chemfix-tomogram-025",
+      "shape": [
+        98,
+        352,
+        238
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-039_ves-train-chemfix-tomogram-026",
+      "shape": [
+        96,
+        410,
+        262
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-040_ves-train-chemfix-tomogram-027",
+      "shape": [
+        100,
+        446,
+        300
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-041_ves-train-chemfix-tomogram-028",
+      "shape": [
+        98,
+        441,
+        212
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-042_ves-train-chemfix-tomogram-029",
+      "shape": [
+        98,
+        324,
+        245
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-043_ves-train-chemfix-tomogram-030",
+      "shape": [
+        98,
+        446,
+        364
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-044_ves-train-chemfix-tomogram-031",
+      "shape": [
+        98,
+        321,
+        446
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-045_ves-train-chemfix-tomogram-032",
+      "shape": [
+        93,
+        446,
+        318
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-046_ves-train-chemfix-tomogram-033",
+      "shape": [
+        91,
+        446,
+        382
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-047_ves-train-tem-tomogram-000",
+      "shape": [
+        101,
+        434,
+        250
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-048_ves-train-tem-tomogram-001",
+      "shape": [
+        100,
+        397,
+        299
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-049_ves-train-tem-tomogram-002",
+      "shape": [
+        97,
+        389,
+        303
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
+      ]
+    },
+    {
+      "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-050_ves-train-tem-tomogram-003",
+      "shape": [
+        101,
+        411,
+        292
+      ],
+      "voxelsize": [
+        1.55,
+        1.55,
+        1.55
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-vesicle-synapsenet"
       ]
     },
     {
@@ -4570,6 +8335,15 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-lysosome-binary",
+        "public_gt-mitochondria-binary",
+        "public_gt-mitochondria-branched",
+        "public_gt-mitochondria-contacting",
+        "public_gt-mitochondria-instance",
+        "public_gt-vesicle-fusiform_binary",
+        "public_gt-vesicle-fusiform_instance"
       ]
     },
     {
@@ -4588,6 +8362,14 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-golgi_apparatus-approximate",
+        "public_gt-lysosome-binary",
+        "public_gt-mitochondria-binary",
+        "public_gt-mitochondria-branched",
+        "public_gt-mitochondria-contacting",
+        "public_gt-mitochondria-instance"
       ]
     },
     {
@@ -4606,6 +8388,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-golgi_apparatus-approximate",
+        "public_gt-golgi_apparatus-precise"
       ]
     },
     {
@@ -4660,6 +8446,16 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-golgi_apparatus-approximate",
+        "public_gt-lysosome-binary",
+        "public_gt-mitochondria-binary",
+        "public_gt-mitochondria-branched",
+        "public_gt-mitochondria-contacting",
+        "public_gt-mitochondria-instance",
+        "public_gt-vesicle-fusiform_binary",
+        "public_gt-vesicle-fusiform_instance"
       ]
     },
     {
@@ -4678,6 +8474,15 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-lysosome-binary",
+        "public_gt-mitochondria-binary",
+        "public_gt-mitochondria-branched",
+        "public_gt-mitochondria-contacting",
+        "public_gt-mitochondria-instance",
+        "public_gt-vesicle-fusiform_binary",
+        "public_gt-vesicle-fusiform_instance"
       ]
     },
     {
@@ -4696,10 +8501,21 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-golgi_apparatus-approximate",
+        "public_gt-golgi_apparatus-precise",
+        "public_gt-lysosome-binary",
+        "public_gt-mitochondria-binary",
+        "public_gt-mitochondria-branched",
+        "public_gt-mitochondria-contacting",
+        "public_gt-mitochondria-instance",
+        "public_gt-vesicle-fusiform_binary",
+        "public_gt-vesicle-fusiform_instance"
       ]
     },
     {
-      "name": "em-rat-MitoEM-visual-cortex/crop-001_mitoEM-R",
+      "name": "em-rat-MitoVerse-wei20-visual-cortex/crop-001_mitoEM-R",
       "shape": [
         500,
         4096,
@@ -4714,6 +8530,53 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "proofread-mitochondria-instance"
+      ]
+    },
+    {
+      "name": "em-rat-lucchi-hippocampus/crop-001_train",
+      "shape": [
+        165,
+        768,
+        1024
+      ],
+      "voxelsize": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-lucchi",
+        "public_gt-mitochondria-lucchi_pp"
+      ]
+    },
+    {
+      "name": "em-rat-lucchi-hippocampus/crop-002_test",
+      "shape": [
+        165,
+        768,
+        1024
+      ],
+      "voxelsize": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-mitochondria-lucchi",
+        "public_gt-mitochondria-lucchi_pp"
       ]
     },
     {
@@ -4771,42 +8634,6 @@
       ]
     },
     {
-      "name": "em-various-CellMap-jrc-cos7-1a/crop-001_fullvol_tissuecrop",
-      "shape": [
-        1813,
-        2931,
-        6506
-      ],
-      "voxelsize": [
-        2.0,
-        2.0,
-        2.0
-      ],
-      "axes": [
-        "z",
-        "y",
-        "x"
-      ]
-    },
-    {
-      "name": "em-various-CellMap-jrc-cos7-1b/crop-001_fullvol_tissuecrop",
-      "shape": [
-        1117,
-        3638,
-        17728
-      ],
-      "voxelsize": [
-        2.0,
-        2.0,
-        2.0
-      ],
-      "axes": [
-        "z",
-        "y",
-        "x"
-      ]
-    },
-    {
       "name": "em-zebrafinch-FFN-j0126-areaX/crop-001_z255-383_y1407-1663_x1535-1791",
       "shape": [
         128,
@@ -4822,6 +8649,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4840,6 +8670,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4858,6 +8691,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4876,6 +8712,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4894,6 +8733,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4912,6 +8754,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4930,6 +8775,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4948,6 +8796,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4966,6 +8817,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -4984,6 +8838,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5002,6 +8859,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5020,6 +8880,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5038,6 +8901,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5056,6 +8922,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5074,6 +8943,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5092,6 +8964,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5110,6 +8985,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5128,6 +9006,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5146,6 +9027,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5164,6 +9048,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5182,6 +9069,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5200,6 +9090,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5218,6 +9111,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5236,6 +9132,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5254,6 +9153,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5272,6 +9174,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5290,6 +9195,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5308,6 +9216,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5326,6 +9237,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5344,6 +9258,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5362,6 +9279,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5380,6 +9300,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5398,6 +9321,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "public_gt-cell-neuron_ids"
       ]
     },
     {
@@ -5416,6 +9342,1146 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-all_organelles-crop378",
+        "manual_gt-all_organelles-crop379",
+        "manual_gt-all_organelles-crop380",
+        "manual_gt-all_organelles-crop381"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-001_z0000_y0576_x0768",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-002_z0000_y0640_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-003_z0000_y0640_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-004_z0000_y0704_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-005_z0000_y0768_x1024",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-006_z0064_y0384_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-007_z0064_y0448_x0960",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-008_z0064_y0512_x1024",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-009_z0064_y0576_x0640",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-010_z0064_y0704_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-011_z0064_y0768_x0512",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-012_z0064_y0832_x1152",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-013_z0064_y0896_x1088",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-014_z0064_y0960_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-015_z0064_y1024_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-016_z0128_y0384_x0768",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-017_z0128_y0384_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-018_z0128_y0448_x0768",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-019_z0128_y0640_x0256",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-020_z0128_y0640_x0704",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-021_z0128_y0640_x1088",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-022_z0128_y0704_x0320",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-023_z0128_y0704_x0704",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-024_z0128_y0704_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-025_z0128_y0832_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-026_z0192_y0384_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-027_z0192_y0384_x0960",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-028_z0192_y0448_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-029_z0192_y0512_x0704",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-030_z0192_y0640_x1408",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-031_z0192_y0704_x0512",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-032_z0192_y0704_x1472",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-033_z0192_y0704_x1728",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-034_z0192_y0768_x0512",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-035_z0192_y0960_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-036_z0192_y1088_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-037_z0256_y0384_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-038_z0256_y0384_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-039_z0256_y0448_x0960",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-040_z0256_y0640_x0704",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-041_z0256_y0640_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-042_z0256_y0640_x1088",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-043_z0256_y0704_x0512",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-044_z0256_y0768_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-045_z0256_y0768_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-046_z0256_y0768_x1024",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-047_z0256_y0832_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-048_z0256_y0896_x0768",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-049_z0256_y0960_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-050_z0256_y1088_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-051_z0320_y0448_x0832",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-052_z0320_y0640_x0896",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-053_z0320_y0704_x0640",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "em-zebrafish-PyTC-nucmm-brain/crop-054_z0320_y0704_x1088",
+      "shape": [
+        64,
+        64,
+        64
+      ],
+      "voxelsize": [
+        480.0,
+        512.0,
+        512.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
       ]
     },
     {
@@ -5434,6 +10500,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-seg231218",
+        "auto_pred-cell-seg241003agg"
       ]
     },
     {
@@ -5452,6 +10522,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-seg231218",
+        "auto_pred-cell-seg241003agg"
       ]
     },
     {
@@ -5470,6 +10544,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-seg231218",
+        "auto_pred-cell-seg241003agg"
       ]
     },
     {
@@ -5488,6 +10566,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5506,6 +10587,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5524,6 +10608,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-synapse"
       ]
     },
     {
@@ -5542,6 +10629,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-synapse"
       ]
     },
     {
@@ -5560,6 +10650,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5578,6 +10671,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5596,6 +10692,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5614,6 +10713,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5632,6 +10734,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-synapse"
       ]
     },
     {
@@ -5650,6 +10755,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5668,6 +10776,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5686,6 +10797,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-synapse"
       ]
     },
     {
@@ -5704,6 +10818,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg230927"
       ]
     },
     {
@@ -5722,6 +10839,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg230927"
       ]
     },
     {
@@ -5740,6 +10860,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg230927"
       ]
     },
     {
@@ -5758,6 +10881,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg230927"
       ]
     },
     {
@@ -5776,6 +10902,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg230927"
       ]
     },
     {
@@ -5794,6 +10923,45 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "proofread-cell-seg230927"
+      ]
+    },
+    {
+      "name": "exm-danionella-tavakolischulze-DID15/crop-001_3hr_40XW001",
+      "shape": [
+        950,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-danionella-tavakolischulze-DID15/crop-002_micro_3hr_40XW",
+      "shape": [
+        864,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -5831,6 +10999,12 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-BY_production_1",
+        "manual_gt-cell-CM_FlyLICONN",
+        "manual_gt-cell-Tiffany_Green",
+        "manual_gt-cell-combined"
       ]
     },
     {
@@ -7398,6 +12572,10 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-mitochondria-combined",
+        "manual_gt-mitochondria-crop001"
       ]
     },
     {
@@ -8928,6 +14106,90 @@
         "x",
         "y",
         "z"
+      ]
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-1-flybrain-synapse-2ch-20260624/crop-001_2ndgel_3C11_40XW_2c",
+      "shape": [
+        2,
+        232,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        1.0,
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "c",
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-1-flybrain-synapse-2ch-20260624/crop-002_2ndgel_3C11_40XW001_2c",
+      "shape": [
+        2,
+        212,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        1.0,
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "c",
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-1-flybrain-synapse-2ch-20260624/crop-003_2ndgel_3C11_40XW003_2c",
+      "shape": [
+        2,
+        129,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        1.0,
+        400.0,
+        58.03571428571429,
+        58.03571428571429
+      ],
+      "axes": [
+        "c",
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-drosophila-flyliconn-FlyID45-1-flybrain-synapse-2ch-20260624/crop-004_2ndgel_3C11_40XW005_2c",
+      "shape": [
+        2,
+        117,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        1.0,
+        400.0,
+        58.03571428571429,
+        58.03571428571429
+      ],
+      "axes": [
+        "c",
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -10998,6 +16260,12 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-snap_09042026",
+        "manual_gt-cell-snap_09142026",
+        "manual_gt-cell-snap_09182026",
+        "manual_gt-cell-snap_10022026"
       ]
     },
     {
@@ -11016,6 +16284,12 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-snap_09042026",
+        "manual_gt-cell-snap_09142026",
+        "manual_gt-cell-snap_09182026",
+        "manual_gt-cell-snap_10022026"
       ]
     },
     {
@@ -11034,6 +16308,11 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-snap_09042026",
+        "manual_gt-cell-snap_09142026",
+        "manual_gt-cell-snap_10022026"
       ]
     },
     {
@@ -11271,7 +16550,25 @@
       ]
     },
     {
-      "name": "exm-drosophila-nernlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol",
+      "name": "exm-drosophila-flyliconn-matt-phDye19-Gel2-OpticLobes-60x/crop-001_fullvol",
+      "shape": [
+        1001,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        300.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-drosophila-rubinlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol",
       "shape": [
         2293,
         2304,
@@ -11286,12 +16583,50 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-assessment_Cat",
+        "manual_gt-cell-assessment_Tiff"
+      ]
+    },
+    {
+      "name": "exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-001_16X_fullvol",
+      "shape": [
+        2872,
+        2072,
+        2070
+      ],
+      "voxelsize": [
+        53.45,
+        53.45,
+        53.45
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-002_30X_fullvol",
+      "shape": [
+        3277,
+        2081,
+        2055
+      ],
+      "voxelsize": [
+        53.45,
+        53.45,
+        53.45
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
       ]
     },
     {
       "name": "exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001",
-      "normalize_min": 301.0,
-      "normalize_max": 1130.0,
       "shape": [
         2304,
         2304,
@@ -11306,6 +16641,40 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "manual_gt-cell-final",
+        "manual_gt-cell-snap_04142026",
+        "manual_gt-cell-snap_04202026",
+        "manual_gt-cell-snap_04272026",
+        "manual_gt-cell-snap_05052026",
+        "manual_gt-cell-snap_05112026",
+        "manual_gt-cell-snap_05182026",
+        "manual_gt-cell-snap_06012026",
+        "manual_gt-cell-snap_06082026",
+        "manual_gt-cell-snap_06152026",
+        "manual_gt-cell-snap_06232026",
+        "manual_gt-cell-snap_07072026"
+      ],
+      "normalize_min": 301.0,
+      "normalize_max": 1130.0
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID108-cortex-spinningdisk/crop-001_CortexL3_32x_40XW003",
+      "shape": [
+        587,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
       ]
     },
     {
@@ -11324,6 +16693,9 @@
         "x",
         "y",
         "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-agglom-v20231128"
       ]
     },
     {
@@ -11483,6 +16855,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "proofread-cell-agglom-dense-v20240123",
+        "proofread-cell-agglom-v20240123"
       ]
     },
     {
@@ -11501,12 +16877,231 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-agglom-JJ-paintera",
+        "proofread-cell-agglom-dense-v20240123",
+        "proofread-cell-agglom-v20240123"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-001_S1_18x",
+      "shape": [
+        1849,
+        10118,
+        7542
+      ],
+      "voxelsize": [
+        1000.527872605095,
+        156.7350317,
+        156.98536480200002
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-002_S2_22x",
+      "shape": [
+        1746,
+        15093,
+        7397
+      ],
+      "voxelsize": [
+        1000.1388164777019,
+        156.961687958,
+        157.009659591
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-003_S3_28x",
+      "shape": [
+        2435,
+        18496,
+        6142
+      ],
+      "voxelsize": [
+        999.8442757579552,
+        157.022705189,
+        157.04831149199998
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-004_S4_32x",
+      "shape": [
+        2871,
+        18866,
+        7231
+      ],
+      "voxelsize": [
+        1000.3072586242134,
+        156.942028098,
+        157.015776987
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-spinningdisk/crop-001_S1_18x_40XW002",
+      "shape": [
+        316,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-spinningdisk/crop-002_S3_28x_40XW",
+      "shape": [
+        759,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID96-hippocampus-spinningdisk/crop-003_S4_32x_40XW003",
+      "shape": [
+        1156,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID99-cerebellum-mirrorscope/crop-001_BIS_32x",
+      "shape": [
+        2229,
+        10735,
+        22150
+      ],
+      "voxelsize": [
+        1000.0902859172,
+        156.989420498,
+        156.946605245
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID99-cerebellum-spinningdisk/crop-001_BIS0.03_32x_Cerebellum_40XW001",
+      "shape": [
+        1056,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-ExPID99-cerebellum-spinningdisk/crop-002_BIS0.06_18x_Cerebellum_40XW002",
+      "shape": [
+        1199,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-RID16-retina-spinningdisk/crop-001_RID16_18x",
+      "shape": [
+        682,
+        9672,
+        10079
+      ],
+      "voxelsize": [
+        400.0,
+        162.5,
+        162.5
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "exm-mouse-liconn-RID19-retina-spinningdisk/crop-001_RID19_32x",
+      "shape": [
+        1096,
+        9145,
+        6170
+      ],
+      "voxelsize": [
+        597.3410766873598,
+        310.61496734635426,
+        310.61496734635415
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
       ]
     },
     {
       "name": "exm-mouse-liconn-cortex-20250822_ExPID09_2ndGel_30percentSucrose-Glycerol_40XW_003/crop-001",
-      "normalize_min": 172.0,
-      "normalize_max": 584.0,
       "shape": [
         2304,
         2304,
@@ -11521,12 +17116,28 @@
         "x",
         "y",
         "z"
-      ]
+      ],
+      "label_keys": [
+        "manual_gt-cell-final",
+        "manual_gt-cell-snap_04142026",
+        "manual_gt-cell-snap_04202026",
+        "manual_gt-cell-snap_04272026",
+        "manual_gt-cell-snap_05052026",
+        "manual_gt-cell-snap_05112026",
+        "manual_gt-cell-snap_05182026",
+        "manual_gt-cell-snap_06012026",
+        "manual_gt-cell-snap_06082026",
+        "manual_gt-cell-snap_06152026",
+        "manual_gt-cell-snap_06232026",
+        "manual_gt-cell-snap_06292026",
+        "manual_gt-cell-snap_07072026",
+        "output"
+      ],
+      "normalize_min": 172.0,
+      "normalize_max": 584.0
     },
     {
       "name": "exm-mouse-liconn-hippocampus-202507013_ExPID10-02_2percentAA_S2_Atto488_40XW_004/crop-001",
-      "normalize_min": 219.0,
-      "normalize_max": 919.0,
       "shape": [
         2304,
         2304,
@@ -11541,7 +17152,24 @@
         "x",
         "y",
         "z"
-      ]
+      ],
+      "label_keys": [
+        "manual_gt-cell-final",
+        "manual_gt-cell-snap_04142026",
+        "manual_gt-cell-snap_04202026",
+        "manual_gt-cell-snap_04272026",
+        "manual_gt-cell-snap_05052026",
+        "manual_gt-cell-snap_05112026",
+        "manual_gt-cell-snap_05182026",
+        "manual_gt-cell-snap_06012026",
+        "manual_gt-cell-snap_06082026",
+        "manual_gt-cell-snap_06152026",
+        "manual_gt-cell-snap_06232026",
+        "manual_gt-cell-snap_06292026",
+        "manual_gt-cell-snap_07072026"
+      ],
+      "normalize_min": 219.0,
+      "normalize_max": 919.0
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-001_setup196",
@@ -13245,6 +18873,636 @@
       ]
     },
     {
+      "name": "exm-zebrafish-PyTC-nucexm-brain/crop-001_vol1",
+      "shape": [
+        255,
+        2048,
+        2048
+      ],
+      "voxelsize": [
+        2500.0,
+        325.0,
+        325.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-nucleus-nucexm"
+      ]
+    },
+    {
+      "name": "exm-zebrafish-PyTC-nucexm-brain/crop-002_vol2",
+      "shape": [
+        255,
+        2048,
+        2048
+      ],
+      "voxelsize": [
+        2500.0,
+        325.0,
+        325.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "public_gt-nucleus-nucexm"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-001_C18G1_2L1_1",
+      "shape": [
+        140,
+        140,
+        1244
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-002_cnd1threeL1_1213061",
+      "shape": [
+        140,
+        140,
+        1213
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-003_cnd1threeL1_1228061",
+      "shape": [
+        140,
+        140,
+        1137
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-004_cnd1threeL1_1229061",
+      "shape": [
+        140,
+        140,
+        1141
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-005_cnd1threeL1_1229062",
+      "shape": [
+        140,
+        140,
+        1221
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-006_cnd1threeL1_1229063",
+      "shape": [
+        140,
+        140,
+        1184
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-007_eft3RW10035L1_0125071",
+      "shape": [
+        140,
+        140,
+        994
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-008_eft3RW10035L1_0125073",
+      "shape": [
+        140,
+        140,
+        1094
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-009_egl5L1_0606074",
+      "shape": [
+        140,
+        140,
+        1166
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-010_elt3L1_0503071",
+      "shape": [
+        140,
+        140,
+        1124
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-011_elt3L1_0503072",
+      "shape": [
+        140,
+        140,
+        1237
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-012_elt3L1_0504073",
+      "shape": [
+        140,
+        140,
+        1140
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-013_hlh1fourL1_0417071",
+      "shape": [
+        140,
+        140,
+        1275
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-014_hlh1fourL1_0417075",
+      "shape": [
+        140,
+        140,
+        1240
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-015_hlh1fourL1_0417076",
+      "shape": [
+        140,
+        140,
+        1255
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-016_hlh1fourL1_0417077",
+      "shape": [
+        140,
+        140,
+        1274
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-017_hlh1fourL1_0417078",
+      "shape": [
+        140,
+        140,
+        1199
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-018_mir61L1_1228061",
+      "shape": [
+        140,
+        140,
+        1024
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-019_mir61L1_1228062",
+      "shape": [
+        140,
+        140,
+        1019
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-020_mir61L1_1229062",
+      "shape": [
+        140,
+        140,
+        1232
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-021_pha4A7L1_1213061",
+      "shape": [
+        140,
+        140,
+        1068
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-022_pha4A7L1_1213062",
+      "shape": [
+        140,
+        140,
+        1022
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-023_pha4A7L1_1213064",
+      "shape": [
+        140,
+        140,
+        1057
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-024_pha4B2L1_0125072",
+      "shape": [
+        140,
+        140,
+        1160
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-025_pha4I2L_0408071",
+      "shape": [
+        140,
+        140,
+        1198
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-026_pha4I2L_0408072",
+      "shape": [
+        140,
+        140,
+        1120
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-027_pha4I2L_0408073",
+      "shape": [
+        140,
+        140,
+        1244
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
+      "name": "lm-celegans-PyTC-long09-l1larva/crop-028_unc54L1_0123071",
+      "shape": [
+        140,
+        140,
+        1104
+      ],
+      "voxelsize": [
+        122.0,
+        116.0,
+        116.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-long09"
+      ]
+    },
+    {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c",
       "zarr_version": "zarr2",
       "shape": [
@@ -14392,6 +20650,9 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "auto_pred-cell-t1_ch0_cellpose_denseEX_pp_pilot"
       ]
     },
     {
@@ -14417,6 +20678,10 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-t0",
+        "manual_gt-cell-t31"
       ]
     },
     {
@@ -14742,6 +21007,11 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "manual_gt-cell-t0",
+        "manual_gt-cell-t9",
+        "output"
       ]
     },
     {
@@ -16141,6 +22411,17 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "cellpose_t10_denseEX_pp",
+        "cellpose_t25_denseEX_pp",
+        "cellpose_t40_denseEX_pp",
+        "manual_gt-cell-t10_postproofread",
+        "manual_gt-cell-t25_postproofread",
+        "output",
+        "postprocessed_labels_t01",
+        "t10_y151x870_variability_alannah",
+        "t10_y151x870_variability_diana"
       ]
     },
     {
@@ -16163,6 +22444,181 @@
         "z",
         "y",
         "x"
+      ],
+      "label_keys": [
+        "initial_labels",
+        "output",
+        "postprocessed_labels",
+        "proofread_refined_labels",
+        "refined_labels"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-001_z000_y200_x200",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-002_z000_y200_x576",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-003_z000_y604_x200",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-004_z000_y604_x576",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-005_z508_y200_x200",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-006_z508_y200_x576",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-007_z508_y604_x200",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
+      ]
+    },
+    {
+      "name": "uct-mouse-PyTC-nucmm-v1/crop-008_z508_y604_x576",
+      "shape": [
+        192,
+        192,
+        192
+      ],
+      "voxelsize": [
+        720.0,
+        720.0,
+        720.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "label_keys": [
+        "proofread-nucleus-nucmm"
       ]
     }
   ]

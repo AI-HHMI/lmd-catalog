@@ -8,7 +8,7 @@ and rebuild_annotations.py (computes roi from this in the first place).
 
 import re
 
-BBOX_RANGE_RE = re.compile(r"([XYZ]):(\d+)-(\d+)")
+BBOX_RANGE_RE = re.compile(r"([XYZ]):\s*(\d+)\s*-\s*(\d+)")
 PLAIN_TRIPLE_RE = re.compile(r"^\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)")
 
 

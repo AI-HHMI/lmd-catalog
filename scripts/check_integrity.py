@@ -70,13 +70,14 @@ def check_duplicate_issues(annotations):
 
 def check_source_paths_resolve(annotations, volumes):
     """Every source_paths entry under DATA_ROOT must equal some volume's path
-    exactly -- catches renamed/reorganized volumes an annotation wasn't
+    exactly, or be a dataset directory containing volumes (dataset-level
+    issues) -- catches renamed/reorganized volumes an annotation wasn't
     repointed to."""
     volume_paths = {v["path"] for v in volumes}
     violations = []
     for a in annotations:
         for p in map(rebase, a["source_paths"]):
-            if p.startswith(DATA_ROOT) and p not in volume_paths:
+            if p.startswith(DATA_ROOT) and p not in volume_paths and not any(vp.startswith(p + "/") for vp in volume_paths):
                 violations.append(f"{a['title']}: source_path under DATA_ROOT has no matching volume: {p}")
     return violations
 

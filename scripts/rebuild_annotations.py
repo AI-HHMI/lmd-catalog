@@ -20,6 +20,7 @@ missing `structure_of_interest`, check whether gh renumbered this.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 
 from roi_parse import parse_roi
@@ -43,6 +44,22 @@ PENDING_UPSTREAM_FIXES = {
     19: {
         "source_paths": ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"],
         "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr",
+    },
+    # #7/#8/#9: verified ROIs (LICONN DG/Cortex/Hippocampus); the project has no bbox text for them yet.
+    7: {
+        "bbox": "X:1413-1895, Y:514-996, Z:83-277",
+        "bbox_size": "482, 482, 194",
+        "roi": {"x": [1413, 1895], "y": [514, 996], "z": [83, 277]},
+    },
+    8: {
+        "bbox": "X:627-1109, Y:610-1092, Z:17-211",
+        "bbox_size": "482, 482, 194",
+        "roi": {"x": [627, 1109], "y": [610, 1092], "z": [17, 211]},
+    },
+    9: {
+        "bbox": "X:496-978, Y:495-977, Z:44-238",
+        "bbox_size": "482, 482, 194",
+        "roi": {"x": [496, 978], "y": [495, 977], "z": [44, 238]},
     },
 }
 
@@ -76,7 +93,7 @@ FIELD_MAP = {
 def fetch_items():
     result = subprocess.run(
         ["gh", "project", "item-list", PROJECT_NUMBER, "--owner", PROJECT_OWNER,
-         "--format", "json", "--limit", "200"],
+         "--format", "json", "--limit", "5000"],
         capture_output=True, text=True,
     )
     assert result.returncode == 0, f"gh project item-list failed: {result.stderr}"
@@ -117,8 +134,15 @@ def build_annotation(item):
 
 
 def main():
-    items = fetch_items()
-    annotations = [build_annotation(i) for i in items]
+    # shape/voxelsize/axes are hand-set (not GitHub Project fields) -- carry them over by issue number.
+    with open(os.path.join(os.path.dirname(__file__), "..", "lmd_annotations.json")) as f:
+        text = f.read()
+    assert text.strip(), "lmd_annotations.json is empty -- did you redirect output onto it? `git checkout lmd_annotations.json`, then write to a temp file and mv it into place"
+    existing = {a["issue"]["number"]: a for a in json.loads(text)["annotations"]}
+    annotations = [build_annotation(i) for i in fetch_items()]
+    for a in annotations:
+        old = existing.get(a["issue"]["number"], {})
+        a.update({k: old[k] for k in ("shape", "voxelsize", "axes") if k in old})
     annotations.sort(key=lambda a: a["issue"]["number"])
     print(json.dumps({"annotations": annotations}, indent=2))
 

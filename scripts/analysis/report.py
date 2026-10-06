@@ -12,17 +12,17 @@ import lmd_catalog as lmd
 import plots
 
 OUT = Path(__file__).with_name("report.html")
-MODALITY = {"em": "EM", "exm": "Expansion microscopy", "lm": "Light microscopy"}
+MODALITY = {"em": "EM", "exm": "Expansion microscopy", "lm": "Light microscopy", "uct": "microCT"}
 # First matching pattern wins; matched against the lowercased dataset name.
 REGIONS = [
     (r"hippocamp|-dg-", "Hippocampus"),
-    (r"cortex|ac3ac4|minnie65|temporal-lobe", "Cortex"),
+    (r"cortex|ac3ac4|minnie65|temporal-lobe|pinky", "Cortex"),
     (r"cerebellum", "Cerebellum"),
     (r"nacc|areax", "Striatum / basal ganglia"),
     (r"vnc", "Ventral nerve cord"),
     (r"lobe|fly-mb", "Fly lobes / mushroom body"),
     (r"drosophila", "Fly brain / CNS"),
-    (r"liver|kidney|heart|bladder|muscle|ear$", "Non-neural tissue"),
+    (r"liver|kidney|heart|cardiac|bladder|muscle|pancreas|salivary|platelet|ear$", "Non-neural tissue"),
     (r"hela|jurkat|macrophage|sum159|ut21|cos7", "Cell culture"),
     (r"liconn|brain", "Brain (unspecified region)"),
 ]

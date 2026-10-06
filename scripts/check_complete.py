@@ -58,7 +58,7 @@ def check_volumes_complete(volumes):
 def fetch_project_issues():
     result = subprocess.run(
         ["gh", "project", "item-list", PROJECT_NUMBER, "--owner", PROJECT_OWNER,
-         "--format", "json", "--limit", "200"],
+         "--format", "json", "--limit", "5000"],
         capture_output=True, text=True,
     )
     assert result.returncode == 0, f"gh project item-list failed: {result.stderr}"
