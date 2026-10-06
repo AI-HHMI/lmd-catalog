@@ -109,6 +109,17 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
   python3 scripts/check_semver.py --from v0.1.0 --to HEAD   # compare against a tag instead
   ```
 
+## Release workflow (scripts/sync_release.py)
+
+`python3 scripts/sync_release.py` automates the whole loop from the local jj repo: pushes `main` to the
+`janelia` remote, then over ssh in the cluster clone rebuilds volumes + annotations, runs pytest /
+`check_integrity.py` / `check_complete.py` (a failure reverts the rebuild), and commits the result. It then
+fetches that commit back, fast-forwards local `main`, and picks the next version from the changes since the
+latest tag (removed/changed volume: major, new volume: minor, other catalog/schema change: patch). It asks
+before bumping the version files, tagging, and pushing `main` + the tag to `origin` and `janelia`.
+Requires an empty working copy with `main` on its parent, a clean cluster working tree, `proj/lmd-catalog/.venv`
+on the cluster (`uv sync --extra dev`), and `gh` authed with `read:project` there.
+
 ## Architecture: the volumes ↔ annotations join
 
 - `#Volume.path` is derived (`#DataRoot + "/" + name + ".zarr"`), not stored — every volume in the corpus

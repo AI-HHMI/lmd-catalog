@@ -1,6 +1,6 @@
 """Summarize the LMD catalog (sizes, modalities, organisms, regions, ground truth) into one self-contained HTML report.
 
-Usage: PYTHONPATH=src python scripts/analysis/report.py   ->  scripts/analysis/report.html
+Usage: uv sync --extra analysis && python scripts/analysis/report.py   ->  scripts/analysis/report.html
 """
 
 import math
