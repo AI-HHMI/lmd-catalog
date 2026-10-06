@@ -88,10 +88,19 @@ def lines(series: dict, ylabel: str, log: bool = False) -> str:
     return to_svg(fig)
 
 
+def fmt(c) -> str:
+    """Table cell text: ints with separators, floats to 2 places -- or scientific notation if that would show a nonzero value as 0.00."""
+    if isinstance(c, int):
+        return f"{c:,}"
+    if isinstance(c, float):
+        return f"{c:.2e}" if c != 0 and abs(c) < 0.005 else f"{c:,.2f}"
+    return c
+
+
 def table(header: list, rows: list) -> str:
     th = "".join(f"<th>{html.escape(str(h))}</th>" for h in header)
     body = "".join(
-        "<tr>" + "".join(f"<td class='{'n' if not isinstance(c, str) else ''}'>{html.escape(f'{c:,}' if isinstance(c, int) else f'{c:,.2f}' if isinstance(c, float) else c)}</td>" for c in r) + "</tr>"
+        "<tr>" + "".join(f"<td class='{'n' if not isinstance(c, str) else ''}'>{html.escape(fmt(c))}</td>" for c in r) + "</tr>"
         for r in rows
     )
     return f"<table><thead><tr>{th}</tr></thead><tbody>{body}</tbody></table>"
