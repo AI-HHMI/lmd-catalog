@@ -20652,7 +20652,7 @@
         "x"
       ],
       "label_keys": [
-        "auto_pred-cell-t1_ch0_cellpose_denseEX_pp_pilot"
+        "auto_pred-cell-ch0_cellpose_denseEX_pp"
       ]
     },
     {
