@@ -103,6 +103,7 @@ class Catalog:
                 voxelsize=v.get("voxelsize"),
                 axes=v.get("axes"),
                 label_keys=v.get("label_keys", []),
+                added=v.get("added"),
             )
             self._volumes.append(entry)
             self._by_name[name] = entry

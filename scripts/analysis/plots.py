@@ -75,6 +75,19 @@ def scatter(groups: dict, xlabel: str, ylabel: str) -> str:
     return to_svg(fig)
 
 
+def lines(series: dict, ylabel: str, log: bool = False) -> str:
+    """Step lines over time. series: label -> (dates, values)."""
+    fig, ax = plt.subplots(figsize=(5.5, 3.4))
+    for (label, (xs, ys)), c in zip(series.items(), COLORS):
+        ax.step(xs, ys, where="post", color=GREY if label == "Other" else c, label=label, linewidth=1.8)
+    ax.set_ylabel(ylabel)
+    if log:
+        ax.set_yscale("log")
+    ax.legend(frameon=False, fontsize=8, loc="upper left")
+    fig.autofmt_xdate()
+    return to_svg(fig)
+
+
 def table(header: list, rows: list) -> str:
     th = "".join(f"<th>{html.escape(str(h))}</th>" for h in header)
     body = "".join(

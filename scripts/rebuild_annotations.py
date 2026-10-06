@@ -27,6 +27,7 @@ from roi_parse import parse_roi
 
 PROJECT_OWNER = "AI-HHMI"
 PROJECT_NUMBER = "1"
+ISSUE_REPO = "AI-HHMI/mia_annotation"
 
 # TEMPORARY, pending a human fixing these upstream in the GitHub Project UI:
 # issues #18/#19's Source Image Path/Fileglancer Path fields still have the
@@ -100,6 +101,16 @@ def fetch_items():
     return json.loads(result.stdout)["items"]
 
 
+def fetch_created_dates():
+    """Issue number -> ISO creation date (the project items don't carry it)."""
+    result = subprocess.run(
+        ["gh", "issue", "list", "--repo", ISSUE_REPO, "--state", "all", "--limit", "5000", "--json", "number,createdAt"],
+        capture_output=True, text=True,
+    )
+    assert result.returncode == 0, f"gh issue list failed: {result.stderr}"
+    return {i["number"]: i["createdAt"][:10] for i in json.loads(result.stdout)}
+
+
 def build_annotation(item):
     content = item["content"]
     assert content["type"] == "Issue", f"non-issue project item: {item}"
@@ -140,8 +151,12 @@ def main():
     assert text.strip(), "lmd_annotations.json is empty -- did you redirect output onto it? `git checkout lmd_annotations.json`, then write to a temp file and mv it into place"
     existing = {a["issue"]["number"]: a for a in json.loads(text)["annotations"]}
     annotations = [build_annotation(i) for i in fetch_items()]
+    created = fetch_created_dates()
     for a in annotations:
-        old = existing.get(a["issue"]["number"], {})
+        number = a["issue"]["number"]
+        assert number in created, f"issue #{number} not found in {ISSUE_REPO}"
+        a["created_at"] = created[number]
+        old = existing.get(number, {})
         a.update({k: old[k] for k in ("shape", "voxelsize", "axes") if k in old})
     annotations.sort(key=lambda a: a["issue"]["number"])
     print(json.dumps({"annotations": annotations}, indent=2))

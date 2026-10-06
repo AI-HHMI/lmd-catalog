@@ -167,6 +167,7 @@ class AnnotationEntry(BaseModel):
     label_count: Optional[int] = Field(default=None, ge=0)
     timepoint: Optional[str] = None
     last_updated: Optional[str] = None
+    created_at: Optional[str] = None  # ISO date the GitHub issue was created
     bbox: Optional[str] = None
     bbox_size: Optional[str] = None
     roi: Optional[ROI] = None
@@ -249,6 +250,7 @@ class VolumeEntry(BaseModel):
     voxelsize: Optional[list[float]] = None
     axes: Optional[list[str]] = None
     label_keys: list[str] = Field(default_factory=list)
+    added: Optional[str] = None  # ISO date the store first appeared in the catalog (store dir mtime when first recorded)
 
     @property
     def shape_dict(self) -> Optional[dict[str, int]]:

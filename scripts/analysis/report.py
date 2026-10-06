@@ -6,6 +6,7 @@ Usage: uv sync --extra analysis && python scripts/analysis/report.py   ->  scrip
 import math
 import re
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 
 import lmd_catalog as lmd
@@ -46,6 +47,7 @@ def region_of(dataset: str) -> str:
 
 def record(v) -> dict:
     assert v.shape and v.axes, f"{v.name}: catalog entry is missing shape/axes"
+    assert v.added, f"{v.name}: catalog entry has no `added` date -- rebuild lmd_volumes.json (scripts/rebuild_volumes.py)"
     sd, vd = v.shape_dict, v.voxelsize_dict
     prefix, organism = v.name.split("-")[:2]
     spatial = [a for a in "xyz" if a in sd]
@@ -54,7 +56,7 @@ def record(v) -> dict:
         region=region_of(v.dataset), voxels=math.prod(v.shape),
         extent_mm3=math.prod(sd[a] * vd[a] for a in spatial) / 1e18,  # nm^3 -> mm^3
         vox_fine=min(vd[a] for a in spatial), vox_z=vd["z"], channels=sd.get("c", 1), timepoints=sd.get("t", 1),
-        gt=v.has_ground_truth, annotated=v.is_annotated, zarr=v.zarr_version, axes="".join(v.axes).upper(),
+        added=date.fromisoformat(v.added), gt=v.has_ground_truth, annotated=v.is_annotated, zarr=v.zarr_version, axes="".join(v.axes).upper(),
     )
 
 
@@ -63,6 +65,49 @@ def group_sum(recs, key, field=None) -> dict:
     for r in recs:
         out[r[key]] += 1 if field is None else r[field]
     return dict(out)
+
+
+def cumulative(rows, top: int = plots.MAX_SLICES) -> dict:
+    """rows: (date, group, weight) -> {group: (dates, running totals)}, the `top` largest groups by final total plus 'Other'.
+    Every series is extended to the last date so the lines end together."""
+    totals = defaultdict(float)
+    for _, g, w in rows:
+        totals[g] += w
+    keep = {g for g, _ in sorted(totals.items(), key=lambda kv: -kv[1])[:top]}
+    end = max(d for d, _, _ in rows)
+    series = defaultdict(lambda: ([], []))
+    running = defaultdict(float)
+    for d, g, w in sorted(rows, key=lambda r: r[0]):
+        g = g if g in keep else "Other"
+        running[g] += w
+        xs, ys = series[g]
+        xs.append(d)
+        ys.append(running[g])
+    for g, (xs, ys) in series.items():
+        xs.append(end)
+        ys.append(ys[-1])
+    return dict(sorted(series.items(), key=lambda kv: -kv[1][1][-1]))
+
+
+def growth_section(recs, cat) -> tuple:
+    """Cumulative growth of the data (by date a volume was added) and of annotation issues (by creation date)."""
+    by = lambda key, field=None, scale=1: cumulative([(r["added"], r[key], (1 if field is None else r[field]) / scale) for r in recs])
+    anns = cat.annotations()
+    assert all(a.created_at for a in anns), "annotation entries have no `created_at` -- rebuild lmd_annotations.json (scripts/rebuild_annotations.py)"
+    ann_date = lambda a: date.fromisoformat(a.created_at)
+    cards = [
+        ("Volumes by organism (cumulative, by date added)", plots.lines(by("organism"), "volumes")),
+        ("Volumes by microscopy type (cumulative, by date added)", plots.lines(by("modality"), "volumes")),
+        ("Tera-voxels by organism (cumulative, by date added)", plots.lines(by("organism", "voxels", 1e12), "tera-voxels")),
+        ("Tera-voxels by microscopy type (cumulative, by date added)", plots.lines(by("modality", "voxels", 1e12), "tera-voxels")),
+        ("Volumes with ground truth (cumulative, by date added)", plots.lines(
+            cumulative([(r["added"], "All volumes", 1) for r in recs] + [(r["added"], "With ground truth", 1) for r in recs if r["gt"]]), "volumes")),
+        ("Annotation issues by status (cumulative, log scale, by creation date)", plots.lines(cumulative([(ann_date(a), a.status or "unset", 1) for a in anns]), "issues", log=True)),
+    ]
+    labeled = [(ann_date(a), "Labeled objects", a.label_count) for a in anns if a.label_count]
+    if labeled:
+        cards.append(("Labeled objects (cumulative, by creation date; only issues with a label count)", plots.lines(cumulative(labeled), "labels")))
+    return "Growth over time", cards
 
 
 def card(title: str, content: str) -> str:
@@ -123,6 +168,7 @@ def build() -> tuple:
         split_section("Microscopy type", recs, "modality"),
         split_section("Organism", recs, "organism"),
         split_section("Region / tissue", recs, "region"),
+        growth_section(recs, cat),
         ("Sizes", [
             ("Voxels per volume (log10)", plots.hist([math.log10(r["voxels"]) for r in recs], "log10 voxels")),
             ("Finest voxel size (nm)", plots.hist([r["vox_fine"] for r in recs], "nm")),

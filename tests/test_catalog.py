@@ -469,3 +469,17 @@ def test_label_keys_confer_ground_truth_without_tracking():
     v_gt = v.model_copy(update={"label_keys": ["gt"]})
     assert v_gt.has_ground_truth
     assert v_gt.ground_truth_paths == ["/data/em-UNKNOWN-cremi/crop-001.zarr/labels/gt"]
+
+
+def test_every_entry_has_a_date_for_time_series():
+    """`added` (volumes) and `created_at` (annotations) feed scripts/analysis growth charts."""
+    from datetime import date
+
+    import lmd_catalog as lmd
+
+    for v in lmd.all():
+        assert v.added, f"{v.name}: missing `added` -- rebuild lmd_volumes.json"
+        date.fromisoformat(v.added)
+    for a in lmd.annotations():
+        assert a.created_at, f"issue #{a.issue.number}: missing `created_at` -- rebuild lmd_annotations.json"
+        date.fromisoformat(a.created_at)

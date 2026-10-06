@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import datetime, timezone
 
 from data_root import DATA_ROOT
 
@@ -144,9 +145,13 @@ def build_volume(path, existing_by_name=None):
     if label_keys:
         volume["label_keys"] = label_keys
 
+    # `added` is the store dir's mtime the first time a volume is cataloged (the filesystem exposes no
+    # birth time); once recorded it is kept, so later edits to the store don't move it.
+    prev = (existing_by_name or {}).get(name, {})
+    volume["added"] = prev.get("added") or datetime.fromtimestamp(os.stat(path).st_mtime, timezone.utc).date().isoformat()
+
     # Preserve normalization windows if already cataloged
-    if existing_by_name and name in existing_by_name:
-        prev = existing_by_name[name]
+    if prev:
         if "normalize_min" in prev:
             volume["normalize_min"] = prev["normalize_min"]
         if "normalize_max" in prev:

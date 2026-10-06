@@ -66,6 +66,13 @@ python3 scripts/rebuild_volumes.py > /tmp/lmd_volumes.json.new && mv /tmp/lmd_vo
 python3 scripts/rebuild_annotations.py > /tmp/lmd_annotations.json.new && mv /tmp/lmd_annotations.json.new lmd_annotations.json
 ```
 
+Two fields exist only to date the data for the growth charts in `scripts/analysis/`:
+`#Volume.added` is the store directory's mtime the *first* time `rebuild_volumes.py` sees the volume (the
+filesystem exposes no birth time; once recorded it is carried over, so later writes to the store don't move
+it, and a bulk re-write of the tree shows up as one big step), and `#AnnotationItem.created_at` is the
+GitHub issue's creation date, fetched by `rebuild_annotations.py` with `gh issue list` (the project items
+don't carry it). `python scripts/analysis/report.py` and `slides.py` write `report.html` / `slides.html`.
+
 ## Policy checks (scripts/)
 
 The catalog promises consumers a stable set of names — once published, a `#Volume`'s `path`/`image_key`
@@ -154,9 +161,9 @@ on the cluster (`uv sync --extra dev`), and `gh` authed with `read:project` ther
 - `#AnnotationItem.roi` is a parsed, axis-labeled, order-free version of the free-text `bbox`/
   `bbox_size` fields (`{x: [min,max], y: [min,max], z: [min,max]}`, max exclusive, level-0 voxel units).
   When adding/editing `bbox`/`bbox_size`, add/update `roi` to match — `check_integrity.py`'s
-  `check_roi_matches_bbox_text` will fail otherwise. `bbox`/`bbox_size` show up in two different formats
-  in practice (`"X:908-1390, ..."` range-labeled, or a bare `"13720, 16025, 3570"` offset triple paired
-  with a `bbox_size` triple) — the check handles both, but don't invent a third without updating it.
+  `check_roi_matches_bbox_text` will fail otherwise. `bbox`/`bbox_size` show up in three different formats
+  in practice (`"X:908-1390, ..."` range-labeled, a bare `"13720, 16025, 3570"` offset triple, or a labeled
+  `"X=1013, Y=1013, Z=580,"` offset, the last two paired with an XYZ `bbox_size` triple such as `"482×482×194 vox"`) — the check handles both, but don't invent a third without updating it.
 
 ## Example consumers (examples/)
 
