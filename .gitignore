@@ -8,3 +8,4 @@ uv.lock
 mouse-fish-combo.yaml
 .env
 scripts/analysis/report.html
+scripts/analysis/slides.html

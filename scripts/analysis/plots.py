@@ -40,8 +40,7 @@ def pie(counts: dict) -> str:
     fig, ax = plt.subplots(figsize=(4.5, 3.2))
     ax.pie(list(counts.values()), colors=colors, startangle=90, counterclock=False,
            autopct=lambda p: f"{p:.0f}%" if p >= 5 else "", pctdistance=0.78, wedgeprops={"linewidth": 1, "edgecolor": "white"})
-    total = sum(counts.values())
-    ax.legend([f"{k} ({v:,})" if total > 100 else f"{k} ({v:g})" for k, v in counts.items()],
+    ax.legend([f"{k} ({v:,.0f})" if float(v).is_integer() else f"{k} ({v:.3g})" for k, v in counts.items()],
               loc="center left", bbox_to_anchor=(1, 0.5), frameon=False)
     return to_svg(fig)
 

@@ -81,34 +81,27 @@ def summary_table(recs, key: str) -> str:
     return plots.table([key.capitalize(), "Volumes", "Datasets", "Tera-voxels", "Extent (mm³)", "With GT"], rows)
 
 
-def split_section(title: str, recs, key: str) -> str:
+def split_section(title: str, recs, key: str) -> tuple:
     """Pie of volume counts, pie of voxel totals, and a summary table."""
     vox = {k: v / 1e12 for k, v in group_sum(recs, key, "voxels").items()}
-    return (
-        f"<h2>{title}</h2><div class='grid'>"
-        + card("Volumes", plots.pie(group_sum(recs, key)))
-        + card("Tera-voxels", plots.pie(vox))
-        + card("Summary", summary_table(recs, key))
-        + "</div>"
-    )
+    return title, [("Volumes", plots.pie(group_sum(recs, key))), ("Tera-voxels", plots.pie(vox)), ("Summary", summary_table(recs, key))]
 
 
-def annotation_section(cat) -> str:
+def annotation_section(cat) -> tuple:
     anns = cat.annotations()
     count = lambda f: Counter(getattr(a, f) or "unset" for a in anns)
-    return (
-        f"<h2>Annotation tracking ({len(anns)} issues)</h2><div class='grid'>"
-        + card("Status", plots.bar(count("status"), "issues"))
-        + card("Tool", plots.pie(count("tool")))
-        + card("Task", plots.pie(count("task")))
-        + card("Structure of interest", plots.pie(count("structure_of_interest")))
-        + card("Priority", plots.pie(count("priority")))
-        + card("Organism", plots.pie(count("model_organism")))
-        + "</div>"
-    )
+    return f"Annotation tracking ({len(anns)} issues)", [
+        ("Status", plots.bar(count("status"), "issues")),
+        ("Tool", plots.pie(count("tool"))),
+        ("Task", plots.pie(count("task"))),
+        ("Structure of interest", plots.pie(count("structure_of_interest"))),
+        ("Priority", plots.pie(count("priority"))),
+        ("Organism", plots.pie(count("model_organism"))),
+    ]
 
 
-def main():
+def build() -> tuple:
+    """Return (tiles, sections): tiles are (number, label); sections are (title, [(card title, svg or table html)])."""
     cat = lmd.default_catalog()
     recs = [record(v) for v in cat]
     tiles = [
@@ -126,28 +119,39 @@ def main():
     top = dict(sorted(ds_vox.items(), key=lambda kv: -kv[1])[:15])
     gt_split = Counter("Ground truth" if r["gt"] else "No ground truth" for r in recs)
 
+    sections = [
+        split_section("Microscopy type", recs, "modality"),
+        split_section("Organism", recs, "organism"),
+        split_section("Region / tissue", recs, "region"),
+        ("Sizes", [
+            ("Voxels per volume (log10)", plots.hist([math.log10(r["voxels"]) for r in recs], "log10 voxels")),
+            ("Finest voxel size (nm)", plots.hist([r["vox_fine"] for r in recs], "nm")),
+            ("Voxel size vs. volume size", plots.scatter(by_modality, "log10 voxels", "finest voxel size (nm)")),
+            ("Top 15 datasets (giga-voxels)", plots.bar(top, "Gvox")),
+        ]),
+        ("Image types", [
+            ("Axis layout", plots.pie(group_sum(recs, "axes"))),
+            ("Channels per volume", plots.pie(Counter(f"{r['channels']} ch" for r in recs))),
+            ("Timepoints per volume", plots.pie(Counter(f"{r['timepoints']} t" for r in recs))),
+            ("Zarr version", plots.pie(group_sum(recs, "zarr"))),
+        ]),
+        ("Ground truth", [("Volumes with ingested ground truth", plots.pie(gt_split))]),
+        annotation_section(cat),
+    ]
+    return tiles, sections
+
+
+def main():
+    tiles, sections = build()
     body = (
         "<h1>LMD catalog report</h1><div class='tiles'>"
         + "".join(f"<div class='tile'><b>{n}</b>{label}</div>" for n, label in tiles) + "</div>"
-        + split_section("Microscopy type", recs, "modality")
-        + split_section("Organism", recs, "organism")
-        + split_section("Region / tissue", recs, "region")
-        + "<h2>Sizes</h2><div class='grid'>"
-        + card("Voxels per volume (log10)", plots.hist([math.log10(r["voxels"]) for r in recs], "log10 voxels"))
-        + card("Finest voxel size (nm)", plots.hist([r["vox_fine"] for r in recs], "nm"))
-        + card("Voxel size vs. volume size", plots.scatter(by_modality, "log10 voxels", "finest voxel size (nm)"))
-        + card("Top 15 datasets (giga-voxels)", plots.bar(top, "Gvox"))
-        + "</div><h2>Image types</h2><div class='grid'>"
-        + card("Axis layout", plots.pie(group_sum(recs, "axes")))
-        + card("Channels per volume", plots.pie(Counter(f"{r['channels']} ch" for r in recs)))
-        + card("Timepoints per volume", plots.pie(Counter(f"{r['timepoints']} t" for r in recs)))
-        + card("Zarr version", plots.pie(group_sum(recs, "zarr")))
-        + "</div><h2>Ground truth</h2><div class='grid'>"
-        + card("Volumes with ingested ground truth", plots.pie(gt_split))
-        + "</div>"
-        + annotation_section(cat)
+        + "".join(f"<h2>{title}</h2><div class='grid'>" + "".join(card(t, c) for t, c in cards) + "</div>" for title, cards in sections)
     )
-    OUT.write_text(f"<!doctype html><meta charset='utf-8'><title>LMD catalog report</title><style>{CSS}</style>{body}")
+    OUT.write_text(
+        "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
+        f"<title>LMD catalog report</title><style>{CSS}</style></head><body>{body}</body></html>"
+    )
     print(f"wrote {OUT}")
 
 
