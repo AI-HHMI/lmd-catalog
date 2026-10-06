@@ -18,6 +18,9 @@ dependencies = [
 dev = [
     "pytest>=7.0",
 ]
+analysis = [
+    "matplotlib",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/lmd_catalog"]
