@@ -17,8 +17,9 @@ html,body{margin:0;height:100%;background:#fff;color:#222;font:20px system-ui,sa
 .slide{display:none;height:100vh;box-sizing:border-box;padding:4vh 6vw;flex-direction:column}
 .slide.on{display:flex} .kicker{color:#0072B2;font-size:.7em;text-transform:uppercase;letter-spacing:.08em}
 h1{font-size:2.4em;margin:12vh 0 2vh} h2{font-size:1.6em;margin:.2em 0 .6em} h3{font-size:.85em;margin:0 0 .4em;color:#555}
-.row{display:flex;gap:3vw;flex:1;min-height:0;align-items:flex-start} .card{flex:1;min-width:0}
-.card svg{width:100%;height:66vh}
+.row{display:flex;gap:3vw;flex:0 1 auto;min-height:0;margin:auto 0;align-items:flex-start;justify-content:center}
+.card{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center} .card h3{text-align:center}
+.card svg{width:100%;height:auto;max-height:68vh}
 .tiles{display:flex;flex-wrap:wrap;gap:2vw} .tile{border:1px solid #ddd;border-radius:8px;padding:1.2vh 2vw;font-size:.8em}
 .tile b{display:block;font-size:2em}
 table{border-collapse:collapse;font-size:1.05em} th,td{padding:.3em .9em;border-bottom:1px solid #eee;text-align:left}
