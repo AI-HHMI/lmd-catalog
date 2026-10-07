@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from importlib import resources
 from pathlib import Path
 from typing import Optional, Union
@@ -11,6 +12,7 @@ from typing import Optional, Union
 from lmd_catalog.models import (
     DEFAULT_DATA_ROOT,
     AnnotationEntry,
+    PretrainingEntry,
     VolumeEntry,
 )
 
@@ -38,14 +40,23 @@ def _load_json_data(filename: str) -> dict:
     raise FileNotFoundError(f"Could not locate catalog data file: {filename}")
 
 
+def store_paths(hhmi_path: str) -> list[str]:
+    """Absolute paths in a free-text `hhmi_path` field. Several may be joined by ';', ', ', newlines or spaces;
+    anything after '.zarr' (e.g. '/raw') and any trailing parenthetical remark is dropped. Prose and
+    non-absolute fragments are ignored."""
+    tokens = [re.sub(r"\s+\(.*$", "", t, flags=re.S) for t in re.split(r"[;,\s]+(?=/)", hhmi_path.strip())]
+    return [re.sub(r"(\.zarr)/.*$", r"\1", t).rstrip("/") for t in tokens if t.startswith("/")]
+
+
 class Catalog:
-    """In-memory index of all LMD volumes and annotation issues."""
+    """In-memory index of all LMD volumes, annotation issues, and pretraining dataset records."""
 
     def __init__(
         self,
         volumes_data: Optional[dict] = None,
         annotations_data: Optional[dict] = None,
         data_root: Optional[Union[str, Path]] = None,
+        pretraining_data: Optional[dict] = None,
     ):
         if data_root is None:
             data_root = os.environ.get("LMD_DATA_ROOT", DEFAULT_DATA_ROOT)
@@ -55,6 +66,12 @@ class Catalog:
             volumes_data = _load_json_data("lmd_volumes.json")
         if annotations_data is None:
             annotations_data = _load_json_data("lmd_annotations.json")
+        if pretraining_data is None:
+            pretraining_data = _load_json_data("lmd_pretraining.json")
+
+        self._pretraining: list[PretrainingEntry] = [
+            PretrainingEntry.model_validate(p) for p in pretraining_data.get("pretraining", [])
+        ]
 
         # 1. Parse annotations
         raw_annotations = annotations_data.get("annotations", [])
@@ -112,6 +129,31 @@ class Catalog:
                 self._by_path[canonical_path] = entry
             self._by_dataset.setdefault(dataset, []).append(entry)
 
+        # 4. Join pretraining records: to the annotation tracking the same GitHub issue, else to volumes by path
+        by_issue = {(a.issue.repository, a.issue.number): a for a in self._annotations}
+        self._joined_pretraining: set[tuple[str, int]] = set()
+        for p in self._pretraining:
+            key = (p.issue.repository, p.issue.number)
+            if key in by_issue:
+                by_issue[key].pretraining = p
+                continue
+            exact: dict[str, VolumeEntry] = {}
+            whole_dataset: dict[str, VolumeEntry] = {}
+            for token in store_paths(p.hhmi_path or ""):
+                if not token.startswith(canonical_root + "/"):
+                    continue
+                rel = token[len(canonical_root) + 1 :]
+                if rel.endswith(".zarr") and rel[: -len(".zarr")] in self._by_name:
+                    exact[rel[: -len(".zarr")]] = self._by_name[rel[: -len(".zarr")]]
+                elif rel in self._by_dataset:
+                    whole_dataset.update({v.name: v for v in self._by_dataset[rel]})
+            for v in exact.values():
+                v.pretraining.append(p)
+            for v in whole_dataset.values():
+                v.dataset_pretraining.append(p)
+            if exact or whole_dataset:
+                self._joined_pretraining.add(key)
+
     def get(self, name_or_path: str, root: Optional[Union[str, Path]] = None) -> VolumeEntry:
         """Lookup a volume by its stable catalog name or absolute store path."""
         if name_or_path in self._by_name:
@@ -151,6 +193,21 @@ class Catalog:
     def annotations(self) -> list[AnnotationEntry]:
         """Return all tracked annotation items."""
         return list(self._annotations)
+
+    def pretraining(self) -> list[PretrainingEntry]:
+        """Return all dataset records tracked in the mia_pretraining project."""
+        return list(self._pretraining)
+
+    def unjoined_pretraining(self) -> list[PretrainingEntry]:
+        """Pretraining records that name a path (`hhmi_path`) but matched no volume or dataset, and aren't
+        attached to an annotation either."""
+        annotated = {(a.issue.repository, a.issue.number) for a in self._annotations}
+        return [
+            p for p in self._pretraining
+            if p.hhmi_path
+            and (p.issue.repository, p.issue.number) not in annotated
+            and (p.issue.repository, p.issue.number) not in self._joined_pretraining
+        ]
 
     def get_annotation(self, issue_number: int) -> AnnotationEntry:
         """Lookup an annotation item by its GitHub issue number."""

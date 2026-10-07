@@ -3,13 +3,14 @@ path it claims must exist. Run on a machine with /groups mounted:
 
     python3 scripts/check_integrity.py
     # or with exported JSON:
-    python3 scripts/check_integrity.py volumes.json annotations.json
+    python3 scripts/check_integrity.py volumes.json annotations.json   # skips the pretraining join check
 """
 
 from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 
 from data_root import DATA_ROOT, DEFAULT_DATA_ROOT
@@ -54,6 +55,96 @@ def check_duplicate_names(volumes):
         if v["name"] in seen:
             violations.append(f"duplicate volume name: {v['name']}")
         seen[v["name"]] = True
+    return violations
+
+
+# mia_pretraining statuses whose path legitimately matches no catalog volume (not ingested yet / synthetic dev data).
+PRETRAINING_NO_VOLUME_STATUSES = {"Pending Ingestion", "Model Development Only"}
+
+
+def check_pretraining_joined(unjoined_pretraining):
+    """A mia_pretraining record that names a path but matches no catalog volume or dataset directory -- a
+    typo, a layout the join doesn't understand, or a store that isn't in the catalog."""
+    return [
+        f"{p['title']} ({p['issue']['repository']}#{p['issue']['number']}): hhmi_path matches no catalog volume or dataset: {p['hhmi_path']}"
+        for p in unjoined_pretraining
+        if p["status"] not in PRETRAINING_NO_VOLUME_STATUSES
+    ]
+
+
+NUMBER_RE = re.compile(r"\d+(?:\.\d+)?")
+
+
+def numbers3(text):
+    """The three numbers of a free-text 'A×B×C' field, else None (blank, prose, or a different count)."""
+    nums = [float(x) for x in NUMBER_RE.findall(text or "")]
+    return nums if len(nums) == 3 else None
+
+
+def close(a, b, tol):
+    return abs(a - b) <= tol * max(abs(a), abs(b))
+
+
+def check_pretraining_matches_stores(volumes):
+    """For a store a mia_pretraining record names exactly, the record's shape and voxel size must agree with
+    the store's own zarr metadata (the catalog's shape/voxelsize, ZYX). Two conventions are allowed: a project
+    shape that is larger on every axis (it describes the crop's parent dataset), and a voxel size equal to the
+    store's divided by the record's expansion factor (the pre-expansion size). Fields that are blank or aren't
+    three numbers are skipped."""
+    violations = []
+    for v in volumes:
+        if not (v.get("shape") and v.get("axes") and v.get("voxelsize")):
+            continue
+        shape, vox = dict(zip(v["axes"], v["shape"])), dict(zip(v["axes"], v["voxelsize"]))
+        if any(a not in shape for a in "zyx"):
+            continue
+        store_shape, store_vox = [float(shape[a]) for a in "zyx"], [float(vox[a]) for a in "zyx"]
+        for p in v.get("pretraining", []):
+            ref = f"{p['issue']['repository']}#{p['issue']['number']}"
+            project_shape = numbers3(p.get("volume_shape_zyx"))
+            if project_shape:
+                b1 = project_shape == store_shape
+                b2 = all(a >= b for a, b in zip(project_shape, store_shape))
+                if not (b1 or b2):
+                    violations.append(f"{v['name']}: {ref} says shape {p['volume_shape_zyx']} but the store is {store_shape} (ZYX)")
+            project_vox = numbers3(p.get("voxel_size_zyx_nm"))
+            if project_vox:
+                m = NUMBER_RE.search(p.get("expansion_factor") or "")
+                factor = float(m.group()) if m else 0.0
+                b1 = all(close(a, b, 0.01) for a, b in zip(project_vox, store_vox))
+                b2 = factor > 0 and all(close(a * factor, b, 0.03) for a, b in zip(project_vox, store_vox))
+                if not (b1 or b2):
+                    violations.append(f"{v['name']}: {ref} says voxel size {p['voxel_size_zyx_nm']} nm (expansion {p.get('expansion_factor')}) but the store is {store_vox} (ZYX)")
+    return violations
+
+
+ZARR2_KINDS = {"i": "int", "u": "uint", "f": "float"}
+
+
+def store_dtype(volume):
+    """The dtype name ('uint8', 'float32', ...) of a store's s0 array, read from its zarr3 `zarr.json` or zarr2
+    `.zarray`; None if the metadata isn't there or isn't a plain int/uint/float."""
+    for base in (os.path.join(volume["path"], volume["image_key"], "s0"), os.path.join(volume["path"], "s0")):
+        v3, v2 = os.path.join(base, "zarr.json"), os.path.join(base, ".zarray")
+        if os.path.exists(v3):
+            dtype = load_json(v3).get("data_type")
+            return dtype if isinstance(dtype, str) else None
+        if os.path.exists(v2):
+            m = re.match(r"^[<>|=]?([iuf])(\d+)$", load_json(v2)["dtype"])
+            return f"{ZARR2_KINDS[m.group(1)]}{int(m.group(2)) * 8}" if m else None
+    return None
+
+
+def check_pretraining_dtype(volumes):
+    """For a store a mia_pretraining record names exactly, the record's `dtype` must match the store's s0 array.
+    Reads zarr metadata, so it needs the data mounted."""
+    violations = []
+    for v in volumes:
+        records = [p for p in v.get("pretraining", []) if p.get("dtype")]
+        actual = store_dtype(v) if records else None
+        for p in records if actual else []:
+            if p["dtype"] != actual:
+                violations.append(f"{v['name']}: {p['issue']['repository']}#{p['issue']['number']} says dtype {p['dtype']} but the store's s0 is {actual}")
     return violations
 
 
@@ -146,8 +237,9 @@ def check_terminal_paths_exist(annotations):
 
 def main():
     if len(sys.argv) >= 3:
-        volumes = load_json(sys.argv[1])
-        annotations = load_json(sys.argv[2])
+        volumes = load_json(sys.argv[1])["volumes"]
+        annotations = load_json(sys.argv[2])["annotations"]
+        unjoined_pretraining = []  # the pretraining join needs the package; use the default (no-argument) mode to check it
     else:
         try:
             import lmd_catalog as lmd
@@ -156,6 +248,7 @@ def main():
             import lmd_catalog as lmd
         volumes = [v.model_dump() for v in lmd.all()]
         annotations = [a.model_dump() for a in lmd.annotations()]
+        unjoined_pretraining = [p.model_dump() for p in lmd.default_catalog().unjoined_pretraining()]
 
 
     violations = [
@@ -164,6 +257,9 @@ def main():
         *check_source_paths_resolve(annotations, volumes),
         *check_volume_filesystem(volumes),
         *check_annotation_source_paths_exist(annotations),
+        *check_pretraining_joined(unjoined_pretraining),
+        *check_pretraining_matches_stores(volumes),
+        *check_pretraining_dtype(volumes),
         *check_roi_matches_bbox_text(annotations),
         *check_terminal_paths_exist(annotations),
     ]

@@ -8,7 +8,13 @@ The data and schema are structured as follows:
 - **Canonical Schema**: Defined strictly in pure Pydantic v2 models ([`src/lmd_catalog/models.py`](file:///Users/broaddusc/proj/lmd-data-versioning/src/lmd_catalog/models.py)) with closed `Literal` enums (`AnnotationStatus`, `DataModality`, etc.) and `extra="forbid"`.
 - **Reference Data**: Sibling JSON files (`lmd_volumes.json`, `lmd_annotations.json`), also bundled into package data (`src/lmd_catalog/data/`):
   - `lmd_volumes.json` — 838 volumes across 102 datasets, mechanically discovered by directory walk.
-  - `lmd_annotations.json` — 27 annotation issues synced from GitHub Projects (`AI-HHMI/projects/1`).
+  - `lmd_annotations.json` — annotation issues synced from GitHub Projects (`AI-HHMI/projects/1`).
+  - `lmd_pretraining.json` — dataset-level records synced from the `mia_pretraining` project
+    (`AI-HHMI/projects/4`): dtype, disk size, compression, chunk/shard shape, source lab/type, modality,
+    training status, etc. Free-text fields are kept verbatim as strings; the single-selects are closed
+    `Literal`s in `models.py` (`PretrainingEntry`). It holds 930 issues from *two* repos (`mia_pretraining`
+    222 dataset-level records, `mia_annotation` 708 that are the *same issues* as project 1), so key on
+    `(repository, number)`. See "Architecture" below for how they join.
 - **Miao Integration**: Directly outputs typed `miao.config.VolumeConfig` instances via `.to_miao()` without eager PyTorch or CUDA imports.
 
 `scripts/rebuild_volumes.py` and `scripts/rebuild_annotations.py` regenerate the data from ground truth; `tests/test_catalog.py` verifies all 838 volumes resolve to valid `miao.config.VolumeConfig` models. Never hand-edit the `.json` files directly.
@@ -58,12 +64,13 @@ above); this is a human-in-the-loop seam, not something to silently override —
 someone fixes it in the GitHub UI, don't fix it by editing the GH Project via `gh` from here.
 
 ```sh
-# Both rebuild scripts read the existing JSON (volumes: hand-set normalize_min/
+# The volumes and annotations rebuild scripts read the existing JSON (volumes: hand-set normalize_min/
 # normalize_max; annotations: hand-set shape/voxelsize/axes), so redirecting stdout
 # straight onto it truncates the file before Python can read it back -- write to a
 # temp file and move it into place instead.
 python3 scripts/rebuild_volumes.py > /tmp/lmd_volumes.json.new && mv /tmp/lmd_volumes.json.new lmd_volumes.json
 python3 scripts/rebuild_annotations.py > /tmp/lmd_annotations.json.new && mv /tmp/lmd_annotations.json.new lmd_annotations.json
+python3 scripts/rebuild_pretraining.py > /tmp/lmd_pretraining.json.new && mv /tmp/lmd_pretraining.json.new lmd_pretraining.json
 ```
 
 Two fields exist only to date the data for the growth charts in `scripts/analysis/`:
@@ -90,9 +97,17 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
   path/zarr-version-marker/`image_key` exists on disk, every annotation's `source_paths` exists on disk
   (unconditionally — annotated source data must already exist), and `gt_ingested_path`/
   `proofread_ingested_path` exist once an item reaches `"GT_Ingested"`/`"Proofread_ingested"` status.
+  It also checks the `mia_pretraining` records against reality: every record with an `hhmi_path` must join to a
+  volume or dataset (unless `Pending Ingestion`/`Model Development Only`), and for a store a record names
+  exactly, its `volume_shape_zyx` / `voxel_size_zyx_nm` must agree with the store's own zarr metadata. Two
+  conventions are allowed, not flagged: a project shape larger on every axis (the parent dataset of a crop)
+  and a voxel size equal to the store's divided by the record's `expansion_factor` (pre-expansion size).
+  Its `dtype` must match the store's `s0` array (read from `zarr.json`/`.zarray`; needs the data mounted).
+  The zarr metadata is the ground truth; `disk_size`, compression and chunk/shard shape are not checked yet.
 - `check_complete.py` — the reverse direction: is everything *real* reflected in the catalog. Walks
   `#DataRoot` for `.zarr` stores missing from `volumes` (or catalog entries no longer on disk), and diffs
-  the live `mia_annotation` GitHub Project against `annotations` for un-synced or removed items.
+  the live GitHub Projects (`mia_annotation` = projects/1, `mia_pretraining` = projects/4) against
+  `annotations` / `pretraining` for un-synced or removed items.
 - Both checkers are pure-stdlib Python (run on the cluster where external tools may not be installed).
 - These are not wired into CI yet — run manually after rebuilding catalog data, and before cutting a
   new version tag.
@@ -139,6 +154,18 @@ on the cluster (`uv sync --extra dev`), and `gh` authed with `read:project` ther
   (e.g. `/nrs` scratch space, or the legacy `liconn_data/` layout), and a few cover more than one crop
   (e.g. a paired `fullvol` + `sub` crop). These won't resolve to any `tracked_by` entry on the `volumes`
   side.
+- `lmd_pretraining.json` records join in memory too (`Catalog.__init__`; nothing persisted):
+  - A record whose `(repository, number)` matches an annotation attaches to it as `AnnotationEntry.pretraining`
+    (708, exact) and is *not* path-joined, so a volume reaches it through `tracked_by`.
+  - Every other record is joined to volumes by `hhmi_path` (`store_paths()` in `catalog.py`: several paths may be
+    joined by `;`/`, `/whitespace; anything after `.zarr` such as `/raw` and trailing `(...)` remarks are
+    dropped). A path naming a store lands in `VolumeEntry.pretraining`; a path naming a dataset directory lands
+    in `VolumeEntry.dataset_pretraining` on every crop of that dataset. Keep the two apart: the second is
+    inherited, not store-specific.
+  - `Catalog.unjoined_pretraining()` lists records with an `hhmi_path` that matched nothing; `check_integrity.py`
+    flags them unless their status is `Pending Ingestion`/`Model Development Only` (not catalog volumes by
+    definition). Nothing is guessed: ranges ("12 dirs"), bare crop-name lists, and the legacy
+    `betzig-fish-mosaic/...` layout stay unjoined until the project's paths are corrected upstream.
 - Most volumes have no annotation-tracking issue yet (`tracked_by` is empty) — that's expected, not a
   data gap to fix.
 

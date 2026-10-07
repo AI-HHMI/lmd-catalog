@@ -483,3 +483,44 @@ def test_every_entry_has_a_date_for_time_series():
     for a in lmd.annotations():
         assert a.created_at, f"issue #{a.issue.number}: missing `created_at` -- rebuild lmd_annotations.json"
         date.fromisoformat(a.created_at)
+
+
+def test_pretraining_records_load():
+    """The mia_pretraining project (AI-HHMI/projects/4) is carried as dataset-level records, not yet joined to volumes."""
+    import lmd_catalog as lmd
+
+    records = lmd.pretraining()
+    assert len(records) == 930, f"Expected 930 pretraining records, found {len(records)}"
+    keys = {(p.issue.repository, p.issue.number) for p in records}
+    assert len(keys) == len(records), "(repository, issue number) must be unique"
+    assert all(p.created_at for p in records)
+    minnie = [p for p in records if p.issue.repository.endswith("mia_pretraining") and (p.hhmi_path or "").endswith("/em-mouse-MICrONS-minnie65/crop-001.zarr")]
+    assert len(minnie) == 1 and minnie[0].organism == "Mouse" and minnie[0].dtype == "uint8"
+
+
+def test_pretraining_join_to_volumes_and_annotations():
+    """Pretraining records join in memory: to an annotation by GitHub issue, else to volumes by hhmi_path."""
+    import lmd_catalog as lmd
+
+    # Exact store: MICrONS crop-001 is named by mia_pretraining#1, and its annotations carry their own project-4 record.
+    minnie = lmd.get("em-mouse-MICrONS-minnie65/crop-001")
+    assert [p.issue.number for p in minnie.pretraining] == [1]
+    assert minnie.dataset_pretraining == []
+    assert [a.pretraining.issue.number for a in minnie.tracked_by] == [a.issue.number for a in minnie.tracked_by]
+    assert lmd.get_annotation(13).pretraining.dtype == "uint8"
+    assert len(minnie.with_root("/mnt/mirror").pretraining) == 1
+
+    # Whole-dataset records reach every crop of the dataset, in the separate `dataset_pretraining` field.
+    flyem = lmd.find(dataset="em-drosophila-flyem-cns-mito-gt-v6")
+    assert len(flyem) == 198 and all([p.issue.number for p in v.dataset_pretraining] == [7] for v in flyem)
+
+    # Annotation-repo records never leak onto volumes directly (they reach them through tracked_by).
+    vols = lmd.all()
+    assert not [p for v in vols for p in v.pretraining + v.dataset_pretraining if p.issue.repository.endswith("mia_annotation")]
+    assert sum(1 for a in lmd.annotations() if a.pretraining) == 708
+    assert sum(1 for v in vols if v.pretraining or v.dataset_pretraining) == 1066
+
+    # What can't be joined is reported, not guessed: NISB lives outside the data root; #13/#14-16/#303 have ambiguous paths.
+    unjoined = lmd.default_catalog().unjoined_pretraining()
+    assert len(unjoined) == 15
+    assert {p.issue.number for p in unjoined if p.status != "Model Development Only"} == {13, 14, 15, 16, 303}

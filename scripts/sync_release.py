@@ -6,7 +6,7 @@ bookmark on it and an empty working copy:
     python3 scripts/sync_release.py
 
 1. push local `main` to the `janelia` remote (its working tree must be clean: updateInstead)
-2. over ssh in the cluster clone: rebuild volumes + annotations, run pytest, check_integrity and
+2. over ssh in the cluster clone: rebuild volumes + annotations + pretraining, run pytest, check_integrity and
    check_complete, and commit the rebuild if anything changed (any failure reverts the rebuild)
 3. fetch the cluster commit back and fast-forward local `main` to it
 4. regenerate the GitHub Pages report + slides in docs/ and commit them if they changed
@@ -28,7 +28,7 @@ from check_semver import breaking_changes, latest_tag, parse_semver, volumes_at_
 
 REMOTE_HOST = "login1.int.janelia.org"
 REMOTES = ("origin", "janelia")
-CATALOG_FILES = ("lmd_volumes.json", "lmd_annotations.json", "src/lmd_catalog/models.py")
+CATALOG_FILES = ("lmd_volumes.json", "lmd_annotations.json", "lmd_pretraining.json", "src/lmd_catalog/models.py")
 VERSION_FILES = {"pyproject.toml": r'^(version = ")[^"]*(")', "src/lmd_catalog/__init__.py": r'^(__version__ = ")[^"]*(")'}
 
 REMOTE_SCRIPT = """
@@ -36,11 +36,13 @@ set -euo pipefail
 cd proj/lmd-catalog
 test -z "$(git status --porcelain)" || { echo "cluster working tree is dirty" >&2; exit 1; }
 test -x .venv/bin/python || { echo "no .venv on the cluster: run 'uv sync --extra dev' in proj/lmd-catalog" >&2; exit 1; }
-trap 'git checkout -- lmd_volumes.json lmd_annotations.json' ERR
+trap 'git checkout -- lmd_volumes.json lmd_annotations.json lmd_pretraining.json' ERR
 tmp=$(mktemp)
 .venv/bin/python scripts/rebuild_volumes.py > $tmp && mv $tmp lmd_volumes.json
 tmp=$(mktemp)
 .venv/bin/python scripts/rebuild_annotations.py > $tmp && mv $tmp lmd_annotations.json
+tmp=$(mktemp)
+.venv/bin/python scripts/rebuild_pretraining.py > $tmp && mv $tmp lmd_pretraining.json
 .venv/bin/python -m pytest tests -q
 .venv/bin/python scripts/check_integrity.py
 .venv/bin/python scripts/check_complete.py

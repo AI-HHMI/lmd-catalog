@@ -183,6 +183,7 @@ class AnnotationEntry(BaseModel):
     shape: Optional[list[int]] = None
     voxelsize: Optional[list[float]] = None
     axes: Optional[list[str]] = None
+    pretraining: Optional[PretrainingEntry] = None  # in-memory join (same GitHub issue in the mia_pretraining project); not persisted
 
     @property
     def roi_shape(self) -> Optional[list[int]]:
@@ -232,6 +233,153 @@ class AnnotationEntry(BaseModel):
         return [d[a] for a in axes]
 
 
+# --- mia_pretraining GitHub Project (AI-HHMI/projects/4): dataset-level records ---
+
+PretrainingStatus = Literal[
+    "Pending Ingestion",
+    "Training Bbox TBD",
+    "Waiting",
+    "Consider for Training",
+    "Approved for Training",
+    "In Training",
+    "Discarded",
+    "Model Development Only",
+    "On Hold",
+]
+
+PretrainingOrganism = Literal[
+    "Zebrafish",
+    "Mouse",
+    "Drosophila",
+    "C. elegans",
+    "Human",
+    "Various",
+    "Synthetic Data",
+    "Salamander",
+    "Danionella",
+    "Aedes aegypti (Mosquito)",
+    "Hydra vulgaris",
+    "African Green Monkey",
+    "Rat",
+    "UNKNOWN",
+    "Zebrafinch",
+    "Macaque",
+]
+
+PretrainingModality = Literal[
+    "FIB-SEM",
+    "ssTEM",
+    "ssTEM (Multibeam SEM)",
+    "ssTEM (GridTape-TEM)",
+    "ATUM-mSEM",
+    "Expansion Microscopy (Spinning Disk)",
+    "Expansion Microscopy (Mirror)",
+    "Expansion Microscopy (Confocal)",
+    "Light-sheet (LLSM)",
+    "Confocal (CLSM)",
+    "Synthetic",
+    "ssSEM",
+    "ssSEM (ATUM)",
+    "ssSEM (Multibeam SEM)",
+    "Serial block-face SEM (SBF-SEM)",
+    "Micro-CT (X-ray microscopy)",
+    "Electron Tomography (TEM)",
+]
+
+SourceType = Literal[
+    "Internal (Janelia/HHMI)",
+    "External (Public)",
+    "External (Collaboration)",
+]
+
+StoreDtype = Literal[
+    "uint8",
+    "uint16",
+    "int16",
+    "uint64",
+    "uint32",
+    "float32",
+    "int8",
+]
+
+HasSeg = Literal[
+    "Yes",
+    "No",
+    "Partial",
+]
+
+ZarrFormat = Literal[
+    "zarr2",
+    "zarr3 sharded",
+    "zarr3",
+    "n5",
+]
+
+Compression = Literal[
+    "zstd-5",
+    "zstd",
+    "blosc",
+    "lz4",
+    "raw",
+]
+
+MemoryOrder = Literal[
+    "C",
+    "F",
+]
+
+
+class PretrainingEntry(BaseModel):
+    """A dataset record tracked via the mia_pretraining GitHub Project. Free-text fields are
+    kept verbatim as strings (e.g. voxel_size_zyx_nm "40×8×8", disk_size "118 GB")."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    title: str
+    issue: AnnotationIssue
+    created_at: Optional[str] = None  # ISO date the GitHub issue was created
+    status: Optional[PretrainingStatus] = None
+    organism: Optional[PretrainingOrganism] = None
+    data_modality: Optional[PretrainingModality] = None
+    source_type: Optional[SourceType] = None
+    dtype: Optional[StoreDtype] = None
+    has_seg: Optional[HasSeg] = None
+    zarr_format: Optional[ZarrFormat] = None
+    compression: Optional[Compression] = None
+    memory_order: Optional[MemoryOrder] = None
+    assignees: list[str] = Field(default_factory=list)
+    labels: list[str] = Field(default_factory=list)
+    source_lab: Optional[str] = None
+    dev_stage: Optional[str] = None
+    structure: Optional[str] = None
+    source_format: Optional[str] = None
+    paper_doi: Optional[str] = None
+    raw_source_path: Optional[str] = None
+    hhmi_path: Optional[str] = None
+    fileglancer_path: Optional[str] = None
+    label_path: Optional[str] = None
+    label_description: Optional[str] = None
+    last_updated: Optional[str] = None
+    voxel_size_zyx_nm: Optional[str] = None
+    volume_shape_zyx: Optional[str] = None
+    physical_volume: Optional[str] = None
+    disk_size: Optional[str] = None
+    num_voxels: Optional[str] = None
+    pct_nonzero: Optional[str] = None
+    expansion_factor: Optional[str] = None
+    array_dims: Optional[str] = None
+    axis_order: Optional[str] = None
+    chunk_shape: Optional[str] = None
+    shard_shape: Optional[str] = None
+    num_scales: Optional[str] = None
+    preprocess: Optional[str] = None
+    training_bbox_s0_zyx: Optional[str] = None
+    discard_reason: Optional[str] = None
+
+
+AnnotationEntry.model_rebuild()  # resolve the forward reference to PretrainingEntry
+
+
 class VolumeEntry(BaseModel):
     """A single OME-Zarr volume in the LMD corpus."""
 
@@ -243,6 +391,8 @@ class VolumeEntry(BaseModel):
     zarr_version: Literal["zarr2", "zarr3"] = "zarr3"
     dataset: str = ""
     tracked_by: list[AnnotationEntry] = Field(default_factory=list)
+    pretraining: list[PretrainingEntry] = Field(default_factory=list)  # in-memory join: records naming exactly this store
+    dataset_pretraining: list[PretrainingEntry] = Field(default_factory=list)  # in-memory join: records naming this store's whole dataset directory
     normalize_min: Optional[float] = None
     normalize_max: Optional[float] = None
     data_root: Optional[str] = None

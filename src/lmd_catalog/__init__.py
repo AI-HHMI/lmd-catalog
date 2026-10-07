@@ -8,6 +8,7 @@ from lmd_catalog.models import (
     DEFAULT_DATA_ROOT,
     AnnotationEntry,
     AnnotationIssue,
+    PretrainingEntry,
     ROI,
     VolumeEntry,
 )
@@ -25,6 +26,7 @@ __all__ = [
     "VolumeEntry",
     "AnnotationEntry",
     "AnnotationIssue",
+    "PretrainingEntry",
     "ROI",
     "DEFAULT_DATA_ROOT",
     "DEFAULT_VIEWER_BASE_URL",
@@ -34,6 +36,7 @@ __all__ = [
     "list_datasets",
     "find",
     "annotations",
+    "pretraining",
     "get_annotation",
     "default_catalog",
     "set_data_root",
@@ -117,6 +120,11 @@ def find(
 def annotations() -> list[AnnotationEntry]:
     """Return all annotations in the default catalog."""
     return default_catalog().annotations()
+
+
+def pretraining() -> list[PretrainingEntry]:
+    """Return all mia_pretraining dataset records in the default catalog."""
+    return default_catalog().pretraining()
 
 
 def get_annotation(issue_number: int) -> AnnotationEntry:

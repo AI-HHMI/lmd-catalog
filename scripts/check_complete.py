@@ -4,10 +4,11 @@ real", but "is everything real reflected in the catalog".
 
     python3 scripts/check_complete.py
     # or with exported JSON:
-    python3 scripts/check_complete.py volumes.json annotations.json
+    python3 scripts/check_complete.py volumes.json annotations.json pretraining.json
 
 Run on a machine with /groups mounted and `gh` authenticated with the
-`read:project` scope (`gh auth refresh -s read:project`).
+`read:project` scope (`gh auth refresh -s read:project`). Covers volumes, the annotation
+project (AI-HHMI/projects/1) and the mia_pretraining project (projects/4).
 """
 
 from __future__ import annotations
@@ -20,7 +21,8 @@ import sys
 from data_root import DATA_ROOT
 
 PROJECT_OWNER = "AI-HHMI"
-PROJECT_NUMBER = "1"
+ANNOTATION_PROJECT = "1"
+PRETRAINING_PROJECT = "4"
 
 
 def load_json(path):
@@ -55,9 +57,9 @@ def check_volumes_complete(volumes):
     return violations
 
 
-def fetch_project_issues():
+def fetch_project_issues(project):
     result = subprocess.run(
-        ["gh", "project", "item-list", PROJECT_NUMBER, "--owner", PROJECT_OWNER,
+        ["gh", "project", "item-list", project, "--owner", PROJECT_OWNER,
          "--format", "json", "--limit", "5000"],
         capture_output=True, text=True,
     )
@@ -72,7 +74,7 @@ def fetch_project_issues():
 
 
 def check_annotations_complete(annotations):
-    in_project = fetch_project_issues()
+    in_project = fetch_project_issues(ANNOTATION_PROJECT)
     in_catalog = {(a["issue"]["repository"], a["issue"]["number"]) for a in annotations}
 
     new_in_project = sorted(in_project - in_catalog)
@@ -83,10 +85,20 @@ def check_annotations_complete(annotations):
     return violations
 
 
+def check_pretraining_complete(pretraining):
+    in_project = fetch_project_issues(PRETRAINING_PROJECT)
+    in_catalog = {(p["issue"]["repository"], p["issue"]["number"]) for p in pretraining}
+
+    violations = [f"project 4 item not synced to lmd_pretraining.json: {repo}#{num}" for repo, num in sorted(in_project - in_catalog)]
+    violations += [f"pretraining record tracks an issue no longer in project 4: {repo}#{num}" for repo, num in sorted(in_catalog - in_project)]
+    return violations
+
+
 def main():
-    if len(sys.argv) >= 3:
-        volumes = load_json(sys.argv[1])
-        annotations = load_json(sys.argv[2])
+    if len(sys.argv) >= 4:
+        volumes = load_json(sys.argv[1])["volumes"]
+        annotations = load_json(sys.argv[2])["annotations"]
+        pretraining = load_json(sys.argv[3])["pretraining"]
     else:
         try:
             import lmd_catalog as lmd
@@ -95,11 +107,13 @@ def main():
             import lmd_catalog as lmd
         volumes = [v.model_dump() for v in lmd.all()]
         annotations = [a.model_dump() for a in lmd.annotations()]
+        pretraining = [p.model_dump() for p in lmd.pretraining()]
 
 
     violations = [
         *check_volumes_complete(volumes),
         *check_annotations_complete(annotations),
+        *check_pretraining_complete(pretraining),
     ]
 
     for v in violations:

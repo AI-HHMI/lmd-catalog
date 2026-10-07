@@ -27,6 +27,12 @@ REGIONS = [
     (r"hela|jurkat|macrophage|sum159|ut21|cos7", "Cell culture"),
     (r"liconn|brain", "Brain (unspecified region)"),
 ]
+# Annotation statuses of the bulk-ingested issues, which don't record tool/task/structure/priority.
+BULK_STATUSES = {"manual_gt_ingested", "public_gt_ingested", "proofread_ingested", "auto_pred_ingested"}
+# Pipeline order for the mia_pretraining status funnel.
+STATUS_ORDER = ["Pending Ingestion", "Training Bbox TBD", "Waiting", "Consider for Training", "Approved for Training", "In Training", "Model Development Only", "On Hold", "Discarded"]
+SIZE_RE = re.compile(r"([\d.,]+)\s*(PB|TB|GB|MB|KB|P|T|G|M)\b", re.I)
+UNIT_GB = {"KB": 1e-6, "MB": 1e-3, "GB": 1.0, "TB": 1e3, "PB": 1e6, "M": 1e-3, "G": 1.0, "T": 1e3, "P": 1e6}
 CSS = """
 body{font:15px system-ui,sans-serif;max-width:1200px;margin:0 auto;padding:16px;color:#222;background:#fff}
 h1{margin-bottom:4px} h2{margin-top:36px;border-bottom:1px solid #ddd;padding-bottom:4px}
@@ -132,16 +138,59 @@ def split_section(title: str, recs, key: str) -> tuple:
     return title, [("Volumes", plots.pie(group_sum(recs, key))), ("Tera-voxels", plots.pie(vox)), ("Summary", summary_table(recs, key))]
 
 
+def size_gb(text) -> float | None:
+    """The first size quoted in a free-text disk_size ("118 GB", "~435 GB (22 volumes)", "132M"), in GB; None if none."""
+    m = SIZE_RE.search(text or "")
+    return float(m.group(1).replace(",", "")) * UNIT_GB[m.group(2).upper()] if m else None
+
+
+def project_datasets(cat) -> list:
+    """The dataset-level mia_pretraining records (the ones that are not also a tracked annotation issue)."""
+    annotated = {(a.issue.repository, a.issue.number) for a in cat.annotations() if a.pretraining}
+    return [p for p in cat.pretraining() if (p.issue.repository, p.issue.number) not in annotated]
+
+
+def project_section(cat) -> tuple:
+    """Charts of the mia_pretraining dataset records. Sizes are approximate: the first size quoted per record."""
+    recs = project_datasets(cat)
+    sized = [(p, size_gb(p.disk_size)) for p in recs if size_gb(p.disk_size)]
+    totals = lambda key: {k: sum(g for p, g in sized if key(p) == k) / 1e3 for k in {key(p) for p, _ in sized}}
+    count = lambda f: Counter(getattr(p, f) or "unset" for p in recs)
+    labs = defaultdict(lambda: [0, 0.0])
+    for p, g in sized:
+        lab = p.source_lab or "unset"
+        labs[lab][0] += 1
+        labs[lab][1] += g / 1e3
+    lab_rows = [[lab, n, tb] for lab, (n, tb) in sorted(labs.items(), key=lambda kv: -kv[1][1])[:12]]
+    top = {p.title[:42]: g / 1e3 for p, g in sorted(sized, key=lambda pg: -pg[1])[:15]}
+    status = {s: n for s, n in sorted(count("status").items(), key=lambda kv: STATUS_ORDER.index(kv[0]) if kv[0] in STATUS_ORDER else 99)}
+    note = f"approx. TB, first size quoted in {len(sized)} of {len(recs)} records"
+    return f"Project datasets ({len(recs)} mia_pretraining records)", [
+        ("Pipeline status", plots.bar(status, "datasets")),
+        ("Source type", plots.pie(count("source_type"))),
+        ("Microscopy type (project labels)", plots.pie(count("data_modality"))),
+        (f"Data on disk by organism ({note})", plots.bar(totals(lambda p: p.organism or "unset"), "TB")),
+        (f"Data on disk by microscopy type ({note})", plots.bar(totals(lambda p: p.data_modality or "unset"), "TB")),
+        ("Largest datasets (approx. TB)", plots.bar(top, "TB")),
+        ("Source labs by data on disk", plots.table(["Source lab", "Datasets", "Approx. TB"], lab_rows)),
+        ("Array dtype", plots.pie(count("dtype"))),
+        ("Zarr format", plots.pie(count("zarr_format"))),
+        ("Compression", plots.pie(count("compression"))),
+    ]
+
+
 def annotation_section(cat) -> tuple:
     anns = cat.annotations()
-    count = lambda f: Counter(getattr(a, f) or "unset" for a in anns)
+    hand = [a for a in anns if a.status not in BULK_STATUSES]
+    count = lambda rows, f: Counter(getattr(a, f) or "unset" for a in rows)
+    note = f"{len(hand)} hand-tracked issues; the {len(anns) - len(hand)} bulk-ingested ones don't record this"
     return f"Annotation tracking ({len(anns)} issues)", [
-        ("Status", plots.bar(count("status"), "issues")),
-        ("Tool", plots.pie(count("tool"))),
-        ("Task", plots.pie(count("task"))),
-        ("Structure of interest", plots.pie(count("structure_of_interest"))),
-        ("Priority", plots.pie(count("priority"))),
-        ("Organism", plots.pie(count("model_organism"))),
+        ("Status (all issues)", plots.bar(count(anns, "status"), "issues")),
+        ("Organism (all issues)", plots.pie(count(anns, "model_organism"))),
+        (f"Tool ({note})", plots.pie(count(hand, "tool"))),
+        (f"Task ({note})", plots.pie(count(hand, "task"))),
+        (f"Structure of interest ({note})", plots.pie(count(hand, "structure_of_interest"))),
+        (f"Priority ({note})", plots.pie(count(hand, "priority"))),
     ]
 
 
@@ -153,6 +202,8 @@ def build() -> tuple:
         (f"{len(recs):,}", "volumes"), (f"{len(cat.list_datasets()):,}", "datasets"),
         (f"{sum(r['voxels'] for r in recs) / 1e12:,.1f}", "tera-voxels"), (f"{sum(r['extent_mm3'] for r in recs):,.1f}", "mm³ imaged"),
         (f"{sum(r['gt'] for r in recs):,}", "volumes with ground truth"), (f"{sum(r['annotated'] for r in recs):,}", "volumes tracked by an issue"),
+        (f"{len(project_datasets(cat)):,}", "project datasets"),
+        (f"{sum(size_gb(p.disk_size) or 0 for p in project_datasets(cat)) / 1e3:,.0f}", "TB on disk (project estimate)"),
     ]
     by_modality = defaultdict(lambda: ([], []))
     for r in recs:
@@ -182,6 +233,7 @@ def build() -> tuple:
             ("Zarr version", plots.pie(group_sum(recs, "zarr"))),
         ]),
         ("Ground truth", [("Volumes with ingested ground truth", plots.pie(gt_split))]),
+        project_section(cat),
         annotation_section(cat),
     ]
     return tiles, sections
