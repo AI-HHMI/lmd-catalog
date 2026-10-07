@@ -102,6 +102,10 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
   exactly, its `volume_shape_zyx` / `voxel_size_zyx_nm` must agree with the store's own zarr metadata. Two
   conventions are allowed, not flagged: a project shape larger on every axis (the parent dataset of a crop)
   and a voxel size equal to the store's divided by the record's `expansion_factor` (pre-expansion size).
+  Records that are wrong in the GitHub Project and can't be corrected there are listed, with the reason, in
+  `KNOWN_PROJECT_ERRORS` (`check_integrity.py`, keyed by `(repository, issue number)`): their violations are
+  ignored, and an entry that no longer fails any check is itself a violation, so delete it once the project is
+  fixed. Don't add an entry to silence something new -- fix the data or the rule.
   Its `dtype` must match the store's `s0` array (read from `zarr.json`/`.zarray`; needs the data mounted).
   The zarr metadata is the ground truth; `disk_size`, compression and chunk/shard shape are not checked yet.
 - `check_complete.py` — the reverse direction: is everything *real* reflected in the catalog. Walks

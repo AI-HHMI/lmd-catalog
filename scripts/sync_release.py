@@ -137,4 +137,7 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except subprocess.CalledProcessError as e:
+        sys.exit(f"\nstopped: `{' '.join(map(str, e.cmd))[:90]}` exited {e.returncode} (see its output above). Earlier steps are not undone: check `jj log` / `jj bookmark list -a` for what already moved.")

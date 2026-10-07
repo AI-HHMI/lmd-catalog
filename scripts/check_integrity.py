@@ -62,14 +62,35 @@ def check_duplicate_names(volumes):
 PRETRAINING_NO_VOLUME_STATUSES = {"Pending Ingestion", "Model Development Only"}
 
 
-def check_pretraining_joined(unjoined_pretraining):
-    """A mia_pretraining record that names a path but matches no catalog volume or dataset directory -- a
-    typo, a layout the join doesn't understand, or a store that isn't in the catalog."""
+# mia_pretraining records that are wrong in the GitHub Project and can't be corrected there: (repository, issue
+# number) -> what is wrong. Their violations are ignored, but an entry that stops failing is itself a violation, so
+# remove it once the project is fixed.
+KNOWN_PROJECT_ERRORS = {
+    ("AI-HHMI/mia_pretraining", 13): "hhmi_path is a range ('... 027 … 045 (12 dirs)'), not paths",
+    ("AI-HHMI/mia_pretraining", 14): "hhmi_path uses the legacy betzig-fish-mosaic/ layout, which no longer exists on disk",
+    ("AI-HHMI/mia_pretraining", 15): "hhmi_path uses the legacy betzig-fish-mosaic/ layout, which no longer exists on disk",
+    ("AI-HHMI/mia_pretraining", 16): "hhmi_path uses the legacy betzig-fish-mosaic/ layout, which no longer exists on disk",
+    ("AI-HHMI/mia_pretraining", 38): "voxel_size_zyx_nm 400×162.5×162.5 looks copied from the spinning-disk datasets; the stores are 1000×157×157",
+    ("AI-HHMI/mia_pretraining", 303): "hhmi_path lists bare crop names after its first full path",
+}
+
+
+def record_key(p):
+    return (p["issue"]["repository"], p["issue"]["number"])
+
+
+def unjoined_problems(unjoined_pretraining):
+    """(record key, message) for each mia_pretraining record that names a path but matches no catalog volume or
+    dataset directory -- a typo, a layout the join doesn't understand, or a store that isn't in the catalog."""
     return [
-        f"{p['title']} ({p['issue']['repository']}#{p['issue']['number']}): hhmi_path matches no catalog volume or dataset: {p['hhmi_path']}"
+        (record_key(p), f"{p['title']} ({p['issue']['repository']}#{p['issue']['number']}): hhmi_path matches no catalog volume or dataset: {p['hhmi_path']}")
         for p in unjoined_pretraining
         if p["status"] not in PRETRAINING_NO_VOLUME_STATUSES
     ]
+
+
+def check_pretraining_joined(unjoined_pretraining):
+    return [m for _, m in unjoined_problems(unjoined_pretraining)]
 
 
 NUMBER_RE = re.compile(r"\d+(?:\.\d+)?")
@@ -85,13 +106,13 @@ def close(a, b, tol):
     return abs(a - b) <= tol * max(abs(a), abs(b))
 
 
-def check_pretraining_matches_stores(volumes):
+def mismatch_problems(volumes):
     """For a store a mia_pretraining record names exactly, the record's shape and voxel size must agree with
     the store's own zarr metadata (the catalog's shape/voxelsize, ZYX). Two conventions are allowed: a project
     shape that is larger on every axis (it describes the crop's parent dataset), and a voxel size equal to the
     store's divided by the record's expansion factor (the pre-expansion size). Fields that are blank or aren't
-    three numbers are skipped."""
-    violations = []
+    three numbers are skipped. Returns (record key, message) pairs."""
+    problems = []
     for v in volumes:
         if not (v.get("shape") and v.get("axes") and v.get("voxelsize")):
             continue
@@ -106,7 +127,7 @@ def check_pretraining_matches_stores(volumes):
                 b1 = project_shape == store_shape
                 b2 = all(a >= b for a, b in zip(project_shape, store_shape))
                 if not (b1 or b2):
-                    violations.append(f"{v['name']}: {ref} says shape {p['volume_shape_zyx']} but the store is {store_shape} (ZYX)")
+                    problems.append((record_key(p), f"{v['name']}: {ref} says shape {p['volume_shape_zyx']} but the store is {store_shape} (ZYX)"))
             project_vox = numbers3(p.get("voxel_size_zyx_nm"))
             if project_vox:
                 m = NUMBER_RE.search(p.get("expansion_factor") or "")
@@ -114,7 +135,25 @@ def check_pretraining_matches_stores(volumes):
                 b1 = all(close(a, b, 0.01) for a, b in zip(project_vox, store_vox))
                 b2 = factor > 0 and all(close(a * factor, b, 0.03) for a, b in zip(project_vox, store_vox))
                 if not (b1 or b2):
-                    violations.append(f"{v['name']}: {ref} says voxel size {p['voxel_size_zyx_nm']} nm (expansion {p.get('expansion_factor')}) but the store is {store_vox} (ZYX)")
+                    problems.append((record_key(p), f"{v['name']}: {ref} says voxel size {p['voxel_size_zyx_nm']} nm (expansion {p.get('expansion_factor')}) but the store is {store_vox} (ZYX)"))
+    return problems
+
+
+def check_pretraining_matches_stores(volumes):
+    return [m for _, m in mismatch_problems(volumes)]
+
+
+def check_pretraining_known_errors(unjoined_pretraining, volumes):
+    """The join and store-agreement checks with KNOWN_PROJECT_ERRORS ignored -- and a violation for every
+    known error that no longer fails, so the list can't go stale."""
+    problems = unjoined_problems(unjoined_pretraining) + mismatch_problems(volumes)
+    fired = {key for key, _ in problems}
+    violations = [m for key, m in problems if key not in KNOWN_PROJECT_ERRORS]
+    violations += [
+        f"KNOWN_PROJECT_ERRORS entry {key[0]}#{key[1]} ({why}) no longer fails any check -- remove it"
+        for key, why in KNOWN_PROJECT_ERRORS.items()
+        if key not in fired
+    ]
     return violations
 
 
@@ -239,7 +278,7 @@ def main():
     if len(sys.argv) >= 3:
         volumes = load_json(sys.argv[1])["volumes"]
         annotations = load_json(sys.argv[2])["annotations"]
-        unjoined_pretraining = []  # the pretraining join needs the package; use the default (no-argument) mode to check it
+        pretraining_checks = []  # the pretraining join needs the package; use the default (no-argument) mode to check it
     else:
         try:
             import lmd_catalog as lmd
@@ -249,6 +288,7 @@ def main():
         volumes = [v.model_dump() for v in lmd.all()]
         annotations = [a.model_dump() for a in lmd.annotations()]
         unjoined_pretraining = [p.model_dump() for p in lmd.default_catalog().unjoined_pretraining()]
+        pretraining_checks = [*check_pretraining_known_errors(unjoined_pretraining, volumes), *check_pretraining_dtype(volumes)]
 
 
     violations = [
@@ -257,9 +297,7 @@ def main():
         *check_source_paths_resolve(annotations, volumes),
         *check_volume_filesystem(volumes),
         *check_annotation_source_paths_exist(annotations),
-        *check_pretraining_joined(unjoined_pretraining),
-        *check_pretraining_matches_stores(volumes),
-        *check_pretraining_dtype(volumes),
+        *pretraining_checks,
         *check_roi_matches_bbox_text(annotations),
         *check_terminal_paths_exist(annotations),
     ]

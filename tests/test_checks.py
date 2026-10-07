@@ -98,3 +98,27 @@ def test_dtype_check_skips_missing_metadata_and_unrecorded_dtypes(tmp_path):
     store["pretraining"][0]["dtype"] = None
     assert check_pretraining_dtype([store]) == []
     assert store_dtype(make_store(tmp_path / "b", ".zarray", '{"dtype": "|b1"}')) is None
+
+
+def test_known_project_errors_are_ignored_but_must_keep_failing(monkeypatch):
+    import check_integrity as c
+
+    monkeypatch.setattr(c, "KNOWN_PROJECT_ERRORS", {})
+    record = {"title": "t", "status": "Consider for Training", "hhmi_path": "/x/y", "issue": {"repository": "R", "number": 7}}
+    assert len(c.check_pretraining_known_errors([record], [])) == 1  # an unknown problem is a violation
+
+    monkeypatch.setattr(c, "KNOWN_PROJECT_ERRORS", {("R", 7): "typo in the project"})
+    assert c.check_pretraining_known_errors([record], []) == []  # acknowledged, so ignored
+
+    (msg,) = c.check_pretraining_known_errors([], [])  # fixed upstream: the entry is now stale
+    assert "R#7" in msg and "typo in the project" in msg and "remove it" in msg
+
+
+def test_known_project_errors_also_cover_store_mismatches(monkeypatch):
+    import check_integrity as c
+
+    store = volume(voxel_size_zyx_nm="30×8×8")  # does not match the store's 40×8×8
+    monkeypatch.setattr(c, "KNOWN_PROJECT_ERRORS", {})
+    assert len(c.check_pretraining_known_errors([], [store])) == 1
+    monkeypatch.setattr(c, "KNOWN_PROJECT_ERRORS", {("AI-HHMI/mia_pretraining", 1): "copied from another dataset"})
+    assert c.check_pretraining_known_errors([], [store]) == []
