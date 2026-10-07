@@ -39,9 +39,30 @@ body{font:15px system-ui,sans-serif;max-width:1200px;margin:0 auto;padding:16px;
 h1{margin-bottom:4px} h2{margin-top:36px;border-bottom:1px solid #ddd;padding-bottom:4px}
 .tiles{display:flex;flex-wrap:wrap;gap:12px} .tile{border:1px solid #ddd;border-radius:6px;padding:10px 16px}
 .tile b{display:block;font-size:24px} .grid{display:flex;flex-wrap:wrap;gap:20px}
-.card{flex:1 1 460px;min-width:0} .card svg{max-width:100%;height:auto} h3{margin:8px 0 4px;font-size:15px}
+.card{flex:1 1 460px;min-width:0} .card.wide{flex-basis:100%} .card svg{max-width:100%;height:auto} h3{margin:8px 0 4px;font-size:15px}
 table{border-collapse:collapse;font-size:13px} th,td{padding:3px 10px;border-bottom:1px solid #eee;text-align:left}
 td.n,th{text-align:right} th:first-child{text-align:left}
+html{scroll-behavior:smooth} h1,h2{scroll-margin-top:16px} nav.toc{display:none}
+@media (min-width:1100px){
+  body{max-width:none}
+  .layout{display:grid;grid-template-columns:230px minmax(0,1200px);gap:32px;max-width:1500px;margin:0 auto}
+  nav.toc{display:block;position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;font-size:14px}
+  nav.toc b{display:block;margin:0 0 8px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#888}
+  nav.toc a{display:block;padding:5px 10px 5px 12px;color:#555;text-decoration:none;border-left:2px solid #eee}
+  nav.toc a:hover{color:#222;border-left-color:#bbb} nav.toc a.on{color:#0072B2;border-left-color:#0072B2;font-weight:600}
+}
+"""
+# Highlights the section being read in the side panel (only visible on wide screens).
+TOC_JS = """
+const links = [...document.querySelectorAll('nav.toc a')];
+const targets = links.map(a => document.querySelector(a.getAttribute('href')));
+function mark() {
+  let cur = 0;
+  targets.forEach((t, i) => { if (t.getBoundingClientRect().top <= 120) cur = i; });
+  links.forEach((a, i) => a.classList.toggle('on', i === cur));
+}
+addEventListener('scroll', mark, {passive: true});
+mark();
 """
 
 
@@ -125,7 +146,8 @@ def growth_section(recs, cat) -> tuple:
 
 
 def card(title: str, content: str) -> str:
-    return f"<div class='card'><h3>{title}</h3>{content}</div>"
+    wide = " wide" if content.startswith("<table") else ""  # tables get a row of their own
+    return f"<div class='card{wide}'><h3>{title}</h3>{content}</div>"
 
 
 def summary_table(recs, key: str) -> str:
@@ -285,13 +307,26 @@ def build() -> tuple:
     return tiles, sections
 
 
+def short_title(title: str) -> str:
+    """The title without its parenthetical, which holds live counts ("Annotation tracking (1124 issues)")."""
+    return title.split(" (")[0]
+
+
+def anchor(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", short_title(title).lower()).strip("-")
+
+
 def main():
     tiles, sections = build()
-    body = (
-        "<h1>LMD catalog report</h1><p><a href='slides.html'>View as slides &rarr;</a></p><div class='tiles'>"
+    toc = [("overview", "Overview")] + [(anchor(title), short_title(title)) for title, _ in sections]
+    nav = "<nav class='toc'><b>Contents</b>" + "".join(f"<a href='#{a}'>{t}</a>" for a, t in toc) + "</nav>"
+    main_html = (
+        "<main><h1 id='overview'>LMD catalog report</h1><p><a href='slides.html'>View as slides &rarr;</a></p><div class='tiles'>"
         + "".join(f"<div class='tile'><b>{n}</b>{label}</div>" for n, label in tiles) + "</div>"
-        + "".join(f"<h2>{title}</h2><div class='grid'>" + "".join(card(t, c) for t, c in cards) + "</div>" for title, cards in sections)
+        + "".join(f"<h2 id='{anchor(title)}'>{title}</h2><div class='grid'>" + "".join(card(t, c) for t, c in cards) + "</div>" for title, cards in sections)
+        + "</main>"
     )
+    body = f"<div class='layout'>{nav}{main_html}</div><script>{TOC_JS}</script>"
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(
         "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
