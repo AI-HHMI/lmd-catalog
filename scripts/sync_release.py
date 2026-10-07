@@ -15,7 +15,8 @@ bookmark on it and an empty working copy:
 6. push `main` (and the tag, if any) to `origin` and `janelia`
 
 Run it with the local env from `uv sync --extra analysis` (step 4 imports lmd_catalog + matplotlib).
-Needs on the cluster: proj/lmd-catalog/.venv (`uv sync --extra dev`) and `gh` authed with read:project.
+Needs on the cluster: proj/lmd-catalog checked out on `main` (not a detached HEAD, or the push won't update its working tree),
+clean, with .venv (`uv sync --extra dev`), and `gh` authed with read:project. The remote step verifies all of this.
 """
 
 import os
@@ -34,15 +35,22 @@ VERSION_FILES = {"pyproject.toml": r'^(version = ")[^"]*(")', "src/lmd_catalog/_
 REMOTE_SCRIPT = """
 set -euo pipefail
 cd proj/lmd-catalog
-test -z "$(git status --porcelain)" || { echo "cluster working tree is dirty" >&2; exit 1; }
+branch=$(git symbolic-ref --short -q HEAD || true)
+[ "$branch" = main ] || { echo "cluster clone is on '${branch:-a detached HEAD}', not main: run 'git checkout main' in proj/lmd-catalog" >&2; exit 1; }
+[ "$(git rev-parse HEAD)" = "$1" ] || { echo "cluster HEAD is not the pushed commit $1 -- its working tree was not updated" >&2; exit 1; }
+test -z "$(git status --porcelain)" || { echo "cluster working tree is dirty: 'git checkout -- .' there (or commit) and rerun" >&2; exit 1; }
 test -x .venv/bin/python || { echo "no .venv on the cluster: run 'uv sync --extra dev' in proj/lmd-catalog" >&2; exit 1; }
-trap 'git checkout -- lmd_volumes.json lmd_annotations.json lmd_pretraining.json' ERR
+trap 'git checkout -- .' ERR
+# Separate statements, not `cmd > tmp && mv`: under set -e a failure on the left of && does not abort.
 tmp=$(mktemp)
-.venv/bin/python scripts/rebuild_volumes.py > $tmp && mv $tmp lmd_volumes.json
+.venv/bin/python scripts/rebuild_volumes.py > $tmp
+mv $tmp lmd_volumes.json
 tmp=$(mktemp)
-.venv/bin/python scripts/rebuild_annotations.py > $tmp && mv $tmp lmd_annotations.json
+.venv/bin/python scripts/rebuild_annotations.py > $tmp
+mv $tmp lmd_annotations.json
 tmp=$(mktemp)
-.venv/bin/python scripts/rebuild_pretraining.py > $tmp && mv $tmp lmd_pretraining.json
+.venv/bin/python scripts/rebuild_pretraining.py > $tmp
+mv $tmp lmd_pretraining.json
 .venv/bin/python -m pytest tests -q
 .venv/bin/python scripts/check_integrity.py
 .venv/bin/python scripts/check_complete.py
@@ -104,7 +112,8 @@ def main():
     os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
     check_local_state()
     run("jj", "git", "push", "--remote", "janelia", "--bookmark", "main")
-    run("ssh", REMOTE_HOST, "bash -s", input=REMOTE_SCRIPT)
+    pushed = out("jj", "log", "-r", "main", "--no-graph", "-T", "commit_id")
+    run("ssh", REMOTE_HOST, f"bash -s {pushed}", input=REMOTE_SCRIPT)
     run("jj", "git", "fetch", "--remote", "janelia")
     run("jj", "bookmark", "set", "main", "-r", "main@janelia")
     run("jj", "new", "main")
