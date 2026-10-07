@@ -55,6 +55,9 @@ def chunk(cards: list) -> list:
     slides, charts = [], []
     for title, content in cards:
         if content.startswith("<table"):
+            if charts:  # keep the cards in their original order: a pending lone chart goes before this table
+                slides.append(charts)
+                charts = []
             slides.append([(title, content)])
         else:
             charts.append((title, content))

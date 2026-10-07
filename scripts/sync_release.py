@@ -1,25 +1,25 @@
-"""Rebuild + check the catalog on the Janelia cluster, sync it back, and optionally cut a release.
+"""Rebuild volumes + check the catalog on the Janelia cluster, sync it back, and optionally cut a release.
 
-Run from the local repo (jj, colocated with git) once your work is committed with the `main`
-bookmark on it and an empty working copy:
+Keeps the local repo and the `janelia` remote compatible; it never touches `origin` (push that by hand) and never
+queries GitHub (scripts/sync_github.py refreshes annotations + pretraining from the Projects, rarely). Run it from the
+local repo (jj, colocated with git) once your work is committed with the `main` bookmark on it and an empty working copy:
 
     python3 scripts/sync_release.py
 
 1. push local `main` to the `janelia` remote (its working tree must be clean: updateInstead)
-2. over ssh in the cluster clone: rebuild volumes + annotations + pretraining, run pytest and check_integrity,
-   and commit the rebuild if anything changed (any failure reverts the rebuild)
+2. over ssh in the cluster clone: rebuild volumes from the disk, run pytest and check_integrity against the committed
+   annotations/pretraining, and commit the rebuild if anything changed (any failure reverts it)
 3. fetch the cluster commit back and fast-forward local `main` to it
 4. regenerate the GitHub Pages report + slides in docs/ and commit them if they changed
 5. pick the next version from the changes since the latest tag (removed/changed volume: major,
    new volume: minor, any other catalog/schema change: patch), then ask before bumping + tagging
-6. push `main` (and the tag, if any) to `origin` and `janelia`
+6. push `main` (and the tag, if any) to `janelia`
 
 Run it with the local env from `uv sync --extra analysis` (step 4 imports lmd_catalog + matplotlib).
-Needs on the cluster: proj/lmd-catalog checked out on `main` (not a detached HEAD, or the push won't update its working tree),
-clean, with .venv (`uv sync --extra dev`), and `gh` authed with read:project. The remote step verifies all of this.
+Needs on the cluster: proj/lmd-catalog checked out on `main` (not a detached HEAD, or the push won't update its working
+tree), clean, with .venv (`uv sync --extra dev`). The remote step verifies all of this.
 """
 
-import json
 import os
 import re
 import subprocess
@@ -29,10 +29,7 @@ import tempfile
 from check_semver import breaking_changes, latest_tag, parse_semver, volumes_at_ref
 
 REMOTE_HOST = "login1.int.janelia.org"
-# The GitHub GraphQL budget (5000 points/hour, shared by every gh call this user makes, here and on the cluster) is
-# what a release spends: the project item lists. Refuse to start with less than this left; the run prints what it used.
-MIN_GRAPHQL_POINTS = 2000
-REMOTES = ("origin", "janelia")
+REMOTE = "janelia"
 CATALOG_FILES = ("lmd_volumes.json", "lmd_annotations.json", "lmd_pretraining.json", "src/lmd_catalog/models.py")
 VERSION_FILES = {"pyproject.toml": r'^(version = ")[^"]*(")', "src/lmd_catalog/__init__.py": r'^(__version__ = ")[^"]*(")'}
 
@@ -49,16 +46,10 @@ trap 'git checkout -- .' ERR
 tmp=$(mktemp)
 .venv/bin/python scripts/rebuild_volumes.py > $tmp
 mv $tmp lmd_volumes.json
-tmp=$(mktemp)
-.venv/bin/python scripts/rebuild_annotations.py > $tmp
-mv $tmp lmd_annotations.json
-tmp=$(mktemp)
-.venv/bin/python scripts/rebuild_pretraining.py > $tmp
-mv $tmp lmd_pretraining.json
 .venv/bin/python -m pytest tests -q
 .venv/bin/python scripts/check_integrity.py
-# check_complete.py is skipped on purpose: right after the rebuilds above it can only agree with them (it re-fetches
-# both GitHub projects and re-walks the disk, spending a third of the GraphQL budget for no new information).
+# check_complete.py is not run here: it queries GitHub (see scripts/sync_github.py), and right after the volume rebuild
+# above its disk half can only agree with it.
 git diff --quiet || git commit -qam "rebuild catalog"
 """
 
@@ -72,14 +63,13 @@ def out(*cmd) -> str:
     return subprocess.run(cmd, check=True, text=True, capture_output=True).stdout.strip()
 
 
-def graphql_budget() -> tuple:
-    """(remaining, used, resetAt) of the shared GitHub GraphQL budget. This query itself costs 1 point."""
-    r = json.loads(out("gh", "api", "graphql", "-f", "query=query { rateLimit { remaining used resetAt } }"))["data"]["rateLimit"]
-    return r["remaining"], r["used"], r["resetAt"]
-
-
 def check_local_state():
-    assert out("jj", "log", "-r", "@", "--no-graph", "-T", "empty") == "true", "working copy has changes: commit them (jj commit), set `main` on that commit, and rerun"
+    """Need an empty working copy whose parent is `main`. If you only `jj describe`d your commit and put `main` on it,
+    the working copy IS `main`: start a fresh empty one above it."""
+    is_empty = lambda: out("jj", "log", "-r", "@", "--no-graph", "-T", "empty") == "true"
+    if not is_empty() and out("jj", "log", "-r", "main & @", "--no-graph", "-T", "commit_id"):
+        run("jj", "new")
+    assert is_empty(), "working copy has changes that are not on `main`: commit them (jj commit), set `main` on that commit (jj bookmark set main -r @-), and rerun"
     assert out("jj", "log", "-r", "main & @-", "--no-graph", "-T", "commit_id"), "`main` is not the parent of the working copy: `jj bookmark set main -r @-` first"
 
 
@@ -115,39 +105,34 @@ def refresh_docs():
 
 
 def push_main():
-    for remote in REMOTES:
-        run("jj", "git", "push", "--remote", remote, "--bookmark", "main")
+    run("jj", "git", "push", "--remote", REMOTE, "--bookmark", "main")
 
 
 def main():
     os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
     check_local_state()
-    remaining, used_before, resets = graphql_budget()
-    assert remaining >= MIN_GRAPHQL_POINTS, f"GitHub GraphQL budget too low: {remaining} points left, resets {resets} (UTC). Wait and rerun; nothing was pushed."
-    run("jj", "git", "push", "--remote", "janelia", "--bookmark", "main")
+    push_main()
     pushed = out("jj", "log", "-r", "main", "--no-graph", "-T", "commit_id")
     run("ssh", REMOTE_HOST, f"bash -s {pushed}", input=REMOTE_SCRIPT)
-    print(f"GitHub GraphQL points used by the rebuild: {graphql_budget()[1] - used_before} (shared budget resets {resets})")
-    run("jj", "git", "fetch", "--remote", "janelia")
-    run("jj", "bookmark", "set", "main", "-r", "main@janelia")
+    run("jj", "git", "fetch", "--remote", REMOTE)
+    run("jj", "bookmark", "set", "main", "-r", f"main@{REMOTE}")
     run("jj", "new", "main")
     refresh_docs()
 
-    run("git", "fetch", "origin", "--tags", "--quiet")
+    run("git", "fetch", REMOTE, "--tags", "--quiet")
     tag = latest_tag("main")
     version = next_version(tag) if tag else None
     if version is None:
         print(f"\nno catalog changes since {tag}: not tagging")
         push_main()
         return
-    assert input(f"\nchanges since {tag} imply {version}. Bump, tag and push? [y/N] ").lower() == "y", "aborted before tagging (nothing pushed to origin)"
+    assert input(f"\nchanges since {tag} imply {version}. Bump, tag and push? [y/N] ").lower() == "y", "aborted before tagging (the catalog changes are already on janelia; nothing was tagged)"
     set_version(version)
     run("jj", "commit", "-m", f"bump to {version}")
     run("jj", "bookmark", "set", "main", "-r", "@-")
     push_main()
     run("git", "tag", version, "main")
-    for remote in REMOTES:
-        run("git", "push", remote, version)
+    run("git", "push", REMOTE, version)
 
 
 if __name__ == "__main__":

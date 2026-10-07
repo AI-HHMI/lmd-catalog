@@ -5,6 +5,7 @@ Usage: uv sync --extra analysis && python scripts/analysis/report.py   ->  docs/
 
 import math
 import re
+import statistics
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
@@ -51,6 +52,13 @@ def region_of(dataset: str) -> str:
     return "Whole organism / unspecified"
 
 
+def subtype_of(v) -> str:
+    """The project's finer microscopy label for a volume: from the records naming its store, else from those naming
+    its dataset; the most common label if they disagree; 'unspecified' if there is none."""
+    labels = [p.data_modality for p in v.pretraining if p.data_modality] or [p.data_modality for p in v.dataset_pretraining if p.data_modality]
+    return Counter(labels).most_common(1)[0][0] if labels else "unspecified"
+
+
 def record(v) -> dict:
     assert v.shape and v.axes, f"{v.name}: catalog entry is missing shape/axes"
     assert v.added, f"{v.name}: catalog entry has no `added` date -- rebuild lmd_volumes.json (scripts/rebuild_volumes.py)"
@@ -59,7 +67,7 @@ def record(v) -> dict:
     spatial = [a for a in "xyz" if a in sd]
     return dict(
         name=v.name, dataset=v.dataset, modality=MODALITY[prefix], organism=organism.capitalize(),
-        region=region_of(v.dataset), voxels=math.prod(v.shape),
+        region=region_of(v.dataset), subtype=subtype_of(v), voxels=math.prod(v.shape),
         extent_mm3=math.prod(sd[a] * vd[a] for a in spatial) / 1e18,  # nm^3 -> mm^3
         vox_fine=min(vd[a] for a in spatial), vox_z=vd["z"], channels=sd.get("c", 1), timepoints=sd.get("t", 1),
         added=date.fromisoformat(v.added), gt=v.has_ground_truth, annotated=v.is_annotated, zarr=v.zarr_version, axes="".join(v.axes).upper(),
@@ -179,6 +187,43 @@ def project_section(cat) -> tuple:
     ]
 
 
+def subtype_rows(recs) -> list:
+    """One row per (category, subtype), categories in MODALITY order and subtypes by volume count."""
+    groups = defaultdict(list)
+    for r in recs:
+        groups[(r["modality"], r["subtype"])].append(r)
+    order = list(MODALITY.values())
+    return sorted(groups.items(), key=lambda kv: (order.index(kv[0][0]), -len(kv[1])))
+
+
+def detail_table(rows) -> str:
+    def organisms(g):
+        counts = Counter(r["organism"] for r in g).most_common(3)
+        return ", ".join(f"{o} {100 * n / len(g):.0f}%" for o, n in counts)
+
+    return plots.table(
+        ["Subtype", "Volumes", "Datasets", "Tera-voxels", "Median voxel (nm)", "With GT", "Main organisms"],
+        [[sub, len(g), len({r["dataset"] for r in g}), sum(r["voxels"] for r in g) / 1e12, statistics.median(r["vox_fine"] for r in g), sum(r["gt"] for r in g), organisms(g)]
+         for (_, sub), g in rows],
+    )
+
+
+def detail_section(recs) -> tuple:
+    """Each of the four categories broken into the project's finer microscopy labels."""
+    rows = subtype_rows(recs)
+    vol = [(sub, len(g), cat) for (cat, sub), g in rows]
+    tvox = [(sub, sum(r["voxels"] for r in g) / 1e12, cat) for (cat, sub), g in rows]
+    wide = {sub: [r["vox_fine"] for r in g] for (cat, sub), g in rows if len(g) >= 3}
+    cards = [
+        ("Volumes by microscopy subtype", plots.group_bar(vol, "volumes")),
+        ("Tera-voxels by microscopy subtype", plots.group_bar(tvox, "tera-voxels")),
+        ("Finest voxel size by subtype (nm, subtypes with 3+ volumes)", plots.box(wide, "nm")),
+    ]
+    for cat in MODALITY.values():
+        cards.append((f"{cat}: subtypes in detail", detail_table([row for row in rows if row[0][0] == cat])))
+    return "Microscopy types in detail (project labels)", cards
+
+
 def annotation_section(cat) -> tuple:
     anns = cat.annotations()
     hand = [a for a in anns if a.status not in BULK_STATUSES]
@@ -217,6 +262,7 @@ def build() -> tuple:
 
     sections = [
         split_section("Microscopy type", recs, "modality"),
+        detail_section(recs),
         split_section("Organism", recs, "organism"),
         split_section("Region / tissue", recs, "region"),
         growth_section(recs, cat),

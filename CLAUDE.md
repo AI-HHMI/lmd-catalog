@@ -135,20 +135,26 @@ python3 scripts/check_complete.py   # needs /groups mounted + `gh auth refresh -
   python3 scripts/check_semver.py --from v0.1.0 --to HEAD   # compare against a tag instead
   ```
 
-## Release workflow (scripts/sync_release.py)
+## Release workflow (two scripts)
 
-`python3 scripts/sync_release.py` automates the whole loop from the local jj repo: pushes `main` to the
-`janelia` remote, then over ssh in the cluster clone rebuilds volumes + annotations + pretraining, runs pytest and
-`check_integrity.py` (a failure reverts the rebuild; `check_complete.py` is skipped there because right after a rebuild it
-can only agree with it, and it would spend a third of the API budget), and commits the result. It then
-fetches that commit back, fast-forwards local `main`, regenerates `docs/` (the GitHub Pages report + slides, committed only if they changed), and picks the next version from the changes since the
-latest tag (removed/changed volume: major, new volume: minor, other catalog/schema change: patch). It asks
-before bumping the version files, tagging, and pushing `main` + the tag to `origin` and `janelia`.
-Run it from the env made by `uv sync --extra analysis` (the docs step needs `lmd_catalog` + matplotlib). Requires an empty working copy with `main` on its parent, a clean cluster working tree, `proj/lmd-catalog/.venv`
-on the cluster (`uv sync --extra dev`), and `gh` authed with `read:project` there. The run spends the shared GitHub GraphQL budget (5000 points/hour for
-the whole account, here and on the cluster); it refuses to start below `MIN_GRAPHQL_POINTS` and prints what the rebuild used, so tune that
-constant from a real run. If `gh` says "API rate limit exceeded", check `gh api graphql -f query='{rateLimit{remaining resetAt}}'`
-(`gh api rate_limit` can show a stale view) and wait for `resetAt`.
+Two scripts, split by what they spend. Neither commits for you, and neither touches `origin` -- push that by hand.
+
+- `python3 scripts/sync_github.py` -- the **rare** step. Runs `rebuild_annotations.py` + `rebuild_pretraining.py` locally
+  (`gh` authed with `read:project`; no cluster, no /groups), checks the new data loads into the models, and only then
+  rewrites `lmd_annotations.json` / `lmd_pretraining.json`, printing what changed. It spends ~2200 of the account's 5000
+  GraphQL points/hour (shared by every `gh` call), so it refuses to start below `MIN_GRAPHQL_POINTS`. Commit the result
+  (`jj commit`, `jj bookmark set main -r @-`) before the next script. If `gh` says "API rate limit exceeded", check
+  `gh api graphql -f query='{rateLimit{remaining resetAt}}'` (`gh api rate_limit` can show a stale view) and wait.
+- `python3 scripts/sync_release.py` -- never queries GitHub. Pushes `main` to the `janelia` remote, then over ssh in the
+  cluster clone rebuilds `lmd_volumes.json` from the disk, runs pytest and `check_integrity.py` against the committed
+  annotations/pretraining (a failure reverts the rebuild), and commits the result. It fetches that commit back,
+  fast-forwards local `main`, regenerates `docs/` (the GitHub Pages report + slides, committed only if they changed),
+  and picks the next version from the changes since the latest tag (removed/changed volume: major, new volume: minor,
+  other catalog/schema change: patch). It asks before bumping the version files, tagging, and pushing `main` + the tag
+  to `janelia`. `check_complete.py` (which queries GitHub) is not part of it; run it by hand when you want that check.
+  Run it from the env made by `uv sync --extra analysis` (the docs step needs `lmd_catalog` + matplotlib). Requires an
+  empty working copy with `main` on its parent, and a cluster clone that is on `main`, clean, with `.venv`
+  (`uv sync --extra dev`); the remote step verifies this and its `HEAD` equals the pushed commit.
 
 ## Architecture: the volumes ↔ annotations join
 

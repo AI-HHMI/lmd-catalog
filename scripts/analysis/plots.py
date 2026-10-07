@@ -75,6 +75,32 @@ def scatter(groups: dict, xlabel: str, ylabel: str) -> str:
     return to_svg(fig)
 
 
+def group_bar(rows: list, xlabel: str) -> str:
+    """Horizontal bars coloured by group. rows: (label, value, group), drawn top to bottom in the order given."""
+    groups = list(dict.fromkeys(g for _, _, g in rows))
+    color = {g: COLORS[i] for i, g in enumerate(groups)}
+    ys = list(range(len(rows)))[::-1]
+    fig, ax = plt.subplots(figsize=(6.5, 0.28 * len(rows) + 0.9))
+    ax.barh(ys, [v for _, v, _ in rows], color=[color[g] for _, _, g in rows])
+    ax.set_yticks(ys)
+    ax.set_yticklabels([label for label, _, _ in rows])
+    ax.set_xlabel(xlabel)
+    ax.legend([plt.Rectangle((0, 0), 1, 1, color=color[g]) for g in groups], groups, frameon=False, fontsize=8, loc="lower right")
+    return to_svg(fig)
+
+
+def box(groups: dict, xlabel: str) -> str:
+    """Horizontal box plots on a log axis, top to bottom in the order given. groups: label -> values."""
+    fig, ax = plt.subplots(figsize=(6.5, 0.3 * len(groups) + 0.9))
+    ax.boxplot(list(groups.values()), orientation="horizontal", patch_artist=True, boxprops={"facecolor": COLORS[0], "alpha": 0.5}, medianprops={"color": "black"}, flierprops={"markersize": 3})
+    ax.set_yticks(range(1, len(groups) + 1))
+    ax.set_yticklabels(list(groups))
+    ax.invert_yaxis()
+    ax.set_xscale("log")
+    ax.set_xlabel(xlabel)
+    return to_svg(fig)
+
+
 def lines(series: dict, ylabel: str, log: bool = False) -> str:
     """Step lines over time. series: label -> (dates, values)."""
     fig, ax = plt.subplots(figsize=(5.5, 3.4))
