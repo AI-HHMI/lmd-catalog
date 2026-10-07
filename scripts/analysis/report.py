@@ -42,7 +42,7 @@ h1{margin-bottom:4px} h2{margin-top:36px;border-bottom:1px solid #ddd;padding-bo
 .card{flex:1 1 460px;min-width:0} .card.wide{flex-basis:100%} .card svg{max-width:100%;height:auto} h3{margin:8px 0 4px;font-size:15px}
 table{border-collapse:collapse;font-size:13px} th,td{padding:3px 10px;border-bottom:1px solid #eee;text-align:left}
 td.n,th{text-align:right} th:first-child{text-align:left}
-html{scroll-behavior:smooth} h1,h2{scroll-margin-top:16px} nav.toc{display:none}
+h1,h2{scroll-margin-top:16px} nav.toc{display:none}
 @media (min-width:1100px){
   body{max-width:none}
   .layout{display:grid;grid-template-columns:230px minmax(0,1200px);gap:32px;max-width:1500px;margin:0 auto}
