@@ -6,8 +6,8 @@ bookmark on it and an empty working copy:
     python3 scripts/sync_release.py
 
 1. push local `main` to the `janelia` remote (its working tree must be clean: updateInstead)
-2. over ssh in the cluster clone: rebuild volumes + annotations + pretraining, run pytest, check_integrity and
-   check_complete, and commit the rebuild if anything changed (any failure reverts the rebuild)
+2. over ssh in the cluster clone: rebuild volumes + annotations + pretraining, run pytest and check_integrity,
+   and commit the rebuild if anything changed (any failure reverts the rebuild)
 3. fetch the cluster commit back and fast-forward local `main` to it
 4. regenerate the GitHub Pages report + slides in docs/ and commit them if they changed
 5. pick the next version from the changes since the latest tag (removed/changed volume: major,
@@ -19,6 +19,7 @@ Needs on the cluster: proj/lmd-catalog checked out on `main` (not a detached HEA
 clean, with .venv (`uv sync --extra dev`), and `gh` authed with read:project. The remote step verifies all of this.
 """
 
+import json
 import os
 import re
 import subprocess
@@ -28,6 +29,9 @@ import tempfile
 from check_semver import breaking_changes, latest_tag, parse_semver, volumes_at_ref
 
 REMOTE_HOST = "login1.int.janelia.org"
+# The GitHub GraphQL budget (5000 points/hour, shared by every gh call this user makes, here and on the cluster) is
+# what a release spends: the project item lists. Refuse to start with less than this left; the run prints what it used.
+MIN_GRAPHQL_POINTS = 2000
 REMOTES = ("origin", "janelia")
 CATALOG_FILES = ("lmd_volumes.json", "lmd_annotations.json", "lmd_pretraining.json", "src/lmd_catalog/models.py")
 VERSION_FILES = {"pyproject.toml": r'^(version = ")[^"]*(")', "src/lmd_catalog/__init__.py": r'^(__version__ = ")[^"]*(")'}
@@ -53,7 +57,8 @@ tmp=$(mktemp)
 mv $tmp lmd_pretraining.json
 .venv/bin/python -m pytest tests -q
 .venv/bin/python scripts/check_integrity.py
-.venv/bin/python scripts/check_complete.py
+# check_complete.py is skipped on purpose: right after the rebuilds above it can only agree with them (it re-fetches
+# both GitHub projects and re-walks the disk, spending a third of the GraphQL budget for no new information).
 git diff --quiet || git commit -qam "rebuild catalog"
 """
 
@@ -65,6 +70,12 @@ def run(*cmd, **kw) -> str:
 
 def out(*cmd) -> str:
     return subprocess.run(cmd, check=True, text=True, capture_output=True).stdout.strip()
+
+
+def graphql_budget() -> tuple:
+    """(remaining, used, resetAt) of the shared GitHub GraphQL budget. This query itself costs 1 point."""
+    r = json.loads(out("gh", "api", "graphql", "-f", "query=query { rateLimit { remaining used resetAt } }"))["data"]["rateLimit"]
+    return r["remaining"], r["used"], r["resetAt"]
 
 
 def check_local_state():
@@ -111,9 +122,12 @@ def push_main():
 def main():
     os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
     check_local_state()
+    remaining, used_before, resets = graphql_budget()
+    assert remaining >= MIN_GRAPHQL_POINTS, f"GitHub GraphQL budget too low: {remaining} points left, resets {resets} (UTC). Wait and rerun; nothing was pushed."
     run("jj", "git", "push", "--remote", "janelia", "--bookmark", "main")
     pushed = out("jj", "log", "-r", "main", "--no-graph", "-T", "commit_id")
     run("ssh", REMOTE_HOST, f"bash -s {pushed}", input=REMOTE_SCRIPT)
+    print(f"GitHub GraphQL points used by the rebuild: {graphql_budget()[1] - used_before} (shared budget resets {resets})")
     run("jj", "git", "fetch", "--remote", "janelia")
     run("jj", "bookmark", "set", "main", "-r", "main@janelia")
     run("jj", "new", "main")
