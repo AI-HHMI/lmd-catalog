@@ -20450,6 +20450,31 @@
       "added": "2026-09-03"
     },
     {
+      "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-000_fullvol",
+      "shape": [
+        96,
+        2,
+        3328,
+        1920,
+        384
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
+      ],
+      "added": "2026-10-06"
+    },
+    {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c",
       "zarr_version": "zarr2",
       "shape": [
@@ -20838,6 +20863,31 @@
         "x"
       ],
       "added": "2026-05-01"
+    },
+    {
+      "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-000_fullvol",
+      "shape": [
+        288,
+        2,
+        3328,
+        2688,
+        384
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
+      ],
+      "added": "2026-10-06"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-001_000x_000y_000z_288t_2c",
@@ -21384,6 +21434,31 @@
         "x"
       ],
       "added": "2026-05-01"
+    },
+    {
+      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-000_fullvol",
+      "shape": [
+        32,
+        2,
+        3328,
+        3456,
+        384
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
+      ],
+      "added": "2026-10-06"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-001_000x_000y_000z_32t_2c",
@@ -22100,6 +22175,31 @@
       "added": "2026-05-01"
     },
     {
+      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_ear/crop-000_fullvol",
+      "shape": [
+        48,
+        2,
+        3328,
+        1920,
+        256
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
+      ],
+      "added": "2026-10-06"
+    },
+    {
       "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_ear/crop-001_000x_000y_000z_48t_2c",
       "zarr_version": "zarr2",
       "shape": [
@@ -22358,6 +22458,31 @@
         "x"
       ],
       "added": "2026-05-01"
+    },
+    {
+      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_muscle/crop-000_fullvol",
+      "shape": [
+        96,
+        2,
+        3328,
+        8064,
+        256
+      ],
+      "voxelsize": [
+        1.0,
+        1.0,
+        200.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "t",
+        "c",
+        "z",
+        "y",
+        "x"
+      ],
+      "added": "2026-10-06"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_muscle/crop-001_000x_000y_000z_96t_2c",
