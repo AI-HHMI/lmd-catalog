@@ -85,7 +85,29 @@ def group_bar(rows: list, xlabel: str) -> str:
     ax.set_yticks(ys)
     ax.set_yticklabels([label for label, _, _ in rows])
     ax.set_xlabel(xlabel)
-    ax.legend([plt.Rectangle((0, 0), 1, 1, color=color[g]) for g in groups], groups, frameon=False, fontsize=8, loc="lower right")
+    ax.legend([plt.Rectangle((0, 0), 1, 1, color=color[g]) for g in groups], groups, frameon=False, fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=4)
+    return to_svg(fig)
+
+
+def stacked_bar(rows: list, kinds: list, xlabel: str) -> str:
+    """Horizontal stacked bars, top to bottom in the order given. rows: (label, group, {kind: value}). A dotted line
+    marks where the group changes, and the group's name sits at the right end of its last row."""
+    ys = list(range(len(rows)))[::-1]
+    fig, ax = plt.subplots(figsize=(6.5, 0.28 * len(rows) + 1.3))
+    left = [0] * len(rows)
+    for i, kind in enumerate(kinds):
+        values = [r[2].get(kind, 0) for r in rows]
+        ax.barh(ys, values, left=left, color=GREY if kind.startswith("Other") else COLORS[i], label=kind)
+        left = [a + b for a, b in zip(left, values)]
+    ax.set_yticks(ys)
+    ax.set_yticklabels([label for label, _, _ in rows])
+    for i, (_, group, _) in enumerate(rows):
+        if i and group != rows[i - 1][1]:
+            ax.axhline(ys[i] + 0.5, color="#bbb", linestyle=":", linewidth=0.8)
+        if i == len(rows) - 1 or rows[i + 1][1] != group:
+            ax.text(1.0, ys[i], group, transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=8, color="#777")
+    ax.set_xlabel(xlabel)
+    ax.legend(frameon=False, fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=3)
     return to_svg(fig)
 
 

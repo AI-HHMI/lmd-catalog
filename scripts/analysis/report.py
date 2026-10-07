@@ -73,6 +73,14 @@ def region_of(dataset: str) -> str:
     return "Whole organism / unspecified"
 
 
+# Label arrays (a volume's labels/ group) by what they are, from the key's prefix; anything else is a pipeline output.
+KIND_NAMES = {"manual_gt": "Manual ground truth", "proofread": "Proofread", "public_gt": "Public ground truth", "auto_pred": "Auto-prediction", "other": "Other (pipeline outputs)"}
+
+
+def label_kind(key: str) -> str:
+    return next((k for k in KIND_NAMES if k != "other" and key.startswith(k)), "other")
+
+
 def subtype_of(v) -> str:
     """The project's finer microscopy label for a volume: from the records naming its store, else from those naming
     its dataset; the most common label if they disagree; 'unspecified' if there is none."""
@@ -88,7 +96,7 @@ def record(v) -> dict:
     spatial = [a for a in "xyz" if a in sd]
     return dict(
         name=v.name, dataset=v.dataset, modality=MODALITY[prefix], organism=organism.capitalize(),
-        region=region_of(v.dataset), subtype=subtype_of(v), voxels=math.prod(v.shape),
+        region=region_of(v.dataset), subtype=subtype_of(v), labels=Counter(label_kind(k) for k in v.label_keys), voxels=math.prod(v.shape),
         extent_mm3=math.prod(sd[a] * vd[a] for a in spatial) / 1e18,  # nm^3 -> mm^3
         vox_fine=min(vd[a] for a in spatial), vox_z=vd["z"], channels=sd.get("c", 1), timepoints=sd.get("t", 1),
         added=date.fromisoformat(v.added), gt=v.has_ground_truth, annotated=v.is_annotated, zarr=v.zarr_version, axes="".join(v.axes).upper(),
@@ -246,6 +254,18 @@ def detail_section(recs) -> tuple:
     return "Microscopy types in detail (project labels)", cards
 
 
+def label_section(recs) -> tuple:
+    """The label arrays stored in the volumes, by what they are and by microscopy subtype."""
+    rows = subtype_rows(recs)
+    stacks = [(sub, cat, {KIND_NAMES[k]: n for k, n in sum((r["labels"] for r in g), Counter()).items()}) for (cat, sub), g in rows]
+    coverage = [(f"{sub} ({sum(1 for r in g if r['labels'])}/{len(g)})", 100 * sum(1 for r in g if r["labels"]) / len(g), cat) for (cat, sub), g in rows]
+    total = sum(sum(r["labels"].values()) for r in recs)
+    return "Label annotations by microscopy type", [
+        (f"Label arrays by kind and microscopy subtype ({total:,} arrays)", plots.stacked_bar(stacks, list(KIND_NAMES.values()), "label arrays")),
+        ("Volumes with at least one label array (labelled/total)", plots.group_bar(coverage, "% of volumes")),
+    ]
+
+
 def annotation_section(cat) -> tuple:
     anns = cat.annotations()
     hand = [a for a in anns if a.status not in BULK_STATUSES]
@@ -301,6 +321,7 @@ def build() -> tuple:
             ("Zarr version", plots.pie(group_sum(recs, "zarr"))),
         ]),
         ("Ground truth", [("Volumes with ingested ground truth", plots.pie(gt_split))]),
+        label_section(recs),
         project_section(cat),
         annotation_section(cat),
     ]
