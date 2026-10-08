@@ -52,6 +52,10 @@ lists a volume's own `labels/` subgroup (mechanical directory listing, omitted w
 `label_keys` — this is what lets `#VolumeEntry.has_ground_truth` cover public benchmark datasets (CellMap,
 CREMI, Lucchi, MitoEM, UroCell) that ship ingested ground truth directly in their own zarr store with no
 tracking issue, not just volumes tracked by an annotation with a `gt_ingested_path`.
+`normalize_min`/`normalize_max` come from the configs repo's window registry
+(`/groups/miaai/miaai/lmd-v0.0.1/configs/corpus/windows.yaml`, p0.1/p99.9 of raw level-0 values, derived by that
+repo's `measure.py --windows`). It covers only non-uint8 volumes: uint8 is left to miao's default divide-by-255.
+Don't compute windows here; extend the registry there.
 
 `scripts/rebuild_annotations.py` (needs `gh` authenticated with `read:project`, no `/groups`) calls
 `gh project item-list 1 --owner AI-HHMI --format json --limit 200` and maps its fields into `#AnnotationItem`
@@ -64,8 +68,8 @@ above); this is a human-in-the-loop seam, not something to silently override —
 someone fixes it in the GitHub UI, don't fix it by editing the GH Project via `gh` from here.
 
 ```sh
-# The volumes and annotations rebuild scripts read the existing JSON (volumes: hand-set normalize_min/
-# normalize_max; annotations: hand-set shape/voxelsize/axes), so redirecting stdout
+# The volumes and annotations rebuild scripts read the existing JSON (volumes: `added` dates and any
+# normalize_min/normalize_max the window registry lacks; annotations: hand-set shape/voxelsize/axes), so redirecting stdout
 # straight onto it truncates the file before Python can read it back -- write to a
 # temp file and move it into place instead.
 python3 scripts/rebuild_volumes.py > /tmp/lmd_volumes.json.new && mv /tmp/lmd_volumes.json.new lmd_volumes.json

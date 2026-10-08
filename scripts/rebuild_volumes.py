@@ -3,8 +3,10 @@ directory tree -- the mechanical source of truth for #Volume identity, so a
 volume's entry is never hand-typed (and never goes stale the way
 FlyLICONN_FlyID49_40XW005/006's annotation source_paths did).
 
-Run on a machine with /groups mounted. This script reads the existing
-lmd_volumes.json (to preserve hand-set normalize_min/normalize_max), so don't
+Run on a machine with /groups mounted. normalize_min/normalize_max come from the configs repo's window
+registry (<data root>/../configs/corpus/windows.yaml, which covers the non-uint8 volumes); a volume the
+registry lacks keeps any value already in lmd_volumes.json. This script reads the existing
+lmd_volumes.json, so don't
 redirect stdout directly onto it -- the shell truncates the file before
 Python opens it to read, so it always reads back empty. Write to a temp file
 and move it into place instead:
@@ -18,7 +20,11 @@ import json
 import os
 from datetime import datetime, timezone
 
+import yaml
+
 from data_root import DATA_ROOT
+
+WINDOWS_PATH = os.path.join(DATA_ROOT, "..", "configs", "corpus", "windows.yaml")
 
 # The one volume with no "raw" wrapper group -- levels are stored directly at
 # the store root instead. Not detectable by walking the filesystem alone.
@@ -122,7 +128,7 @@ def extract_zarr_metadata(path, img_key, z_ver):
     return shape, voxelsize, axes
 
 
-def build_volume(path, existing_by_name=None):
+def build_volume(path, existing_by_name, windows):
     assert path.startswith(DATA_ROOT + "/") and path.endswith(".zarr"), path
     name = path[len(DATA_ROOT) + 1 : -len(".zarr")]
     volume = {"name": name}
@@ -150,12 +156,11 @@ def build_volume(path, existing_by_name=None):
     prev = (existing_by_name or {}).get(name, {})
     volume["added"] = prev.get("added") or datetime.fromtimestamp(os.stat(path).st_mtime, timezone.utc).date().isoformat()
 
-    # Preserve normalization windows if already cataloged
-    if prev:
-        if "normalize_min" in prev:
-            volume["normalize_min"] = prev["normalize_min"]
-        if "normalize_max" in prev:
-            volume["normalize_max"] = prev["normalize_max"]
+    # The registry is the source of truth for windows; keep an already-cataloged one only if it has no entry.
+    source = windows.get(name, prev)
+    for key in ("normalize_min", "normalize_max"):
+        if key in source:
+            volume[key] = source[key]
 
     return volume
 
@@ -169,7 +174,11 @@ def main():
         assert text.strip(), "lmd_volumes.json is empty -- did you redirect output onto it? `git checkout lmd_volumes.json`, then write to a temp file and mv it into place (see the module docstring)"
         existing_by_name = {v["name"]: v for v in json.loads(text).get("volumes", [])}
 
-    volumes = [build_volume(p, existing_by_name) for p in find_zarr_dirs(DATA_ROOT)]
+    assert os.path.exists(WINDOWS_PATH), f"window registry not found: {WINDOWS_PATH}"
+    with open(WINDOWS_PATH) as f:
+        windows = yaml.safe_load(f)
+
+    volumes = [build_volume(p, existing_by_name, windows) for p in find_zarr_dirs(DATA_ROOT)]
     volumes.sort(key=lambda v: v["name"])
     print(json.dumps({"volumes": volumes}, indent=2))
 
