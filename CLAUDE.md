@@ -160,6 +160,17 @@ Two scripts, split by what they spend. Neither commits for you, and neither touc
   empty working copy with `main` on its parent, and a cluster clone that is on `main`, clean, with `.venv`
   (`uv sync --extra dev`); the remote step verifies this and its `HEAD` equals the pushed commit.
 
+## Daily dashboard (cron)
+
+`scripts/daily_dashboard.sh` runs from cron on `submit.int.janelia.org` (login nodes don't allow `crontab`), at
+`0 23 * * *` with output appended to `~/lmd-dashboard.log`. In a dedicated worktree of the cluster clone
+(`~/lmd-dashboard`, detached at the clone's `main`, with its own `.venv`) it rebuilds `lmd_volumes.json`, runs
+`sync_github.py` (on failure it falls back to the committed annotations/pretraining), runs `check_integrity.py` (it logs
+violations and doesn't stop), renders the report and slides, and pushes `docs/` as the root of `origin`'s `gh-pages`
+branch through `git commit-tree`. It never commits to `main`, tags, or touches the release clone's tree; releases stay
+manual. GitHub Pages serves `gh-pages`, so the live site is the daily snapshot. The report header shows when the
+catalog index was last updated (the newest mtime of the three JSON files) and the package version.
+
 ## Architecture: the volumes ↔ annotations join
 
 - `#Volume.path` is derived (`#DataRoot + "/" + name + ".zarr"`), not stored — every volume in the corpus

@@ -24,7 +24,7 @@ h1{font-size:2.4em;margin:12vh 0 2vh} h2{font-size:1.6em;margin:.2em 0 .6em} h3{
 .tile b{display:block;font-size:2em}
 table{border-collapse:collapse;font-size:1.05em} th,td{padding:.3em .9em;border-bottom:1px solid #eee;text-align:left}
 td.n,th{text-align:right} th:first-child{text-align:left}
-p.hint{margin-top:auto;color:#666;font-size:.75em}
+p.hint{margin-top:auto;color:#666;font-size:.75em} .stamp{color:#666;font-size:.75em;margin:0 0 2vh}
 #count{position:fixed;right:2vw;bottom:2vh;color:#999;font-size:.6em}
 @media print{html,body{overflow:visible}.slide{display:flex;height:auto;min-height:100vh;page-break-after:always}#count{display:none}}
 @page{size:landscape}
@@ -74,7 +74,7 @@ def slide(kicker: str, title: str, inner: str) -> str:
 def main():
     tiles, sections = report.build()
     title = (
-        "<section class='slide'><div class='kicker'>Large Microscopy Dataset</div><h1>LMD catalog overview</h1><div class='tiles'>"
+        "<section class='slide'><div class='kicker'>Large Microscopy Dataset</div><h1>LMD catalog overview</h1><p class='stamp'>" + report.index_updated() + "</p><div class='tiles'>"
         + "".join(f"<div class='tile'><b>{n}</b>{label}</div>" for n, label in tiles)
         + "</div><p class='hint'><a href='index.html'>Full report</a> &nbsp;·&nbsp; Press → or click anywhere to start &nbsp;·&nbsp; ← goes back &nbsp;·&nbsp; f for fullscreen</p></section>"
     )

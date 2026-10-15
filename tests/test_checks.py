@@ -3,11 +3,14 @@
 import os
 import sys
 
+import pytest
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
 # scripts/data_root.py loads the repo's .env into os.environ on import; don't let that leak into the other tests.
 _env = dict(os.environ)
 from check_integrity import check_pretraining_joined, check_pretraining_matches_stores  # noqa: E402
+from roi_parse import parse_roi  # noqa: E402
 
 os.environ.clear()
 os.environ.update(_env)
@@ -122,3 +125,16 @@ def test_known_project_errors_also_cover_store_mismatches(monkeypatch):
     assert len(c.check_pretraining_known_errors([], [store])) == 1
     monkeypatch.setattr(c, "KNOWN_PROJECT_ERRORS", {("AI-HHMI/mia_pretraining", 1): "copied from another dataset"})
     assert c.check_pretraining_known_errors([], [store]) == []
+
+
+def test_parse_roi_accepts_every_bbox_format():
+    roi = {"x": [680, 1162], "y": [1300, 1782], "z": [480, 674]}
+    assert parse_roi("X:680-1162, Y:1300-1782, Z:480-674", None) == roi
+    assert parse_roi("680, 1300, 480", "482×482×194 vox") == roi
+    assert parse_roi("X=680, Y=1300, Z=480,", "482, 482, 194") == roi
+    assert parse_roi("X=680, Y=1300, Z=480, 482×482×194 vox", "sizeX=482, sizeY=482, sizeZ=194 vox") == roi
+
+
+def test_parse_roi_rejects_a_pasted_size_that_disagrees_with_bbox_size():
+    with pytest.raises(AssertionError, match="disagrees"):
+        parse_roi("X=680, Y=1300, Z=480, 482×482×100 vox", "sizeX=482, sizeY=482, sizeZ=194 vox")

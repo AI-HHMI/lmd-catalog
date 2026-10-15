@@ -7,13 +7,14 @@ import math
 import re
 import statistics
 from collections import Counter, defaultdict
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 import lmd_catalog as lmd
 import plots
 
-OUT = Path(__file__).parents[2] / "docs" / "index.html"  # served by GitHub Pages (main branch, /docs)
+OUT = Path(__file__).parents[2] / "docs" / "index.html"  # published daily to gh-pages by scripts/daily_dashboard.sh
+DATA_FILES = [Path(__file__).parents[2] / f for f in ("lmd_volumes.json", "lmd_annotations.json", "lmd_pretraining.json")]
 MODALITY = {"em": "EM", "exm": "Expansion microscopy", "lm": "Light microscopy", "uct": "microCT"}
 # First matching pattern wins; matched against the lowercased dataset name.
 REGIONS = [
@@ -37,7 +38,7 @@ UNIT_GB = {"KB": 1e-6, "MB": 1e-3, "GB": 1.0, "TB": 1e3, "PB": 1e6, "M": 1e-3, "
 CSS = """
 body{font:15px system-ui,sans-serif;max-width:1200px;margin:0 auto;padding:16px;color:#222;background:#fff}
 h1{margin-bottom:4px} h2{margin-top:36px;border-bottom:1px solid #ddd;padding-bottom:4px}
-.tiles{display:flex;flex-wrap:wrap;gap:12px} .tile{border:1px solid #ddd;border-radius:6px;padding:10px 16px}
+.stamp{color:#666;margin-top:-8px} .tiles{display:flex;flex-wrap:wrap;gap:12px} .tile{border:1px solid #ddd;border-radius:6px;padding:10px 16px}
 .tile b{display:block;font-size:24px} .grid{display:flex;flex-wrap:wrap;gap:20px}
 .card{flex:1 1 460px;min-width:0} .card.wide{flex-basis:100%} .card svg{max-width:100%;height:auto} h3{margin:8px 0 4px;font-size:15px}
 table{border-collapse:collapse;font-size:13px} th,td{padding:3px 10px;border-bottom:1px solid #eee;text-align:left}
@@ -328,6 +329,12 @@ def build() -> tuple:
     return tiles, sections
 
 
+def index_updated() -> str:
+    """When the catalog index was last updated (the newest mtime of its JSON files), with the package version."""
+    t = datetime.fromtimestamp(max(f.stat().st_mtime for f in DATA_FILES)).astimezone()
+    return f"Catalog index updated {t:%Y-%m-%d %H:%M %Z} &middot; lmd-catalog {lmd.__version__}"
+
+
 def short_title(title: str) -> str:
     """The title without its parenthetical, which holds live counts ("Annotation tracking (1124 issues)")."""
     return title.split(" (")[0]
@@ -342,7 +349,7 @@ def main():
     toc = [("overview", "Overview")] + [(anchor(title), short_title(title)) for title, _ in sections]
     nav = "<nav class='toc'><b>Contents</b>" + "".join(f"<a href='#{a}'>{t}</a>" for a, t in toc) + "</nav>"
     main_html = (
-        "<main><h1 id='overview'>LMD catalog report</h1><p><a href='slides.html'>View as slides &rarr;</a></p><div class='tiles'>"
+        f"<main><h1 id='overview'>LMD catalog report</h1><p class='stamp'>{index_updated()}</p><p><a href='slides.html'>View as slides &rarr;</a></p><div class='tiles'>"
         + "".join(f"<div class='tile'><b>{n}</b>{label}</div>" for n, label in tiles) + "</div>"
         + "".join(f"<h2 id='{anchor(title)}'>{title}</h2><div class='grid'>" + "".join(card(t, c) for t, c in cards) + "</div>" for title, cards in sections)
         + "</main>"
