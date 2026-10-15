@@ -622,17 +622,21 @@
       "source_paths": [
         "/groups/miaai/miaai/lmd-v0.0.1/data/em-mouse-MICrONS-minnie65/crop-001.zarr"
       ],
-      "status": "Proofreading",
+      "status": "manual_gt_ingested",
       "dataset": "MICrONS",
       "tool": "Paintera",
       "task": "dense proofreading",
       "model_organism": "Mouse",
       "annotator": "John Walsh (JJ)",
+      "completion_pct": 100,
+      "label_count": 355,
       "timepoint": "N/A",
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-10-13",
       "bbox": "X:2679-3339, Y:3390-3736, Z:457-567 (voxel XYZ @ 8\u00d78\u00d740 nm)",
       "bbox_size": "sizeX=660, sizeY=346, sizeZ=110 vox (5.28\u00d72.77\u00d74.4 \u00b5m)",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/em-mouse-MICrONS-minnie65",
+      "proofread_export_path": "/groups/miaai/miaai/Annotation_JJ/JW_MICrONS_minnie65_crop.n5/proofread labels 10.13.2026",
+      "proofread_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/em-mouse-MICrONS-minnie65/crop-001.zarr/labels/manual_gt-cell-seg_m1300-JJ-paintera",
       "wk_link": "https://webknossos.org/datasets/microns-minnie65-6a32d0b30100008713635c75/view#5228,3993,259,0,5.43",
       "assignees": [
         "walshjj"
@@ -780,7 +784,7 @@
       "created_at": "2026-06-24"
     },
     {
-      "title": "FlyLICONN_FlyID49_40XW005",
+      "title": "exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625_crop-001_manual_gt-cell-final",
       "issue": {
         "number": 18,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/18",
@@ -789,24 +793,26 @@
       "source_paths": [
         "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"
       ],
-      "status": "Screening Queue",
+      "status": "manual_gt_ingested",
       "dataset": "FlyLICONN",
       "tool": "Paintera",
       "task": "dense annotation",
       "model_organism": "Drosophila",
       "priority": "P1",
-      "annotator": "Cat Mori, Brie Yarbrough",
+      "annotator": "Cat Mori",
+      "completion_pct": 100,
       "label_count": 127,
-      "last_updated": "2026-10-02",
+      "timepoint": "N/A",
+      "last_updated": "2026-10-08",
       "bbox": "X:911-1393, Y:911-1393, Z:429-623",
       "bbox_size": "sizeX=482, sizeY=482, sizeZ=194 (78.6x78.6x77.6 um)",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr",
-      "gt_export_path": "/groups/miaai/miaai/Annotation_LICONN/In_Progress_Annotations/Cat/exports/Fly/20261002_FlyLICONN_FlyID49_40XW005_labels.n5",
-      "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr/labels/manual_gt-cell-snap_10022026",
+      "gt_export_path": "/groups/miaai/miaai/Annotation_LICONN/In_Progress_Annotations/Cat/exports/Fly/20261007_FlyLICONN_FlyID49_40XW005_labels.n5",
+      "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr/labels/manual_gt-cell-final",
       "wk_link": "https://webknossos.int.janelia.org/dashboard/datasets/FlyID49-6a3d5476010000ad00d69bb0",
       "wk_ann_link": "https://webknossos.int.janelia.org/annotations/6a427ec0010000cc00d69ca5#1152,1152,526,0,1.3",
       "assignees": [
-        "PostPreAndCleft"
+        "moric7"
       ],
       "labels": [
         "LICONN"
@@ -828,7 +834,7 @@
       "created_at": "2026-06-25"
     },
     {
-      "title": "FlyLICONN_FlyID49_40XW006",
+      "title": "exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625_crop-001_manual_gt-cell-final",
       "issue": {
         "number": 19,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/19",
@@ -837,20 +843,22 @@
       "source_paths": [
         "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"
       ],
-      "status": "Initial Screen",
+      "status": "manual_gt_ingested",
       "dataset": "FlyLICONN",
       "tool": "Paintera",
       "task": "dense annotation",
       "model_organism": "Drosophila",
       "priority": "P1",
       "annotator": "Tiffany Tran",
+      "completion_pct": 100,
       "label_count": 173,
-      "last_updated": "2026-10-02",
+      "timepoint": "N/A",
+      "last_updated": "2026-10-08",
       "bbox": "X:911-1393, Y:911-1393, Z:350-828",
       "bbox_size": "sizeX=482, sizeY=482, sizeZ=478 (78.6x78.6x191.2 um); 194 label slices z-stretched x2.4615",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr",
-      "gt_export_path": "/groups/miaai/miaai/Annotation_LICONN/In_Progress_Annotations/Tiffany/exports/Fly/FlyLICONN_FlyID49_40XW006_labels.n5/20261002_FlyLICONN_FlyID49_40XW006_labels.n5",
-      "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr/labels/manual_gt-cell-snap_10022026",
+      "gt_export_path": "/groups/miaai/miaai/Annotation_LICONN/In_Progress_Annotations/Tiffany/exports/Fly/FlyLICONN_FlyID49_40XW006_labels.n5/20261007_FlyLICONN_FlyID49_40XW006_labels.n5",
+      "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr/labels/manual_gt-cell-final",
       "wk_link": "https://webknossos.int.janelia.org/dashboard/datasets/FlyID49-6a3d5476010000ad00d69bb0",
       "wk_ann_link": "https://webknossos.int.janelia.org/annotations/6a428144010000c900d69cb1#1141,1141,559,0,1.43",
       "assignees": [
@@ -1083,7 +1091,6 @@
       "task": "dense annotation",
       "model_organism": "Drosophila",
       "priority": "P2",
-      "annotator": "Jennifer",
       "bbox": "X:911-1393, Y:911-1393, Z:118-312",
       "bbox_size": "sizeX=482, sizeY=482, sizeZ=194 (78.3x78.3x77.6 um)",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-BIS-40XW002-20260625/crop-001_fullvol.zarr",
@@ -1176,15 +1183,11 @@
       "task": "dense annotation",
       "model_organism": "Drosophila",
       "priority": "P2",
-      "annotator": "Cat Mori",
       "bbox": "41567, 36040, 3865",
       "bbox_size": "482, 482, 194",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-mirrorscope-lobe-20260702/crop-001_lobe.zarr",
       "wk_link": "https://webknossos.int.janelia.org/datasets/exm-drosophila-flyliconn-FlyID49-mirrorscope-lobe-20260702-6a8364210100005c04dfc144/view",
       "wk_ann_link": "https://webknossos.int.janelia.org/annotations/6a83658c0100005704dfc153",
-      "assignees": [
-        "moric7"
-      ],
       "labels": [
         "LICONN"
       ],
@@ -1214,12 +1217,13 @@
       "source_paths": [
         "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol.zarr"
       ],
-      "status": "Crop Approved",
+      "status": "In Annotation",
       "dataset": "FlyLICONN",
       "tool": "Paintera",
       "task": "assessment",
       "model_organism": "Drosophila",
       "priority": "P1",
+      "annotator": "Jennifer & Alannah",
       "label_count": 10,
       "last_updated": "2026-09-14",
       "bbox": "X: 700-1181, Y:700-1181, Z:101-295",
@@ -1228,8 +1232,7 @@
       "gt_export_path": "/groups/miaai/miaai/Annotation_LICONN/In_Progress_Annotations/Assessments/Tiffany/exports/FlyLICONN_RubinLab_30X_lobeTm1.n5(Tiff); /groups/miaai/miaai/Annotation_LICONN/In_Progress_Annotations/Assessments/Cat/exports/FlyLICONN_RubinLab_30X_lobeTm1.n5(Cat)",
       "gt_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol.zarr/labels/manual_gt-cell-assessment_Tiff(Tiff); /groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol.zarr/labels/manual_gt-cell-assessment_Cat(Cat)",
       "assignees": [
-        "aljoschanern",
-        "Gandinv"
+        "postalannah"
       ],
       "labels": [
         "LICONN",
@@ -1272,7 +1275,6 @@
       "bbox_size": "482\u00d7482\u00d7194 vox",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-phDye19-Gel2-OpticLobes-60x",
       "assignees": [
-        "PostPreAndCleft",
         "bumblebrie18"
       ],
       "roi": {
@@ -1301,16 +1303,16 @@
       "source_paths": [
         "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-001_16X_fullvol.zarr"
       ],
-      "status": "On Hold",
+      "status": "In Annotation",
       "dataset": "FlyLICONN",
       "tool": "WebKnossos",
       "task": "assessment",
       "model_organism": "Drosophila",
       "priority": "P1",
+      "annotator": "Tiffany",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-001_16X_fullvol.zarr",
       "assignees": [
-        "aljoschanern",
-        "Gandinv"
+        "trant16"
       ],
       "created_at": "2026-09-16"
     },
@@ -22191,6 +22193,268 @@
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/em-mouse-PYR-ca3-hippocampus/crop-003_ca3.zarr",
       "proofread_ingested_path": "/groups/miaai/miaai/lmd-v0.0.1/data/em-mouse-PYR-ca3-hippocampus/crop-003_ca3.zarr/labels/proofread-cell-seg_m357",
       "created_at": "2026-10-02"
+    },
+    {
+      "title": "FlyLICONN_Matt_phDye20_Gel12_OpticLobe_32x",
+      "issue": {
+        "number": 1129,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1129",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-phDye20-Gel12-OpticLobe-32x/crop-001_fullvol.zarr"
+      ],
+      "status": "In Annotation",
+      "dataset": "FlyLICONN",
+      "model_organism": "Drosophila",
+      "priority": "P1",
+      "annotator": "Cat Mori",
+      "timepoint": "N/A",
+      "last_updated": "2026-10-09",
+      "bbox": "X=680, Y=1300, Z=480, 482\u00d7482\u00d7194 vox",
+      "bbox_size": "sizeX=482, sizeY=482, sizeZ=194 vox",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-phDye20-Gel12-OpticLobe-32x/crop-001_fullvol.zarr",
+      "assignees": [
+        "moric7"
+      ],
+      "roi": {
+        "x": [
+          680,
+          1162
+        ],
+        "y": [
+          1300,
+          1782
+        ],
+        "z": [
+          480,
+          674
+        ]
+      },
+      "created_at": "2026-10-09"
+    },
+    {
+      "title": "Test_Issue",
+      "issue": {
+        "number": 1130,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1130",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/mcp_test/w5/replay_40xw005/crop-001.zarr/raw"
+      ],
+      "status": "Crop Pending Approval",
+      "created_at": "2026-10-09"
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1_crop-001_000x_000y_000z_96t_2c_auto_pred-cell-ch0_cellpose_hk4_ft_t01-10-25_min35299",
+      "issue": {
+        "number": 1131,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1131",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr"
+      ],
+      "status": "auto_pred_ingested",
+      "dataset": "Betzig Fish",
+      "model_organism": "Zebrafish",
+      "timepoint": "all (t=0-95)",
+      "last_updated": "2026-10-09",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr/labels/auto_pred-cell-ch0_cellpose_hk4_ft_t01-10-25_min35299",
+      "created_at": "2026-10-09"
+    },
+    {
+      "title": "LSD segmentation (all timepoints) - fish1_72hpf roi1 crop-001 (000x_000y_000z, 96 timepoints)",
+      "issue": {
+        "number": 1132,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1132",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr"
+      ],
+      "status": "Crop Pending Approval",
+      "dataset": "Betzig Fish",
+      "model_organism": "Zebrafish",
+      "timepoint": "all (t=0-95)",
+      "last_updated": "2026-10-09",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/lsd_segmentations/Zebrafish_LM/Zebrafish_fish1_roi1_crop001/Zebrafish_fish1_crop001_Segmentation.zarr/segments",
+      "assignees": [
+        "dufengtong",
+        "jakobtroidl",
+        "CarlaRodriguez96"
+      ],
+      "created_at": "2026-10-09"
+    },
+    {
+      "title": "LSD segmentation (all timepoints) - lm-zebrafish-Betzig-mosaic-example_annotations_Thayer",
+      "issue": {
+        "number": 1133,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1133",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-001_dsr_timeseries_48t_1c.zarr"
+      ],
+      "status": "Crop Pending Approval",
+      "dataset": "Betzig Fish",
+      "model_organism": "Zebrafish",
+      "timepoint": "all (t=0-47)",
+      "last_updated": "2026-10-09",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-001_dsr_timeseries_48t_1c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/lsd_segmentations/Zebrafish_LM/Zebrafish_Betzig/Zebrafish_Betzig_Segmentation.zarr/segments",
+      "assignees": [
+        "jakobtroidl",
+        "CarlaRodriguez96"
+      ],
+      "created_at": "2026-10-09"
+    },
+    {
+      "title": "Betzig_fish1_72hpf_roi1_crop-001_t5_proofread",
+      "issue": {
+        "number": 1134,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1134",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr"
+      ],
+      "status": "pre_paintera_proofreading",
+      "dataset": "Betzig Fish",
+      "tool": "Paintera",
+      "task": "dense proofreading",
+      "model_organism": "Zebrafish",
+      "structure_of_interest": "cells",
+      "timepoint": "t=5",
+      "last_updated": "2026-10-12",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/annotations/betzig-fish-mosaic/fish1_72hpf_roi1/paintera_proofread/crop-001_t5_paintera.n5",
+      "assignees": [
+        "postalannah"
+      ],
+      "created_at": "2026-10-12"
+    },
+    {
+      "title": "Betzig_fish1_72hpf_roi1_crop-001_t80_proofread",
+      "issue": {
+        "number": 1135,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1135",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr"
+      ],
+      "status": "pre_paintera_proofreading",
+      "dataset": "Betzig Fish",
+      "tool": "Paintera",
+      "task": "dense proofreading",
+      "model_organism": "Zebrafish",
+      "structure_of_interest": "cells",
+      "timepoint": "t=80",
+      "last_updated": "2026-10-12",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/annotations/betzig-fish-mosaic/fish1_72hpf_roi1/paintera_proofread/crop-001_t80_paintera.n5",
+      "assignees": [
+        "zinni-ad",
+        "MBryant6444"
+      ],
+      "created_at": "2026-10-12"
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1_crop-010_000x_003y_000z_288t_2c_auto_pred-cell-ch0_cellpose_hk4_ft_t01-10-25_min35299",
+      "issue": {
+        "number": 1136,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1136",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-010_000x_003y_000z_288t_2c.zarr"
+      ],
+      "status": "auto_pred_ingested",
+      "dataset": "Betzig Fish",
+      "model_organism": "Zebrafish",
+      "timepoint": "t=1",
+      "last_updated": "2026-10-12",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-010_000x_003y_000z_288t_2c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-010_000x_003y_000z_288t_2c.zarr/labels/auto_pred-cell-ch0_cellpose_hk4_ft_t01-10-25_min35299",
+      "created_at": "2026-10-12"
+    },
+    {
+      "title": "Betzig_fish3_24hpf_roi1_crop-010_t1_proofread",
+      "issue": {
+        "number": 1137,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1137",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-010_000x_003y_000z_288t_2c.zarr"
+      ],
+      "status": "pre_paintera_proofreading",
+      "dataset": "Betzig Fish",
+      "tool": "Paintera",
+      "task": "dense proofreading",
+      "model_organism": "Zebrafish",
+      "structure_of_interest": "cells",
+      "timepoint": "t=1",
+      "last_updated": "2026-10-12",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-010_000x_003y_000z_288t_2c.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/annotations/betzig-fish-mosaic/fish3_24hpf_roi1/paintera_proofread/crop-010_t1_paintera.n5",
+      "assignees": [
+        "zinni-ad"
+      ],
+      "created_at": "2026-10-12"
+    },
+    {
+      "title": "FlyLICONN FlyID49_40XW005 - LSD prediction proofreading",
+      "issue": {
+        "number": 1138,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1138",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"
+      ],
+      "status": "pre_paintera_proofreading",
+      "dataset": "FlyLICONN",
+      "tool": "Paintera",
+      "task": "dense proofreading",
+      "model_organism": "Drosophila",
+      "structure_of_interest": "neurons",
+      "timepoint": "N/A",
+      "last_updated": "2026-10-15",
+      "bbox": "BBox1: Z[265:532], Y[678:946], X[572:841]; BBox2: Z[1035:1302], Y[167:436], X[844:1114] (resolution: segmentation layer 9nm iso)",
+      "bbox_size": "BBox1: 267x268x269 vox (~2.4x2.4x2.4 um); BBox2: 267x269x270 vox (~2.4x2.4x2.4 um)",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr/raw",
+      "proofread_needed_path": "/groups/miaai/miaai/lsd_segmentations/Fly_LICONN/FlyID49_005/FlyID49_005_Inference.zarr/segments_sws_t05_b4_msd20_xy30_z20_lsd80_mean_FlyID49_005_all_liconn",
+      "assignees": [
+        "knechtc",
+        "walshjj"
+      ],
+      "created_at": "2026-10-15"
+    },
+    {
+      "title": "exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625_crop-001_auto_pred-neuron-LSD_sws_b4_msd20",
+      "issue": {
+        "number": 1139,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1139",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "source_paths": [
+        "/groups/miaai/miaai/lsd_segmentations/Fly_LICONN/FlyID49_005/FlyID49_005_Inference.zarr/segments_sws_t05_b4_msd20_xy30_z20_lsd80_mean_FlyID49_005_all_liconn"
+      ],
+      "status": "auto_pred_ingested",
+      "dataset": "FlyLICONN",
+      "model_organism": "Drosophila",
+      "structure_of_interest": "neurons",
+      "label_count": 21414,
+      "timepoint": "N/A",
+      "last_updated": "2026-10-15",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr",
+      "proofread_needed_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr/labels/auto_pred-neuron-LSD_sws_b4_msd20",
+      "created_at": "2026-10-15"
     }
   ]
 }

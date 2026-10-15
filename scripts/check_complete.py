@@ -15,14 +15,14 @@ from __future__ import annotations
 
 import json
 import os
-import subprocess
 import sys
+
+from gh_project import fetch_items
 
 from data_root import DATA_ROOT
 
-PROJECT_OWNER = "AI-HHMI"
-ANNOTATION_PROJECT = "1"
-PRETRAINING_PROJECT = "4"
+ANNOTATION_PROJECT = 1
+PRETRAINING_PROJECT = 4
 
 
 def load_json(path):
@@ -58,19 +58,7 @@ def check_volumes_complete(volumes):
 
 
 def fetch_project_issues(project):
-    result = subprocess.run(
-        ["gh", "project", "item-list", project, "--owner", PROJECT_OWNER,
-         "--format", "json", "--limit", "5000"],
-        capture_output=True, text=True,
-    )
-    assert result.returncode == 0, f"gh project item-list failed: {result.stderr}"
-    items = json.loads(result.stdout)["items"]
-    issues = set()
-    for item in items:
-        content = item.get("content", {})
-        if content.get("type") == "Issue":
-            issues.add((content["repository"], content["number"]))
-    return issues
+    return {(i["issue"]["repository"], i["issue"]["number"]) for i in fetch_items(project)}
 
 
 def check_annotations_complete(annotations):

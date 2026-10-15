@@ -3,15 +3,8 @@ the source of truth for every #AnnotationItem field except `roi`, which this
 script derives from bbox/bbox_size (itself a GitHub Project field), not a
 GitHub field of its own.
 
-FIELD_MAP keys are gh's own JSON-ified project column names, confirmed
-against a live `gh project item-list --limit 1` response: gh takes the
-column's display name, joins its words with "_" preserving each word's own
-capitalization, then lowercases just the first character of the whole
-string ("Data Modality" -> "data_Modality", "WK Ann Link" -> "wK_Ann_Link",
-single-word names just get their first letter lowercased). The one
-oddity is `structure_of_Interest_1` (a trailing "_1", presumably from a
-renamed/duplicated project column) -- if a future rebuild fails on a
-missing `structure_of_interest`, check whether gh renumbered this.
+FIELD_MAP keys are the project's column names exactly as GitHub returns them (scripts/gh_project.py fetches the
+items, with each issue's creation date, for a few GraphQL points).
 
     gh auth status   # needs the read:project scope
     python3 scripts/rebuild_annotations.py > lmd_annotations.json
@@ -21,13 +14,11 @@ from __future__ import annotations
 
 import json
 import os
-import subprocess
 
+from gh_project import fetch_items
 from roi_parse import parse_roi
 
-PROJECT_OWNER = "AI-HHMI"
-PROJECT_NUMBER = "1"
-ISSUE_REPO = "AI-HHMI/mia_annotation"
+PROJECT_NUMBER = 1
 
 # TEMPORARY, pending a human fixing these upstream in the GitHub Project UI:
 # issues #18/#19's Source Image Path/Fileglancer Path fields still have the
@@ -45,6 +36,10 @@ PENDING_UPSTREAM_FIXES = {
     19: {
         "source_paths": ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr"],
         "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001.zarr",
+    },
+    # #1138: Source_Image_Path is the Fileglancer URL of the store's raw/ group, not its /groups path.
+    1138: {
+        "source_paths": ["/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001.zarr"],
     },
     # #7/#8/#9: verified ROIs (LICONN DG/Cortex/Hippocampus); the project has no bbox text for them yet.
     7: {
@@ -64,82 +59,70 @@ PENDING_UPSTREAM_FIXES = {
     },
 }
 
+# Issues whose bbox text is not one box in the source volume's level-0 voxels, so it has no #ROI. Keyed by issue
+# number and pinned to the exact text: once someone rewrites it upstream the entry stops matching and the rebuild
+# fails, asking for it to be removed (the new text is then parsed as usual).
+UNPARSED_BBOX = {
+    1138: {
+        "bbox": "BBox1: Z[265:532], Y[678:946], X[572:841]; BBox2: Z[1035:1302], Y[167:436], X[844:1114] (resolution: segmentation layer 9nm iso)",
+        "why": "two boxes, ZYX, in the LSD segmentation's 9 nm grid (Proofread_Needed_Path), not source level-0 voxels",
+    },
+}
+
 FIELD_MAP = {
-    "status": "status",
-    "dataset": "dataset",
-    "tool": "tool",
-    "task": "task",
-    "model_Organism": "model_organism",
-    "data_Modality": "data_modality",
-    "structure_of_Interest_1": "structure_of_interest",
-    "priority": "priority",
-    "annotator": "annotator",
-    "completion_Pct": "completion_pct",
-    "label_Count": "label_count",
-    "timepoint": "timepoint",
-    "last_Updated": "last_updated",
-    "bbox": "bbox",
-    "bbox_size": "bbox_size",
-    "fileglancer_Path": "fileglancer_path",
-    "gT_Export_Path": "gt_export_path",
-    "gT_Ingested_Path": "gt_ingested_path",
-    "proofread_Needed_Path": "proofread_needed_path",
-    "proofread_Export_Path": "proofread_export_path",
-    "proofread_Ingested_Path": "proofread_ingested_path",
-    "wK_Link": "wk_link",
-    "wK_Ann_Link": "wk_ann_link",
+    "Status": "status",
+    "Dataset": "dataset",
+    "Tool": "tool",
+    "Task": "task",
+    "Model_Organism": "model_organism",
+    "Data_Modality": "data_modality",
+    "Structure_of_Interest_1": "structure_of_interest",
+    "Priority": "priority",
+    "Annotator": "annotator",
+    "Completion_Pct": "completion_pct",
+    "Label_Count": "label_count",
+    "Timepoint": "timepoint",
+    "Last_Updated": "last_updated",
+    "Bbox": "bbox",
+    "Bbox_size": "bbox_size",
+    "Fileglancer_Path": "fileglancer_path",
+    "GT_Export_Path": "gt_export_path",
+    "GT_Ingested_Path": "gt_ingested_path",
+    "Proofread_Needed_Path": "proofread_needed_path",
+    "Proofread_Export_Path": "proofread_export_path",
+    "Proofread_Ingested_Path": "proofread_ingested_path",
+    "WK_Link": "wk_link",
+    "WK_Ann_Link": "wk_ann_link",
 }
 
 
-def fetch_items():
-    result = subprocess.run(
-        ["gh", "project", "item-list", PROJECT_NUMBER, "--owner", PROJECT_OWNER,
-         "--format", "json", "--limit", "5000"],
-        capture_output=True, text=True,
-    )
-    assert result.returncode == 0, f"gh project item-list failed: {result.stderr}"
-    return json.loads(result.stdout)["items"]
-
-
-def fetch_created_dates():
-    """Issue number -> ISO creation date (the project items don't carry it)."""
-    result = subprocess.run(
-        ["gh", "issue", "list", "--repo", ISSUE_REPO, "--state", "all", "--limit", "5000", "--json", "number,createdAt"],
-        capture_output=True, text=True,
-    )
-    assert result.returncode == 0, f"gh issue list failed: {result.stderr}"
-    return {i["number"]: i["createdAt"][:10] for i in json.loads(result.stdout)}
-
-
 def build_annotation(item):
-    content = item["content"]
-    assert content["type"] == "Issue", f"non-issue project item: {item}"
-
-    # source_Image_Path is a single string; multiple paths are "; "-joined
+    fields = item["fields"]
+    # Source_Image_Path is a single string; multiple paths are "; "-joined
     # (confirmed against issue #12, a paired fullvol+sub crop).
-    source_paths = [p.strip() for p in item["source_Image_Path"].split(";") if p.strip()]
+    assert fields.get("Source_Image_Path"), f"{item['issue']['url']} has no Source_Image_Path in the project"
+    source_paths = [p.strip() for p in fields["Source_Image_Path"].split(";") if p.strip()]
 
     annotation = {
-        "title": content["title"],
-        "issue": {
-            "number": content["number"],
-            "url": content["url"],
-            "repository": content["repository"],
-        },
+        "title": item["title"],
+        "issue": item["issue"],
         "source_paths": source_paths,
     }
     for project_field, our_field in FIELD_MAP.items():
-        if item.get(project_field) not in (None, ""):
-            annotation[our_field] = item[project_field]
+        if fields.get(project_field) not in (None, ""):
+            annotation[our_field] = fields[project_field]
     if item.get("assignees"):
         annotation["assignees"] = item["assignees"]
     if item.get("labels"):
         annotation["labels"] = item["labels"]
 
-    if annotation.get("bbox") and annotation.get("bbox_size"):
+    unparsed = UNPARSED_BBOX.get(item["issue"]["number"])
+    if unparsed:
+        assert annotation.get("bbox") == unparsed["bbox"], f"{item['issue']['url']}: bbox changed upstream, remove its UNPARSED_BBOX entry"
+    elif annotation.get("bbox") and annotation.get("bbox_size"):
         annotation["roi"] = parse_roi(annotation["bbox"], annotation["bbox_size"])
 
-    annotation.update(PENDING_UPSTREAM_FIXES.get(content["number"], {}))
+    annotation.update(PENDING_UPSTREAM_FIXES.get(item["issue"]["number"], {}))
 
     return annotation
 
@@ -150,13 +133,11 @@ def main():
         text = f.read()
     assert text.strip(), "lmd_annotations.json is empty -- did you redirect output onto it? `git checkout lmd_annotations.json`, then write to a temp file and mv it into place"
     existing = {a["issue"]["number"]: a for a in json.loads(text)["annotations"]}
-    annotations = [build_annotation(i) for i in fetch_items()]
-    created = fetch_created_dates()
-    for a in annotations:
-        number = a["issue"]["number"]
-        assert number in created, f"issue #{number} not found in {ISSUE_REPO}"
-        a["created_at"] = created[number]
-        old = existing.get(number, {})
+    items = fetch_items(PROJECT_NUMBER)
+    annotations = [build_annotation(i) for i in items]
+    for a, item in zip(annotations, items):
+        a["created_at"] = item["created_at"]
+        old = existing.get(a["issue"]["number"], {})
         a.update({k: old[k] for k in ("shape", "voxelsize", "axes") if k in old})
     annotations.sort(key=lambda a: a["issue"]["number"])
     print(json.dumps({"annotations": annotations}, indent=2))

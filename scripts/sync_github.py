@@ -1,5 +1,5 @@
 """Refresh lmd_annotations.json and lmd_pretraining.json from the GitHub Projects -- the rare step that spends the
-account's GraphQL budget (about 2200 of its 5000 points/hour, shared by every gh call).
+account's GraphQL budget (about 65 of its 5000 points/hour, shared by every gh call; see gh_project.py).
 
 Run it locally when the projects have changed (needs `gh` authed with read:project; no /groups, no cluster):
 
@@ -21,8 +21,8 @@ except ImportError:
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
     from lmd_catalog import Catalog
 
-# Refuse to start with less than this left: two real runs used 2152 and 2253 points.
-MIN_GRAPHQL_POINTS = 3000
+# Refuse to start with less than this left: a run fetching 2079 items used 62 points.
+MIN_GRAPHQL_POINTS = 200
 # name -> (rebuild script, data file, key of the entry list in that file)
 SOURCES = {
     "annotations": ("scripts/rebuild_annotations.py", "lmd_annotations.json", "annotations"),

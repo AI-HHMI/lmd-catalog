@@ -273,6 +273,7 @@ PretrainingModality = Literal[
     "ssTEM (GridTape-TEM)",
     "ATUM-mSEM",
     "Expansion Microscopy (Spinning Disk)",
+    "Expansion Microscopy (Light Sheet)",
     "Expansion Microscopy (Mirror)",
     "Expansion Microscopy (Confocal)",
     "Light-sheet (LLSM)",

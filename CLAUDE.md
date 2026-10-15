@@ -57,12 +57,13 @@ tracking issue, not just volumes tracked by an annotation with a `gt_ingested_pa
 repo's `measure.py --windows`). It covers only non-uint8 volumes: uint8 is left to miao's default divide-by-255.
 Don't compute windows here; extend the registry there.
 
-`scripts/rebuild_annotations.py` (needs `gh` authenticated with `read:project`, no `/groups`) calls
-`gh project item-list 1 --owner AI-HHMI --format json --limit 200` and maps its fields into `#AnnotationItem`
+`scripts/rebuild_annotations.py` (needs `gh` authenticated with `read:project`, no `/groups`)
+fetches the project's items through `scripts/gh_project.py` and maps its fields into `#AnnotationItem`
 shape, computing `roi` from `bbox`/`bbox_size` via `scripts/roi_parse.py` (shared with
 `check_integrity.py`'s consistency check — import it, don't duplicate the parsing). `FIELD_MAP`'s keys are
-gh's own JSON-ified project column names (verified against a live response — see the module docstring for
-the exact naming rule gh applies). `PENDING_UPSTREAM_FIXES` pins the two annotation items whose GitHub
+the project's column names exactly as GitHub returns them. `gh_project.py` is one hand-written GraphQL query (about 3
+points per 100 items, issue creation dates included); `gh project item-list` costs about 1 point per item, so don't go
+back to it. `PENDING_UPSTREAM_FIXES` pins the two annotation items whose GitHub
 Project fields still have a stale path a human hasn't corrected upstream yet (see "Editing the data"
 above); this is a human-in-the-loop seam, not something to silently override — remove an entry once
 someone fixes it in the GitHub UI, don't fix it by editing the GH Project via `gh` from here.
@@ -145,8 +146,8 @@ Two scripts, split by what they spend. Neither commits for you, and neither touc
 
 - `python3 scripts/sync_github.py` -- the **rare** step. Runs `rebuild_annotations.py` + `rebuild_pretraining.py` locally
   (`gh` authed with `read:project`; no cluster, no /groups), checks the new data loads into the models, and only then
-  rewrites `lmd_annotations.json` / `lmd_pretraining.json`, printing what changed. It spends ~2200 of the account's 5000
-  GraphQL points/hour (shared by every `gh` call), so it refuses to start below `MIN_GRAPHQL_POINTS`. Commit the result
+  rewrites `lmd_annotations.json` / `lmd_pretraining.json`, printing what changed. It spends ~65 of the account's 5000
+  GraphQL points/hour (shared by every `gh` call), and refuses to start below `MIN_GRAPHQL_POINTS`. Commit the result
   (`jj commit`, `jj bookmark set main -r @-`) before the next script. If `gh` says "API rate limit exceeded", check
   `gh api graphql -f query='{rateLimit{remaining resetAt}}'` (`gh api rate_limit` can show a stale view) and wait.
 - `python3 scripts/sync_release.py` -- never queries GitHub. Pushes `main` to the `janelia` remote, then over ssh in the
