@@ -52,6 +52,8 @@ lists a volume's own `labels/` subgroup (mechanical directory listing, omitted w
 `label_keys` — this is what lets `#VolumeEntry.has_ground_truth` cover public benchmark datasets (CellMap,
 CREMI, Lucchi, MitoEM, UroCell) that ship ingested ground truth directly in their own zarr store with no
 tracking issue, not just volumes tracked by an annotation with a `gt_ingested_path`.
+Only keys with a `GT_LABEL_KINDS` prefix (`models.py`: `manual_gt`, `proofread`, `public_gt`, preferred in that
+order) count as ground truth; `auto_pred-*` predictions and other pipeline outputs under `labels/` don't.
 `normalize_min`/`normalize_max` come from the configs repo's window registry
 (`/groups/miaai/miaai/lmd-v0.0.1/configs/corpus/windows.yaml`, p0.1/p99.9 of raw level-0 values, derived by that
 repo's `measure.py --windows`). It covers only non-uint8 volumes: uint8 is left to miao's default divide-by-255.

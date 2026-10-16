@@ -121,7 +121,7 @@ def test_catalog_queries_and_filters():
     assert len(annotated) > 0
 
     with_gt = lmd.find(has_ground_truth=True)
-    assert len(with_gt) >= 537
+    assert len(with_gt) >= 517  # GT_LABEL_KINDS label arrays or an ingested GT path; auto_pred-* alone doesn't count
 
     # Filter by organism
     zebrafish = lmd.find(organism="Zebrafish")
@@ -467,9 +467,19 @@ def test_label_keys_confer_ground_truth_without_tracking():
     assert not v.has_ground_truth
     assert v.ground_truth_paths == []
 
-    v_gt = v.model_copy(update={"label_keys": ["gt"]})
+    v_gt = v.model_copy(update={"label_keys": ["public_gt-cell"]})
     assert v_gt.has_ground_truth
-    assert v_gt.ground_truth_paths == ["/data/em-UNKNOWN-cremi/crop-001.zarr/labels/gt"]
+    assert v_gt.ground_truth_paths == ["/data/em-UNKNOWN-cremi/crop-001.zarr/labels/public_gt-cell"]
+
+
+def test_auto_predictions_are_not_ground_truth():
+    """auto_pred-* label arrays don't confer ground truth, and manual GT is preferred over the other kinds."""
+    from lmd_catalog import VolumeEntry
+
+    v = VolumeEntry(name="em-UNKNOWN-cremi/crop-001", path="/data/em-UNKNOWN-cremi/crop-001.zarr", label_keys=["auto_pred-cell-lsd"])
+    assert not v.has_ground_truth
+    v = v.model_copy(update={"label_keys": ["auto_pred-cell-lsd", "proofread-cell-agglom", "manual_gt-cell-final"]})
+    assert [p.split("/")[-1] for p in v.ground_truth_paths] == ["manual_gt-cell-final", "proofread-cell-agglom"]
 
 
 def test_every_entry_has_a_date_for_time_series():

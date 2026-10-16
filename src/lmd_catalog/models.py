@@ -10,6 +10,9 @@ if TYPE_CHECKING:
     from miao.config import VolumeConfig
 
 DEFAULT_DATA_ROOT = "/groups/miaai/miaai/lmd-v0.0.1/data"
+# Label arrays (labels/<key>) that are ground truth, by key prefix, most preferred first. Everything else under
+# labels/ (auto_pred-*, pipeline outputs) is not.
+GT_LABEL_KINDS = ("manual_gt", "proofread", "public_gt")
 
 
 class ROI(BaseModel):
@@ -446,18 +449,19 @@ class VolumeEntry(BaseModel):
 
     @property
     def has_ground_truth(self) -> bool:
-        """True if this volume ships its own ingested labels/ (e.g. a public
+        """True if this volume ships ground-truth labels/ of its own (e.g. a public
         benchmark dataset with no tracking issue) or a tracking issue has an
-        ingested ground-truth path."""
-        return bool(self.label_keys) or any(
-            a.gt_ingested_path is not None for a in self.tracked_by
-        )
+        ingested ground-truth path. Auto-predictions don't count."""
+        return bool(self.ground_truth_paths)
 
     @property
     def ground_truth_paths(self) -> list[str]:
-        """All ingested ground-truth paths associated with this volume: its
-        own labels/ keys, plus any from tracking annotation issues."""
-        own = [f"{self.path}/labels/{key}" for key in self.label_keys]
+        """All ingested ground-truth paths associated with this volume: its own
+        labels/ keys of a GT_LABEL_KINDS kind (manual first, then proofread, then
+        public), plus any from tracking annotation issues."""
+        rank = lambda key: next(i for i, kind in enumerate(GT_LABEL_KINDS) if key.startswith(kind))
+        gt_keys = sorted((k for k in self.label_keys if k.startswith(GT_LABEL_KINDS)), key=rank)
+        own = [f"{self.path}/labels/{key}" for key in gt_keys]
         tracked = [
             a.gt_ingested_path
             for a in self.tracked_by
