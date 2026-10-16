@@ -118,7 +118,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-26"
+      "added": "2026-06-26",
+      "normalize_min": 0,
+      "normalize_max": 33742
     },
     {
       "name": "em-celegans-funceworm-jrc_HPF-TAOTO-ME-S2_6x6nm_RegAffine-flattened/crop-001",
@@ -137,7 +139,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-26"
+      "added": "2026-06-26",
+      "normalize_min": -1473,
+      "normalize_max": 551
     },
     {
       "name": "em-drosophila-CellMap-jrc-fly-mb-1a/crop-001_fullvol_tissuecrop",
@@ -6595,6 +6599,7 @@
         "z"
       ],
       "label_keys": [
+        "manual_gt-cell-seg_m1300-JJ-paintera",
         "proofread-cell-seg_m1300"
       ],
       "added": "2026-07-07"
@@ -7612,7 +7617,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -79,
+      "normalize_max": 84
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-002_ves-test-chemfix-tomogram-004",
@@ -7634,7 +7641,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -79,
+      "normalize_max": 83
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-003_az-train-chemfix-20171006_03_MS",
@@ -7656,7 +7665,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -78,
+      "normalize_max": 82
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-004_az-train-chemfix-20171006_2_2_MS",
@@ -7678,7 +7689,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -75,
+      "normalize_max": 94
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-005_az-train-chemfix-20171006_2_3_MS",
@@ -7700,7 +7713,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -77,
+      "normalize_max": 98
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-006_az-train-chemfix-20171006_3_2_MS",
@@ -7722,7 +7737,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -75,
+      "normalize_max": 90
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-007_az-train-chemfix-20171013_01_MS",
@@ -7744,7 +7761,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -83,
+      "normalize_max": 71
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-008_az-train-chemfix-20171013_1.2_MS",
@@ -7766,7 +7785,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -98,
+      "normalize_max": 89
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-009_az-train-chemfix-20171113_01_MS",
@@ -7788,7 +7809,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -88,
+      "normalize_max": 70
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-010_az-train-chemfix-20171113_02_MS",
@@ -7810,7 +7833,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -87,
+      "normalize_max": 80
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-011_az-train-chemfix-20171113_05_MS",
@@ -7832,7 +7857,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -82,
+      "normalize_max": 91
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-012_az-train-chemfix-20171113_06_MS",
@@ -7854,7 +7881,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -84,
+      "normalize_max": 92
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-013_az-train-chemfix-20171113_07_MS",
@@ -7876,7 +7905,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -86,
+      "normalize_max": 76
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-014_az-train-chemfix-20171113_3.2_MS",
@@ -7898,7 +7929,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -84,
+      "normalize_max": 95
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-015_az-train-chemfix-20180305_02_MS",
@@ -7920,7 +7953,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -89,
+      "normalize_max": 90
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-016_az-train-chemfix-20180305_03_MS",
@@ -7942,7 +7977,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -85,
+      "normalize_max": 83
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-017_az-train-chemfix-20180305_05_MS",
@@ -7964,7 +8001,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -91,
+      "normalize_max": 62
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-018_az-train-chemfix-20180305_06_MS",
@@ -7986,7 +8025,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -86,
+      "normalize_max": 85
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-019_az-train-chemfix-20180305_07_MS",
@@ -8008,7 +8049,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -90,
+      "normalize_max": 84
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-020_az-train-chemfix-20180305_10_MS",
@@ -8030,7 +8073,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -88,
+      "normalize_max": 77
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-021_az-train-tem-20190524_09204_F4_SC_01_SP",
@@ -8052,7 +8097,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": 476,
+      "normalize_max": 953
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-022_az-train-tem-20190524_09204_F4_SC_02_SP",
@@ -8074,7 +8121,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": 449,
+      "normalize_max": 958
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-023_az-train-tem-20190524_09204_F4_SC_03_SP",
@@ -8096,7 +8145,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": 505,
+      "normalize_max": 966
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-024_az-train-tem-20190524_09204_F4_SC_04_SP",
@@ -8118,7 +8169,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": 467,
+      "normalize_max": 1008
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-025_az-train-tem-20190524_09204_F4_SC_05_SP",
@@ -8140,7 +8193,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": 467,
+      "normalize_max": 937
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-026_az-train-tem-20190524_09204_F4_SC_06_SP",
@@ -8162,7 +8217,9 @@
       "label_keys": [
         "public_gt-active_zone-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": 503,
+      "normalize_max": 938
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-027_ves-train-chemfix-tomogram-002",
@@ -8184,7 +8241,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -78,
+      "normalize_max": 82
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-028_ves-train-chemfix-tomogram-005",
@@ -8206,7 +8265,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -78,
+      "normalize_max": 94
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-029_ves-train-chemfix-tomogram-006",
@@ -8228,7 +8289,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -82,
+      "normalize_max": 97
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-030_ves-train-chemfix-tomogram-007",
@@ -8250,7 +8313,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -78,
+      "normalize_max": 92
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-031_ves-train-chemfix-tomogram-008",
@@ -8272,7 +8337,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -87,
+      "normalize_max": 72
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-032_ves-train-chemfix-tomogram-011",
@@ -8294,7 +8361,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -101,
+      "normalize_max": 89
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-033_ves-train-chemfix-tomogram-016",
@@ -8316,7 +8385,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -88,
+      "normalize_max": 70
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-034_ves-train-chemfix-tomogram-019",
@@ -8338,7 +8409,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -85,
+      "normalize_max": 83
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-035_ves-train-chemfix-tomogram-020",
@@ -8360,7 +8433,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -83,
+      "normalize_max": 91
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-036_ves-train-chemfix-tomogram-023",
@@ -8382,7 +8457,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -84,
+      "normalize_max": 95
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-037_ves-train-chemfix-tomogram-024",
@@ -8404,7 +8481,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -92,
+      "normalize_max": 77
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-038_ves-train-chemfix-tomogram-025",
@@ -8426,7 +8505,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -88,
+      "normalize_max": 94
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-039_ves-train-chemfix-tomogram-026",
@@ -8448,7 +8529,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -87,
+      "normalize_max": 83
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-040_ves-train-chemfix-tomogram-027",
@@ -8470,7 +8553,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -89,
+      "normalize_max": 86
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-041_ves-train-chemfix-tomogram-028",
@@ -8492,7 +8577,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -86,
+      "normalize_max": 62
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-042_ves-train-chemfix-tomogram-029",
@@ -8514,7 +8601,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -81,
+      "normalize_max": 87
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-043_ves-train-chemfix-tomogram-030",
@@ -8536,7 +8625,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -88,
+      "normalize_max": 85
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-044_ves-train-chemfix-tomogram-031",
@@ -8558,7 +8649,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -85,
+      "normalize_max": 83
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-045_ves-train-chemfix-tomogram-032",
@@ -8580,7 +8673,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -85,
+      "normalize_max": 82
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-046_ves-train-chemfix-tomogram-033",
@@ -8602,7 +8697,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -87,
+      "normalize_max": 78
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-047_ves-train-tem-tomogram-000",
@@ -8624,7 +8721,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -128,
+      "normalize_max": 127
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-048_ves-train-tem-tomogram-001",
@@ -8646,7 +8745,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -128,
+      "normalize_max": 127
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-049_ves-train-tem-tomogram-002",
@@ -8668,7 +8769,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -128,
+      "normalize_max": 127
     },
     {
       "name": "em-mouse-PyTC-synapsenet-hippocampus/crop-050_ves-train-tem-tomogram-003",
@@ -8690,7 +8793,9 @@
       "label_keys": [
         "proofread-vesicle-synapsenet"
       ],
-      "added": "2026-09-24"
+      "added": "2026-09-24",
+      "normalize_min": -128,
+      "normalize_max": 127
     },
     {
       "name": "em-mouse-urocell-bladder/crop-001_fib1-0-0-0",
@@ -11441,7 +11546,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-25"
+      "added": "2026-09-25",
+      "normalize_min": 258,
+      "normalize_max": 1351
     },
     {
       "name": "exm-danionella-tavakolischulze-DID15/crop-002_micro_3hr_40XW",
@@ -11460,7 +11567,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-25"
+      "added": "2026-09-25",
+      "normalize_min": 265,
+      "normalize_max": 1454
     },
     {
       "name": "exm-drosophila-flyliconn-ExPID06B-Brain2-PFA-AA-epox/crop-001_fullvol",
@@ -11479,7 +11588,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 123,
+      "normalize_max": 478
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID10-20250923_2ndGel_PBS_MES_B1_Atto488_40XW_002/crop-001_normalized",
@@ -11505,7 +11616,9 @@
         "manual_gt-cell-Tiffany_Green",
         "manual_gt-cell-combined"
       ],
-      "added": "2026-05-18"
+      "added": "2026-05-18",
+      "normalize_min": 178,
+      "normalize_max": 630
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID10-20250923_2ndGel_PBS_MES_B1_Atto488_40XW_002/crop-001_raw",
@@ -11525,7 +11638,9 @@
         "y",
         "x"
       ],
-      "added": "2026-05-18"
+      "added": "2026-05-18",
+      "normalize_min": 135,
+      "normalize_max": 523
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID10-20250923_2ndGel_PBS_MES_B2_Atto488_40XW_002/crop-001_fullvol",
@@ -11544,7 +11659,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 146,
+      "normalize_max": 526
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID10-20250923_2ndGel_PBS_PIPES_B2_Atto488_40XW_002/crop-001_fullvol",
@@ -11563,7 +11680,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 119,
+      "normalize_max": 456
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-20260203_2ndGel_0.0655BIS_40XW004/crop-001_fullvol",
@@ -11582,7 +11701,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 277,
+      "normalize_max": 1486
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-001_setup34",
@@ -11601,7 +11722,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 170,
+      "normalize_max": 1201
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-002_setup48",
@@ -11620,7 +11743,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1186
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-003_setup62",
@@ -11639,7 +11764,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1650
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-004_setup76",
@@ -11658,7 +11785,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1661
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-005_setup90",
@@ -11677,7 +11806,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1671
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-006_setup104",
@@ -11696,7 +11827,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1712
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-007_setup113",
@@ -11715,7 +11848,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1377
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-008_setup114",
@@ -11734,7 +11869,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1659
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-009_setup115",
@@ -11753,7 +11890,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1559
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-010_setup116",
@@ -11772,7 +11911,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1559
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-011_setup117",
@@ -11791,7 +11932,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1536
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-012_setup118",
@@ -11810,7 +11953,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1482
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-013_setup119",
@@ -11829,7 +11974,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1414
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-014_setup120",
@@ -11848,7 +11995,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1367
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-015_setup121",
@@ -11867,7 +12016,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1259
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-016_setup132",
@@ -11886,7 +12037,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1491
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-017_setup135",
@@ -11905,7 +12058,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1278
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-018_setup146",
@@ -11924,7 +12079,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1465
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-019_setup149",
@@ -11943,7 +12100,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 1359
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-020_setup160",
@@ -11962,7 +12121,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1422
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-021_setup163",
@@ -11981,7 +12142,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 171,
+      "normalize_max": 1275
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-022_setup174",
@@ -12000,7 +12163,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1628
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-023_setup177",
@@ -12019,7 +12184,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1464
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-024_setup188",
@@ -12038,7 +12205,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1623
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-025_setup191",
@@ -12057,7 +12226,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1603
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-026_setup202",
@@ -12076,7 +12247,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1765
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-027_setup205",
@@ -12095,7 +12268,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1419
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-028_setup216",
@@ -12114,7 +12289,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1771
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-029_setup219",
@@ -12133,7 +12310,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1533
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-030_setup230",
@@ -12152,7 +12331,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1840
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-031_setup233",
@@ -12171,7 +12352,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1483
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-032_setup244",
@@ -12190,7 +12373,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1792
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-033_setup247",
@@ -12209,7 +12394,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1561
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-034_setup258",
@@ -12228,7 +12415,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1857
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-035_setup261",
@@ -12247,7 +12436,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1550
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-036_setup269",
@@ -12266,7 +12457,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1730
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-037_setup270",
@@ -12285,7 +12478,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1575
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-038_setup271",
@@ -12304,7 +12499,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1832
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-039_setup272",
@@ -12323,7 +12520,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1840
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-040_setup273",
@@ -12342,7 +12541,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1779
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-041_setup274",
@@ -12361,7 +12562,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1708
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-042_setup275",
@@ -12380,7 +12583,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1596
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-043_setup276",
@@ -12399,7 +12604,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1409
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-044_setup277",
@@ -12418,7 +12625,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1267
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-045_setup286",
@@ -12437,7 +12646,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 2069
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-046_setup289",
@@ -12456,7 +12667,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 2063
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-047_setup300",
@@ -12475,7 +12688,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1998
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-048_setup303",
@@ -12494,7 +12709,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1821
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-049_setup314",
@@ -12513,7 +12730,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1922
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-050_setup317",
@@ -12532,7 +12751,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1755
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-051_setup328",
@@ -12551,7 +12772,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 2666
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-052_setup331",
@@ -12570,7 +12793,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1722
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-053_setup342",
@@ -12589,7 +12814,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1984
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-054_setup345",
@@ -12608,7 +12835,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1815
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-055_setup355",
@@ -12627,7 +12856,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 171,
+      "normalize_max": 1748
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-056_setup356",
@@ -12646,7 +12877,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1936
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-057_setup357",
@@ -12665,7 +12898,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1963
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-058_setup358",
@@ -12684,7 +12919,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1914
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-059_setup359",
@@ -12703,7 +12940,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1823
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-060_setup360",
@@ -12722,7 +12961,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1754
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-061_setup370",
@@ -12741,7 +12982,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1966
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-062_setup373",
@@ -12760,7 +13003,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1815
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-063_setup384",
@@ -12779,7 +13024,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1975
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-064_setup387",
@@ -12798,7 +13045,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1743
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-065_setup396",
@@ -12817,7 +13066,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1205
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-066_setup397",
@@ -12836,7 +13087,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1554
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-067_setup398",
@@ -12855,7 +13108,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1793
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-068_setup399",
@@ -12874,7 +13129,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1707
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-069_setup400",
@@ -12893,7 +13150,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1681
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-070_setup401",
@@ -12912,7 +13171,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1708
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-071_setup402",
@@ -12931,7 +13192,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1445
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-072_setup403",
@@ -12950,7 +13213,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1072
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-073_setup412",
@@ -12969,7 +13234,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1690
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-074_setup415",
@@ -12988,7 +13255,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1515
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-075_setup426",
@@ -13007,7 +13276,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1646
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-076_setup429",
@@ -13026,7 +13297,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1446
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-077_setup440",
@@ -13045,7 +13318,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1466
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-078_setup443",
@@ -13064,7 +13339,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1289
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID22-mirrorscope-075pct-20260210-unstitched/crop-079_setup454",
@@ -13083,7 +13360,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1228
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID25-20260216_MESFix_2ndGel_B1_40XW/crop-001_fullvol",
@@ -13102,7 +13381,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 181,
+      "normalize_max": 953
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID25-20260216_MESFix_2ndGel_B1_40XW003/crop-001_fullvol",
@@ -13121,7 +13402,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 198,
+      "normalize_max": 891
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID25-20260216_MOPS_2ndGel_B1_40XW/crop-001_fullvol",
@@ -13140,7 +13423,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 237,
+      "normalize_max": 1164
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID25-mitochondria-20260216_MOPS_2ndGel_B1_40XW003/crop-001",
@@ -13163,7 +13448,9 @@
         "manual_gt-mitochondria-combined",
         "manual_gt-mitochondria-crop001"
       ],
-      "added": "2026-06-25"
+      "added": "2026-06-25",
+      "normalize_min": 214,
+      "normalize_max": 832
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID26-20260221_2ndgel_S4_B1_40XW/crop-001_fullvol",
@@ -13182,7 +13469,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 215,
+      "normalize_max": 954
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID26-20260221_2ndgel_S4_B1_40XW003/crop-001_fullvol",
@@ -13201,7 +13490,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 207,
+      "normalize_max": 919
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID26-20260221_2ndgel_S4_B1_40XW004/crop-001_fullvol",
@@ -13220,7 +13511,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-18"
+      "added": "2026-08-18",
+      "normalize_min": 318,
+      "normalize_max": 1713
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-001_setup29",
@@ -13239,7 +13532,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1312
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-002_setup37",
@@ -13258,7 +13553,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1239
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-003_setup40",
@@ -13277,7 +13574,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1613
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-004_setup48",
@@ -13296,7 +13595,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1689
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-005_setup51",
@@ -13315,7 +13616,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1906
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-006_setup59",
@@ -13334,7 +13637,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1708
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-007_setup62",
@@ -13353,7 +13658,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1815
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-008_setup70",
@@ -13372,7 +13679,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1864
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-009_setup73",
@@ -13391,7 +13700,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1841
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-010_setup81",
@@ -13410,7 +13721,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1703
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-011_setup84",
@@ -13429,7 +13742,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1890
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-012_setup90",
@@ -13448,7 +13763,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1292
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-013_setup91",
@@ -13467,7 +13784,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1600
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-014_setup92",
@@ -13486,7 +13805,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1684
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-015_setup93",
@@ -13505,7 +13826,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1787
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-016_setup94",
@@ -13524,7 +13847,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1723
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-017_setup95",
@@ -13543,7 +13868,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1775
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-018_setup96",
@@ -13562,7 +13889,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1550
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-019_setup103",
@@ -13581,7 +13910,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1782
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-020_setup106",
@@ -13600,7 +13931,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1748
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-021_setup114",
@@ -13619,7 +13952,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1836
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-022_setup117",
@@ -13638,7 +13973,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1376
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-023_setup125",
@@ -13657,7 +13994,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1624
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-024_setup128",
@@ -13676,7 +14015,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1509
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-025_setup136",
@@ -13695,7 +14036,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1822
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-026_setup139",
@@ -13714,7 +14057,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1797
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-027_setup147",
@@ -13733,7 +14078,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1744
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-028_setup150",
@@ -13752,7 +14099,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1898
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-029_setup158",
@@ -13771,7 +14120,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1696
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-030_setup161",
@@ -13790,7 +14141,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1624
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-031_setup169",
@@ -13809,7 +14162,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1758
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-032_setup172",
@@ -13828,7 +14183,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1623
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-033_setup180",
@@ -13847,7 +14204,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1768
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-034_setup183",
@@ -13866,7 +14225,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1741
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-035_setup188",
@@ -13885,7 +14246,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1459
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-036_setup189",
@@ -13904,7 +14267,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1600
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-037_setup190",
@@ -13923,7 +14288,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1829
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-038_setup191",
@@ -13942,7 +14309,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1814
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-039_setup192",
@@ -13961,7 +14330,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1796
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-040_setup193",
@@ -13980,7 +14351,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 2005
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-041_setup194",
@@ -13999,7 +14372,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1910
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-042_setup195",
@@ -14018,7 +14393,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1971
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-043_setup202",
@@ -14037,7 +14414,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1834
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-044_setup205",
@@ -14056,7 +14435,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1875
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-045_setup213",
@@ -14075,7 +14456,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1809
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-046_setup216",
@@ -14094,7 +14477,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1572
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-047_setup221",
@@ -14113,7 +14498,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1751
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-048_setup222",
@@ -14132,7 +14519,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1755
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-049_setup223",
@@ -14151,7 +14540,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 2100
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-050_setup224",
@@ -14170,7 +14561,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 2302
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-051_setup225",
@@ -14189,7 +14582,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 2098
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-052_setup226",
@@ -14208,7 +14603,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1995
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-053_setup227",
@@ -14227,7 +14624,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1834
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-054_setup228",
@@ -14246,7 +14645,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 1497
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-055_setup235",
@@ -14265,7 +14666,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 2295
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-056_setup238",
@@ -14284,7 +14687,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1914
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-057_setup246",
@@ -14303,7 +14708,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 2038
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-058_setup249",
@@ -14322,7 +14729,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1829
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-059_setup257",
@@ -14341,7 +14750,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1968
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-060_setup260",
@@ -14360,7 +14771,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 2001
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-061_setup267",
@@ -14379,7 +14792,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 2004
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-062_setup268",
@@ -14398,7 +14813,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1869
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-063_setup269",
@@ -14417,7 +14834,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1949
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-064_setup270",
@@ -14436,7 +14855,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 2099
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-065_setup271",
@@ -14455,7 +14876,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 2358
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-066_setup272",
@@ -14474,7 +14897,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 2053
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-067_setup273",
@@ -14493,7 +14918,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 1653
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-068_setup279",
@@ -14512,7 +14939,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1591
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-069_setup282",
@@ -14531,7 +14960,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 2180
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-070_setup290",
@@ -14550,7 +14981,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1632
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-071_setup293",
@@ -14569,7 +15002,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1955
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-072_setup301",
@@ -14588,7 +15023,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1578
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-073_setup302",
@@ -14607,7 +15044,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1924
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-074_setup303",
@@ -14626,7 +15065,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 2002
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-075_setup304",
@@ -14645,7 +15086,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1869
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-076_setup305",
@@ -14664,7 +15107,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1841
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-077_setup306",
@@ -14683,7 +15128,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 1625
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-078_setup312",
@@ -14702,7 +15149,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1490
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-079_setup315",
@@ -14721,7 +15170,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1841
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-080_setup326",
@@ -14740,7 +15191,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1680
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-081_setup337",
@@ -14759,7 +15212,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1547
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID41-mirrorscope-S1-20260605-unstitched/crop-082_setup348",
@@ -14778,7 +15233,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1449
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-1-flybrain-synapse-2ch-20260624/crop-001_2ndgel_3C11_40XW_2c",
@@ -14885,7 +15342,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 169,
+      "normalize_max": 708
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-002_setup17",
@@ -14904,7 +15363,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 172,
+      "normalize_max": 906
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-003_setup20",
@@ -14923,7 +15384,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 171,
+      "normalize_max": 752
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-004_setup30",
@@ -14942,7 +15405,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 894
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-005_setup33",
@@ -14961,7 +15426,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 959
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-006_setup43",
@@ -14980,7 +15447,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1072
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-007_setup46",
@@ -14999,7 +15468,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 931
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-008_setup56",
@@ -15018,7 +15489,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1120
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-009_setup59",
@@ -15037,7 +15510,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1235
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-010_setup69",
@@ -15056,7 +15531,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1150
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-011_setup72",
@@ -15075,7 +15552,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1161
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-012_setup82",
@@ -15094,7 +15573,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1194
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-013_setup85",
@@ -15113,7 +15594,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1143
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-014_setup95",
@@ -15132,7 +15615,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1159
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-015_setup98",
@@ -15151,7 +15636,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1122
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-016_setup108",
@@ -15170,7 +15657,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1113
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-017_setup111",
@@ -15189,7 +15678,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1183
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-018_setup121",
@@ -15208,7 +15699,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1134
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-019_setup124",
@@ -15227,7 +15720,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1131
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-020_setup134",
@@ -15246,7 +15741,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1103
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-021_setup137",
@@ -15265,7 +15762,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1168
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-022_setup147",
@@ -15284,7 +15783,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 1089
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-023_setup150",
@@ -15303,7 +15804,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1090
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-024_setup160",
@@ -15322,7 +15825,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 926
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-025_setup163",
@@ -15341,7 +15846,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1081
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-026_setup173",
@@ -15360,7 +15867,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 869
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-027_setup176",
@@ -15379,7 +15888,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1102
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-028_setup186",
@@ -15398,7 +15909,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1026
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-029_setup189",
@@ -15417,7 +15930,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1090
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-030_setup199",
@@ -15436,7 +15951,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1044
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-031_setup202",
@@ -15455,7 +15972,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1110
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-032_setup212",
@@ -15474,7 +15993,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1204
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-033_setup215",
@@ -15493,7 +16014,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1220
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-034_setup225",
@@ -15512,7 +16035,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1372
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-035_setup228",
@@ -15531,7 +16056,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1197
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-036_setup238",
@@ -15550,7 +16077,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1316
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-037_setup241",
@@ -15569,7 +16098,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1182
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-038_setup251",
@@ -15588,7 +16119,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1217
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-039_setup254",
@@ -15607,7 +16140,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1182
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-040_setup264",
@@ -15626,7 +16161,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1471
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-041_setup267",
@@ -15645,7 +16182,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1510
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-042_setup275",
@@ -15664,7 +16203,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1280
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-043_setup276",
@@ -15683,7 +16224,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1511
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-044_setup277",
@@ -15702,7 +16245,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1510
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-045_setup278",
@@ -15721,7 +16266,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1368
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-046_setup279",
@@ -15740,7 +16287,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1506
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-047_setup280",
@@ -15759,7 +16308,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1438
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-048_setup281",
@@ -15778,7 +16329,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1443
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-049_setup282",
@@ -15797,7 +16350,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1538
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-050_setup283",
@@ -15816,7 +16371,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1279
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-051_setup290",
@@ -15835,7 +16392,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1635
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-052_setup293",
@@ -15854,7 +16413,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1539
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-053_setup303",
@@ -15873,7 +16434,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1595
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-054_setup306",
@@ -15892,7 +16455,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1364
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-055_setup316",
@@ -15911,7 +16476,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1383
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-056_setup319",
@@ -15930,7 +16497,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1367
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-057_setup329",
@@ -15949,7 +16518,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1501
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-058_setup332",
@@ -15968,7 +16539,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1374
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-059_setup342",
@@ -15987,7 +16560,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1238
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-060_setup345",
@@ -16006,7 +16581,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1471
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-061_setup355",
@@ -16025,7 +16602,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1248
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-062_setup358",
@@ -16044,7 +16623,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1336
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-063_setup368",
@@ -16063,7 +16644,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1355
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-064_setup371",
@@ -16082,7 +16665,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1355
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-065_setup379",
@@ -16101,7 +16686,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1021
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-066_setup380",
@@ -16120,7 +16707,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1215
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-067_setup381",
@@ -16139,7 +16728,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1468
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-068_setup382",
@@ -16158,7 +16749,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1395
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-069_setup383",
@@ -16177,7 +16770,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1331
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-070_setup384",
@@ -16196,7 +16791,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1247
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-071_setup385",
@@ -16215,7 +16812,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1278
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-072_setup386",
@@ -16234,7 +16833,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1281
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-073_setup387",
@@ -16253,7 +16854,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1032
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-074_setup394",
@@ -16272,7 +16875,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1399
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-075_setup397",
@@ -16291,7 +16896,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1191
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-076_setup407",
@@ -16310,7 +16917,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 182,
+      "normalize_max": 1320
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-077_setup410",
@@ -16329,7 +16938,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1184
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-078_setup420",
@@ -16348,7 +16959,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1102
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-079_setup423",
@@ -16367,7 +16980,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1024
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-080_setup429",
@@ -16386,7 +17001,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 901
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-081_setup430",
@@ -16405,7 +17022,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1041
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-082_setup431",
@@ -16424,7 +17043,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1096
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-083_setup432",
@@ -16443,7 +17064,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1064
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-084_setup433",
@@ -16462,7 +17085,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1059
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-085_setup434",
@@ -16481,7 +17106,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1110
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-086_setup435",
@@ -16500,7 +17127,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1133
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-087_setup436",
@@ -16519,7 +17148,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1002
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-088_setup437",
@@ -16538,7 +17169,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 171,
+      "normalize_max": 833
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-089_setup446",
@@ -16557,7 +17190,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 181,
+      "normalize_max": 1068
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-090_setup449",
@@ -16576,7 +17211,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1005
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-091_setup459",
@@ -16595,7 +17232,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 180,
+      "normalize_max": 1009
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-092_setup462",
@@ -16614,7 +17253,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 984
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-093_setup469",
@@ -16633,7 +17274,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1279
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-094_setup470",
@@ -16652,7 +17295,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1415
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-095_setup471",
@@ -16671,7 +17316,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1392
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-096_setup472",
@@ -16690,7 +17337,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 179,
+      "normalize_max": 1556
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-097_setup473",
@@ -16709,7 +17358,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1349
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-098_setup474",
@@ -16728,7 +17379,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 177,
+      "normalize_max": 1357
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-099_setup475",
@@ -16747,7 +17400,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1233
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-100_setup485",
@@ -16766,7 +17421,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 178,
+      "normalize_max": 1325
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-101_setup488",
@@ -16785,7 +17442,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 174,
+      "normalize_max": 1216
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-102_setup498",
@@ -16804,7 +17463,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 176,
+      "normalize_max": 1310
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-103_setup501",
@@ -16823,7 +17484,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 1057
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-104_setup511",
@@ -16842,7 +17505,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 175,
+      "normalize_max": 1190
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID45-mirrorscope-fly1-20260615-unstitched/crop-105_setup524",
@@ -16861,7 +17526,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 173,
+      "normalize_max": 768
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-DUP-S7-40XW003-20260619/crop-001_clahe",
@@ -16880,7 +17547,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 356,
+      "normalize_max": 2512
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-DUP-S7-40XW003-20260619/crop-001_raw",
@@ -16899,7 +17568,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 347,
+      "normalize_max": 2447
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-DUP-S7-B2-40XW-20260620/crop-001_clahe",
@@ -16918,7 +17589,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 20,
+      "normalize_max": 170
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-DUP-S7-B2-40XW-20260620/crop-001_raw",
@@ -16937,7 +17610,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 21,
+      "normalize_max": 168
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-S2-40XW007-20260619/crop-001_clahe",
@@ -16956,7 +17631,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 181,
+      "normalize_max": 879
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-S2-40XW007-20260619/crop-001_raw",
@@ -16975,7 +17652,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 175,
+      "normalize_max": 971
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-S2-40XW009-20260619/crop-001_clahe",
@@ -16994,7 +17673,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 189,
+      "normalize_max": 1121
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID47-2ndgel-S2-40XW009-20260619/crop-001_raw",
@@ -17013,7 +17694,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-23"
+      "added": "2026-06-23",
+      "normalize_min": 191,
+      "normalize_max": 1145
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID49-2ndgel-BIS-40XW002-20260625/crop-001_fullvol",
@@ -17032,7 +17715,9 @@
         "y",
         "x"
       ],
-      "added": "2026-08-14"
+      "added": "2026-08-14",
+      "normalize_min": 221,
+      "normalize_max": 1489
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW005-20260625/crop-001",
@@ -17052,12 +17737,16 @@
         "x"
       ],
       "label_keys": [
+        "auto_pred-neuron-LSD_sws_b4_msd20",
+        "manual_gt-cell-final",
         "manual_gt-cell-snap_09042026",
         "manual_gt-cell-snap_09142026",
         "manual_gt-cell-snap_09182026",
         "manual_gt-cell-snap_10022026"
       ],
-      "added": "2026-10-02"
+      "added": "2026-10-02",
+      "normalize_min": 206,
+      "normalize_max": 1526
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID49-2ndgel-DUP-BIS-40XW006-20260625/crop-001",
@@ -17077,12 +17766,15 @@
         "x"
       ],
       "label_keys": [
+        "manual_gt-cell-final",
         "manual_gt-cell-snap_09042026",
         "manual_gt-cell-snap_09142026",
         "manual_gt-cell-snap_09182026",
         "manual_gt-cell-snap_10022026"
       ],
-      "added": "2026-10-02"
+      "added": "2026-10-02",
+      "normalize_min": 210,
+      "normalize_max": 1448
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID49-mirrorscope-central-20260702/crop-001_central",
@@ -17106,7 +17798,9 @@
         "manual_gt-cell-snap_09142026",
         "manual_gt-cell-snap_10022026"
       ],
-      "added": "2026-10-02"
+      "added": "2026-10-02",
+      "normalize_min": 0,
+      "normalize_max": 4323
     },
     {
       "name": "exm-drosophila-flyliconn-FlyID49-mirrorscope-lobe-20260702/crop-001_lobe",
@@ -17125,7 +17819,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-01"
+      "added": "2026-09-01",
+      "normalize_min": 0,
+      "normalize_max": 4498
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B2-1-027/crop-001",
@@ -17144,7 +17840,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 750,
+      "normalize_max": 2918
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B2-1-028/crop-001",
@@ -17163,7 +17861,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-15"
+      "added": "2026-06-15",
+      "normalize_min": 726,
+      "normalize_max": 2924
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B2-1-029/crop-001",
@@ -17182,7 +17882,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 456,
+      "normalize_max": 1876
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B2-2-030/crop-001",
@@ -17201,7 +17903,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 394,
+      "normalize_max": 1951
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B2-2-031/crop-001",
@@ -17220,7 +17924,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 408,
+      "normalize_max": 1761
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B2-2-032/crop-001",
@@ -17239,7 +17945,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 687,
+      "normalize_max": 2908
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-1-040/crop-001",
@@ -17258,7 +17966,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-15"
+      "added": "2026-06-15",
+      "normalize_min": 546,
+      "normalize_max": 2331
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-1-041/crop-001",
@@ -17277,7 +17987,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-22"
+      "added": "2026-07-22",
+      "normalize_min": 782,
+      "normalize_max": 3114
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-1-042/crop-001",
@@ -17296,7 +18008,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-22"
+      "added": "2026-07-22",
+      "normalize_min": 700,
+      "normalize_max": 3107
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-2-043/crop-001",
@@ -17315,7 +18029,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 329,
+      "normalize_max": 1568
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-2-044/crop-001",
@@ -17334,7 +18050,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 720,
+      "normalize_max": 2790
     },
     {
       "name": "exm-drosophila-flyliconn-matt-260601-60X-B4-2-045/crop-001",
@@ -17353,7 +18071,9 @@
         "y",
         "x"
       ],
-      "added": "2026-06-12"
+      "added": "2026-06-12",
+      "normalize_min": 684,
+      "normalize_max": 2729
     },
     {
       "name": "exm-drosophila-flyliconn-matt-phDye19-Gel2-OpticLobes-60x/crop-001_fullvol",
@@ -17372,7 +18092,28 @@
         "y",
         "x"
       ],
-      "added": "2026-09-16"
+      "added": "2026-09-16",
+      "normalize_min": 503.352,
+      "normalize_max": 5281.46
+    },
+    {
+      "name": "exm-drosophila-flyliconn-matt-phDye20-Gel12-OpticLobe-32x/crop-001_fullvol",
+      "shape": [
+        751,
+        2304,
+        2304
+      ],
+      "voxelsize": [
+        300.0,
+        108.0,
+        108.0
+      ],
+      "axes": [
+        "z",
+        "y",
+        "x"
+      ],
+      "added": "2026-10-09"
     },
     {
       "name": "exm-drosophila-rubinlab-30X_lobeTm1_NHS546_687um_lower-laser_n2/crop-001_fullvol",
@@ -17395,7 +18136,9 @@
         "manual_gt-cell-assessment_Cat",
         "manual_gt-cell-assessment_Tiff"
       ],
-      "added": "2026-09-14"
+      "added": "2026-09-14",
+      "normalize_min": 336,
+      "normalize_max": 1585
     },
     {
       "name": "exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-001_16X_fullvol",
@@ -17414,7 +18157,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-16"
+      "added": "2026-09-16",
+      "normalize_min": 8.0,
+      "normalize_max": 18179.7
     },
     {
       "name": "exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-002_30X_fullvol",
@@ -17433,7 +18178,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-16"
+      "added": "2026-09-16",
+      "normalize_min": 35.55,
+      "normalize_max": 1479.9
     },
     {
       "name": "exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001",
@@ -17453,6 +18200,7 @@
         "z"
       ],
       "label_keys": [
+        "auto_pred-cell-LSD_snapshot_10142026",
         "manual_gt-cell-final",
         "manual_gt-cell-snap_04142026",
         "manual_gt-cell-snap_04202026",
@@ -17467,8 +18215,8 @@
         "manual_gt-cell-snap_07072026"
       ],
       "added": "2026-07-30",
-      "normalize_min": 301.0,
-      "normalize_max": 1130.0
+      "normalize_min": 301,
+      "normalize_max": 1130
     },
     {
       "name": "exm-mouse-liconn-ExPID108-cortex-spinningdisk/crop-001_CortexL3_32x_40XW003",
@@ -17487,7 +18235,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 142,
+      "normalize_max": 659
     },
     {
       "name": "exm-mouse-liconn-ExPID124/crop-001",
@@ -17569,7 +18319,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-13"
+      "added": "2026-07-13",
+      "normalize_min": 87,
+      "normalize_max": 515
     },
     {
       "name": "exm-mouse-liconn-ExPID71-synapse-20260407_GFAP_CnX43_Pan/crop-002_40XW002",
@@ -17591,7 +18343,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-13"
+      "added": "2026-07-13",
+      "normalize_min": 87,
+      "normalize_max": 585
     },
     {
       "name": "exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-001_40XW008",
@@ -17613,7 +18367,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-13"
+      "added": "2026-07-13",
+      "normalize_min": 92,
+      "normalize_max": 504
     },
     {
       "name": "exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-002_40XW009",
@@ -17635,7 +18391,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-13"
+      "added": "2026-07-13",
+      "normalize_min": 93,
+      "normalize_max": 525
     },
     {
       "name": "exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-003_40XW010",
@@ -17657,7 +18415,9 @@
         "y",
         "x"
       ],
-      "added": "2026-07-13"
+      "added": "2026-07-13",
+      "normalize_min": 90,
+      "normalize_max": 385
     },
     {
       "name": "exm-mouse-liconn-ExPID82-1/crop-001_fullvol",
@@ -17723,7 +18483,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 208,
+      "normalize_max": 1012
     },
     {
       "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-002_S2_22x",
@@ -17742,7 +18504,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 260,
+      "normalize_max": 1568
     },
     {
       "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-003_S3_28x",
@@ -17761,7 +18525,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 221,
+      "normalize_max": 1719
     },
     {
       "name": "exm-mouse-liconn-ExPID96-hippocampus-mirrorscope/crop-004_S4_32x",
@@ -17780,7 +18546,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 199,
+      "normalize_max": 1308
     },
     {
       "name": "exm-mouse-liconn-ExPID96-hippocampus-spinningdisk/crop-001_S1_18x_40XW002",
@@ -17799,7 +18567,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 142,
+      "normalize_max": 551
     },
     {
       "name": "exm-mouse-liconn-ExPID96-hippocampus-spinningdisk/crop-002_S3_28x_40XW",
@@ -17818,7 +18588,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 115,
+      "normalize_max": 410
     },
     {
       "name": "exm-mouse-liconn-ExPID96-hippocampus-spinningdisk/crop-003_S4_32x_40XW003",
@@ -17837,7 +18609,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 192,
+      "normalize_max": 893
     },
     {
       "name": "exm-mouse-liconn-ExPID99-cerebellum-mirrorscope/crop-001_BIS_32x",
@@ -17856,7 +18630,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-30"
+      "added": "2026-09-30",
+      "normalize_min": 199,
+      "normalize_max": 1277
     },
     {
       "name": "exm-mouse-liconn-ExPID99-cerebellum-spinningdisk/crop-001_BIS0.03_32x_Cerebellum_40XW001",
@@ -17875,7 +18651,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 170,
+      "normalize_max": 798
     },
     {
       "name": "exm-mouse-liconn-ExPID99-cerebellum-spinningdisk/crop-002_BIS0.06_18x_Cerebellum_40XW002",
@@ -17894,7 +18672,9 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 437,
+      "normalize_max": 1785
     },
     {
       "name": "exm-mouse-liconn-RID16-retina-spinningdisk/crop-001_RID16_18x",
@@ -17913,10 +18693,12 @@
         "y",
         "x"
       ],
-      "added": "2026-09-29"
+      "added": "2026-09-29",
+      "normalize_min": 508,
+      "normalize_max": 1801
     },
     {
-      "name": "exm-mouse-liconn-RID19-retina-spinningdisk/crop-001_RID19_32x",
+      "name": "exm-mouse-liconn-RID19-retina-lightsheet/crop-001_RID19_32x",
       "shape": [
         1096,
         9145,
@@ -17952,6 +18734,7 @@
         "z"
       ],
       "label_keys": [
+        "auto_pred-cell-LSD_snapshot_10142026",
         "manual_gt-cell-final",
         "manual_gt-cell-snap_04142026",
         "manual_gt-cell-snap_04202026",
@@ -17968,8 +18751,8 @@
         "output"
       ],
       "added": "2026-07-30",
-      "normalize_min": 172.0,
-      "normalize_max": 584.0
+      "normalize_min": 172,
+      "normalize_max": 584
     },
     {
       "name": "exm-mouse-liconn-hippocampus-202507013_ExPID10-02_2percentAA_S2_Atto488_40XW_004/crop-001",
@@ -17989,6 +18772,7 @@
         "z"
       ],
       "label_keys": [
+        "auto_pred-cell-LSD_snapshot_10142026",
         "manual_gt-cell-final",
         "manual_gt-cell-snap_04142026",
         "manual_gt-cell-snap_04202026",
@@ -18004,8 +18788,8 @@
         "manual_gt-cell-snap_07072026"
       ],
       "added": "2026-07-30",
-      "normalize_min": 219.0,
-      "normalize_max": 919.0
+      "normalize_min": 219,
+      "normalize_max": 919
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-001_setup196",
@@ -18027,7 +18811,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 881
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-002_setup197",
@@ -18049,7 +18835,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 807
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-003_setup198",
@@ -18071,7 +18859,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 782
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-004_setup199",
@@ -18093,7 +18883,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 921
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-005_setup200",
@@ -18115,7 +18907,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1047
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-006_setup201",
@@ -18137,7 +18931,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1157
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-007_setup202",
@@ -18159,7 +18955,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1049
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-008_setup203",
@@ -18181,7 +18979,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1067
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-009_setup204",
@@ -18203,7 +19003,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1004
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-010_setup205",
@@ -18225,7 +19027,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 955
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-011_setup206",
@@ -18247,7 +19051,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 785
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-012_setup207",
@@ -18269,7 +19075,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 876
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-013_setup208",
@@ -18291,7 +19099,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 822
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-014_setup209",
@@ -18313,7 +19123,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 582
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-015_setup210",
@@ -18335,7 +19147,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 776
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-016_setup211",
@@ -18357,7 +19171,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 844
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-017_setup212",
@@ -18379,7 +19195,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 843
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-018_setup213",
@@ -18401,7 +19219,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 949
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-019_setup214",
@@ -18423,7 +19243,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 987
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-020_setup215",
@@ -18445,7 +19267,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1034
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-021_setup216",
@@ -18467,7 +19291,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1010
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-022_setup217",
@@ -18489,7 +19315,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1039
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-023_setup218",
@@ -18511,7 +19339,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1131
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-024_setup219",
@@ -18533,7 +19363,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 974
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-025_setup220",
@@ -18555,7 +19387,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 806
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-026_setup221",
@@ -18577,7 +19411,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 868
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-027_setup222",
@@ -18599,7 +19435,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 843
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-028_setup223",
@@ -18621,7 +19459,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 626
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-029_setup224",
@@ -18643,7 +19483,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 916
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-030_setup225",
@@ -18665,7 +19507,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1038
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-031_setup226",
@@ -18687,7 +19531,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1009
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-032_setup227",
@@ -18709,7 +19555,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1093
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-033_setup228",
@@ -18731,7 +19579,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1161
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-034_setup229",
@@ -18753,7 +19603,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1263
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-035_setup230",
@@ -18775,7 +19627,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1243
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-036_setup231",
@@ -18797,7 +19651,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1241
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-037_setup232",
@@ -18819,7 +19675,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1306
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-038_setup233",
@@ -18841,7 +19699,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1181
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-039_setup234",
@@ -18863,7 +19723,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 990
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-040_setup235",
@@ -18885,7 +19747,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 925
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-041_setup236",
@@ -18907,7 +19771,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 901
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-042_setup294",
@@ -18929,7 +19795,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1182
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-043_setup295",
@@ -18951,7 +19819,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1272
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-044_setup296",
@@ -18973,7 +19843,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1187
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-045_setup297",
@@ -18995,7 +19867,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1069
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-046_setup298",
@@ -19017,7 +19891,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1106
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-047_setup299",
@@ -19039,7 +19915,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1125
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-048_setup300",
@@ -19061,7 +19939,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1155
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-049_setup301",
@@ -19083,7 +19963,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1131
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-050_setup302",
@@ -19105,7 +19987,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1166
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-051_setup303",
@@ -19127,7 +20011,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1430
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-052_setup304",
@@ -19149,7 +20035,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 986
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-053_setup305",
@@ -19171,7 +20059,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1047
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-054_setup306",
@@ -19193,7 +20083,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 946
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-055_setup307",
@@ -19215,7 +20107,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 332
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-056_setup308",
@@ -19237,7 +20131,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1079
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-057_setup309",
@@ -19259,7 +20155,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1024
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-058_setup310",
@@ -19281,7 +20179,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1051
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-059_setup311",
@@ -19303,7 +20203,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1040
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-060_setup312",
@@ -19325,7 +20227,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1104
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-061_setup313",
@@ -19347,7 +20251,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1119
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-062_setup314",
@@ -19369,7 +20275,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1095
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-063_setup315",
@@ -19391,7 +20299,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1164
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-064_setup316",
@@ -19413,7 +20323,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1125
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-065_setup317",
@@ -19435,7 +20347,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1183
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-066_setup318",
@@ -19457,7 +20371,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1041
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-067_setup319",
@@ -19479,7 +20395,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 939
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-068_setup320",
@@ -19501,7 +20419,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 994
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-069_setup321",
@@ -19523,7 +20443,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 302
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-070_setup322",
@@ -19545,7 +20467,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1095
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-071_setup323",
@@ -19567,7 +20491,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1017
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-072_setup324",
@@ -19589,7 +20515,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 984
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-073_setup325",
@@ -19611,7 +20539,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1034
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-074_setup326",
@@ -19633,7 +20563,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1022
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-075_setup327",
@@ -19655,7 +20587,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1058
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-076_setup328",
@@ -19677,7 +20611,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1112
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-077_setup329",
@@ -19699,7 +20635,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1156
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-078_setup330",
@@ -19721,7 +20659,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1149
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-079_setup331",
@@ -19743,7 +20683,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1182
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-080_setup332",
@@ -19765,7 +20707,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1001
     },
     {
       "name": "exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched/crop-081_setup333",
@@ -19787,7 +20731,9 @@
         "y",
         "z"
       ],
-      "added": "2026-08-26"
+      "added": "2026-08-26",
+      "normalize_min": 0,
+      "normalize_max": 1063
     },
     {
       "name": "exm-zebrafish-PyTC-nucexm-brain/crop-001_vol1",
@@ -20450,7 +21396,7 @@
       "added": "2026-09-03"
     },
     {
-      "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-000_fullvol",
+      "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-000_fullvol_3328x_1920y_384z_96t_2c",
       "shape": [
         96,
         2,
@@ -20461,18 +21407,18 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-10-06"
+      "added": "2026-10-07"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-001_000x_000y_000z_96t_2c",
@@ -20487,18 +21433,23 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "label_keys": [
+        "auto_pred-cell-ch0_cellpose_hk4_ft_t01-10-25_min35299"
+      ],
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1897
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-002_000x_000y_001z_96t_2c",
@@ -20513,18 +21464,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1865
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-003_000x_000y_002z_96t_2c",
@@ -20539,18 +21492,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 3470
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-004_000x_001y_000z_96t_2c",
@@ -20565,18 +21520,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1524
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-005_000x_001y_001z_96t_2c",
@@ -20591,18 +21548,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1644
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-006_000x_001y_002z_96t_2c",
@@ -20617,18 +21576,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 3055
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-007_000x_002y_000z_96t_2c",
@@ -20643,18 +21604,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1678
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-008_000x_002y_001z_96t_2c",
@@ -20669,18 +21632,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1721
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-009_000x_002y_002z_96t_2c",
@@ -20695,18 +21660,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 2723
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-010_000x_003y_000z_96t_2c",
@@ -20721,18 +21688,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1550
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-011_000x_003y_001z_96t_2c",
@@ -20747,18 +21716,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1708
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-012_000x_003y_002z_96t_2c",
@@ -20773,18 +21744,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 2567
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-013_000x_004y_000z_96t_2c",
@@ -20799,18 +21772,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1511
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-014_000x_004y_001z_96t_2c",
@@ -20825,18 +21800,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 2096
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish1_72hpf_roi1/crop-015_000x_004y_002z_96t_2c",
@@ -20851,21 +21828,23 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 2624
     },
     {
-      "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-000_fullvol",
+      "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-000_fullvol_3328x_2688y_384z_288t_2c",
       "shape": [
         288,
         2,
@@ -20876,18 +21855,18 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-10-06"
+      "added": "2026-10-07"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-001_000x_000y_000z_288t_2c",
@@ -20902,18 +21881,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1226
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-002_000x_000y_001z_288t_2c",
@@ -20928,18 +21909,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1547
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-003_000x_000y_002z_288t_2c",
@@ -20954,18 +21937,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1686
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-004_000x_001y_000z_288t_2c",
@@ -20980,18 +21965,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1392
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-005_000x_001y_001z_288t_2c",
@@ -21006,18 +21993,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1710
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-006_000x_001y_002z_288t_2c",
@@ -21032,18 +22021,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1630
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-007_000x_002y_000z_288t_2c",
@@ -21058,18 +22049,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1414
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-008_000x_002y_001z_288t_2c",
@@ -21084,18 +22077,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1682
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-009_000x_002y_002z_288t_2c",
@@ -21110,18 +22105,20 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-05-01"
+      "added": "2026-05-01",
+      "normalize_min": 0,
+      "normalize_max": 1673
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20251001_20250324_mem-histone_fish3_24hpf_roi1/crop-010_000x_003y_000z_288t_2c",
@@ -21136,16 +22133,19 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
+      ],
+      "label_keys": [
+        "auto_pred-cell-ch0_cellpose_hk4_ft_t01-10-25_min35299"
       ],
       "added": "2026-05-01"
     },
@@ -21162,16 +22162,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21188,16 +22188,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21214,16 +22214,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21240,16 +22240,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21266,16 +22266,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21292,16 +22292,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21318,16 +22318,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21344,16 +22344,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21370,16 +22370,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21396,16 +22396,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21422,21 +22422,21 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
     {
-      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-000_fullvol",
+      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-000_fullvol_3328x_3456y_384z_32t_2c",
       "shape": [
         32,
         2,
@@ -21447,18 +22447,18 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-10-06"
+      "added": "2026-10-07"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain/crop-001_000x_000y_000z_32t_2c",
@@ -21473,16 +22473,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21499,16 +22499,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21525,16 +22525,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21551,16 +22551,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21577,16 +22577,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21603,16 +22603,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21629,16 +22629,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21655,16 +22655,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21681,16 +22681,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21707,16 +22707,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "label_keys": [
         "auto_pred-cell-ch0_cellpose_denseEX_pp"
@@ -21736,16 +22736,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "label_keys": [
         "manual_gt-cell-t0",
@@ -21766,16 +22766,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21792,16 +22792,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21818,16 +22818,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21844,16 +22844,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21870,16 +22870,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21896,16 +22896,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21922,16 +22922,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21948,16 +22948,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -21974,16 +22974,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22000,16 +23000,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22026,16 +23026,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22052,16 +23052,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22078,16 +23078,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "label_keys": [
         "manual_gt-cell-t0",
@@ -22109,16 +23109,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22135,16 +23135,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22161,21 +23161,21 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
     {
-      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_ear/crop-000_fullvol",
+      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_ear/crop-000_fullvol_3328x_1920y_256z_48t_2c",
       "shape": [
         48,
         2,
@@ -22186,18 +23186,18 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-10-06"
+      "added": "2026-10-07"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_ear/crop-001_000x_000y_000z_48t_2c",
@@ -22212,16 +23212,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22238,16 +23238,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22264,16 +23264,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22290,16 +23290,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22316,16 +23316,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22342,16 +23342,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22368,16 +23368,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22394,16 +23394,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22420,16 +23420,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22446,21 +23446,21 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
     {
-      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_muscle/crop-000_fullvol",
+      "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_muscle/crop-000_fullvol_3328x_8064y_256z_96t_2c",
       "shape": [
         96,
         2,
@@ -22471,18 +23471,18 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
-      "added": "2026-10-06"
+      "added": "2026-10-07"
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_72hpf_muscle/crop-001_000x_000y_000z_96t_2c",
@@ -22497,16 +23497,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22523,16 +23523,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22549,16 +23549,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22575,16 +23575,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22601,16 +23601,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22627,16 +23627,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22653,16 +23653,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22679,16 +23679,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22705,16 +23705,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22731,16 +23731,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22757,16 +23757,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22783,16 +23783,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22809,16 +23809,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22835,16 +23835,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22861,16 +23861,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22887,16 +23887,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22913,16 +23913,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22939,16 +23939,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22965,16 +23965,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -22991,16 +23991,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23017,16 +24017,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23043,16 +24043,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23069,16 +24069,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23095,16 +24095,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23121,16 +24121,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23147,16 +24147,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23173,16 +24173,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23199,16 +24199,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23225,16 +24225,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23251,16 +24251,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23277,16 +24277,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23303,16 +24303,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23329,16 +24329,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23355,16 +24355,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23381,16 +24381,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23407,16 +24407,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23433,16 +24433,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23459,16 +24459,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23485,16 +24485,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23511,16 +24511,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23537,16 +24537,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23563,16 +24563,16 @@
       "voxelsize": [
         1.0,
         1.0,
-        200.0,
         108.0,
-        108.0
+        108.0,
+        200.0
       ],
       "axes": [
         "t",
         "c",
-        "z",
+        "x",
         "y",
-        "x"
+        "z"
       ],
       "added": "2026-05-01"
     },
@@ -23607,11 +24607,12 @@
         "manual_gt-cell-t25_postproofread",
         "output",
         "postprocessed_labels_t01",
-        "postprocessed_labels_t01_misaligned",
         "t10_y151x870_variability_alannah",
         "t10_y151x870_variability_diana"
       ],
-      "added": "2026-09-28"
+      "added": "2026-09-28",
+      "normalize_min": 715,
+      "normalize_max": 16923
     },
     {
       "name": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-002_example_annotations_Thayer_2channels",
