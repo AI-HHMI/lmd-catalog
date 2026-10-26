@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 
 OWNER = "AI-HHMI"
 QUERY = """
@@ -45,6 +46,11 @@ BUILT_IN = {
     "ProjectV2ItemFieldMilestoneValue", "ProjectV2ItemFieldPullRequestValue", "ProjectV2ItemFieldReviewerValue",
     "ProjectV2ItemFieldIterationValue",
 }
+
+
+def inconsistent(item, msg):
+    """Upstream data problem: report it (sync_github.py collects these) and carry on instead of failing the whole sync."""
+    print(f"INCONSISTENT: {item['issue']['url']}: {msg}", file=sys.stderr)
 
 
 def fetch_page(number: int, after: str | None) -> dict:

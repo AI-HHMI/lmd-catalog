@@ -14,6 +14,7 @@ import lmd_catalog as lmd
 import plots
 
 OUT = Path(__file__).parents[2] / "docs" / "index.html"  # published daily to gh-pages by scripts/daily_dashboard.sh
+ISSUES_FILE = Path(__file__).parents[2] / "sync_issues.txt"  # written by sync_github.py; its mtime is the last successful sync
 DATA_FILES = [Path(__file__).parents[2] / f for f in ("lmd_volumes.json", "lmd_annotations.json", "lmd_pretraining.json")]
 MODALITY = {"em": "EM", "exm": "Expansion microscopy", "lm": "Light microscopy", "uct": "microCT"}
 # First matching pattern wins; matched against the lowercased dataset name.
@@ -282,6 +283,14 @@ def annotation_section(cat) -> tuple:
     ]
 
 
+def sync_section() -> tuple:
+    """Problems sync_github.py found in the GitHub Projects (items skipped, columns dropped, unparseable bboxes)."""
+    lines = ISSUES_FILE.read_text().splitlines() if ISSUES_FILE.exists() else []
+    rows = [l.removeprefix("INCONSISTENT: ").split(": ", 1) for l in lines]
+    table = "<table><tr><th>Issue</th><th>Problem</th></tr>" + "".join(f"<tr><td><a href='{u}'>{u.split('github.com/AI-HHMI/')[-1]}</a></td><td>{m}</td></tr>" for u, m in rows) + "</table>"
+    return f"Project inconsistencies ({len(rows)} found at the last GitHub sync)", [("Fix these in the GitHub Project", table if rows else "<p>None.</p>")]
+
+
 def build() -> tuple:
     """Return (tiles, sections): tiles are (number, label); sections are (title, [(card title, svg or table html)])."""
     cat = lmd.default_catalog()
@@ -325,14 +334,16 @@ def build() -> tuple:
         label_section(recs),
         project_section(cat),
         annotation_section(cat),
+        sync_section(),
     ]
     return tiles, sections
 
 
 def index_updated() -> str:
-    """When the catalog index was last updated (the newest mtime of its JSON files), with the package version."""
+    """When the volumes were scanned (the newest mtime of the JSON files; volumes are rewritten nightly) and GitHub last synced, with the package version."""
     t = datetime.fromtimestamp(max(f.stat().st_mtime for f in DATA_FILES)).astimezone()
-    return f"Catalog index updated {t:%Y-%m-%d %H:%M %Z} &middot; lmd-catalog {lmd.__version__}"
+    synced = datetime.fromtimestamp(ISSUES_FILE.stat().st_mtime).astimezone().strftime("%Y-%m-%d %H:%M %Z") if ISSUES_FILE.exists() else "never"
+    return f"Volumes scanned {t:%Y-%m-%d %H:%M %Z} &middot; GitHub Projects last synced {synced} &middot; lmd-catalog {lmd.__version__}"
 
 
 def short_title(title: str) -> str:

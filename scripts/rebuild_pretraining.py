@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import json
 
-from gh_project import fetch_items
+from gh_project import fetch_items, inconsistent
 
 PROJECT_NUMBER = 4
 
@@ -60,7 +60,8 @@ NOT_STORED = {"Title"}
 def build_entry(item):
     fields = item["fields"]
     unknown = set(fields) - set(FIELD_MAP) - NOT_STORED
-    assert not unknown, f"project column(s) not in FIELD_MAP (add them, and to PretrainingEntry): {sorted(unknown)} on {item['issue']['url']}"
+    if unknown:
+        inconsistent(item, f"project column(s) not in FIELD_MAP (add them, and to PretrainingEntry); dropped: {sorted(unknown)}")
     entry = {"title": item["title"], "issue": item["issue"], "created_at": item["created_at"]}
     for project_field, our_field in FIELD_MAP.items():
         if fields.get(project_field) not in (None, ""):

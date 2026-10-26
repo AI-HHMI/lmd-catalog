@@ -271,7 +271,7 @@
       "dev_stage": "Adult",
       "structure": "Dentate gyrus",
       "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002/crop-001.zarr",
-      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-DG-20250809_ExPID19-02_2ndGel_C5_Atto488_40XW_002",
+      "fileglancer_path": "xpid",
       "label_path": "labels/{YYYYMMDD}_GT_annotation/s0-s5",
       "label_description": "Ongoing neuron tracing GT, annotator: Brie Yarbrough (weekly WebKnossos exports)",
       "voxel_size_zyx_nm": "25\u00d710\u00d710",
@@ -808,7 +808,7 @@
       "training_bbox_s0_zyx": "[72:439, 584:1524, 629:1799]"
     },
     {
-      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-001/manual_gt-cell-t10_postproofread",
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-001_dsr_timeseries_48t_1c_manual_gt-cell-t10_postproofread",
       "issue": {
         "number": 22,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/22",
@@ -829,7 +829,7 @@
       ]
     },
     {
-      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-001/manual_gt-cell-t25_postproofread",
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-001_dsr_timeseries_48t_1c_manual_gt-cell-t25_postproofread",
       "issue": {
         "number": 23,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/23",
@@ -848,15 +848,19 @@
       ]
     },
     {
-      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-001/manual_gt-cell-t40_postproofread",
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-001_dsr_timeseries_48t_1c_manual_gt-cell-t40_postproofread",
       "issue": {
         "number": 24,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/24",
         "repository": "AI-HHMI/mia_annotation"
       },
       "created_at": "2026-07-21",
+      "label_path": "labels/manual_gt-cell-t40_postproofread/s0-s3",
+      "label_description": "Diana Ramirez Paintera proofreading of cellpose_t40_denseEX_pp over the crop's region (2026-10-20) -- 1348 non-zero cell instances, annotator-confirmed",
+      "last_updated": "2026-10-20",
       "assignees": [
-        "zinni-ad"
+        "jakobtroidl",
+        "CarlaRodriguez96"
       ]
     },
     {
@@ -958,6 +962,9 @@
       "has_seg": "No",
       "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-phDye19-Gel2-OpticLobes-60x/crop-001_fullvol.zarr",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-phDye19-Gel2-OpticLobes-60x",
+      "label_path": "labels/manual_gt-cell-snap_10162026/s0-s4",
+      "label_description": "Brie Yarbrough mid-term Paintera segmentation snapshot (2026-10-16) -- 18 non-zero cell instances, annotation in progress",
+      "last_updated": "2026-10-16",
       "assignees": [
         "bumblebrie18"
       ]
@@ -976,8 +983,11 @@
       "source_type": "Internal (Janelia/HHMI)",
       "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626/crop-001_16X_fullvol.zarr",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-rubinlab-Valentina-iSIM-Hari-101626",
+      "label_path": "labels/manual_gt-cell-snap_10162026/s0-s4",
+      "label_description": "Tiffany Tran mid-term Paintera segmentation snapshot (2026-10-16) -- 39 non-zero cell instances, annotation in progress",
+      "last_updated": "2026-10-16",
       "assignees": [
-        "trant16"
+        "moric7"
       ]
     },
     {
@@ -1082,7 +1092,7 @@
       "created_at": "2026-09-30"
     },
     {
-      "title": "em-human-H01-cortex_crop-001_auto_pred-cells-c2_seg",
+      "title": "em-human-H01-cortex_crop-001_auto_pred-cell-c2_seg",
       "issue": {
         "number": 41,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/41",
@@ -1091,7 +1101,7 @@
       "created_at": "2026-09-30"
     },
     {
-      "title": "em-human-H01-cortex_crop-001_auto_pred-cells-c3_seg",
+      "title": "em-human-H01-cortex_crop-001_auto_pred-cell-c3_seg",
       "issue": {
         "number": 42,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/42",
@@ -1262,7 +1272,7 @@
       "created_at": "2026-09-30"
     },
     {
-      "title": "em-celegans-funceworm-jrc-20250414_crop-001_manual_gt-organelle-cellmap_crop1086_all",
+      "title": "em-celegans-funceworm-jrc-20250414_crop-001_manual_gt-all_organelles-cellmap_crop1086_all",
       "issue": {
         "number": 477,
         "url": "https://github.com/AI-HHMI/mia_annotation/issues/477",
@@ -7128,6 +7138,9 @@
         "repository": "AI-HHMI/mia_annotation"
       },
       "created_at": "2026-10-09",
+      "label_path": "labels/manual_gt-cell-snap_10162026/s0-s3",
+      "label_description": "Cat Mori mid-term Paintera segmentation snapshot (2026-10-16) -- 44 non-zero cell instances, annotation in progress",
+      "last_updated": "2026-10-16",
       "assignees": [
         "moric7"
       ]
@@ -7222,6 +7235,63 @@
         "repository": "AI-HHMI/mia_annotation"
       },
       "created_at": "2026-10-15"
+    },
+    {
+      "title": "FlyLICONN_Matt_PPS_261015_002_n2v_OpticLobe_30x",
+      "issue": {
+        "number": 1141,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1141",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "created_at": "2026-10-16",
+      "assignees": [
+        "trant16"
+      ]
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-20260213_Korra_Foundation_20250616_mem-histone_fish1_24hpf_brain_crop-010_000x_003y_000z_32t_2c_auto_pred-cell-ch0_cellpose_denseEX_pp",
+      "issue": {
+        "number": 1142,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1142",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "created_at": "2026-10-21"
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-002_example_annotations_Thayer_2c_initial_labels",
+      "issue": {
+        "number": 1143,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1143",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "created_at": "2026-10-22"
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-002_example_annotations_Thayer_2c_postprocessed_labels",
+      "issue": {
+        "number": 1144,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1144",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "created_at": "2026-10-22"
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-002_example_annotations_Thayer_2c_refined_labels",
+      "issue": {
+        "number": 1145,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1145",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "created_at": "2026-10-22"
+    },
+    {
+      "title": "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer_crop-002_example_annotations_Thayer_2c_proofread_refined_labels",
+      "issue": {
+        "number": 1146,
+        "url": "https://github.com/AI-HHMI/mia_annotation/issues/1146",
+        "repository": "AI-HHMI/mia_annotation"
+      },
+      "created_at": "2026-10-22"
     },
     {
       "title": "MICrONS Minnie65",
@@ -7571,7 +7641,7 @@
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-cortex-20250822_ExPID09_2ndGel_30percentSucrose-Glycerol_40XW_003",
       "label_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-cortex-20250822_ExPID09_2ndGel_30percentSucrose-Glycerol_40XW_003/crop-001.zarr/labels/",
       "label_description": "Ongoing neuron tracing GT, annotator: Tiffany Tran (weekly WebKnossos exports)",
-      "last_updated": "2026-10-14",
+      "last_updated": "2026-10-21",
       "voxel_size_zyx_nm": "400\u00d7160\u00d7160",
       "volume_shape_zyx": "277\u00d72304\u00d72304",
       "physical_volume": "~6.9\u00d723\u00d723 \u00b5m",
@@ -7613,7 +7683,7 @@
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-hippocampus-202507013_ExPID10-02_2percentAA_S2_Atto488_40XW_004",
       "label_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-hippocampus-202507013_ExPID10-02_2percentAA_S2_Atto488_40XW_004/crop-001.zarr/labels/",
       "label_description": "Ongoing neuron tracing GT, annotator: Cat Mori (weekly WebKnossos exports)",
-      "last_updated": "2026-10-14",
+      "last_updated": "2026-10-21",
       "voxel_size_zyx_nm": "400\u00d7160\u00d7160",
       "volume_shape_zyx": "1060\u00d72304\u00d72304",
       "physical_volume": "~26.5\u00d723\u00d723 \u00b5m",
@@ -9608,7 +9678,7 @@
       "status": "Consider for Training",
       "organism": "Salamander",
       "data_modality": "FIB-SEM",
-      "source_type": "External (Collaboration)",
+      "source_type": "Internal (Janelia/HHMI)",
       "dtype": "uint8",
       "has_seg": "No",
       "zarr_format": "zarr3 sharded",
@@ -9697,7 +9767,7 @@
       "structure": "Mouse brain (synapse detection, region TBD \u2014 Tavakoli Lab)",
       "source_format": "ND2 (Nikon NIS-Elements)",
       "raw_source_path": "/groups/tavakoli/tavakolilab/Mojtaba/Projects/Synapse detection/",
-      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID71-synapse-20260407_GFAP_CnX43_Pan/crop-001_40XW001.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID71-synapse-20260407_GFAP_CnX43_Pan/crop-002_40XW002.zarr",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID71-synapse-20260407_GFAP_CnX43_Pan/crop-001_40XW001_3c.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID71-synapse-20260407_GFAP_CnX43_Pan/crop-002_40XW002_3c.zarr",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID71-synapse-20260407_GFAP_CnX43_Pan",
       "label_description": "No explicit seg \u2014 3 channels serve as implicit supervision: GFAP (ch0), CnX43 gap-junction (ch1), pan-protein (ch2)",
       "voxel_size_zyx_nm": "400\u00d7162.5\u00d7162.5",
@@ -9734,7 +9804,7 @@
       "structure": "Mouse brain (synapse detection, region TBD \u2014 Tavakoli Lab)",
       "source_format": "ND2 (Nikon NIS-Elements)",
       "raw_source_path": "/groups/tavakoli/tavakolilab/Mojtaba/Projects/Synapse detection/",
-      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-001_40XW008.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-002_40XW009.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-003_40XW010.zarr",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-001_40XW008_3c.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-002_40XW009_3c.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan/crop-003_40XW010_3c.zarr",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-ExPID72-synapse-20260407_RIM12_Homer1_Pan",
       "label_description": "No explicit seg \u2014 3 channels serve as implicit supervision: RIM1/2 pre-synaptic (ch0), Homer1 post-synaptic (ch1), pan-protein (ch2)",
       "voxel_size_zyx_nm": "400\u00d7162.5\u00d7162.5",
@@ -9849,7 +9919,7 @@
       "structure": "Brain",
       "source_format": "precomputed (GCS) + N5 v2.0.0 (GCS)",
       "raw_source_path": "EM doublecube: precomputed://gs://fish2-gt/230314_w100_103_raw_8nm; EM quadcube: precomputed://gs://fish2-gt/gt_w74w75_prealigned_raw_8nm; GT doublecube: n5://gs://fish2-gt/fish2-gt-2024-01.n5/230314_w100_103_seg_230927/gt; GT quadcube: n5://gs://fish2-gt/fish2-gt-2024-02-06.n5/gt_w74w75_prealigned_seg_230927/gt",
-      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-001_doublecube1_x52000_y42500_z0.zarr; crop-002_doublecube2_x120000_y45500_z0.zarr; crop-003_quadcube1_x23908_y18314_z0.zarr; crop-004_quadcube2_x15114_y10046_z0.zarr; crop-005_quadcube3_x9638_y10314_z0.zarr; crop-006_quadcube4_x48294_y6026_z0.zarr",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-001_doublecube1_x52000_y42500_z0.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-002_doublecube2_x120000_y45500_z0.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-003_quadcube1_x23908_y18314_z0.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-004_quadcube2_x15114_y10046_z0.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-005_quadcube3_x9638_y10314_z0.zarr; /groups/miaai/miaai/lmd-v0.0.1/data/em-zebrafish-fish2/crop-006_quadcube4_x48294_y6026_z0.zarr",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/em-zebrafish-fish2",
       "label_path": "em-zebrafish-fish2/crop-*/labels/proofread-cell-seg230927",
       "label_description": "Cell instance segmentation (proofread by Stuart Berg lab), 6 crops: 2 doublecube + 4 quadcube. Label: proofread-cell-seg230927. 16x16x30nm, uint32.",
@@ -9878,7 +9948,7 @@
       "status": "Consider for Training",
       "organism": "Salamander",
       "data_modality": "FIB-SEM",
-      "source_type": "External (Collaboration)",
+      "source_type": "Internal (Janelia/HHMI)",
       "dtype": "uint8",
       "has_seg": "No",
       "zarr_format": "zarr3 sharded",
@@ -9916,7 +9986,7 @@
       "status": "Consider for Training",
       "organism": "Salamander",
       "data_modality": "FIB-SEM",
-      "source_type": "External (Collaboration)",
+      "source_type": "Internal (Janelia/HHMI)",
       "dtype": "uint8",
       "has_seg": "No",
       "zarr_format": "zarr3 sharded",
@@ -11557,7 +11627,7 @@
       "structure": "OME-NGFF nested (raw/), 3-channel (CXYZ)",
       "source_format": "BigDataViewer N5 (BDV/N5), unstitched tiles, 3 co-registered channels",
       "raw_source_path": "/nrs/tavakoli/data_internal/s12c/samples_for_stitching/20250902_mouse_hipp_3_channels/dataset.n5",
-      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched (81 crops, crop-NNN_setupM.zarr)",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched (81 crops, crop-NNN_setupM_3c.zarr)",
       "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-mirrorscope-hippocampus-3ch-20250902-unstitched",
       "voxel_size_zyx_nm": "628\u00d7157\u00d7157",
       "volume_shape_zyx": "3\u00d74096\u00d72560\u00d73344 (CXYZ, uniform across all 81 tiles)",
@@ -12508,7 +12578,7 @@
       "status": "Consider for Training",
       "organism": "Drosophila",
       "data_modality": "Expansion Microscopy (Spinning Disk)",
-      "source_type": "External (Collaboration)",
+      "source_type": "Internal (Janelia/HHMI)",
       "dtype": "uint16",
       "has_seg": "No",
       "zarr_format": "zarr3 sharded",
@@ -14611,6 +14681,118 @@
       "disk_size": "~7.2 GB",
       "num_voxels": "4751032320",
       "expansion_factor": "32x"
+    },
+    {
+      "title": "FlyLICONN Matt \u2014 PPS_261015_002_OpticLobe_30x",
+      "issue": {
+        "number": 463,
+        "url": "https://github.com/AI-HHMI/mia_pretraining/issues/463",
+        "repository": "AI-HHMI/mia_pretraining"
+      },
+      "created_at": "2026-10-16",
+      "status": "Consider for Training",
+      "organism": "Drosophila",
+      "data_modality": "Expansion Microscopy (Spinning Disk)",
+      "source_type": "Internal (Janelia/HHMI)",
+      "dtype": "uint16",
+      "has_seg": "No",
+      "zarr_format": "zarr3 sharded",
+      "compression": "zstd-5",
+      "memory_order": "C",
+      "source_lab": "LICONN project (Janelia)",
+      "structure": "optic lobe",
+      "source_format": "TIFF (ImageJ stack, ZYX)",
+      "raw_source_path": "/groups/liconn/liconn/Matt/261016_PPS/261015_PPS_002_n2v_ff.tif",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-PPS-261015-002-OpticLobe-30x/crop-001_fullvol.zarr",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-drosophila-flyliconn-matt-PPS-261015-002-OpticLobe-30x",
+      "last_updated": "2026-10-16",
+      "voxel_size_zyx_nm": "400\u00d7108\u00d7108",
+      "volume_shape_zyx": "3754\u00d72304\u00d72304",
+      "physical_volume": "~1501.6\u00d7248.8\u00d7248.8 \u00b5m",
+      "disk_size": "33 GB",
+      "num_voxels": "19,927,793,664",
+      "pct_nonzero": "100.0%",
+      "expansion_factor": "30x",
+      "array_dims": "3D (ZYX)",
+      "axis_order": "z,y,x",
+      "chunk_shape": "128\u00b3",
+      "shard_shape": "512\u00b3",
+      "num_scales": "5 (s0\u2013s4)",
+      "training_bbox_s0_zyx": "full"
+    },
+    {
+      "title": "Mouse LICONN -- RID19 (Retina, stitched, confocal (spinning disk))",
+      "issue": {
+        "number": 464,
+        "url": "https://github.com/AI-HHMI/mia_pretraining/issues/464",
+        "repository": "AI-HHMI/mia_pretraining"
+      },
+      "created_at": "2026-10-19",
+      "status": "Consider for Training",
+      "organism": "Mouse",
+      "data_modality": "Expansion Microscopy (Confocal)",
+      "source_type": "Internal (Janelia/HHMI)",
+      "dtype": "uint16",
+      "has_seg": "No",
+      "zarr_format": "zarr3 sharded",
+      "compression": "zstd-5",
+      "memory_order": "C",
+      "source_lab": "Tavakoli Lab (Spinning Disk Confocal acquisition, BigStitcher-Spark fusion)",
+      "structure": "Retina",
+      "source_format": "BigStitcher-Spark BDV/OME-ZARR (fused)",
+      "raw_source_path": "/groups/tavakoli/tavakolilab/data_internal/Retina-LICONN/RID19/fused-s7.ome.zarr/0",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-RID19-retina-confocal/crop-002_stitched_32x.zarr",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-RID19-retina-confocal",
+      "voxel_size_zyx_nm": "400.00 x 162.50 x 162.50",
+      "volume_shape_zyx": "792 x 5812 x 12098",
+      "physical_volume": "~316.8\u00d7944.5\u00d71965.9 \u00b5m",
+      "disk_size": "73GB",
+      "num_voxels": "55.69G",
+      "pct_nonzero": "100.0%",
+      "expansion_factor": "32x",
+      "array_dims": "3D (ZYX)",
+      "axis_order": "z,y,x",
+      "chunk_shape": "128^3",
+      "shard_shape": "512^3",
+      "num_scales": "raw s0-s5",
+      "training_bbox_s0_zyx": "full"
+    },
+    {
+      "title": "Mouse LICONN \u2014 RID19 (Retina, Confocal)",
+      "issue": {
+        "number": 465,
+        "url": "https://github.com/AI-HHMI/mia_pretraining/issues/465",
+        "repository": "AI-HHMI/mia_pretraining"
+      },
+      "created_at": "2026-10-19",
+      "status": "Consider for Training",
+      "organism": "Mouse",
+      "data_modality": "Expansion Microscopy (Confocal)",
+      "source_type": "Internal (Janelia/HHMI)",
+      "dtype": "uint16",
+      "has_seg": "No",
+      "zarr_format": "zarr3 sharded",
+      "compression": "zstd-5",
+      "memory_order": "C",
+      "source_lab": "Tavakoli Lab (HHMI Janelia)",
+      "structure": "Retina",
+      "source_format": "BigStitcher-Spark per-setup OME-ZARR (intensity-corrected)",
+      "raw_source_path": "/groups/tavakoli/tavakolilab/Morgan/For Tracing/large stacks_RID19/s7/intensity_correct/dataset.ome.zarr/s11-t0.zarr",
+      "hhmi_path": "/groups/miaai/miaai/lmd-v0.0.1/data/exm-mouse-liconn-RID19-retina-confocal/crop-001_s11_neuropil_32x.zarr",
+      "fileglancer_path": "https://fileglancer.int.janelia.org/browse/groups_miaai_miaai/lmd-v0.0.1/data/exm-mouse-liconn-RID19-retina-confocal",
+      "voxel_size_zyx_nm": "400.00 x 162.50 x 162.50",
+      "volume_shape_zyx": "961 x 2304 x 2304",
+      "physical_volume": "~384.4\u00d7374.4\u00d7374.4 \u00b5m",
+      "disk_size": "6.2GB",
+      "num_voxels": "5.10G",
+      "pct_nonzero": "100.0%",
+      "expansion_factor": "32x",
+      "array_dims": "3D (ZYX)",
+      "axis_order": "z,y,x",
+      "chunk_shape": "128^3",
+      "shard_shape": "512^3",
+      "num_scales": "raw s0-s4",
+      "training_bbox_s0_zyx": "full"
     }
   ]
 }

@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 import os
 
-from gh_project import fetch_items
+from gh_project import fetch_items, inconsistent
 from roi_parse import parse_roi
 
 PROJECT_NUMBER = 1
@@ -100,7 +100,9 @@ def build_annotation(item):
     fields = item["fields"]
     # Source_Image_Path is a single string; multiple paths are "; "-joined
     # (confirmed against issue #12, a paired fullvol+sub crop).
-    assert fields.get("Source_Image_Path"), f"{item['issue']['url']} has no Source_Image_Path in the project"
+    if not fields.get("Source_Image_Path"):
+        inconsistent(item, "no Source_Image_Path in the project; item skipped")
+        return None
     source_paths = [p.strip() for p in fields["Source_Image_Path"].split(";") if p.strip()]
 
     annotation = {
@@ -118,9 +120,13 @@ def build_annotation(item):
 
     unparsed = UNPARSED_BBOX.get(item["issue"]["number"])
     if unparsed:
-        assert annotation.get("bbox") == unparsed["bbox"], f"{item['issue']['url']}: bbox changed upstream, remove its UNPARSED_BBOX entry"
+        if annotation.get("bbox") != unparsed["bbox"]:
+            inconsistent(item, "bbox changed upstream, remove its UNPARSED_BBOX entry")
     elif annotation.get("bbox") and annotation.get("bbox_size"):
-        annotation["roi"] = parse_roi(annotation["bbox"], annotation["bbox_size"])
+        try:
+            annotation["roi"] = parse_roi(annotation["bbox"], annotation["bbox_size"])
+        except AssertionError as e:
+            inconsistent(item, f"{e}; roi omitted")
 
     annotation.update(PENDING_UPSTREAM_FIXES.get(item["issue"]["number"], {}))
 
@@ -134,8 +140,10 @@ def main():
     assert text.strip(), "lmd_annotations.json is empty -- did you redirect output onto it? `git checkout lmd_annotations.json`, then write to a temp file and mv it into place"
     existing = {a["issue"]["number"]: a for a in json.loads(text)["annotations"]}
     items = fetch_items(PROJECT_NUMBER)
-    annotations = [build_annotation(i) for i in items]
-    for a, item in zip(annotations, items):
+    built = [(build_annotation(i), i) for i in items]
+    built = [(a, i) for a, i in built if a is not None]
+    annotations = [a for a, _ in built]
+    for a, item in built:
         a["created_at"] = item["created_at"]
         old = existing.get(a["issue"]["number"], {})
         a.update({k: old[k] for k in ("shape", "voxelsize", "axes") if k in old})

@@ -39,10 +39,16 @@ def graphql_budget() -> tuple:
     return r["remaining"], r["used"], r["resetAt"]
 
 
+ISSUES_FILE = "sync_issues.txt"  # gitignored; the report shows it (scripts/analysis/report.py), its mtime is the last sync
+issues = []
+
+
 def rebuild(script: str) -> dict:
     print("$", script, flush=True)
     result = subprocess.run([sys.executable, script], capture_output=True, text=True)
     assert result.returncode == 0, f"{script} failed:\n{result.stderr}"
+    print(result.stderr, end="", file=sys.stderr)
+    issues.extend(l for l in result.stderr.splitlines() if l.startswith("INCONSISTENT: "))
     return json.loads(result.stdout)
 
 
@@ -68,6 +74,9 @@ def main():
         with open(path + ".tmp", "w") as f:
             f.write(json.dumps(new[name], indent=2) + "\n")
         os.replace(path + ".tmp", path)
+    with open(ISSUES_FILE, "w") as f:
+        f.write("".join(l + "\n" for l in issues))
+    print(f"{len(issues)} inconsistencies in the projects (listed in {ISSUES_FILE})")
     print(f"GitHub GraphQL points used: {graphql_budget()[1] - used_before} (shared budget resets {resets})")
     print("Not committed. Commit these files (jj commit; jj bookmark set main -r @-), then run scripts/sync_release.py.")
 
