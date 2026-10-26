@@ -71,7 +71,6 @@ KNOWN_PROJECT_ERRORS = {
     ("AI-HHMI/mia_pretraining", 15): "hhmi_path uses the legacy betzig-fish-mosaic/ layout, which no longer exists on disk",
     ("AI-HHMI/mia_pretraining", 16): "hhmi_path uses the legacy betzig-fish-mosaic/ layout, which no longer exists on disk",
     ("AI-HHMI/mia_pretraining", 38): "voxel_size_zyx_nm 400×162.5×162.5 looks copied from the spinning-disk datasets; the stores are 1000×157×157",
-    ("AI-HHMI/mia_pretraining", 303): "hhmi_path lists bare crop names after its first full path",
 }
 
 

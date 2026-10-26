@@ -29,7 +29,7 @@ WINDOWS_PATH = os.path.join(DATA_ROOT, "..", "configs", "corpus", "windows.yaml"
 # The one volume with no "raw" wrapper group -- levels are stored directly at
 # the store root instead. Not detectable by walking the filesystem alone.
 IMAGE_KEY_OVERRIDES = {
-    "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-002_example_annotations_Thayer_2channels": "",
+    "lm-zebrafish-Betzig-mosaic-example_annotations_Thayer/crop-002_example_annotations_Thayer_2c": "",
 }
 
 
